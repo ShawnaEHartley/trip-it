@@ -1,3 +1,15 @@
 import React from 'react';
 import './MainPage.css'; 
-import 
+
+
+const MainPage = () => {
+
+    return (
+        <div>
+            MainPage Container placeholder
+        </div>
+    )
+
+};
+
+export default MainPage;
