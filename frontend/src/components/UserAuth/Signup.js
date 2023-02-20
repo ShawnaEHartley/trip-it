@@ -8,7 +8,7 @@ const SignupForm = () => {
 
     return (
 
-        <form action="">
+        <form action="">Signup Form placeholder
 
             
         </form>

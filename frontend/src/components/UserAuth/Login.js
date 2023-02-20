@@ -7,7 +7,7 @@ const LoginForm = () => {
 
     return (
 
-        <form action="">
+        <form action="">LoginForm placeholder
 
 
         </form>
