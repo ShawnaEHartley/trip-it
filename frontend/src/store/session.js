@@ -16,8 +16,8 @@ const receiveSessionErrors = (errors) => ({
     errors
 });
 
-const clearSessionErrors = () => ({
-    type: CLEAR_SESSION_ERRORS, 
+export const clearSessionErrors = () => ({
+    type: CLEAR_SESSION_ERRORS
 });
 
 const logoutUser = () => ({
@@ -25,10 +25,11 @@ const logoutUser = () => ({
 });
 
 
-export const getCurrentUser = () => async (dispatch) => {
-    const res = await jwtFetch('/api/users/current'); 
-}
-
+export const getCurrentUser = () => async dispatch => {
+    const res = await jwtFetch('/api/users/current');
+    const user = await res.json();
+    return dispatch(receiveCurrentUser(user));
+};
 
 
 export const signup = (user) => startSession(user, 'api/users/register');
