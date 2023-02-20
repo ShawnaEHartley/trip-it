@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import './NavBar.css'; 
 
 
@@ -7,7 +9,7 @@ const NavBar = () => {
     return (
 
         <nav>
-            <div>NavBar Component placeholder</div>
+            NavBar Component Placeholder
         </nav>
 
     )
