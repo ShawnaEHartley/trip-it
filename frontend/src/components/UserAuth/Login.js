@@ -4,19 +4,40 @@ import { useSelector, useDispatch } from 'react-redux';
 import './UserAuth.css';
 
 import { login, clearSessionErrors } from '../../store/session';
+import { closeModal } from '../../store/modal';
+
 
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.session.errors);
   const dispatch = useDispatch();
-
-
+  
+  
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
+  
+
+  const modalState = useSelector((state) => {
+    return state.modal;
+  });
+  
+  const showLoginModal = () => {
+    dispatch({type: 'modalOn', component: 'showLogin'})
+  };
+
+  // how to use
+  // const modalComponent = () => {
+  //   if (modalState.component === 'showLogin') {
+  //     return (
+  //       <div>all html</div>
+  //     )
+  //   }
+  // }
+
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
