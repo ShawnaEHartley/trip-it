@@ -29,4 +29,4 @@ const getCookie = () => {
 }
 
 
-export default jwtFetch
+export default jwtFetch;
