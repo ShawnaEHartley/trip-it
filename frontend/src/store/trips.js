@@ -76,7 +76,7 @@ export const createTrip = (data) => async (dispatch) => {
     }
 };
 
-export const updateTrip = (trip, tripId) = async (dispatch) => {
+export const updateTrip = (trip, tripId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/${tripId}`, {
             method: "PATCH", 
@@ -93,7 +93,7 @@ export const updateTrip = (trip, tripId) = async (dispatch) => {
 };
 
 
-export const deleteTrip = (tripId) = async (dispatch) => {
+export const deleteTrip = (tripId) => async (dispatch) => {
     const res = await fetch(`/api/trips/${tripId}`, {
         method: "DELETE"
     })
