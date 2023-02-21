@@ -13,7 +13,7 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(tripActions.fetchUserTrips(user._id))
-    })
+    }, [])
 
     return (
         
