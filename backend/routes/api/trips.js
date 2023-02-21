@@ -13,7 +13,7 @@ router.get('/user/:userId', async function (req, res, next) {
                                 .sort({ startDate: 1 });
         return res.json(trips);
     }
-    catch(err) {
+    catch (err) {
         return res.json([]);
     }
 });
