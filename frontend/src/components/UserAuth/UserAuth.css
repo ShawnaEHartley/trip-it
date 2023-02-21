@@ -1,7 +1,53 @@
 form > .errors {
   color: red;
   font-size: 0.875em;
-  height: 15px;
+  height: auto;
   display: flex;
   align-items: center;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 40px 82px;
+  padding-left: 20%;
+}
+
+.session-form > h2 {
+  padding-left: 4px;
+  padding-bottom: 36px;
+
+  font-size: 18px;
+}
+
+.session-form > label {
+  width: auto;
+  text-decoration: none;
+  padding: 2px;
+  padding-bottom: 10px;
+}
+
+.session-form > label > input {
+  border: 0;
+  border-bottom: 1px solid black;
+  min-width: 72%;
+  outline: none;
+  height: 20px;
+  overflow: auto;
+  padding-left: 4px;
+}
+
+.session-form > input {
+  width: 74px;
+  height: 25px;
+  border: 0;
+  background-color: white;
+  text-align: start;
+}
+
+#signup-h2 {
+  padding-bottom: 20px;
 }

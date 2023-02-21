@@ -52,10 +52,9 @@ const handleSubmit = e => {
 
 return (
 <form className="session-form" onSubmit={handleSubmit}>
-    <h2>Sign Up Form</h2>
+    <h2 id='signup-h2'>Sign Up Form</h2>
     <div className="errors">{errors?.email}</div>
     <label>
-        <span>Email</span>
         <input type="text"
             value={email}
             onChange={update('email')}
@@ -64,7 +63,6 @@ return (
     </label>
     <div className="errors">{errors?.name}</div>
     <label>
-        <span>Name</span>
         <input type="text"
             value={name}
             onChange={update('name')}
@@ -73,7 +71,6 @@ return (
     </label>
     <div className="errors">{errors?.password}</div>
     <label>
-        <span>Password</span>
         <input type="password"
             value={password}
             onChange={update('password')}
@@ -84,7 +81,6 @@ return (
     {password !== password2 && 'Confirm Password field must match'}
     </div>
     <label>
-        <span>Confirm Password</span>
         <input type="password"
             value={password2}
             onChange={update('password2')}

@@ -37,16 +37,16 @@ const NavBar = () => {
     };
 
     return (
-
-        <nav>
-            { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}> x </div> : "" }
+        <div id='nav-bar-container'>
+            { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
             { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
-            NavBar Component Placeholder
-            <Menu menuButton={<MenuButton>Compose</MenuButton>} transition>  
-                <MenuItem onClick={showSignUp}>Sign up</MenuItem>
-                <MenuItem onClick={showLogin}>Login</MenuItem>
-            </Menu>
-        </nav>
+            <nav id='nav-bar'>
+                <Menu menuButton={<MenuButton>Compose.</MenuButton>} transition>  
+                    <MenuItem onClick={showSignUp}>Sign up</MenuItem>
+                    <MenuItem onClick={showLogin}>Login</MenuItem>
+                </Menu>
+            </nav>
+        </div>
 
     )
 

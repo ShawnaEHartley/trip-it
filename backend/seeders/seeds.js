@@ -3,9 +3,6 @@ const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
-
-console.log("I am in seeds")
-
 const users = [];
 users.push(
   new User ({
@@ -15,7 +12,13 @@ users.push(
   })
 )
 
-console.log(users)
+users.push(
+  new User ({
+    email: 'demo@email.com',
+    name: 'Demo User',
+    hashedPassword: bcrypt.hashSync('password', 10)
+  })
+)
 
 users.push(
   new User ({
@@ -49,7 +52,6 @@ mongoose
     insertSeeds();
   })
   .catch(err => {
-    console.log("yikes");
     console.error(err.stack);
     process.exit(1);
   });
