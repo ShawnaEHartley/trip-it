@@ -1,3 +1,6 @@
+import { Redirect } from 'react-router-dom';
+import closeModal from './modal';
+
 import jwtFetch from './jwt';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER"; 
@@ -45,7 +48,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
         localStorage.setItem('jwtToken', token);
         return dispatch(receiveCurrentUser(user));
     } catch(err) {
-        const res = await err.json(); 
+        const res = await err.json();
         if (res.statusCode === 400) {
             return dispatch(receiveSessionErrors(res.errors));
         }
