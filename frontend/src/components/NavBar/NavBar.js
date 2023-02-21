@@ -38,10 +38,9 @@ const NavBar = () => {
 
     return (
 
-        <nav>
+        <nav id='nav-bar-container'>
             { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}> x </div> : "" }
             { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
-            NavBar Component Placeholder
             <Menu menuButton={<MenuButton>Compose</MenuButton>} transition>  
                 <MenuItem onClick={showSignUp}>Sign up</MenuItem>
                 <MenuItem onClick={showLogin}>Login</MenuItem>
