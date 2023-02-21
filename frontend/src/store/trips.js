@@ -28,7 +28,7 @@ const receiveTripErrors = (errors) => ({
     errors 
 });
 
-const clearTripErrors = (errors) => ({
+export const clearTripErrors = (errors) => ({
     type: CLEAR_TRIP_ERRORS,
     errors 
 });
@@ -60,7 +60,7 @@ export const fetchTrip = (tripId) => async (dispatch) => {
 };
 
 
-export const createTrip = (data) = async (dispatch) => {
+export const createTrip = (data) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/`, {
             method: "POST", 
@@ -103,7 +103,7 @@ export const deleteTrip = (tripId) = async (dispatch) => {
 
 const nullErrors = null; 
 
-export const tripErrorsReducer = (state = {}, action) => {
+export const TripErrorsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_TRIP_ERRORS: 
             return action.errors; 
@@ -115,7 +115,7 @@ export const tripErrorsReducer = (state = {}, action) => {
 };  
 
 
-const tripsReducer = (state = {}, action) => {
+const TripsReducer = (state = {}, action) => {
     let newState = { ...state }
 
     switch(action.type) {
@@ -131,4 +131,4 @@ const tripsReducer = (state = {}, action) => {
     }
 };
 
-export default tripsReducer; 
+export default TripsReducer; 
