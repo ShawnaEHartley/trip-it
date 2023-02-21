@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import SplashPage from './components/SplashPage/SplashPage';
 import { Route } from 'react-router-dom';
 import LoginForm from './components/UserAuth/Login';
+import SignupForm from './components/UserAuth/Signup';
 
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
     <Switch>
         <Route path="/login">
           <LoginForm />
+        </Route>
+        <Route path='/signup'>
+          <SignupForm />
         </Route>
         <Route path="/">
           <SplashPage />

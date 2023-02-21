@@ -10,7 +10,7 @@ import { closeModal } from '../../store/modal';
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.session.errors);
+  const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
   
   
