@@ -6,7 +6,10 @@ import './MainPage.css';
 const MainPage = () => {
 
     return (
+        <>
+        <div>I AM THE MAIN PAGE</div>
         <TripIndex />
+        </>
     )
 
 };
