@@ -10,10 +10,16 @@
 .modal-wrapper {
   background-color: white;
   position: fixed;
-  left: 10%;
-  top: 2%;
+  left: 35%;
+  top: 30%;
+  width: 25%;
+  height: 30%;
   z-index: 3;
   border: 1px solid black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #nav-bar-container {
