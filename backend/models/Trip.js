@@ -15,19 +15,23 @@ const tripSchema = new Schema({
     description: {
         type: String
     },
-    country: {
-        type: String
-    },
-    state: {
-        type: String
-    },
-    city: {
-        type: String
+    location: {
+        country: String,
+        state: String,
+        city: String,
+        streetAdress: String
     },
     organizer: {
         type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    members: [{
+        type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }]
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
