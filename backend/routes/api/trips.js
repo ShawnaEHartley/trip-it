@@ -59,6 +59,4 @@ router.post('/', async function (req, res, next) {
 /* Update trip listing */
 // update a trip
 
-
-
 module.exports = router;
