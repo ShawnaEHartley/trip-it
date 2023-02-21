@@ -39,6 +39,7 @@ app.use(
 );
 
 // Attach Express routers
+app.use('/api/trips', tripsRouter);
 app.use('/api/users', usersRouter); // update the path
 app.use('/api/csrf', csrfRouter);
 

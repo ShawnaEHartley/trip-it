@@ -6,20 +6,15 @@ const tripSchema = new Schema({
         type: String,
         required: true
     },
-    startDate: {
-        type: Date
-    },
-    endDate: {
-        type: Date
-    },
-    description: {
-        type: String
-    },
+    startDate: Date,
+    endDate: Date,
+    description: String,
     location: {
         country: String,
         state: String,
         city: String,
-        streetAdress: String
+        streetAdress: String,
+        zipCode: String
     },
     organizer: {
         type: Schema.Types.ObjectId,
