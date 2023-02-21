@@ -1,14 +1,12 @@
 import React from 'react';
-
+import TripIndex from '../TripIndex/TripIndex'
 import './MainPage.css'; 
 
 
 const MainPage = () => {
 
     return (
-        <div>
-            MainPage Container placeholder
-        </div>
+        <TripIndex />
     )
 
 };
