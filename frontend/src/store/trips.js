@@ -1,11 +1,11 @@
 import jwtFetch from "./jwt";
 
 
-const RECEIVE_TRIP = trips/RECEIVE_TRIP; 
-const RECEIVE_TRIPS = trips/RECEIVE_TRIPS; 
-const REMOVE_TRIP = trips/REMOVE_TRIP;
-const RECEIVE_TRIP_ERRORS = trips/RECEIVE_TRIP_ERRORS;
-const CLEAR_TRIP_ERRORS = trips/CLEAR_TRIP_ERRORS;
+const RECEIVE_TRIP = "trips/RECEIVE_TRIP"; 
+const RECEIVE_TRIPS = "trips/RECEIVE_TRIPS"; 
+const REMOVE_TRIP = "trips/REMOVE_TRIP";
+const RECEIVE_TRIP_ERRORS = "trips/RECEIVE_TRIP_ERRORS";
+const CLEAR_TRIP_ERRORS = "trips/CLEAR_TRIP_ERRORS";
 
 
 const receiveTrip = (trip) => ({
@@ -103,7 +103,7 @@ export const deleteTrip = (tripId) => async (dispatch) => {
 
 const nullErrors = null; 
 
-export const TripErrorsReducer = (state = {}, action) => {
+export const tripErrorsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_TRIP_ERRORS: 
             return action.errors; 
