@@ -41,6 +41,8 @@
   box-shadow: none;
   border-radius: 0px;
   border: 1px solid black;
+
+  border-top: white;
   min-width: auto;
   padding: 4px 0px;
 }
@@ -48,5 +50,5 @@
 #nav-bar > div > ul > li {
   width: auto;
   padding: 8px 16px;
-  border-top: 0;
+  padding-left: 15px;
 } 
