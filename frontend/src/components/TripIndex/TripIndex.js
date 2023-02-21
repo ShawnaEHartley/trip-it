@@ -13,14 +13,17 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(tripActions.fetchUserTrips(user._id))
-    }, [])
+    }, [dispatch, user._id])
 
     return (
         
         trips.map((trip) => {
-            <div>
-                <TripIndexItem trip={trip} />
-            </div>
+            return (
+                <div>
+                    {trip.title}
+                    <TripIndexItem trip={trip} />
+                </div>
+            )
         })
 
     )
