@@ -1,13 +1,16 @@
 import React from 'react'; 
-
+import './TripIndex.css';
 
 
 const TripIndexItem = ({trip}) => {
 
     return (
-        <div>
+        <ul>
+            <li>{trip.title}</li>
+            <li>{trip.startDate}</li>
+            {/* <li>{trip.members.length}</li> */}
 
-        </div>
+        </ul>
     )
 
 }

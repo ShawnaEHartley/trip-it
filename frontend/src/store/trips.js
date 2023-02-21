@@ -43,8 +43,8 @@ export const getTrips = (state) => {
 };
 
 export const getTrip = (state) => (tripId) => {
-    if (state.trip) {
-        return state.trip[tripId]
+    if (state.trips) {
+        return state.trips[tripId]
     } else {
         return null
     }
