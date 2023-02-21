@@ -12,8 +12,132 @@ const SplashPage = () => {
 
     if (location.pathname === "/" && !loggedIn) {
         return (
-            <div>
-                Splash Page Container placeholder 
+            <div id='splash-page-container'>
+                <div id='tripit-container'>
+                    <div id='tripit-logo'>
+                        Trip it
+                    </div>
+                </div>
+                <div id='left-splash'>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                </div>
+                <div id='centter-left-splash'>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                </div>
+                <div id='center-right-splash'>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                </div>
+                <div id='right-splash'>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                    <div className='event-index'>
+                        <h3>mauris pharetra</h3>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                    </div>
+                </div>
             </div>
         )
     } else {

@@ -19,16 +19,20 @@
 #nav-bar-container {
   display: flex;
   justify-content: right;
+  position: absolute;
 
-  padding-top: 2px;
-
+  padding-top: 4px;
   width: 100%;
 }
 
-#nav-bar-container > button {
-  border: 0px;
+#nav-bar {
+  padding-right: 40px;
+}
+
+#nav-bar > button {
+  display: block;
+  border: 1px solid black;
   background-color: white;
   height: 30px;
-  padding-right: 20px;
   font-size: 15px;
 }
