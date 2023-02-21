@@ -2,7 +2,7 @@ import React from 'react';
 import './SplashPage.css'; 
 import MainPage from '../MainPage/MainPage'
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
@@ -10,11 +10,17 @@ const SplashPage = () => {
     const loggedIn = useSelector(state => !!state.session.user);
     const location = useLocation();
 
+    const dispatch = useDispatch();
+
+    const showLogin = () => {
+        dispatch({ type: 'modalOn', component: 'showLogin' })
+    }
+
     if (location.pathname === "/" && !loggedIn) {
         return (
             <div id='splash-page-container'>
                 <div id='tripit-container'>
-                    <div id='tripit-logo'>
+                    <div id='tripit-logo' onClick={showLogin}>
                         Trip it
                     </div>
                 </div>
