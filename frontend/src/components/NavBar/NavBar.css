@@ -21,7 +21,7 @@
   justify-content: right;
   position: absolute;
 
-  padding-top: 4px;
+  padding-top: 8px;
   width: 100%;
 }
 
@@ -36,3 +36,17 @@
   height: 30px;
   font-size: 15px;
 }
+
+#nav-bar > div > ul {
+  box-shadow: none;
+  border-radius: 0px;
+  border: 1px solid black;
+  min-width: auto;
+  padding: 4px 0px;
+}
+
+#nav-bar > div > ul > li {
+  width: auto;
+  padding: 8px 16px;
+  border-top: 0;
+} 
