@@ -37,6 +37,7 @@ form > .errors {
   outline: none;
   height: 20px;
   overflow: auto;
+  padding-left: 4px;
 }
 
 .session-form > input {
