@@ -142,7 +142,7 @@ const TripsReducer = (state = {}, action) => {
         case RECEIVE_TRIPS: 
             return {...state, trips: [...action.trips] } 
         case REMOVE_TRIP: 
-            delete newState[action.trips.tripId]
+            delete(newState[action.tripId])
             return newState 
         default: 
             return newState; 
