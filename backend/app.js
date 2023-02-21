@@ -7,10 +7,12 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 const debug = require('debug');
 
+require('./models/Trip');
 require('./models/User');
 require('./config/passport');
 const passport = require('passport');
 
+const tripsRouter = require('./routes/api/trips');
 const usersRouter = require('./routes/api/users'); // update the import file path
 const csrfRouter = require('./routes/api/csrf');
 

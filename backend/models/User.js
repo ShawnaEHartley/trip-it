@@ -14,7 +14,11 @@ const userSchema = new Schema({
     hashedPassword: {
         type: String,
         required: true
-    }
+    },
+    trips: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Trip'
+    }]
 }, {
     timestamps: true
 });
