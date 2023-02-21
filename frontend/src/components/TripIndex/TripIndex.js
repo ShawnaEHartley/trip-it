@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TripIndexItem from './TripIndexItem';
 import { useEffect } from 'react';
 import * as tripActions from '../../store/trips';
@@ -7,6 +7,7 @@ import * as tripActions from '../../store/trips';
 
 const TripIndex = () => {
     const dispatch = useDispatch(); 
+    const trips = useSelector()
 
     useEffect(() => {
         dispatch(tripActions.fetchUserTrips())

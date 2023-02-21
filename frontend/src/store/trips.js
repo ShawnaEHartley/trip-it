@@ -33,6 +33,24 @@ export const clearTripErrors = (errors) => ({
     errors 
 });
 
+
+export const getTrips = (state) => {
+    if (state.trips) {
+        return Object.values(state.trips) 
+    } else {
+        return null
+    }
+};
+
+export const getTrip = (state) => (tripId) => {
+    if (state.trip) {
+        return state.trip[tripId]
+    } else {
+        return null
+    }
+};
+
+
 export const fetchUserTrips = (userId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/user/${userId}`);
