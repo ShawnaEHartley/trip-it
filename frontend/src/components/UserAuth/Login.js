@@ -1,11 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { closeModal } from '../../store/modal';
 import './UserAuth.css';
 
 import { login, clearSessionErrors } from '../../store/session';
-import { closeModal } from '../../store/modal';
-
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -21,24 +20,6 @@ function LoginForm () {
   }, [dispatch]);
   
 
-  const modalState = useSelector((state) => {
-    return state.modal;
-  });
-  
-  const showLoginModal = () => {
-    dispatch({type: 'modalOn', component: 'showLogin'})
-  };
-
-  // how to use
-  // const modalComponent = () => {
-  //   if (modalState.component === 'showLogin') {
-  //     return (
-  //       <div>all html</div>
-  //     )
-  //   }
-  // }
-
-
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
     return e => setState(e.currentTarget.value);
@@ -46,6 +27,7 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(closeModal())
     dispatch(login({ email, password })); 
   }
 
