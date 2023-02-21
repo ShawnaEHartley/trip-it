@@ -13,7 +13,7 @@ form > .errors {
   width: 100%;
   height: 100%;
   padding: 40px 82px;
-  padding-left: 23%;
+  padding-left: 20%;
 }
 
 .session-form > h2 {
@@ -33,7 +33,7 @@ form > .errors {
 .session-form > label > input {
   border: 0;
   border-bottom: 1px solid black;
-  min-width: 70%;
+  min-width: 72%;
   outline: none;
   height: 20px;
   overflow: auto;
