@@ -58,5 +58,14 @@ router.post('/', async function (req, res, next) {
 
 /* Update trip listing */
 // update a trip
+router.patch('/:tripId', async function (req, res, next) {
+    // taking in a whole ass trip object
+    try {
+        const updatedTrip = req.body;
+        const tripId = req.params.id;
+        const trip = Trip.findById(req.body._id);
+
+    }
+})
 
 module.exports = router;
