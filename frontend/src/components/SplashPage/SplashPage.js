@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer } from 'react'; 
+import React from 'react'; 
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { getCurrentUser } from '../../store/session';
 
 import MainPage from '../MainPage/MainPage'
 
@@ -11,12 +10,8 @@ import './SplashPage.css';
 
 const SplashPage = () => {
     const dispatch = useDispatch();
-    const location = useLocation();
 
     const loggedIn = useSelector(state => !!state.session.user);
-
-    console.log(loggedIn)
-
 
     const showLogin = () => {
         dispatch({ type: 'modalOn', component: 'showLogin' })

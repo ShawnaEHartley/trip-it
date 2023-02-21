@@ -20,9 +20,12 @@ export const clearSessionErrors = () => ({
     type: CLEAR_SESSION_ERRORS
 });
 
-const logoutUser = () => ({
-    type: RECEIVE_USER_LOGOUT
-});
+const logoutUser = () => {
+    console.log("hello world")
+    return {
+        type: RECEIVE_USER_LOGOUT
+    }
+};
 
 
 export const getCurrentUser = () => async dispatch => {
@@ -54,7 +57,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken'); 
-    dispatch(logoutUser()); 
+    return dispatch(logoutUser()); 
 };
 
 

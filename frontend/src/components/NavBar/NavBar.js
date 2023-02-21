@@ -8,6 +8,7 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
+import { logout } from '../../store/session';
 
 import './NavBar.css'; 
 
@@ -15,6 +16,8 @@ import './NavBar.css';
 const NavBar = () => {
 
     const dispatch = useDispatch();
+
+    const loggedIn = useSelector(state => !!state.session.user);
 
     const modalState = useSelector((state) => {
         return state.modal;
@@ -36,14 +39,38 @@ const NavBar = () => {
         }
     };
 
+    const loggedOutNav = () => {
+        return ( 
+        <>
+            <MenuItem onClick={showSignUp}>Sign up</MenuItem>
+            <MenuItem onClick={showLogin}>Login</MenuItem>
+        </>
+        )
+    };
+
+    const loggedInNav = () => {
+        return (
+        <>
+            <MenuItem>About the developers</MenuItem>
+            <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
+        </>
+        )
+    };
+
+    const logoutCurrentUser = (e) => {
+        dispatch(logout())
+    };
+
     return (
         <div id='nav-bar-container'>
             { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
             { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
             <nav id='nav-bar'>
                 <Menu menuButton={<MenuButton>Compose.</MenuButton>} transition>  
-                    <MenuItem onClick={showSignUp}>Sign up</MenuItem>
+                    { loggedIn ? loggedInNav() : loggedOutNav() }
+                    {/* <MenuItem onClick={showSignUp}>Sign up</MenuItem>
                     <MenuItem onClick={showLogin}>Login</MenuItem>
+                    <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem> */}
                 </Menu>
             </nav>
         </div>
