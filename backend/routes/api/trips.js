@@ -71,7 +71,4 @@ router.patch('/:tripId', async function(req, res, next) {
     }
 });
 
-    }
-})
-
 module.exports = router;
