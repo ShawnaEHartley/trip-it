@@ -20,8 +20,7 @@ const EventUpdateForm = (event) => {
     const [country, setCountry] = useState(event.country);
     const [cost, setCost] = useState(event.cost);
     const [splitCostStructure, setSplitCostStructure] = useState(event.splitCostStructure);
-    const [peopleGoing, setPeopleGoing] = usetState(event.peopleGoing); 
-    const [booked, setBooked] = useState(event.booked);
+
 
     const submitUpdateEvent = (e) => {
         e.preventDefault(); 
@@ -30,17 +29,17 @@ const EventUpdateForm = (event) => {
             description: description,
             startDate: startDate,
             endDate: endDate,
-            streetAddress: streetAddress,
-            city: city,
-            state: state,
-            zipCode: zipCode,
-            country: country,
+            location: {
+                streetAddress: streetAddress,
+                city: city,
+                state: state,
+                zipCode: zipCode,
+                country: country
+            },
             cost: cost, 
-            splitCostStructure: splitCostStructure, 
-            peopleGoing: peopleGoing, 
-            booked: booked 
+            splitCostStructure: splitCostStructure
         }))
-    }
+    };
 
     return (
         <form className='event-create-form-wrapper' id='' action='' onSubmit={submitUpdateEvent}>
