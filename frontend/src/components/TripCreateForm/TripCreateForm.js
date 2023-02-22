@@ -1,7 +1,30 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../store/modal';
+
 
 const TripCreateForm = () => {
 
   // get trip and all attributes 
+
+  const sessionUser = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [streetAddress, setStreetAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [country, setCountry] = useState("");
+
+  const submitTrip = () => {
+    
+  }
+
+
 
 
   return (
