@@ -8,6 +8,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 import { Route } from 'react-router-dom';
 import LoginForm from './components/UserAuth/Login';
 import { getCurrentUser } from './store/session';
+import AboutUsPage from './components/AboutUsPage/AboutUsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/">
           <SplashPage />
+        </Route>
+        <Route path="/about">
+          <AboutUsPage />
         </Route>
     </Switch>
     <Footer />

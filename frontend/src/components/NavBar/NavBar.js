@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
 
@@ -9,13 +9,17 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
 import { logout } from '../../store/session';
+import AboutUsPage from '../AboutUsPage/AboutUsPage';
 
 import './NavBar.css'; 
+import { Redirect, useHistory } from 'react-router-dom';
 
 
 const NavBar = () => {
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const loggedIn = useSelector(state => !!state.session.user);
 
@@ -51,11 +55,15 @@ const NavBar = () => {
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem>About the developers</MenuItem>
+            <MenuItem onClick={redirect}>About the developers</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )
     };
+
+    // const redirect = () => {
+    //     history.push('/about')
+    // };
 
     const logoutCurrentUser = (e) => {
         dispatch(logout())
