@@ -16,6 +16,19 @@ router.get('/', function (req, res, next) {
   });
 });
 
+// GET user by id
+router.get('/:userId', async function (req, res, next) {
+  const user = await User.findById(req.params.userId);
+
+  if (user) {
+    return res.json(user);
+  } else {
+    const err = new Error('User does not exist');
+    err.statusCode = 404;
+    return next(err);
+  }
+});
+
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
@@ -33,7 +46,6 @@ router.get('/current', restoreUser, (req, res) => {
 });
 
 /* POST users listing. */
-
 // POST /api/users/login
 router.post('/login', validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function (err, user) {

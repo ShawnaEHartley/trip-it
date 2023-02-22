@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Trip = mongoose.model('Trip');
+const User = mongoose.model('User');
 
 /* GET trips */
 // get ALL trips
@@ -32,8 +33,7 @@ router.get('/user/:userId', async function (req, res, next) {
 // get trip by ID
 router.get('/:tripId', async function (req, res, next) {
     try {
-        const trip = await Trip.findById(req.params.tripId)
-                                .populate("members", "_id name");
+        const trip = await Trip.findById(req.params.tripId);
         return res.json(trip);
     }
     catch(err) {
@@ -74,12 +74,14 @@ router.patch('/:tripId', async function(req, res, next) {
     const updates = req.body;
     try {
         Trip.updateOne({_id: ObjectId(req.params.tripId)}, {$set: updates});
-        const trip = Trip.findById(ObjectId(req.params.tripId));
+        const trip = Trip.findById(req.params.tripId);
         return res.json(trip);
     }
     catch(err) {
         next(err);
     }
 });
+
+
 
 module.exports = router;
