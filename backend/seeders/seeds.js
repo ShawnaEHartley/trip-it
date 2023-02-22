@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Trip = require('../models/Trip');
 const bcrypt = require('bcryptjs');
 
+
 const users = [];
 
 users.push(
@@ -11,7 +12,6 @@ users.push(
     email: 'demo@email.com',
     name: 'Demo User',
     hashedPassword: bcrypt.hashSync('password', 10),
-    trips: [trip1, trip2, trip3]
   })
 )
 
@@ -64,9 +64,10 @@ trips.push(
     endDate: '2022-08-22',
     description: 'couple weeks in Germany, Denmark, and Sweden',
     location: {
-      country: 'Germany',
+      country: 'Germany'
     },
-    organizer: users[1]._id
+    organizer: '63f592b50326647fe09d333d',
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -79,7 +80,8 @@ trips.push(
     location: {
       country: 'Colombia'
     },
-    organizer: users[1]._id
+    organizer: '63f592b50326647fe09d333d',
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -93,7 +95,8 @@ trips.push(
       country: 'Mexico',
       city: 'Mexico City'
     },
-    organizer: users[1]._id
+    organizer: '63f592b50326647fe09d333d',
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -107,7 +110,8 @@ trips.push(
       country: 'USA',
       state: 'New York'
     },
-    organizer: users[2]._id
+    organizer: '63f592b50326647fe09d333e',
+    members: ['63f592b50326647fe09d333d']
   })
 )
 
@@ -121,7 +125,8 @@ trips.push(
       country: 'USA',
       state: 'New York'
     },
-    organizer: users[4]._id
+    organizer: '63f4e03c92f77b866e5c2807',
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -134,7 +139,8 @@ trips.push(
     location: {
       country: 'England'
     },
-    organizer: users[1]._id
+    organizer: '63f592b50326647fe09d333d',
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -144,7 +150,9 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to MongoDB successfully');
-    insertSeeds();
+    // insertSeeds();
+    insertTripSeeds();
+    console.log('Finished')
   })
   .catch(err => {
     console.error(err.stack);
@@ -152,13 +160,23 @@ mongoose
   });
 
 const insertSeeds = () => {
-  console.log("Resetting db and seeding users and tweets...");
+  console.log("Resetting users...");
   User.collection.drop()
-                .then(() => Trip.collection.drop())
                 .then(() => User.insertMany(users))
+                .then(() => {
+                  mongoose.disconnect();
+                })
+                .catch(err => {
+                  console.error(err.stack);
+                  process.exit(1);
+                });
+};
+
+const insertTripSeeds = () => {
+  console.log("Resetting trips...");
+    Trip.collection.drop()
                 .then(() => Trip.insertMany(trips))
                 .then(() => {
-                  console.log("Done!");
                   mongoose.disconnect();
                 })
                 .catch(err => {

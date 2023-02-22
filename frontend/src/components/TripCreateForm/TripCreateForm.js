@@ -1,7 +1,7 @@
 
 const TripCreateForm = () => {
 
-  // get trip and all attributes 
+  // send to trip create function
 
 
   return (
