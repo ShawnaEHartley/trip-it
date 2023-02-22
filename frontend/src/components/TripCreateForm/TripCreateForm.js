@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
 import { createTrip } from '../../store/trips';
+import './TripCreateForm.css';
 
 
 const TripCreateForm = () => {
