@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { mongoURI: db } = require('../config/keys.js');
 const User = require('../models/User');
 const Trip = require('../models/Trip');
+const Event = require('../models/Event');
 const bcrypt = require('bcryptjs');
 
 
