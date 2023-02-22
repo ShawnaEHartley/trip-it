@@ -17,15 +17,12 @@ router.get('/', function (req, res, next) {
 });
 
 // GET user by id
-router.get('/:userId', async function (req, res, next) {
-  const user = await User.findById(req.params.userId);
-
-  if (user) {
+router.get('/find/:userId', async function (req, res, next) {
+  try {
+    const user = await User.findById(req.params.userId);
     return res.json(user);
-  } else {
-    const err = new Error('User does not exist');
-    err.statusCode = 404;
-    return next(err);
+  } catch(err) {
+    return 'This user does not exist';
   }
 });
 
