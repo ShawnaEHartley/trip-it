@@ -22,11 +22,8 @@ const tripSchema = new Schema({
         required: true
     },
     members: [{
-        memberId: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        name: String
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }]
 }, {
     timestamps: true

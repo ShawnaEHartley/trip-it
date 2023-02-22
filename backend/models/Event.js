@@ -23,11 +23,8 @@ const eventSchema = new Schema({
         default: false
     },
     peopleGoing: [{
-        userId: {
             type: Schema.Types.ObjectId,
             ref: 'User'
-        },
-        name: String
     }],
     booked: {
         type: Boolean,
