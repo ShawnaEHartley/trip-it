@@ -3,15 +3,17 @@ import './TripIndex.css';
 import { useDispatch } from 'react-redux';
 
 
-const TripIndexItem = ({trip}) => {
+const TripIndexItem = ({trip, awsUrl}) => {
     console.log(trip.organizer);
     return (
-        <ul>
-            <li>{trip.title}</li>
-            <li>{trip.startDate}</li>
-            {/* <li>{trip.members.length}</li> */}
-
-        </ul>
+        <>
+            <div id='stamp-image-container'>
+                <div className='stamp-image'>
+                    <img className='stamp-image' src={awsUrl} />
+                </div>
+                <div className='trip-info'>{trip.title}</div>
+            </div>
+        </>
     )
 
 }
