@@ -16,11 +16,13 @@
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
+   overflow: hidden;
 }
 
 #splash-page-container > div {
    display: block;
    width: 25%;
+   min-width: 330px;
 }
 
 #tripit-container {
