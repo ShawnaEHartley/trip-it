@@ -18,6 +18,7 @@ const SplashPage = () => {
     };
 
     if (!loggedIn) {
+
         return (
             <div id='splash-page-container'>
                 <div id='tripit-container'>

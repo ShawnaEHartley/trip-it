@@ -31,6 +31,15 @@ function LoginForm () {
     dispatch(login({ email, password })); 
   }
 
+  const LoginDemoUser = (e) => {
+    e.preventDefault(); 
+    dispatch(closeModal())
+    dispatch(login({
+      email: 'demo@email.com',
+      password: 'password'
+    }))
+  }
+
   return (
     <form className="session-form" onSubmit={handleSubmit}>
       <h2>Log In</h2>
@@ -54,6 +63,11 @@ function LoginForm () {
         type="submit"
         value="Log In"
         disabled={!email || !password}
+      />
+      <input 
+      type="submit"
+      value="Demo User Login" 
+      onClick={LoginDemoUser}
       />
     </form>
   );

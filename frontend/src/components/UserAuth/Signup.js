@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './UserAuth.css';
-import { signup, clearSessionErrors } from '../../store/session';
+import { signup, login, clearSessionErrors } from '../../store/session';
 import { closeModal } from '../../store/modal';
 
 function SignupForm () {
@@ -51,6 +51,15 @@ const handleSubmit = e => {
     dispatch(signup(user)); 
 }
 
+const SignUpAsDemoUser = (e) => {
+    e.preventDefault(); 
+    dispatch(closeModal())
+    dispatch(login({
+        email: 'demo@email.com', 
+        password: 'password'
+    }));
+};
+
 return (
 <form className="session-form" onSubmit={handleSubmit}>
     <h2 id='signup-h2'>Sign Up Form</h2>
@@ -92,6 +101,11 @@ return (
     type="submit"
     value="Sign Up"
     disabled={!email || !name || !password || password !== password2}
+    />
+    <input 
+    type="submit" 
+    value="Demo User Sign Up"
+    onClick={SignUpAsDemoUser}
     />
 </form>
 );
