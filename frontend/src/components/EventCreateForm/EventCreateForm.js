@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/model';
-import { updateEvent } from '../../store/events';
+import { createEvent } from '../../store/events';
 import './EventCreateForm.css';
 
 
@@ -22,9 +22,9 @@ const EventCreateForm = () => {
     const [splitCostStructure, setSplitCostStructure] = useState("");
 
 
-    const submitUpdateEvent = (e) => {
+    const submitEvent = (e) => {
         e.preventDefault(); 
-        dispatch(updateEvent({
+        dispatch(createEvent({
             title: title,
             description: description,
             startDate: startDate,
@@ -42,9 +42,9 @@ const EventCreateForm = () => {
     };
 
     return (
-        <form className='event-create-form-wrapper' id='' action='' onSubmit={submitUpdateEvent}>
+        <form className='event-create-form-wrapper' id='' action='' onSubmit={submitEvent}>
         <div className='event-create-header-wrapper' id=''>
-          <h1 className='event-create-header' id=''> Update event </h1>
+          <h1 className='event-create-header' id=''> Create event </h1>
           <h2 clasName='event-create-subheader' id=''> {event.title} </h2>
         </div>
   

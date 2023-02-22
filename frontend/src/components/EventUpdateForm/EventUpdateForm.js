@@ -23,22 +23,22 @@ const EventUpdateForm = (event) => {
 
 
     const submitUpdateEvent = (e) => {
-        e.preventDefault(); 
-        dispatch(updateEvent({
-            title: title,
-            description: description,
-            startDate: startDate,
-            endDate: endDate,
-            location: {
-                streetAddress: streetAddress,
-                city: city,
-                state: state,
-                zipCode: zipCode,
-                country: country
-            },
-            cost: cost, 
-            splitCostStructure: splitCostStructure
-        }))
+      e.preventDefault(); 
+      dispatch(updateEvent({
+        title: title,
+        description: description,
+        startDate: startDate,
+        endDate: endDate,
+        location: {
+          streetAddress: streetAddress,
+          city: city,
+          state: state,
+          zipCode: zipCode,
+          country: country
+        },
+        cost: cost, 
+        splitCostStructure: splitCostStructure
+      }))
     };
 
     return (
