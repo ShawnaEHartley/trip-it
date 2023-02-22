@@ -37,7 +37,7 @@ function LoginForm () {
     dispatch(login({
       email: 'demo@email.com',
       password: 'password'
-    }));
+    }))
   }
 
   return (
