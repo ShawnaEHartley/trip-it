@@ -68,7 +68,7 @@ trips.push(
       country: 'Germany'
     },
     organizer: '63f592b50326647fe09d333d',
-    members: [{ memberId: '', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId:'63f592b50326647fe09d3341', name:'Janira' }]
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333f', '63f592b50326647fe09d3341']
   })
 )
 
@@ -82,7 +82,7 @@ trips.push(
       country: 'Colombia'
     },
     organizer: '63f592b50326647fe09d333d',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -97,7 +97,7 @@ trips.push(
       city: 'Mexico City'
     },
     organizer: '63f592b50326647fe09d333d',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -112,7 +112,7 @@ trips.push(
       state: 'New York'
     },
     organizer: '63f592b50326647fe09d333e',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -127,7 +127,7 @@ trips.push(
       state: 'New York'
     },
     organizer: '63f4e03c92f77b866e5c2807',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: ['63f592b50326647fe09d333d', '63f592b50326647fe09d333e', '63f592b50326647fe09d333f', '63f592b50326647fe09d3340']
   })
 )
 
@@ -141,7 +141,7 @@ trips.push(
       country: 'England'
     },
     organizer: '63f592b50326647fe09d333d',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: ['63f592b50326647fe09d333d']
   })
 )
 
@@ -227,8 +227,8 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB successfully');
     // insertSeeds();
-    // insertTripSeeds();
-    insertEventSeeds();
+    insertTripSeeds();
+    // insertEventSeeds();
     console.log('Finished')
   })
   .catch(err => {
@@ -266,7 +266,9 @@ const insertEventSeeds = () => {
   console.log("Resetting events...");
   Event.collection.drop()
                   .then(() => Event.insertMany(events))
-                  .then(() => mongoose.disconnect())
+                  .then(() => {
+                    mongoose.disconnect();
+                  })
                   .catch(err => {
                     console.error(err.stack);
                     process.exit(1)
