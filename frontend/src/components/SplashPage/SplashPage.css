@@ -1,0 +1,47 @@
+.event-index {
+   padding: 10px;
+   line-height: 1.4;
+   font-size: 14px;
+}
+
+.event-index > h3 {
+   font-size: 18px;
+   padding-bottom: 5px;
+}
+
+#splash-page-container {
+   padding: 8px;
+   height: 100vh;
+
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   overflow: hidden;
+}
+
+#splash-page-container > div {
+   display: block;
+   width: 25%;
+   min-width: 330px;
+}
+
+#tripit-container {
+   position: absolute;
+   left: 35%;
+   top: 30%;
+
+   width: 480px!important;
+   height: 30%;
+   min-height: 244px;
+
+   background-color: white;
+   font-size: 40px;
+   cursor: pointer;
+}
+
+#tripit-logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}

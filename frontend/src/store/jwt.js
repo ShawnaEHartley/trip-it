@@ -3,7 +3,7 @@ async function jwtFetch(url, options = {}) {
     options.headers = options.headers || {}; 
 
     const jwtToken = localStorage.getItem("jwtToken");
-    if (jwtToken) options.headers["Authorization"] = 'Bearer' + jwtToken;
+    if (jwtToken) options.headers["Authorization"] = 'Bearer ' + jwtToken;
 
     if (options.method.toUpperCase() !== "GET") {
         options.headers["Content-Type"] = 

@@ -1,0 +1,85 @@
+#main-page-container {
+   display: flex;
+   justify-content: center;
+   padding-top: 124px;
+}
+
+#page {
+   padding: 24px;
+   padding-top: 40px;
+   border-radius: 5px;
+   border: 1px solid rgb(247, 246, 245);
+   background-color: white;
+}
+
+.stamp {
+   border: 1px solid black;
+   margin: 2px 1px;
+   padding: 8px 8px;
+}
+
+.stamp-container {
+   display: flex;
+   flex-direction: row;
+   width: 97%;
+   height: 70px;
+   border: 1px solid black;
+   border-bottom-color: transparent;
+   padding: 2px 5px;
+}
+
+.stamp-divider {
+   height: 50px;
+   width: 0px;
+   border-left: 1px solid black;
+   margin: 9px 10px;
+}
+
+#stamp-page-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 50vw;
+   height: 80vh;
+   border: 4px solid black;
+   background-color: white;
+   border-bottom: 0;
+}
+
+#stamp-page-header {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+
+   height: 50px;
+}
+
+#stamp-page-header>h2 {
+
+   font-size: 20px;
+}
+
+#stamp-page-header>p {
+   font-size: 14px;
+}
+
+/* zig-zag from quackit */
+.pattern {
+   min-height: 100vh;
+   width: 100%;
+}
+
+#zig-zag11 {
+   position: absolute;
+   z-index: -1;
+   background:
+      linear-gradient(135deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+      linear-gradient(225deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+      linear-gradient(315deg, rgb(247, 246, 245) 25%, transparent 25%),
+      linear-gradient(45deg, rgb(247, 246, 245) 25%, transparent 25%);
+   background-size: 20px 20px;
+   background-color: #fff;
+
+}

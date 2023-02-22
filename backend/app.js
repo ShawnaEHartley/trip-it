@@ -38,7 +38,8 @@ app.use(
     })
 );
 
-// Attach Express routers
+// Attach Express routers && using for onRender
+app.use('/api/trips', tripsRouter);
 app.use('/api/users', usersRouter); // update the path
 app.use('/api/csrf', csrfRouter);
 
@@ -64,5 +65,23 @@ app.use((err, req, res, next) => {
         errors: err.errors
     })
 });
+
+// for Render
+if (isProduction) {
+    const path = require('path');
+    app.get('/', (req, res) => {
+        res.cookie('CSRF-TOKEN', req.csrfToken());
+        res.sendFile(
+            path.resolve(__dirname, '../frontend', 'build', 'index.html')
+        );
+    });
+    app.use(express.static(path.resolve("../frontend/build")));
+    app.get(/^(?!\/?api).*/, (req, res) => {
+        res.cookie('CSRF-TOKEN', req.csrfToken());
+        res.sendFile(
+            path.resolve(__dirname, '../frontend', 'build', 'index.html')
+        );
+    });
+}
 
 module.exports = app;

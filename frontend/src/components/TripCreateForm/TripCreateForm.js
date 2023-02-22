@@ -36,7 +36,7 @@ const TripCreateForm = () => {
       organizer: sessionUser._id,
       members: [{id: sessionUser._id, name: sessionUser.name}]
     }))
-  }
+  };
 
 
   return (
