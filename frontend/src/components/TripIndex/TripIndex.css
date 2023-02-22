@@ -1,0 +1,49 @@
+#main-page-container {
+   display: flex;
+   justify-content: center;
+   padding-top: 80px;
+
+   background-color: rgb(228, 224, 220);
+}
+
+#page {
+   padding: 24px;
+   padding-top: 40px;
+   border-radius: 5px;
+   background-color: white;
+}
+
+.stamp-container {
+   width: 98%;
+   border: 1px solid black;
+}
+
+#stamp-page-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 50vw;
+   height: 80vh;
+   border: 4px solid black;
+   background-color: white;
+   border-bottom: 0;
+}
+
+#stamp-page-header {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+
+   height: 50px;
+}
+
+#stamp-page-header>h2 {
+
+   font-size: 20px;
+}
+
+#stamp-page-header>p {
+   font-size: 14px;
+}
