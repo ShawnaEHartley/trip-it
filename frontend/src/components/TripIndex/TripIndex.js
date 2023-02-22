@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import * as tripActions from '../../store/trips';
 import './TripIndex.css';
 
+import './TripIndex.css'
+
 
 const TripIndex = () => {
     const dispatch = useDispatch(); 
@@ -26,14 +28,51 @@ const TripIndex = () => {
     }
 
     return (
-        trips[0].map((trip) => {
-            return (
-                <div>
-                    <TripIndexItem trip={trip} />
-                </div>
-            )
-        })
+        <>
+            <div id='zig-zag11' class='pattern' />
+            <div id='main-page-container'>
+                <div id='page'>
+                    <div id='stamp-page-container'>
+                        <div id='stamp-page-header'>
+                            <h2>Trip Collection</h2>
+                            <p>Shawna Hartley</p>
+                        </div>
+                        <div className='stamp-container'>
+                            <div className='stamp'>
+                                <div className='link-replacement'>
+                                    Trip name <br />
+                                    Date and time <br />
+                                    Friends
+                                </div>
+                            </div>
+                            <div className='stamp-divider' />
+                            <div className='stamp'>
+                                <div className='link-replacement'>
+                                    Trip name <br />
+                                    Date and time <br />
+                                    Friends
+                                </div>
+                            </div>
+                            <div className='stamp-divider' />
+                            <div className='stamp'>
+                                <div className='link-replacement'>
+                                    Trip name <br />
+                                    Date and time <br />
+                                    Friends
+                                </div>
+                            </div>
+                            <div className='stamp-divider' />
+                        </div>
+                        <div className='stamp-container'>
 
+                        </div>
+                        <div className='stamp-container'>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 };
 
