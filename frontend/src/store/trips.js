@@ -143,9 +143,9 @@ const TripsReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_TRIP: 
-            return {...state, trip: action.trip }
+            return {...state, ...action.trip }
         case RECEIVE_TRIPS: 
-            return {...state, trips: action.trips } 
+            return {...state, ...action.trips } 
         case REMOVE_TRIP: 
             delete(newState[action.tripId])
             return newState 
