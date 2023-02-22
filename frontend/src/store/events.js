@@ -51,7 +51,7 @@ export const getEvent = (state) => (eventId) => {
 
 export const fetchAllEvents = () => async (dispatch) => {
     try {
-        // const res = await jwtFetch('/api/events'); 
+        const res = await jwtFetch('/api/events'); 
         const events = await res.json();
         dispatch(receiveEvents(events))
     } catch(err) {
@@ -64,7 +64,7 @@ export const fetchAllEvents = () => async (dispatch) => {
 
 export const fetchTripEvents = (tripId) => async (dispatch) => {
     try { 
-        // const res = await jwtFetch('/api/'); 
+        const res = await jwtFetch('/api/'); 
         const events = await res.json(); 
         dispatch(receiveEvents(events))
     } catch(err) {
@@ -77,7 +77,7 @@ export const fetchTripEvents = (tripId) => async (dispatch) => {
 
 export const fetchEvent = (eventId) => async (dispatch) => {
     try {
-        // const res = await jwtFetch(`/api/events/${eventId}`)
+        const res = await jwtFetch(`/api/events/${eventId}`)
         const event = await res.json(); 
         dispatch(receiveEvent(event)); 
     } catch (err) {
@@ -90,7 +90,7 @@ export const fetchEvent = (eventId) => async (dispatch) => {
 
 export const createEvent = (data) => async (dispatch) => {
     try {
-        // const res = await jwtFetch(`/api/events/`, {
+        const res = await jwtFetch(`/api/events/`, {
             method: "POST", 
             body: JSON.stringify(data)
         });
@@ -104,7 +104,7 @@ export const createEvent = (data) => async (dispatch) => {
 
 export const updateEvent = (event, eventId) => async (dispatch) => {
     try {
-        // const res = await jwtFetch(`/api/event/${eventId}`, {
+        const res = await jwtFetch(`/api/event/${eventId}`, {
             method: "PATCH", 
             body: JSON.stringify(event)
         }); 
@@ -119,7 +119,7 @@ export const updateEvent = (event, eventId) => async (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-    // const res = await fetch(`/api/events/${eventId}`, {
+    const res = await fetch(`/api/events/${eventId}`, {
         method: "DELETE", 
     })
     return dispatch(removeEvent(eventId))
@@ -132,7 +132,7 @@ export const eventErrorsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_EVENT_ERRORS: 
             return action.errors; 
-        case CLEAR_TRIP_ERRORS: 
+        case CLEAR_EVENT_ERRORS: 
             return nullErrors; 
         default: 
             return state;
