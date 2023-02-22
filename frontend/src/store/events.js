@@ -148,7 +148,7 @@ export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
             dispatch(receiveEventErrors(resBody.errors));
         }
     }
-}
+};
 
 
 export const deleteEvent = (eventId) => async (dispatch) => {
