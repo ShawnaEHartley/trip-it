@@ -3,6 +3,8 @@ import './SplashPage.css';
 import MainPage from '../MainPage/MainPage'
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import TripIndex from '../TripIndex/TripIndex';
+import '../TripIndex/TripIndex.css'
 
 
 
@@ -16,6 +18,9 @@ const SplashPage = () => {
         dispatch({ type: 'modalOn', component: 'showLogin' })
     }
 
+    return (
+        <TripIndex />
+    )
     if (location.pathname === "/" && !loggedIn) {
         return (
             <div id='splash-page-container'>
