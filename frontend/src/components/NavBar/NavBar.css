@@ -58,6 +58,6 @@
 
 #nav-bar > div > ul > li {
   width: auto;
-  padding: 8px 16px;
-  padding-left: 15px;
+  padding: 8px 0px;
+  padding-left: 12px;
 } 
