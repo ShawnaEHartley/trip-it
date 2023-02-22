@@ -4,6 +4,17 @@ const mongoose = require('mongoose');
 const Trip = mongoose.model('Trip');
 
 /* GET trips */
+// get ALL trips
+router.get('/', async function (req, res, next) {
+    try {
+        const trips = await Trip.find()
+        return res.json(trips);
+    }
+    catch(err) {
+        return "There are no trips dummy";
+    }
+});
+
 // get all trips by user
 router.get('/user/:userId', async function (req, res, next) {
     let user;

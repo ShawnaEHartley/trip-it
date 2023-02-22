@@ -21,7 +21,6 @@ export const clearSessionErrors = () => ({
 });
 
 const logoutUser = () => {
-    console.log("hello world")
     return {
         type: RECEIVE_USER_LOGOUT
     }

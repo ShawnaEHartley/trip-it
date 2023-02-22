@@ -11,16 +11,25 @@ const TripIndex = () => {
     const trips = useSelector(tripActions.getTrips)
     const user = useSelector(state => state.session.user)
 
+    // useEffect(() => {
+    //     dispatch(tripActions.fetchUserTrips(user._id))
+    // }, [dispatch, user._id])
+
     useEffect(() => {
-        dispatch(tripActions.fetchUserTrips(user._id))
+        dispatch(tripActions.fetchAllTrips())
     }, [dispatch, user._id])
+
+    if (!trips) {
+        return (
+            <div></div>
+        )
+    }
 
     return (
         
-        trips.map((trip) => {
+        trips[0].map((trip) => {
             return (
                 <div>
-                    {trip.title}
                     <TripIndexItem trip={trip} />
                 </div>
             )

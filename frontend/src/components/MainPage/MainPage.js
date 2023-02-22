@@ -7,8 +7,7 @@ const MainPage = () => {
 
     return (
         <>
-        <div>I AM THE MAIN PAGE</div>
-        <TripIndex />
+            <TripIndex />
         </>
     )
 
