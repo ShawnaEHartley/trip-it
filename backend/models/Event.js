@@ -15,17 +15,18 @@ const eventSchema = new Schema({
         streetAdress: String,
         zipCode: String
     },
-    date: Date,
-    startTime: Date,
-    endTime: Date,
+    startDate: Date,
+    endDate: Date,
     cost: Number,
     splitCostStructure: {
         type: Boolean,
         default: false
     },
     peopleGoing: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
         name: String
     }],
     booked: {
