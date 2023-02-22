@@ -62,7 +62,7 @@ export const fetchAllEvents = () => async (dispatch) => {
     }
 };
 
-export const fetchUserEvents = (tripId) => async (dispatch) => {
+export const fetchTripEvents = (tripId) => async (dispatch) => {
     try { 
         // const res = await jwtFetch('/api/'); 
         const events = await res.json(); 
