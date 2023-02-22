@@ -51,10 +51,17 @@ export const getTrip = (state) => (tripId) => {
 };
 
 export const fetchAllTrips = () => async dispatch => {
-    const res = await jwtFetch('/api/trips/');
-    const trips = await res.json();
-    dispatch(receiveTrips(trips));
-}
+    try {
+        const res = await jwtFetch('/api/trips/');
+        const trips = await res.json();
+        dispatch(receiveTrips(trips));
+    } catch(err) {
+        const resBody = await err.json(); 
+        if (resBody.statusCode === 400) {
+            dispatch(receiveTripErrors(resBody.errors))
+        }
+    }
+};
 
 export const fetchUserTrips = (userId) => async (dispatch) => {
     try {
