@@ -32,8 +32,7 @@ router.get('/user/:userId', async function (req, res, next) {
 // get trip by ID
 router.get('/:tripId', async function (req, res, next) {
     try {
-        const trip = await Trip.findById(req.params.tripId)
-                                .populate("members", "_id name");
+        const trip = await Trip.findById(req.params.tripId);
         return res.json(trip);
     }
     catch(err) {
@@ -81,5 +80,7 @@ router.patch('/:tripId', async function(req, res, next) {
         next(err);
     }
 });
+
+
 
 module.exports = router;
