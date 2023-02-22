@@ -52,4 +52,4 @@ const TripIndex = () => {
     )
 }
 
-export default TripIndex
+export default TripIndex;
