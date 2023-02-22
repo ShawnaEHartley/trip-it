@@ -151,7 +151,7 @@ export const removeUserFromTrip = (tripId, memberId) => async (dispatch) => {
 
 
 export const deleteTrip = (tripId) => async (dispatch) => {
-    const res = await fetch(`/api/trips/${tripId}`, {
+    await fetch(`/api/trips/${tripId}`, {
         method: "DELETE"
     })
     return dispatch(removeTrip(tripId));
