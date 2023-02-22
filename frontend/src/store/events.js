@@ -119,7 +119,7 @@ export const updateEvent = (event, eventId) => async (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-    const res = await fetch(`/api/events/${eventId}`, {
+    await fetch(`/api/events/${eventId}`, {
         method: "DELETE", 
     })
     return dispatch(removeEvent(eventId))
@@ -145,9 +145,9 @@ const EventsReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_EVENT: 
-            return {...state, event: action.event }
+            return {...state, ...action.event }
         case RECEIVE_EVENTS: 
-            return {...state, event: action.events}
+            return {...state, ...action.events }
         case REMOVE_EVENT: 
             delete(newState[action.eventId])
             return newState
