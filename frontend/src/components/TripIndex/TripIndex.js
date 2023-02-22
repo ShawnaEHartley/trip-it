@@ -29,7 +29,7 @@ const TripIndex = () => {
 
     return (
         <>
-            <div id='zig-zag11' class='pattern' />
+            <div id='zig-zag11' className='pattern' />
             <div id='main-page-container'>
                 <div id='page'>
                     <div id='stamp-page-container'>
