@@ -135,7 +135,7 @@ export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
 
 export const removeUserFromTrip = (tripId, memberId) => async (dispatch) => {
     try {
-        const res = await jwtFetch(`/api/trips/${tripId}/${memberId}`, {
+        const res = await jwtFetch(`/api/trips/${tripId}`, {
             method: "PATCH",
             body: JSON.stringify(memberId)
         })
