@@ -1,27 +1,24 @@
 import React from 'react'; 
-import './SplashPage.css'; 
-import MainPage from '../MainPage/MainPage'
-import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import TripIndex from '../TripIndex/TripIndex';
-import '../TripIndex/TripIndex.css'
+import { useLocation } from 'react-router-dom';
+
+import MainPage from '../MainPage/MainPage'
+
+import './SplashPage.css'; 
 
 
 
 const SplashPage = () => {
-    const loggedIn = useSelector(state => !!state.session.user);
-    const location = useLocation();
-
     const dispatch = useDispatch();
+
+    const loggedIn = useSelector(state => !!state.session.user);
 
     const showLogin = () => {
         dispatch({ type: 'modalOn', component: 'showLogin' })
-    }
+    };
 
-    return (
-        <TripIndex />
-    )
-    if (location.pathname === "/" && !loggedIn) {
+    if (!loggedIn) {
+
         return (
             <div id='splash-page-container'>
                 <div id='tripit-container'>
@@ -152,7 +149,7 @@ const SplashPage = () => {
             </div>
         )
     } else {
-       return <MainPage />
+        return <MainPage />
     }
 };
 

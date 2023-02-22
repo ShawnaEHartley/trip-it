@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './UserAuth.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import { closeModal } from '../../store/modal';
 
 function SignupForm () {
 const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const handleSubmit = e => {
         name,
         password
     };
-
+    dispatch(closeModal())
     dispatch(signup(user)); 
 }
 

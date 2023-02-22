@@ -46,6 +46,7 @@ form > .errors {
   border: 0;
   background-color: white;
   text-align: start;
+  cursor: pointer;
 }
 
 #signup-h2 {

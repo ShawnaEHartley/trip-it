@@ -33,6 +33,29 @@ export const clearTripErrors = (errors) => ({
     errors 
 });
 
+
+export const getTrips = (state) => {
+    if (state.trips) {
+        return Object.values(state.trips);
+    } else {
+        return null
+    }
+};
+
+export const getTrip = (state) => (tripId) => {
+    if (state.trips) {
+        return state.trips[tripId]
+    } else {
+        return null
+    }
+};
+
+export const fetchAllTrips = () => async dispatch => {
+    const res = await jwtFetch('/api/trips/');
+    const trips = await res.json();
+    dispatch(receiveTrips(trips));
+}
+
 export const fetchUserTrips = (userId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/user/${userId}`);
@@ -122,9 +145,9 @@ const TripsReducer = (state = {}, action) => {
         case RECEIVE_TRIP: 
             return {...state, trip: action.trip }
         case RECEIVE_TRIPS: 
-            return {...state, trips: [...action.trips] } 
+            return {...state, trips: action.trips } 
         case REMOVE_TRIP: 
-            delete newState[action.trips.tripId]
+            delete(newState[action.tripId])
             return newState 
         default: 
             return newState; 

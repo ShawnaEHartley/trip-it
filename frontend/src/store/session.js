@@ -20,9 +20,11 @@ export const clearSessionErrors = () => ({
     type: CLEAR_SESSION_ERRORS
 });
 
-const logoutUser = () => ({
-    type: RECEIVE_USER_LOGOUT
-});
+const logoutUser = () => {
+    return {
+        type: RECEIVE_USER_LOGOUT
+    }
+};
 
 
 export const getCurrentUser = () => async dispatch => {
@@ -45,7 +47,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
         localStorage.setItem('jwtToken', token);
         return dispatch(receiveCurrentUser(user));
     } catch(err) {
-        const res = await err.json(); 
+        const res = await err.json();
         if (res.statusCode === 400) {
             return dispatch(receiveSessionErrors(res.errors));
         }
@@ -54,7 +56,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken'); 
-    dispatch(logoutUser()); 
+    return dispatch(logoutUser()); 
 };
 
 

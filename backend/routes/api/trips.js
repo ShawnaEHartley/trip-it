@@ -4,6 +4,17 @@ const mongoose = require('mongoose');
 const Trip = mongoose.model('Trip');
 
 /* GET trips */
+// get ALL trips
+router.get('/', async function (req, res, next) {
+    try {
+        const trips = await Trip.find()
+        return res.json(trips);
+    }
+    catch(err) {
+        return "There are no trips dummy";
+    }
+});
+
 // get all trips by user
 router.get('/user/:userId', async function (req, res, next) {
     let user;
@@ -59,6 +70,16 @@ router.post('/', async function (req, res, next) {
 /* Update trip listing */
 // update a trip
 
-
+router.patch('/:tripId', async function(req, res, next) {
+    const updates = req.body;
+    try {
+        Trip.updateOne({_id: ObjectId(req.params.tripId)}, {$set: updates});
+        const trip = Trip.findById(ObjectId(req.params.tripId));
+        return res.json(trip);
+    }
+    catch(err) {
+        next(err);
+    }
+});
 
 module.exports = router;
