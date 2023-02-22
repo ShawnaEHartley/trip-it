@@ -152,7 +152,7 @@ const SplashPage = () => {
             </div>
         )
     } else {
-        <MainPage />
+       return <MainPage />
     }
 };
 
