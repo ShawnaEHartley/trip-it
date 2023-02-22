@@ -116,6 +116,40 @@ export const updateTrip = (trip, tripId) => async (dispatch) => {
 };
 
 
+export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
+    try {
+        const res = await jwtFetch(`/api/trips/addUser/${tripId}`, {
+            method: "PATCH",
+            body: JSON.stringify(userEmail)
+        }); 
+        const trip = await res.json(); 
+        dispatch(receiveTrip(trip)); 
+    } catch(err) {
+        const resBody = await err.json(); 
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveTripErrors(resBody.errors))
+        }
+    }
+};
+
+
+export const removeUserFromTrip = (tripId, memberId) => async (dispatch) => {
+    try {
+        const res = await jwtFetch(`/api/trips/${tripId}`, {
+            method: "PATCH",
+            body: JSON.stringify(memberId)
+        })
+        const trip = await res.json();
+        dispatch(receiveTrip(trip));
+    } catch(err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveTripErrors(resBody.errors))
+        }
+    }
+};
+
+
 export const deleteTrip = (tripId) => async (dispatch) => {
     const res = await fetch(`/api/trips/${tripId}`, {
         method: "DELETE"
