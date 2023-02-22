@@ -65,7 +65,7 @@ trips.push(
     location: {
       country: 'Germany'
     },
-    organizer: '63f52ac062965fbd3785f40a'
+    organizer: users[1]._id
   })
 )
 
@@ -78,7 +78,7 @@ trips.push(
     location: {
       country: 'Colombia'
     },
-    organizer: '63f52ac062965fbd3785f40a'
+    organizer: users[1]._id
   })
 )
 
@@ -92,7 +92,7 @@ trips.push(
       country: 'Mexico',
       city: 'Mexico City'
     },
-    organizer: '63f52ac062965fbd3785f40a'
+    organizer: users[1]._id
   })
 )
 
@@ -106,7 +106,7 @@ trips.push(
       country: 'USA',
       state: 'New York'
     },
-    organizer: '63f4e03c92f77b866e5c2805'
+    organizer: users[2]._id
   })
 )
 
@@ -120,7 +120,7 @@ trips.push(
       country: 'USA',
       state: 'New York'
     },
-    organizer: '63f4e03c92f77b866e5c2807'
+    organizer: users[4]._id
   })
 )
 
@@ -133,7 +133,7 @@ trips.push(
     location: {
       country: 'England'
     },
-    organizer: '63f52ac062965fbd3785f40a'
+    organizer: users[1]._id
   })
 )
 
