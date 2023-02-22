@@ -103,6 +103,6 @@ const EventUpdateForm = (event) => {
       </form>
     )
  
-}
+};
 
 export default EventUpdateForm;

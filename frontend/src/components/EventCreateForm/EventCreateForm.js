@@ -5,7 +5,7 @@ import { updateEvent } from '../../store/events';
 import './EventCreateForm.css';
 
 
-const EventUpdateForm = (event) => {
+const EventCreateForm = () => {
 
     const dispatch = useDispatch(); 
 
@@ -103,6 +103,6 @@ const EventUpdateForm = (event) => {
       </form>
     )
  
-}
+};
 
-export default EventUpdateForm;
+export default EventCreateForm;
