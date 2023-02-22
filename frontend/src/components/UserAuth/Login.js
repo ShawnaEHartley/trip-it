@@ -31,13 +31,13 @@ function LoginForm () {
     dispatch(login({ email, password })); 
   }
 
-  const loginDemoUser = (e) => {
+  const LoginDemoUser = (e) => {
     e.preventDefault(); 
     dispatch(closeModal())
     dispatch(login({
       email: 'demo@email.com',
-      name: 'password'
-    }))
+      password: 'password'
+    }));
   }
 
   return (
@@ -66,8 +66,9 @@ function LoginForm () {
       />
       <input 
       type="submit"
-      value="Demo User Login"
-      onClick={loginDemoUser} />
+      value="Demo User Login" 
+      onClick={LoginDemoUser}
+      />
     </form>
   );
 }
