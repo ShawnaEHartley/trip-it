@@ -28,11 +28,13 @@ const TripCreateForm = () => {
       description: description,
       startDate: startDate,
       endDate: endDate,
-      streetAddress: streetAddress,
-      city: city,
-      state: state,
-      zipCode: zipCode,
-      country: country,
+      location: {
+        streetAddress: streetAddress,
+        city: city,
+        state: state,
+        zipCode: zipCode,
+        country: country
+      },
       organizer: sessionUser._id,
       members: [{id: sessionUser._id, name: sessionUser.name}]
     }))
