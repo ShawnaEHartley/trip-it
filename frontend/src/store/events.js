@@ -51,7 +51,7 @@ export const getEvent = (state) => (eventId) => {
 
 export const fetchAllEvents = () => async (dispatch) => {
     try {
-        const res = await jwtFetch('/api/events'); 
+        const res = await jwtFetch('/api/events/'); 
         const events = await res.json();
         dispatch(receiveEvents(events))
     } catch(err) {
@@ -64,7 +64,7 @@ export const fetchAllEvents = () => async (dispatch) => {
 
 export const fetchTripEvents = (tripId) => async (dispatch) => {
     try { 
-        const res = await jwtFetch('/api/'); 
+        const res = await jwtFetch(`/api/events/trips/${tripId}`); 
         const events = await res.json(); 
         dispatch(receiveEvents(events))
     } catch(err) {
@@ -117,6 +117,39 @@ export const updateEvent = (event, eventId) => async (dispatch) => {
         }
     }
 };
+
+
+export const addUserToEvent = (eventId, userId) => async (dispatch) => {
+    try {
+        const res = await fetch(`/api/events/${eventId}/add/${userId}`, {
+            method: "PATCH"
+        })
+        const event = await res.json(); 
+        dispatch(receiveEvent(event))
+    } catch(err) {
+        const resBody = await err.json(); 
+        if (resBody.statusCode === 400) {
+            return dispatch(receiveEventErrors(resBody.errors))
+        }
+    }
+};
+
+
+export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
+    try {
+        const res = await fetch(`/api/events/${eventId}/remove/${userId}`, {
+            method: "PATCH"
+        })
+        const event = await res.json();
+        dispatch(receiveEvent(event))
+    } catch(err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            dispatch(receiveEventErrors(resBody.errors));
+        }
+    }
+}
+
 
 export const deleteEvent = (eventId) => async (dispatch) => {
     await fetch(`/api/events/${eventId}`, {
