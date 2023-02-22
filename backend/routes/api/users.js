@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/current', restoreUser, (req, res) => {
+  console.log("Inside of /current route")
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
     // whenever the current user information is first loaded into the

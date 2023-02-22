@@ -61,6 +61,7 @@ passport.use(new LocalStrategy({
 exports.requireUser = passport.authenticate('jwt', { session: false });
 
 exports.restoreUser = (req, res, next) => {
+    console.log("Inside of restoreUser")
     return passport.authenticate('jwt', { session: false }, function (err, user) {
         if (err) return next(err);
         if (user) req.user = user;
