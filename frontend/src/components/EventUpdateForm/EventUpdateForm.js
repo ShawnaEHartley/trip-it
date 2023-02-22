@@ -13,11 +13,11 @@ const EventUpdateForm = (event) => {
     const [description, setDescription] = useState(event.description)
     const [startDate, setStartDate] = useState(event.startDate);
     const [endDate, setEndDate] = useState(event.endDate);
-    const [streetAddress, setStreetAddress] = useState(event.streetAddress);
-    const [city, setCity] = useState(event.city);
-    const [state, setState] = useState(event.state);
-    const [zipCode, setZipCode] = useState(event.zipCode);
-    const [country, setCountry] = useState(event.country);
+    const [streetAddress, setStreetAddress] = useState(event.location.streetAddress);
+    const [city, setCity] = useState(event.location.city);
+    const [state, setState] = useState(event.location.state);
+    const [zipCode, setZipCode] = useState(event.location.zipCode);
+    const [country, setCountry] = useState(event.location.country);
     const [cost, setCost] = useState(event.cost);
     const [splitCostStructure, setSplitCostStructure] = useState(event.splitCostStructure);
 
