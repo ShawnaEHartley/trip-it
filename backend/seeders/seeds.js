@@ -67,7 +67,7 @@ trips.push(
       country: 'Germany'
     },
     organizer: '63f592b50326647fe09d333d',
-    members: [{ memberId: '63f592b50326647fe09d333d', name: 'Shawna'}, { memberId: '63f592b50326647fe09d333e', name: 'Charles' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId: '63f592b50326647fe09d3340', name: 'Emmett' }]
+    members: [{ memberId: '', name: 'Shawna' }, { memberId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { memberId:'63f592b50326647fe09d3341', name:'Janira' }]
   })
 )
 
@@ -145,13 +145,89 @@ trips.push(
 )
 
 
+const events = [];
+
+events.push(
+  new Event ({
+    title: 'AirBnb in Berlin',
+    description: '3 bedroom near Alexander Platz, 2 min walk to Klosterstrasse U-Bahn station',
+    location: {
+      streetAddress: 'Klosterstraße 65',
+      city: 'Berlin',
+      country: 'Germany'
+    },
+    startDate: '2022-08-01',
+    endDate: '2022-08-08',
+    cost: 2400,
+    peopleGoing: [{ userId: '', name: 'Shawna' }, { userId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { userId:'63f592b50326647fe09d3341', name:'Janira' }],
+    booked: true,
+    tripId: '63f67bb5c6ece807bd4188e6'
+  })
+)
+
+events.push(
+  new Event ({
+    title: 'Hotel in Hamburg',
+    description: '3 person room on the lake near the train staion',
+    location: {
+      name: 'Fairmont Vier Jahresseiten',
+      streetAddress: 'Neuer Jungfernstieg 9 14',
+      city: 'Hamburg',
+      country: 'Germany'
+    },
+    startDate: '2022-08-08',
+    endDate: '2022-08-10',
+    cost: 1000,
+    peopleGoing: [{ userId: '', name: 'Shawna' }, { userId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { userId:'63f592b50326647fe09d3341', name:'Janira' }],
+    booked: true,
+    tripId: '63f67bb5c6ece807bd4188e6'
+  })
+)
+
+events.push(
+  new Event ({
+    title: 'Hotel in Copenhagen',
+    description: '3 rooms in Skt Petri near Norreport ',
+    location: {
+      streetAddress: 'Krystalgade 15',
+      city: 'Copenhagen',
+      country: 'Denmark'
+    },
+    startDate: '2022-08-10',
+    endDate: '2022-08-14',
+    cost: 720,
+    splitCostStructure: true,
+    peopleGoing: [{ userId: '', name: 'Shawna' }, { userId: '63f592b50326647fe09d333f', name: 'Lynsie' }, { userId:'63f592b50326647fe09d3341', name:'Janira' }],
+    booked: true,
+    tripId: '63f67bb5c6ece807bd4188e6'
+  })
+)
+
+events.push(
+  new Event ({
+    title: 'Day Trip to Kloding',
+    description: 'Take the train to Kolding, spend the day there, come back for dinner in Copenhagen',
+    location: {
+      city: 'Kolding',
+      country: 'Denmark'
+    },
+    startDate: '2022-08-12T10:00:00:000',
+    endDate: '2022-08-12T18:00:00:000',
+    peopleGoing: [{ userId: '', name: 'Shawna' }, { userId: '63f592b50326647fe09d333f', name: 'Lynsie' }],
+    booked: true,
+    tripId: '63f67bb5c6ece807bd4188e6'
+  })
+)
+
+
 
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to MongoDB successfully');
     // insertSeeds();
-    insertTripSeeds();
+    // insertTripSeeds();
+    insertEventSeeds();
     console.log('Finished')
   })
   .catch(err => {
@@ -183,4 +259,15 @@ const insertTripSeeds = () => {
                   console.error(err.stack);
                   process.exit(1);
                 });
+};
+
+const insertEventSeeds = () => {
+  console.log("Resetting events...");
+  Event.collection.drop()
+                  .then(() => Event.insertMany(events))
+                  .then(() => mongoose.disconnect())
+                  .catch(err => {
+                    console.error(err.stack);
+                    process.exit(1)
+                  });
 };
