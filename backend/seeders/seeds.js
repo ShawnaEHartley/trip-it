@@ -10,7 +10,8 @@ users.push(
   new User ({
     email: 'demo@email.com',
     name: 'Demo User',
-    hashedPassword: bcrypt.hashSync('password', 10)
+    hashedPassword: bcrypt.hashSync('password', 10),
+    trips: [trip1, trip2, trip3]
   })
 )
 
@@ -63,7 +64,7 @@ trips.push(
     endDate: '2022-08-22',
     description: 'couple weeks in Germany, Denmark, and Sweden',
     location: {
-      country: 'Germany'
+      country: 'Germany',
     },
     organizer: users[1]._id
   })

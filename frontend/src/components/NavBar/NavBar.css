@@ -11,10 +11,12 @@
 .modal-wrapper {
   background-color: white;
   position: fixed;
-  left: 35%;
+  left: 35vw;
+  right:auto;
   top: 30%;
-  width: 25%;
+  width: 480px;
   height: 30%;
+  min-height: 244px;
   z-index: 3;
 
   display: flex;
@@ -49,7 +51,7 @@
   border: 1px solid black;
 
   border-top: white;
-  min-width: auto;
+  min-width: 84px;
   padding: 4px 0px;
 }
 
