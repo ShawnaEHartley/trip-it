@@ -19,14 +19,13 @@ const TripIndex = () => {
         dispatch(tripActions.fetchAllTrips())
     }, [dispatch, user._id])
 
-    if (!trips) {
+    if (!trips[0]) {
         return (
             <div></div>
         )
     }
 
     return (
-        
         trips[0].map((trip) => {
             return (
                 <div>
