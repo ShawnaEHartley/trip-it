@@ -16,7 +16,7 @@ const TripIndex = () => {
     const trips = useSelector(tripActions.getTrips)
     const user = useSelector(state => state.session.user)
 
-    const awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
+    let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_7.png',
@@ -44,6 +44,25 @@ const TripIndex = () => {
         return (
             <div></div>
         )
+    }
+    
+    const EndTrip = () => {
+        return (
+            <div id='stamp-image-container'>
+                <div className='stamp-image'>
+                    <img className='stamp-image' src={randUrls[trips.length - 1]} />
+                </div>
+                <div className='trip-info'>{trips.slice(trips.length - 1)[0].title}</div>
+            </div>
+        )
+    }
+
+    const randUrls = [];
+    while (awsUrls.length) {
+        let rand = Math.floor(Math.random() * awsUrls.length);
+        randUrls.push(awsUrls.slice(rand, rand + 1));
+        awsUrls = awsUrls.slice(0, rand).concat(awsUrls.slice(rand + 1));
+        console.log(awsUrls);
     };
 
     return (
@@ -57,36 +76,27 @@ const TripIndex = () => {
                             <p>{user.name}</p>
                         </div>
                         <div className='stamp-container'>
-                            {/* <div className='stamp'>
-                                <div className='link-replacement'>
-                                    Trip name <br />
-                                    Date and time <br />
-                                    Friends
-                                </div>
-                            </div> */}
-                            {trips.map((trip, i) => {
-                                return <div className="tripIndexItem-wrapper">
-                                    <div className='stamp-divider' />
-                                    <TripIndexItem trip={trip} awsUrl={awsUrls[i]} />
-                                </div>
-                            })}
-                            {/* <div className='stamp-divider' />
-                            <div onClick={clickCheck}>
-                                <TripIndexItem trip={trips[0]} awsUrl={awsUrls[0]} />
-                            </div>
-
-                            <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[1]} alt='stamp' />
-                            <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[0]} alt='stamp' /> */}
-
-                        </div>
-                        {/* <div className='stamp-container'>
-
+                            {trips.slice(0, trips.length - 1).map((trip, i) => 
+                                <TripIndexItem 
+                                    key={i} 
+                                    trip={trip} 
+                                    awsUrl={randUrls[i]} 
+                                />
+                            )}
+                            <EndTrip />
                         </div>
                         <div className='stamp-container'>
-
-                        </div> */}
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div id='end-stamp-container' className='stamp-container'>
+                        </div>
                     </div>
                 </div>
             </div>

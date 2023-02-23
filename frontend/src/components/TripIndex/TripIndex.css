@@ -1,3 +1,7 @@
+#end-stamp-container {
+   border: 1px solid rgb(43, 43, 45);
+}
+
 #main-page-container {
    display: flex;
    justify-content: center;
@@ -11,31 +15,30 @@
    border: 1px solid rgb(247, 246, 245);
    background-color: white;
 }
-
+/* 
 .stamp {
-   border: 1px solid black;
    margin: 2px 1px;
    padding: 8px 8px;
-}
+} */
 
 .stamp-container {
    display: flex;
    justify-content: center;
    flex-direction: row;
-   row-gap: 8px;
-   flex-wrap: wrap;
+   justify-content: center;
    width: 97%;
    height: 108px;
-   border: 1px solid black;
+   border: 1px solid rgb(43, 43, 45);
    border-bottom-color: transparent;
    padding: 2px 5px;
+   overflow:auto
 }
 
 .stamp-divider {
    height: 50px;
    width: 0px;
-   border-left: 1px solid black;
-   margin: 29px 20px;
+   border-left: 1px solid rgb(43, 43, 45);
+   margin: 29px 8px;
 }
 
 .stamp-image {
@@ -57,11 +60,12 @@
    display: block;
    position: absolute;
    margin-left: 2px;
+   padding: 2px;
    border: 1px solid lightgrey;
    background-color: rgb(247, 246, 245);
 
    font-family: BlauthLight;
-   font-size: 14px;
+   font-size: 12px;
 }
 
 #stamp-page-container {
@@ -69,8 +73,8 @@
    flex-direction: column;
    align-items: center;
    width: 722px;
-   height: 80vh;
-   border: 3px solid black;
+   height: 854px;
+   border: 3px solid rgb(43, 43, 45);
    background-color: white;
 }
 
