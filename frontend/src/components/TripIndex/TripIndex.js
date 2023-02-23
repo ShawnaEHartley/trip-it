@@ -1,16 +1,16 @@
-import React from 'react'; 
+import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
+
 import TripIndexItem from './TripIndexItem';
-import { useEffect } from 'react';
 import * as tripActions from '../../store/trips';
+
 import './TripIndex.css';
-import './TripIndex.css'
 
 
 const TripIndex = () => {
     const dispatch = useDispatch(); 
-    const trips = useSelector(tripActions.getTrips)
-    const user = useSelector(state => state.session.user)
+    const trips = useSelector(tripActions.getTrips);
+    const user = useSelector(state => state.session.user);
 
     const awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
@@ -31,20 +31,16 @@ const TripIndex = () => {
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_26.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png']
 
-    // useEffect(() => {
-    //     dispatch(tripActions.fetchUserTrips(user._id))
-    // }, [dispatch, user._id])
-
     useEffect(() => {
         dispatch(tripActions.fetchAllTrips())
-    }, [dispatch, user._id]);
+    }, [dispatch]);
     
 
     if (!trips[0]) {
         return (
             <div></div>
         )
-    }
+    };
 
     return (
         <>
@@ -67,9 +63,9 @@ const TripIndex = () => {
                             <div className='stamp-divider' />
                             <TripIndexItem trip={trips[0]} awsUrl={awsUrls[0]} />
                             <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[1]} />
+                            <img className='stamp-image' src={awsUrls[1]} alt='stamp' />
                             <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[0]}/>
+                            <img className='stamp-image' src={awsUrls[0]} alt='stamp' />
                         </div>
                         <div className='stamp-container'>
 

@@ -1,15 +1,23 @@
 import React from 'react'; 
+
+import TripShowPage from '../TripShowPage/TripShowPage';
+
 import './TripIndex.css';
-import { useDispatch } from 'react-redux';
 
 
 const TripIndexItem = ({trip, awsUrl}) => {
-    console.log(trip.organizer);
+    
+    const goToTripShow = (e) => {
+        e.preventDefault();
+        // redirect to the trip show page
+        <TripShowPage />
+    }
+
     return (
         <>
-            <div id='stamp-image-container'>
+            <div id='stamp-image-container' onClick={goToTripShow}>
                 <div className='stamp-image'>
-                    <img className='stamp-image' src={awsUrl} />
+                    <img className='stamp-image' src={awsUrl} alt='stamp' />
                 </div>
                 <div className='trip-info'>{trip.title}</div>
             </div>
