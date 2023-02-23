@@ -48,6 +48,7 @@ function App() {
         <Route path="/trips/:tripId">
           <TripShowPage />
         </Route>
+        
         <Route path="/updateTrip/:tripId">
           <TripUpdateForm />
         </Route>
