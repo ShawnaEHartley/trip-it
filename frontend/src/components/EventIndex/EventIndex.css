@@ -1,0 +1,9 @@
+#event-index-item-container {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#event-index-wrapper {
+    padding-top: 39px;
+}

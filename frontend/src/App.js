@@ -12,6 +12,7 @@ import TripCreateForm from './components/TripCreateForm/TripCreateForm';
 import TripUpdateForm from './components/TripUpdateForm/TripUpdateForm';
 import TripShowPage from './components/TripShowPage/TripShowPage';
 import EventIndex from './components/EventIndex/EventIndex';
+import EventShowPage from './components/EventShowPage/EventShowPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
     <>
     <NavBar />
     <Switch>
+      <Route path="/events/:eventId">
+        <EventShowPage />
+      </Route>
       <Route path="/events">
         <EventIndex />
       </Route>
