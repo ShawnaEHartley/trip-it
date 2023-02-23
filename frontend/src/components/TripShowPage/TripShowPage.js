@@ -121,15 +121,6 @@ const TripShowPage = () => {
                 <div>{trip.location.coutry ? trip.location.country : ""}</div>
               </div>
             </div>
-
-              <div>{trip.startDate}</div>
-              <div>{trip.endDate}</div>
-              <div></div>
-              <div className="trip-show-page-body-members">
-                {trip.members.map((member) => {
-                  return <div>{member.name}</div>
-                })}
-            </div>
             <div className='trip-show-page-invite-member-wrapper'>
               <button onClick={inviteMember}>Invite a member</button>
             </div>
