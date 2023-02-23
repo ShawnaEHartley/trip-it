@@ -9,6 +9,7 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
 import { logout, login } from '../../store/session';
+import TripCreateForm from '../TripCreateForm/TripCreateForm';
 
 import './NavBar.css'; 
 
@@ -31,11 +32,17 @@ const NavBar = () => {
         dispatch({type: 'modalOn', component: 'showLogin'})
     }
 
+    const showCreateTripForm = () => {
+        dispatch({type: 'modalOn', component: 'showCreateTripForm'})
+    }
+
     const modalComponent = () => {
         if (modalState.component === 'showSignUp') {
             return <Signup />
         } else if (modalState.component === 'showLogin') {
             return <Login />
+        } else if (modalState.component === 'showCreateTripForm') {
+            return <TripCreateForm />
         }
     };
 
@@ -64,6 +71,7 @@ const NavBar = () => {
         <>
             <MenuItem>About us</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
+            <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
         </>
         )
     };
