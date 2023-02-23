@@ -8,6 +8,8 @@ import SplashPage from './components/SplashPage/SplashPage';
 import { Route } from 'react-router-dom';
 import LoginForm from './components/UserAuth/Login';
 import { getCurrentUser } from './store/session';
+import TripCreateForm from './components/TripCreateForm/TripCreateForm';
+import TripShowPage from './components/TripShowPage/TripShowPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +25,15 @@ function App() {
     <>
     <NavBar />
     <Switch>
+      <Route path="/createTrip">
+        <TripCreateForm />
+      </Route>
+        <Route path="/trips/:tripId">
+          <TripShowPage />
+        </Route>
+        <Route path="/createTrip">
+          <TripCreateForm />
+        </Route>
         <Route path="/login">
           <LoginForm />
         </Route>

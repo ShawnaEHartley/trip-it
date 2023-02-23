@@ -20,7 +20,10 @@
 
 .stamp-container {
    display: flex;
+   justify-content: center;
    flex-direction: row;
+   row-gap: 8px;
+   flex-wrap: wrap;
    width: 97%;
    height: 108px;
    border: 1px solid black;
@@ -32,7 +35,7 @@
    height: 50px;
    width: 0px;
    border-left: 1px solid black;
-   margin: 29px 8px;
+   margin: 29px 20px;
 }
 
 .stamp-image {
@@ -40,6 +43,10 @@
    width: auto;
    max-height: 108px;
    cursor: pointer;
+}
+
+.tripIndexItem-wrapper {
+   display: flex;
 }
 
 .trip-info {

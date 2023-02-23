@@ -74,10 +74,10 @@ router.post('/', async function (req, res, next) {
 // update a trip
 
 router.patch('/:tripId', async function(req, res, next) {
-    const updates = req.body;
     try {
-        Trip.updateOne({_id: ObjectId(req.params.tripId)}, {$set: updates});
-        const trip = Trip.findById(req.params.tripId)
+        const updates = req.body;
+        await Trip.updateOne({ _id: req.params.tripId }, {$set: updates});
+        const trip = await Trip.findById(req.params.tripId)
             .populate('members'); // may not need to populate here, req.body likely already includes full member objects
             // check the events patch method after finding this out.!!!!
         return res.json(trip);
@@ -90,7 +90,11 @@ router.patch('/:tripId', async function(req, res, next) {
 /* delete trip listing */
 
 router.delete('/:tripId', async function (req, res, next) {
-        Trip.deleteOne({_id: ObjectId(req.params.tripId)});
+        try {
+            await Trip.deleteOne({ _id: req.params.tripId });
+        } catch(err) {
+            next(err);
+        }
 });
 
 module.exports = router;

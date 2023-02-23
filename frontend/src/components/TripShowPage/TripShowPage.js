@@ -1,15 +1,49 @@
+
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
-import {deleteTrip} from '../../store/trips'
+import { deleteTrip, fetchTrip, getTrip } from '../../store/trips'
+import { closeModal } from '../../store/modal';
 
 import './TripShowPage.css'
 
-const TripShowPage = ({trip}) => {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+const TripShowPage = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const user = useSelector((state) => state.session.user);
+    
+    const { tripId } = useParams();
+    const trip = useSelector(getTrip);
+    const modalState = useSelector((state) => {
+        return state?.modal ? state.modal : null ;
+    });
 
+    const [renderUpdate, setRenderUpdate] = useState(false);
+
+    useEffect(() => {
+        dispatch(fetchTrip(tripId))
+    }, [dispatch]);
+
+    const renderUpdateForm = e => {
+        dispatch({ type: "modalOn", component: 'editTrip' })
+    };
+
+    const modalComponent = () => {
+        if (modalState.component === 'editTrip') {
+            return (
+                <TripUpdateForm trip={trip} />
+            )
+        }
+    };
+
+    if (!trip) {
+        return (
+            <div></div>
+        )
+    };
 
   const inviteMember = (e) => {
     e.preventDefault();
@@ -20,21 +54,15 @@ const TripShowPage = ({trip}) => {
   const makeAnEvent = (e) => {
     e.preventDefault();
     // open modal to create an event form
-  }
+  };
 
   const tripOrganizerButtons = () => {
     return (
       <div>
-        <button onClick={updateTrip}>Update</button>
+        <button onClick={renderUpdateForm}>Update</button>
         <button onClick={deleteThisTrip}>Delete</button>
       </div>
     )
-  };
-
-  const updateTrip = (e) => {
-    e.preventDefault();
-    // open modal to update trip form
-    <TripUpdateForm trip={trip}/>
   };
 
   const deleteThisTrip = (e) => {
@@ -44,6 +72,8 @@ const TripShowPage = ({trip}) => {
 
   return (
     <div className='trip-show-page-outter-wrapper'>
+        {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+        {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
       <div className='trip-show-page-header-wrapper'>
         <div className='trip-show-page-header'>
           <div>{trip.title} </div>
@@ -79,5 +109,6 @@ const TripShowPage = ({trip}) => {
   )
 
 };
+;
 
 export default TripShowPage;
