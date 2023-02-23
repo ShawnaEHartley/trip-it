@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
 import { deleteTrip, fetchTrip, getTrip } from '../../store/trips'
@@ -25,16 +26,24 @@ const TripShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchTrip(tripId))
-    }, [dispatch]);
+    }, [dispatch, tripId]);
 
     const renderUpdateForm = e => {
         dispatch({ type: "modalOn", component: 'editTrip' })
     };
 
+    const renderCreateEvent = e => {
+      dispatch({type:'modalOn', component: 'createEvent'})
+    }
+
     const modalComponent = () => {
         if (modalState.component === 'editTrip') {
             return (
                 <TripUpdateForm trip={trip} />
+            )
+        } else if (modalState.component === 'createEvent') {
+            return (
+              <EventsCreateForm />
             )
         }
     };
@@ -49,11 +58,6 @@ const TripShowPage = () => {
     e.preventDefault();
     //invite a member to this trip via their email via modal
     <InviteMemberForm />
-  };
-
-  const makeAnEvent = (e) => {
-    e.preventDefault();
-    // open modal to create an event form
   };
 
   const tripOrganizerButtons = () => {
@@ -128,7 +132,7 @@ const TripShowPage = () => {
               </div>
             </div>
             <div id='post-card-bottom'>
-              <button className='trip-show-button' onClick={makeAnEvent}>Create event</button>
+              <button className='trip-show-button' onClick={renderCreateEvent}>Create event</button>
               <button className='trip-show-button' onClick={inviteMember}>Invite a member</button>
             </div>
           </div>
