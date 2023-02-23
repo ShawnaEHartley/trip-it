@@ -1,30 +1,49 @@
 import React from 'react'; 
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import EventShowPage from '../EventShowPage/EventShowPage';
-
-import './EventIndex.css'; 
+import { closeModal } from '../../store/modal';
+import './EventIndex.css';
 
 
 const EventIndexItem = ({event}) => {
+    const history = useHistory()
+    const dispatch = useDispatch(); 
+    const loggedIn = useSelector(state => !!state.session.user);
+  
 
-    const openEventShow = (e) => {
-        e.preventDefault();
-        // redirect to the event show page
-        <EventShowPage />
+    // const modalState = useSelector((state) => {
+    //     return state.modal;
+    // })
+
+    // const showEventShowPage = () => {
+    //     dispatch({type: 'modalOn', component: 'showEventShowPage'})
+    // };
+
+    // const modalComponent = () => {
+    //     if (modalState.component === 'showEventShowPage') {
+    //         return <EventShowPage />
+    //     }
+    // };
+
+
+    const goToEventShowPage = (e) => {
+        e.preventDefault()
+        dispatch(history.push(`/events/${event._id}`))
     }
 
-    
     return (
-        <div onClick={openEventShow}>
+        
+        <div id="event-index-item-container" onClick={goToEventShowPage}>
             <ul>
-                <li>{event.title} </li>
-                <li>{event.startDate}</li>
-                <li>{event.endDate}</li>
-                <li>{event.peopleGoing.length}</li>
+                <li>Event: {event.title} </li>
+                <li>Starts: {event.startDate.split("T")[0]}</li>
+                <li>Ends: {event.endDate.split("T")[0]}</li>
+                <li>Attendees: {event.peopleGoing.length}</li>
             </ul>
         </div>
     )
 
-}
+};
 
 export default EventIndexItem; 

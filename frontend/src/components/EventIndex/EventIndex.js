@@ -6,9 +6,11 @@ import * as eventActions from '../../store/events';
 import './EventIndex.css'; 
 
 
+
 const EventIndex = () => {
     const dispatch = useDispatch(); 
     const events = useSelector(getEvents);
+
     // const user = useSelector(state => state.session.user);
     
     useEffect(() => {
@@ -16,13 +18,13 @@ const EventIndex = () => {
     }, [dispatch]);
 
 
-    if (!events[0]) {
+    if (!events) {
         return (<div>...loading</div>)
     }
 
     return (
-        <div>
-            {events[0].map((event) => {
+        <div id="event-index-wrapper">
+            {events.map((event) => {
                 return (
                     <EventIndexItem event={event} />
                 )

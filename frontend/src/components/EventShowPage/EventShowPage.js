@@ -1,7 +1,61 @@
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import * as eventActions from '../../store/events';
+// import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
+// import { closeModal } from '../../store/modal';
+
+const EventShowPage = () => {
+
+  const dispatch = useDispatch();
+  const { eventId } = useParams();
+  const event = useSelector(eventActions.getEvent);
+  const user = useSelector((state) => state.session.user);
+
+  const modalState = useSelector((state) => {
+    return state?.modal ? state.modal : null ;
+  });
+
+  const [renderUpdate, setRenderUpdate] = useState(false);
+
+  useEffect(() => {
+    dispatch(eventActions.fetchEvent(eventId))
+  }, [dispatch])
+
+  const deleteThisEvent = (e) => {
+    e.preventDefault(); 
+    dispatch(eventActions.deleteEvent(event._id))
+  };
+
+  const renderUpdateForm = (e) => {
+    dispatch({ type: "modalOn", component: 'editEvent' })
+  };
 
 
-const EventShowPage = ({event}) => {
+  const eventOrganizerButtons = () => {
+    return (
+      <div>
+        <button onClick={renderUpdateForm}>Update</button>
+        <button onClick={deleteThisEvent}>Delete</button>
+      </div>
+    )
+  }
 
+  const modalComponent = () => {
+    if (modalState.component === 'editEvent') {
+        return (
+          <div></div>
+            // <EventUpdateForm event={event} />
+        )
+    }
+  };
+
+  if (!event.title) {
+    return <div>loading...</div>
+  }
+
+  const eventOrganizer = event.peopleGoing[0];
 
   return (
     <div className='event-show-page-wrapper'>
@@ -10,8 +64,7 @@ const EventShowPage = ({event}) => {
           <div>{event.title}</div>
           <div>{event.startDate}</div>
           <div>{event.endDate}</div>
-          <button>UpdateEvent</button>
-          <button>DeleteEvent</button>
+          { user === eventOrganizer ? {eventOrganizerButtons} : ""}
           <button>Like Event</button>
         </div>
       </div>
