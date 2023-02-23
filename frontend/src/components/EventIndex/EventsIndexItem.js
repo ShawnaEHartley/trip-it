@@ -26,21 +26,53 @@ const EventIndexItem = ({event}) => {
     //     }
     // };
 
+    let splitStartDate = event.startDate.split('-');
+    let splitEndDate = event.endDate.split('-');
+
+    const months = {
+        '01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr', '05': 'May', '06': 'June',
+        '07': 'July', '08': 'Aug', '09': 'Sept', '10': 'Oct', '11': 'Nov', '12': 'Dec'
+    };
+
+    splitStartDate[1] = months[splitStartDate[1]];
+    splitEndDate[1] = months[splitEndDate[1]];
+    splitStartDate[2] = splitStartDate[2].split('T')[0];
+    splitEndDate[2] = splitEndDate[2].split('T')[0];
+
+    const monthStart = splitStartDate[1];
+    const monthEnd = splitEndDate[1];
+    const dayStart = splitStartDate[2];
+    const dayEnd = splitEndDate[2];
+    const yearStart = splitStartDate[0];
+    const yearEnd = splitEndDate[0];
+
+    let dates = ``
+
+    yearEnd === yearStart
+            ? dates = `${monthStart} ${dayStart} to ${monthEnd} ${dayEnd}`
+            : dates = `${monthStart} ${dayStart} to ${monthEnd} ${dayEnd} ${yearEnd}`;
+
+    let description = event.description;
+    let split = false;
+
+    while (description.length > 30) {
+        let tempDesc = description.split(" ");
+        description = tempDesc.slice(0, tempDesc.length - 1).join(" ") + '...';
+    }
+
+    description.length  > 30 ? description = description.slice(0, 28) + '...' : description = description;
 
     const goToEventShowPage = (e) => {
         e.preventDefault()
         dispatch(history.push(`/events/${event._id}`))
     }
 
+
     return (
         
         <div id="event-index-item-container" onClick={goToEventShowPage}>
-            <ul>
-                <li>Event: {event.title} </li>
-                <li>Starts: {event.startDate.split("T")[0]}</li>
-                <li>Ends: {event.endDate.split("T")[0]}</li>
-                <li>Attendees: {event.peopleGoing.length}</li>
-            </ul>
+            <div><p>'{event.title}'</p> <span>{dates}</span></div>
+            <div><div></div><p id='push-right'>{description}</p><span>{event.peopleGoing.length} interested</span></div>
         </div>
     )
 
