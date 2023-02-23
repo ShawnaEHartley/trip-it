@@ -35,7 +35,7 @@ const EventShowPage = () => {
   };
 
   const openUpdateForm = (e) => {
-    dispatch(history.push(`/events/update/${event._id}`))
+    history.push(`/events/update/${event._id}`);
   }
 
 

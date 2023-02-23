@@ -83,20 +83,6 @@ router.post('/', async function (req, res, next) {
 });
 
 /* PATCH requests below */
-// update an event
-router.patch('/:eventId', async function (req, res, next) {
-    try {
-        const updates = req.body;
-        await Event.updateOne({_id: req.params.eventId}, {$set: updates});
-        const event = await Event.findById(req.params.eventId);
-        // may need to populate the peopleGoing, will know after testing trips patch
-        return res.json(event);
-    }
-    catch(err) {
-        next(err);
-    }
-});
-
 // add people to event
 router.patch('/addMember/:eventId', async function (req, res, next) {
     try {
@@ -118,6 +104,20 @@ router.patch('/remove/:eventId/:userId', async function (req, res, next) {
             { $pull: { peopleGoing: req.params.userId }}
         );
         
+        const event = await Event.findById(req.params.eventId)
+            .populate('peopleGoing', '_id name');
+        return res.json(event);
+    }
+    catch(err) {
+        next(err);
+    }
+});
+
+// update an event
+router.patch('/:eventId', async function (req, res, next) {
+    try {
+        const updates = req.body;
+        await Event.updateOne({_id: req.params.eventId}, {$set: updates});
         const event = await Event.findById(req.params.eventId)
             .populate('peopleGoing', '_id name');
         return res.json(event);

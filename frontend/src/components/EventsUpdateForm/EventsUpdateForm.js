@@ -14,7 +14,7 @@ const EventUpdateForm = () => {
 
     useEffect(() => {
       dispatch(eventActions.fetchEvent(eventId))
-    }, [dispatch, eventId])
+    }, [dispatch]);
 
     const [title, setTitle] = useState(event.title); 
     const [description, setDescription] = useState(event.description)
