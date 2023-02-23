@@ -31,6 +31,7 @@
    border: 1px solid rgb(43, 43, 45);
    border-bottom-color: transparent;
    padding: 2px 5px;
+   overflow:auto
 }
 
 .stamp-divider {
@@ -55,11 +56,12 @@
    display: block;
    position: absolute;
    margin-left: 2px;
+   padding: 2px;
    border: 1px solid lightgrey;
    background-color: rgb(247, 246, 245);
 
    font-family: BlauthLight;
-   font-size: 14px;
+   font-size: 12px;
 }
 
 #stamp-page-container {
