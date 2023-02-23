@@ -31,6 +31,7 @@ function App() {
     <Switch>
       <Route path="/events/:eventId">
         <EventShowPage />
+      </Route>
       <Route path='/createEvent'>
         <EventCreateForm />
       </Route>
