@@ -3,7 +3,6 @@
   border: 2px solid black;
   width: 500px;
   height: min-content;
-  max-height: min-content;
   display: block;
 }
 
@@ -44,6 +43,7 @@
   margin: 10px 0px;
   font-weight: bold;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .trip-update-submit-button-wrapper {
@@ -61,6 +61,7 @@
 }
 
 .trip-description {
+  width: 150px;
   height: 48px;
   resize: none;
 }
