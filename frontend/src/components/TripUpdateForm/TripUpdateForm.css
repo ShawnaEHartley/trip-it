@@ -1,0 +1,67 @@
+.trip-update-form-wrapper {
+  background-color: white;
+  border: 2px solid black;
+  width: 500px;
+  height: min-content;
+  max-height: min-content;
+  display: block;
+}
+
+.trip-update-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 15px;
+}
+
+.trip-update-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trip-update-content-input {
+  width: 153px;
+}
+
+.trip-update-content-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5px 0px;
+}
+
+.trip-update-content-title {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: start;
+}
+
+.trip-location {
+  margin: 10px 0px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.trip-update-submit-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.trip-update-button {
+  margin: 10px 0px;
+  border: 1px solid black;
+  background-color: white;
+  height: 30px;
+  font-size: 15px;
+  width: 84px;
+}
+
+.trip-description {
+  height: 48px;
+  resize: none;
+}
+

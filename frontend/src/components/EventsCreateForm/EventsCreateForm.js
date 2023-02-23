@@ -45,7 +45,6 @@ const EventCreateForm = () => {
         <form className='event-create-form-wrapper' id='' action='' onSubmit={submitEvent}>
         <div className='event-create-header-wrapper' id=''>
           <h1 className='event-create-header' id=''> Create event </h1>
-          <h2 clasName='event-create-subheader' id=''> {event.title} </h2>
         </div>
   
         <div className='event-create-content-wrapper'>

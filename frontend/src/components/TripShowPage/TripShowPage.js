@@ -39,7 +39,7 @@ const TripShowPage = () => {
         }
     };
 
-    if (!trip) {
+    if (!trip.title) {
         return (
             <div></div>
         )
@@ -78,7 +78,8 @@ const TripShowPage = () => {
         <div className='trip-show-page-header'>
           <div>{trip.title} </div>
           <div>{trip.organizer.name}</div>
-          { user === trip.organizer ? {tripOrganizerButtons} : ""}
+          {/* { user === trip.organizer ? {tripOrganizerButtons()} : ""} */}
+          {tripOrganizerButtons()}
           <button onClick={makeAnEvent}>Create an Event</button>
         </div>
       </div>
