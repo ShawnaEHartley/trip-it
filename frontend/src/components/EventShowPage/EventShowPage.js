@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import * as eventActions from '../../store/events';
 import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
 import { closeModal } from '../../store/modal';
+import { useHistory } from 'react-router-dom';
 
 const EventShowPage = () => {
 
@@ -12,6 +13,7 @@ const EventShowPage = () => {
   const { eventId } = useParams();
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   const modalState = useSelector((state) => {
     return state?.modal ? state.modal : null ;
@@ -21,7 +23,7 @@ const EventShowPage = () => {
 
   useEffect(() => {
     dispatch(eventActions.fetchEvent(eventId))
-  }, [dispatch])
+  }, [])
 
   const deleteThisEvent = (e) => {
     e.preventDefault(); 
@@ -32,11 +34,16 @@ const EventShowPage = () => {
     dispatch({ type: "modalOn", component: 'editEvent' })
   };
 
+  const openUpdateForm = (e) => {
+    dispatch(history.push(`/events/update/${event._id}`))
+  }
+
 
   const eventOrganizerButtons = () => {
     return (
       <div>
         <button onClick={renderUpdateForm}>Update</button>
+        {/* <button onClick={openUpdateForm}>Update</button> */}
         <button onClick={deleteThisEvent}>Delete</button>
       </div>
     )
@@ -45,7 +52,7 @@ const EventShowPage = () => {
   const modalComponent = () => {
     if (modalState.component === 'editEvent') {
         return (
-            <EventUpdateForm event={event} />
+            <EventUpdateForm />
         )
     }
   };
@@ -54,16 +61,19 @@ const EventShowPage = () => {
     return <div>loading...</div>
   }
 
-  const eventOrganizer = event.peopleGoing[0];
+  const eventOrganizer = event.peopleGoing[0]._id;
+
 
   return (
     <div className='event-show-page-wrapper'>
+      { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
+      { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
       <div className='event-show-page-header-wrapper'>
         <div className='event-show-page-header'>
           <div>{event.title}</div>
           <div>{event.startDate}</div>
           <div>{event.endDate}</div>
-          { user === eventOrganizer ? {eventOrganizerButtons} : ""}
+          { user._id === eventOrganizer ? eventOrganizerButtons() : ""}
           <button>Like Event</button>
         </div>
       </div>

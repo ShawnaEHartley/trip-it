@@ -110,11 +110,11 @@ export const createEvent = (data) => async (dispatch) => {
     }
 }; 
 
-export const updateEvent = (event, eventId) => async (dispatch) => {
+export const updateEvent = (eventObj, eventId) => async (dispatch) => {
     try {
-        const res = await jwtFetch(`/api/event/${eventId}`, {
+        const res = await jwtFetch(`/api/events/${eventId}`, {
             method: "PATCH", 
-            body: JSON.stringify(event)
+            body: JSON.stringify(eventObj)
         }); 
         const event = await res.json(); 
         dispatch(receiveEvent(event));
