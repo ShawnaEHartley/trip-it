@@ -103,6 +103,7 @@
 }
 
 .trip-show-page-header-wrapper > div > h2 {
+    height: min-content;
     font-size: 32px;
     font-family: LaborUnion;
 }
