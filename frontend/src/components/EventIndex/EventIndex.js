@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-
-import EventIndexItem from './EventIndexItem'; 
+import EventIndexItem from './EventsIndexItem'; 
 import * as eventActions from '../../store/events'; 
-
-
-import './Events.css'; 
+import './EventIndex.css'; 
 
 
 const EventIndex = () => {

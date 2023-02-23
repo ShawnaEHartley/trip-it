@@ -10,6 +10,7 @@ import LoginForm from './components/UserAuth/Login';
 import { getCurrentUser } from './store/session';
 import TripCreateForm from './components/TripCreateForm/TripCreateForm';
 import TripShowPage from './components/TripShowPage/TripShowPage';
+import EventIndex from './components/EventIndex/EventIndex';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
     <>
     <NavBar />
     <Switch>
+      <Route path="/events">
+        <EventIndex />
+      </Route>
       <Route path="/createTrip">
         <TripCreateForm />
       </Route>
