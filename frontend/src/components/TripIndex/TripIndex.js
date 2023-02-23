@@ -62,7 +62,6 @@ const TripIndex = () => {
         let rand = Math.floor(Math.random() * awsUrls.length);
         randUrls.push(awsUrls.slice(rand, rand + 1));
         awsUrls = awsUrls.slice(0, rand).concat(awsUrls.slice(rand + 1));
-        console.log(awsUrls);
     };
 
     return (
