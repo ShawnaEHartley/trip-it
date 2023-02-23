@@ -12,7 +12,7 @@ const TripIndex = () => {
     const trips = useSelector(tripActions.getTrips)
     const user = useSelector(state => state.session.user)
 
-    const awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
+    let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_7.png',
@@ -45,6 +45,16 @@ const TripIndex = () => {
             <div></div>
         )
     }
+    
+    const endTrip = trips.slice(trips.length - 1);
+
+    const randUrls = [];
+    while (awsUrls.length) {
+        let rand = Math.floor(Math.random() * awsUrls.length);
+        randUrls.push(awsUrls.slice(rand, rand + 1));
+        awsUrls = awsUrls.slice(0, rand).concat(awsUrls.slice(rand + 1));
+        console.log(awsUrls);
+    };
 
     return (
         <>
@@ -57,19 +67,19 @@ const TripIndex = () => {
                             <p>{user.name}</p>
                         </div>
                         <div className='stamp-container'>
-                            <div className='stamp'>
-                                <div className='link-replacement'>
-                                    Trip name <br />
-                                    Date and time <br />
-                                    Friends
+                            {trips.slice(0, trips.length - 1).map((trip, i) => 
+                                <TripIndexItem 
+                                    key={i} 
+                                    trip={trip} 
+                                    awsUrl={randUrls[i]} 
+                                />
+                            )}
+                            <div id='stamp-image-container'>
+                                <div className='stamp-image'>
+                                    <img className='stamp-image' src={randUrls[trips.length - 1]} />
                                 </div>
+                                <div className='trip-info'>{endTrip.title}</div>
                             </div>
-                            <div className='stamp-divider' />
-                            <TripIndexItem trip={trips[0]} awsUrl={awsUrls[0]} />
-                            <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[1]} />
-                            <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[0]}/>
                         </div>
                         <div className='stamp-container'>
 

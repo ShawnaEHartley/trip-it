@@ -11,19 +11,18 @@
    border: 1px solid rgb(247, 246, 245);
    background-color: white;
 }
-
+/* 
 .stamp {
-   border: 1px solid black;
    margin: 2px 1px;
    padding: 8px 8px;
-}
+} */
 
 .stamp-container {
    display: flex;
    flex-direction: row;
    width: 97%;
    height: 108px;
-   border: 1px solid black;
+   border: 1px solid rgb(43, 43, 45);
    border-bottom-color: transparent;
    padding: 2px 5px;
 }
@@ -31,7 +30,7 @@
 .stamp-divider {
    height: 50px;
    width: 0px;
-   border-left: 1px solid black;
+   border-left: 1px solid rgb(43, 43, 45);
    margin: 29px 8px;
 }
 
@@ -63,7 +62,7 @@
    align-items: center;
    width: 722px;
    height: 80vh;
-   border: 3px solid black;
+   border: 3px solid rgb(43, 43, 45);
    background-color: white;
 }
 

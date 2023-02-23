@@ -13,6 +13,7 @@ const TripIndexItem = ({trip, awsUrl}) => {
                 </div>
                 <div className='trip-info'>{trip.title}</div>
             </div>
+            <div className='stamp-divider' />
         </>
     )
 
