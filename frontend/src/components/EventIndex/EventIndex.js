@@ -15,13 +15,15 @@ const EventIndex = () => {
         dispatch(eventActions.fetchAllEvents())
     }, [dispatch]);
 
-    if (!events) {
+    console.log(events)
+
+    if (!events[0]) {
         return (<div>...loading</div>)
     }
 
     return (
         <div>
-            {events.map((event) => {
+            {events[0].map((event) => {
                 return (
                     <EventIndexItem event={event} />
                 )
