@@ -29,7 +29,7 @@ const EventIndexItem = ({event}) => {
 
     const goToEventShowPage = (e) => {
         e.preventDefault()
-        dispatch(history.push(`/events/${event._id}`))
+        history.push(`/events/${event._id}`)
     }
 
     return (
