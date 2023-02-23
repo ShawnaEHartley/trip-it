@@ -23,6 +23,10 @@
   align-items: center;
 }
 
+.trip-update-content-input {
+  width: 153px;
+}
+
 .trip-create-content-item {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -54,4 +58,10 @@
   height: 30px;
   font-size: 15px;
   width: 84px;
+}
+
+.trip-description {
+  width: 150px;
+  height: 48px;
+  resize: none;
 }

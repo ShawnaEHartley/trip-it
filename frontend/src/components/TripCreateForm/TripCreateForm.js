@@ -14,10 +14,12 @@ const TripCreateForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const today = new Date().toISOString();
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState(today);
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -53,31 +55,31 @@ const TripCreateForm = () => {
 
       <div className='trip-create-content-wrapper'>
         <label className='trip-create-content-item'>
-          <span className='trip-create-content-title trip-title' > Trip title </span>
+          <span className='trip-create-content-title trip-title' > Title </span>
           <input className='trip-create-content-input trip-title' type="text" value={title} onChange={e => {
               e.preventDefault();
               setTitle(e.target.value)}} placeholder='title'/>
         </label>
         <label className='trip-create-content-item'>
-          <span className='trip-create-content-title trip-description' > Trip description </span>
-          <input className='trip-create-content-input trip-description' type="text" value={description} onChange={e => {
+          <span className='trip-create-content-title trip-description' > Description </span>
+          <textarea className='trip-create-content-input trip-description' type="text" value={description} onChange={e => {
               e.preventDefault();
               setDescription(e.target.value)}} placeholder='description'/>
         </label>
         <label className='trip-create-content-item'>
-          <span className='trip-create-content-title trip-start-date' > Trip start date </span>
+          <span className='trip-create-content-title trip-start-date' > Start date </span>
           <input className='trip-create-content-input trip-start-date' type="date" value={startDate} onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)}} placeholder='start date'/>
         </label>
         <label className='trip-create-content-item'>
-          <span className='trip-create-content-title trip-end-date' > Trip end date </span>
+          <span className='trip-create-content-title trip-end-date' > End date </span>
           <input className='trip-create-content-input trip-end-date' type="date" value={endDate} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} placeholder='end date'/>
         </label>
         <div className='trip-create-location-input-wrapper'>
-          <h2 className='trip-create-subtitle trip-location' > Trip location </h2>
+          <h2 className='trip-create-subtitle trip-location' > Location </h2>
           <label className='trip-create-content-item'>
             <span className='trip-create-content-loc-title trip-street-address'> Street address </span>
             <input className='trip-create-content-loc-input trip-street-address' type="text" value={streetAddress} onChange={e => {
