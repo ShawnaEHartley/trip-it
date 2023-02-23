@@ -13,7 +13,7 @@ const tripSchema = new Schema({
         country: String,
         state: String,
         city: String,
-        streetAdress: String,
+        streetAddress: String,
         zipCode: String
     },
     organizer: {

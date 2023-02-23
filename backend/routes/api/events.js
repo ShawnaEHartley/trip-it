@@ -82,10 +82,10 @@ router.post('/', async function (req, res, next) {
 /* PATCH requests below */
 // update an event
 router.patch('/:eventId', async function (req, res, next) {
-    const updates = req.body;
     try {
-        Event.updateOne({_id: ObjectId(req.params.eventId)}, {$set: updates});
-        const event = Event.findById(req.params.eventId);
+        const updates = req.body;
+        await Event.updateOne({_id: req.params.eventId}, {$set: updates});
+        const event = await Event.findById(req.params.eventId);
         // may need to populate the peopleGoing, will know after testing trips patch
         return res.json(event);
     }
@@ -95,11 +95,10 @@ router.patch('/:eventId', async function (req, res, next) {
 });
 
 // add people to event
-router.patch('/:eventId/add', async function (req, res, next) {
+router.patch('/addMember/:eventId', async function (req, res, next) {
     try {
-
-        Event.updateOne({ _id: ObjectId(req.params.eventId)},{ $push: { peopleGoing: req.body._id }})
-        const event = Event.findById(req.params.eventId)
+        await Event.updateOne({ _id: ObjectId(req.params.eventId)},{ $push: { peopleGoing: req.body._id }})
+        const event = await Event.findById(req.params.eventId)
             .populate('peopleGoing');
         return res.json(event);
     }
@@ -109,14 +108,14 @@ router.patch('/:eventId/add', async function (req, res, next) {
 });
 
 // remove person from event
-router.patch('/:eventId/remove/:userId', async function (req, res, next) {
+router.patch('/remove/:eventId/:userId', async function (req, res, next) {
     try {
-        Event.updateOne(
-            { _id: ObjectId(req.params.eventId)},
+        await Event.updateOne(
+            { _id: req.params.eventId},
             { $pull: { peopleGoing: req.params.userId }}
         );
         
-        const event = Event.findById(req.params.eventId)
+        const event = await Event.findById(req.params.eventId)
             .populate('peopleGoing');
         return res.json(event);
     }
@@ -128,7 +127,11 @@ router.patch('/:eventId/remove/:userId', async function (req, res, next) {
 /* DELETE events */
 
 router.delete('/:eventId', async function (req, res, next) {
-    Event.deleteOne({ _id: ObjectId(req.params.eventId) });
+    try {
+        await Event.deleteOne({ _id: req.params.eventId });
+    } catch(err) {
+        next(err);
+    }
 });
 
 module.exports = router;
