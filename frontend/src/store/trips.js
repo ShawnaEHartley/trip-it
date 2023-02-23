@@ -20,7 +20,7 @@ const receiveTrips = (trips) => ({
 
 const removeTrip = (tripId) => ({
     type: REMOVE_TRIP, 
-    tripId 
+    tripId
 });
 
 const receiveTripErrors = (errors) => ({
@@ -42,9 +42,9 @@ export const getTrips = (state) => {
     }
 };
 
-export const getTrip = (state) => (tripId) => {
+export const getTrip = (state) => {
     if (state.trips) {
-        return state.trips[tripId]
+        return state.trips
     } else {
         return null
     }
@@ -79,7 +79,7 @@ export const fetchUserTrips = (userId) => async (dispatch) => {
 export const fetchTrip = (tripId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/${tripId}`)
-        const trip = await res.json(); 
+        const trip = await res.json();
         dispatch(receiveTrip(trip)); 
     } catch (err) {
         const resBody = await err.json(); 
@@ -106,12 +106,14 @@ export const createTrip = (data) => async (dispatch) => {
     }
 };
 
-export const updateTrip = (trip, tripId) => async (dispatch) => {
+export const updateTrip = (tripObject, tripId) => async (dispatch) => {
+    
     try {
         const res = await jwtFetch(`/api/trips/${tripId}`, {
             method: "PATCH", 
-            body: JSON.stringify(trip)
+            body: JSON.stringify(tripObject)
         });
+        
         const trip = await res.json(); 
         dispatch(receiveTrip(trip));
     } catch(err) {
@@ -158,10 +160,15 @@ export const removeUserFromTrip = (tripId, memberId) => async (dispatch) => {
 
 
 export const deleteTrip = (tripId) => async (dispatch) => {
-    await fetch(`/api/trips/${tripId}`, {
-        method: "DELETE"
-    })
-    return dispatch(removeTrip(tripId));
+    try {
+        await jwtFetch(`/api/trips/${tripId}`, {
+            method: 'DELETE'
+        });
+        
+        return dispatch(removeTrip(tripId));
+    } catch(err) {
+        console.log(':(')
+    }
 };
 
 
@@ -183,11 +190,11 @@ const TripsReducer = (state = {}, action) => {
     let newState = { ...state }
 
     switch(action.type) {
-        case RECEIVE_TRIP: 
+        case RECEIVE_TRIP:
             return {...state, ...action.trip }
         case RECEIVE_TRIPS: 
             return {...state, ...action.trips } 
-        case REMOVE_TRIP: 
+        case REMOVE_TRIP:
             delete(newState[action.tripId])
             return newState 
         default: 
