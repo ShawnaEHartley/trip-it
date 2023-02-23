@@ -6,7 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
-import { deleteTrip, fetchTrip, getTrip } from '../../store/trips'
+import { deleteTrip, fetchTrip, fetchUserTrips, getTrip } from '../../store/trips'
 import { closeModal } from '../../store/modal';
 
 import './TripShowPage.css'
@@ -74,6 +74,11 @@ const TripShowPage = () => {
     dispatch(deleteTrip(trip._id))
   }
 
+  const backToHomeButton = (e) => {
+    dispatch(fetchUserTrips(user._id))
+    history.push("/trips")
+  }
+
   let splitStartDate = trip.startDate.split('-'); 
   let splitEndDate = trip.endDate.split('-');
 
@@ -101,6 +106,9 @@ const TripShowPage = () => {
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container'>
             {user._id === trip.organizer._id ? tripOrganizerButtons() : null }
+            <div id="back-to-trips-index-button-div">
+              <button onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</button>
+            </div>
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>

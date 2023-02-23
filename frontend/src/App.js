@@ -15,6 +15,7 @@ import EventIndex from './components/EventIndex/EventIndex';
 import EventShowPage from './components/EventShowPage/EventShowPage';
 import EventCreateForm from './components/EventsCreateForm/EventsCreateForm';
 import EventUpdateForm from './components/EventsUpdateForm/EventsUpdateForm';
+import TripIndex from './components/TripIndex/TripIndex';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,7 +49,9 @@ function App() {
         <Route path="/trips/:tripId">
           <TripShowPage />
         </Route>
-        
+        <Route path="/trips">
+          <TripIndex />
+        </Route>
         <Route path="/updateTrip/:tripId">
           <TripUpdateForm />
         </Route>

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-
+import TripIndex from '../TripIndex/TripIndex';
 import MainPage from '../MainPage/MainPage'
 
 import './SplashPage.css'; 
@@ -150,7 +150,7 @@ const SplashPage = () => {
             </div>
         )
     } else {
-        return <MainPage />
+        return <TripIndex />
     }
 };
 
