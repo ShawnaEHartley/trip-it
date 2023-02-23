@@ -20,6 +20,7 @@
 .stamp-container {
    display: flex;
    flex-direction: row;
+   justify-content: center;
    width: 97%;
    height: 108px;
    border: 1px solid rgb(43, 43, 45);

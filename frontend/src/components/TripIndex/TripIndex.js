@@ -46,7 +46,16 @@ const TripIndex = () => {
         )
     }
     
-    const endTrip = trips.slice(trips.length - 1);
+    const EndTrip = () => {
+        return (
+            <div id='stamp-image-container'>
+                <div className='stamp-image'>
+                    <img className='stamp-image' src={randUrls[trips.length - 1]} />
+                </div>
+                <div className='trip-info'>{trips.slice(trips.length - 1)[0].title}</div>
+            </div>
+        )
+    }
 
     const randUrls = [];
     while (awsUrls.length) {
@@ -74,12 +83,7 @@ const TripIndex = () => {
                                     awsUrl={randUrls[i]} 
                                 />
                             )}
-                            <div id='stamp-image-container'>
-                                <div className='stamp-image'>
-                                    <img className='stamp-image' src={randUrls[trips.length - 1]} />
-                                </div>
-                                <div className='trip-info'>{endTrip.title}</div>
-                            </div>
+                            <EndTrip />
                         </div>
                         <div className='stamp-container'>
 
