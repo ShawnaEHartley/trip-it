@@ -51,7 +51,7 @@ const NavBar = () => {
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem>About the developers</MenuItem>
+            <MenuItem>About us</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )

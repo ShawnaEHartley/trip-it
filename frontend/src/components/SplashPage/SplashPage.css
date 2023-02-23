@@ -1,12 +1,17 @@
 .event-index {
    padding: 10px;
-   line-height: 1.4;
+   line-height: 1.6;
    font-size: 14px;
+   font-family: DuranMedium;
+   color: rgb(43, 43, 45);
 }
 
 .event-index > h3 {
    font-size: 18px;
    padding-bottom: 5px;
+   line-height: 1.4;
+   font-family: BlauthLight;
+   color: rgb(43, 43, 45);
 }
 
 #splash-page-container {

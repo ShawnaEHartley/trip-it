@@ -30,7 +30,7 @@ function App() {
           <SplashPage />
         </Route>
     </Switch>
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 }
