@@ -27,7 +27,7 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(closeModal())
+    dispatch(closeModal());
     dispatch(login({ email, password })); 
   }
 

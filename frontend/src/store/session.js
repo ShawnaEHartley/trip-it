@@ -55,7 +55,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
 };
 
 export const logout = () => dispatch => {
-    localStorage.removeItem('jwtToken'); 
+    localStorage.removeItem('jwtToken');
     return dispatch(logoutUser()); 
 };
 
@@ -83,7 +83,8 @@ const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return { user: action.currentUser };
-        case RECEIVE_USER_LOGOUT: 
+        case RECEIVE_USER_LOGOUT:
+            // invoke a function here to set trips to {}
             return initialState; 
         default: 
             return state; 

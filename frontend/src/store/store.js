@@ -6,13 +6,20 @@ import modal from './modal';
 import trips from './trips';
 import events from './events';
 
-const rootReducer = combineReducers({
-    session,
+const appReducer = combineReducers({
     errors,
     modal, 
     trips,
-    events 
+    events,
+    session
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === 'RECEIVE_USER_LOGOUT') {
+        return appReducer(undefined, action);
+    }
+    return appReducer(state, action);
+}
 
 let enhancer; 
 
