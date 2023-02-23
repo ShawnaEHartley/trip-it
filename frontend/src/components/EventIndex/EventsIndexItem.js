@@ -12,6 +12,7 @@ const EventIndexItem = ({event}) => {
         // redirect to the event show page
         <EventShowPage />
     }
+
     
     return (
         <div onClick={openEventShow}>
@@ -19,7 +20,7 @@ const EventIndexItem = ({event}) => {
                 <li>{event.title} </li>
                 <li>{event.startDate}</li>
                 <li>{event.endDate}</li>
-                <li>{event.peopleGoing.length()}</li>
+                <li>{event.peopleGoing.length}</li>
             </ul>
         </div>
     )

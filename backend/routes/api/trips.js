@@ -9,7 +9,8 @@ const User = mongoose.model('User');
 router.get('/', async function (req, res, next) {
     try {
         const trips = await Trip.find()
-            .populate('members');
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name');
         return res.json(trips);
     }
     catch(err) {
@@ -22,8 +23,9 @@ router.get('/user/:userId', async function (req, res, next) {
     let user;
     const userId = req.params.userId;
     try {
-        const trips = await Trip.find({ $or: [{organizer: userId}, { members: userId }]})
-            .populate('members')
+        const trips = await Trip.find({ $or: [{ organizer: userId }, { members: userId }] })
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name')
             .sort({ startDate: 1 });
         return res.json(trips);
     }
@@ -36,7 +38,8 @@ router.get('/user/:userId', async function (req, res, next) {
 router.get('/:tripId', async function (req, res, next) {
     try {
         const trip = await Trip.findById(req.params.tripId)
-            .populate('members');
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name');
         return res.json(trip);
     }
     catch(err) {
@@ -78,7 +81,8 @@ router.patch('/:tripId', async function(req, res, next) {
         const updates = req.body;
         await Trip.updateOne({ _id: req.params.tripId }, {$set: updates});
         const trip = await Trip.findById(req.params.tripId)
-            .populate('members'); // may not need to populate here, req.body likely already includes full member objects
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name'); // may not need to populate here, req.body likely already includes full member objects
             // check the events patch method after finding this out.!!!!
         return res.json(trip);
     }
@@ -86,6 +90,8 @@ router.patch('/:tripId', async function(req, res, next) {
         next(err);
     }
 });
+
+// build out adding trip member by email
 
 /* delete trip listing */
 
