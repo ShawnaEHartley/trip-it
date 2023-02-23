@@ -78,8 +78,8 @@ const TripShowPage = () => {
 
   splitStartDate[1] = months[splitStartDate[1]];
   splitEndDate[1] = months[splitEndDate[1]];
-  splitEndDate[2] = splitEndDate[2].split('T');
-  splitEndDate[2] = splitEndDate[2][0];
+  splitStartDate[2] = splitStartDate[2].split('T')[0];
+  splitEndDate[2] = splitEndDate[2].split('T')[0];
   
   const monthStart = splitStartDate[1];
   const monthEnd = splitEndDate[1];
@@ -87,6 +87,7 @@ const TripShowPage = () => {
   const dayEnd = splitEndDate[2];
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
+
 
   return (
     <>
@@ -99,8 +100,7 @@ const TripShowPage = () => {
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
-
-                {/* <div>{trip.organizer.name}</div> */}
+              <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
               </div>
             </div>
             <div id='top-body-border'>
@@ -108,20 +108,23 @@ const TripShowPage = () => {
               <span>Details</span>
             </div>
             <div id='post-card-body-container'>
-              <div className='post-card-space'>
+              <div className='post-card-space left-space'>
 
               </div>
               <div id='post-card-center-border' />
               <div className='post-card-space'>
-                <p>({trip.description})</p>
-                {trip.members.map((member) => {
-                  return <div>{member.name}</div>
-                })}
-                <div>{trip.location.streetAddress ? trip.location.streetAddress : ""}</div>
-                <div>{trip.location.city ? trip.location.city : ""}</div>
-                <div>{trip.location.state ? trip.location.state : ""}</div>
-                <div>{trip.location.zipCode ? trip.location.zipCode : ""}</div>
-                <div>{trip.location.coutry ? trip.location.country : ""}</div>
+                <div id='info-container'>
+                  <div>
+                    {trip.members.map((member) => {
+                      return `${member.name} `
+                    })} <br/>
+                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
+                    {trip.location.city ? trip.location.city : ""} <br/>
+                    {trip.location.state ? `, ${trip.location.state}` : ""} <br />
+                    {trip.location.coutry ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}  
+                  </div>
+                  <p>({trip.description})</p>
+                </div>
               </div>
             </div>
             <div id='post-card-bottom'>

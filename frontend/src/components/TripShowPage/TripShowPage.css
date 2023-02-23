@@ -19,6 +19,28 @@
     padding-right: 650px;
 }
 
+#info-container {
+    width: auto;
+    height: auto;
+
+    padding: 10px 48px;
+    padding-right: 59px;
+}
+
+#info-container > div {
+    display: flex;
+    justify-content: right;
+    text-decoration: underline;
+    line-height: 1.8;
+}
+
+#info-container > p {
+    font-size: 12px;
+}
+
+.left-space {
+    overflow: auto;
+}
 
 #post-card-bottom {
     display: flex;
@@ -71,7 +93,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .trip-show-page-header-wrapper {
