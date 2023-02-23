@@ -1,7 +1,6 @@
 import React from 'react'; 
 
 import TripShowPage from '../TripShowPage/TripShowPage';
-
 import './TripIndex.css';
 
 

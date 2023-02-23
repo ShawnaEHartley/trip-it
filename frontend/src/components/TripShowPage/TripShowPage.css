@@ -1,18 +1,66 @@
 /* div styling below */
+#create-event-button {
+    position: absolute;
+    width: 120px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid rgb(20, 18, 14);
+
+    text-align: start;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 570px;
+}
+
+#post-card-body-container {
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+    height: 500px;
+}
 
 #post-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 700px;
+    height: 400px;
+    padding: 10px;
+
     background-color: rgb(254, 249, 238);
+    border-radius: 3px;
+}
+
+#post-card-left-container {
+    width: 340px;
+    height: 300px;
+}
+
+#post-card-right-container {
+    width: 340px;
+    height: 300px;
 }
 
 .trip-show-page-container {
     display: flex;
     justify-content: center;
-    padding-top: 80px;
-    
+    padding-top: 240px;
 }
 
+.trip-show-page-header-wrapper {
+    margin-top: 20px;
+    height: 40px;
+}
 
+.trip-show-page-header-wrapper > div > h2 {
+    font-size: 32px;
+    font-family: LaborUnion;
+}
+
+.trip-show-page-header-wrapper > div > p {
+    font-size: 11px;
+    width: auto;
+}
 
 /* quack-it zig-zag */
 .pattern {
