@@ -86,10 +86,14 @@ const TripIndex = () => {
                             <EndTrip />
                         </div>
                         <div className='stamp-container'>
-
                         </div>
                         <div className='stamp-container'>
-
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div id='end-stamp-container' className='stamp-container'>
                         </div>
                     </div>
                 </div>
