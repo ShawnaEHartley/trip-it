@@ -1,17 +1,25 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { closeModal } from '../../store/modal'
-import { updateEvent } from '../../store/events';
 import '../EventsCreateForm/EventsCreateForm.css';
+import * as eventActions from '../../store/events';
 
 
-const EventUpdateForm = (event) => {
+
+const EventUpdateForm = () => {
     const dispatch = useDispatch(); 
+    const event = useSelector(eventActions.getEvent);
+    const { eventId } = useParams(); 
+
+    useEffect(() => {
+      dispatch(eventActions.fetchEvent(eventId))
+    }, [dispatch, eventId])
 
     const [title, setTitle] = useState(event.title); 
     const [description, setDescription] = useState(event.description)
-    const [startDate, setStartDate] = useState(event.startDate);
-    const [endDate, setEndDate] = useState(event.endDate);
+    const [startDate, setStartDate] = useState(event.startDate.split('T')[0]);
+    const [endDate, setEndDate] = useState(event.endDate.split('T')[0]);
     const [streetAddress, setStreetAddress] = useState(event.location.streetAddress);
     const [city, setCity] = useState(event.location.city);
     const [state, setState] = useState(event.location.state);
@@ -21,8 +29,12 @@ const EventUpdateForm = (event) => {
     const [splitCostStructure, setSplitCostStructure] = useState(event.splitCostStructure);
 
 
+    if (!event.title) {
+      return <div>loading...</div>
+    }
+
     const submitUpdateEvent = (e) => {
-      dispatch(updateEvent({
+      const eventObject = {
         title: title,
         description: description,
         startDate: startDate,
@@ -36,8 +48,9 @@ const EventUpdateForm = (event) => {
         },
         cost: cost, 
         splitCostStructure: splitCostStructure
-      }));
+      }
       dispatch(closeModal());
+      dispatch(eventActions.updateEvent(eventObject, event._id));
     };
 
     return (
