@@ -96,11 +96,11 @@ export const fetchEvent = (eventId) => async (dispatch) => {
     }
 };
 
-export const createEvent = (data) => async (dispatch) => {
+export const createEvent = (eventObject, tripId) => async (dispatch) => {
     try {
-        const res = await jwtFetch(`/api/events/`, {
+        const res = await jwtFetch(`/api/events/${tripId}`, {
             method: "POST", 
-            body: JSON.stringify(data)
+            body: JSON.stringify(eventObject)
         });
     } catch(err) {
         const resBody = await err.json(); 

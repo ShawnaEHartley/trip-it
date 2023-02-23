@@ -60,7 +60,7 @@ router.get('/trips/:tripId', async function (req, res, next) {
 
 /* POST requests below */
 // create an event
-router.post('/', async function (req, res, next) {
+router.post('/:tripId', async function (req, res, next) {
     try {
         const newEvent = new Event({
             title: req.body.title,
@@ -71,7 +71,8 @@ router.post('/', async function (req, res, next) {
             cost: req.body.cost,
             splitCostStructure: req.body.splitCostStructure,
             peopleGoing: req.body.peopleGoing,
-            booked: req.body.booked
+            booked: req.body.booked,
+            tripId: req.params.tripId
         })
 
         let event = newEvent.save();
