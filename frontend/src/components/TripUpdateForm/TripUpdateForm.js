@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { closeModal } from '../../store/modal';
 import { deleteTrip, updateTrip } from '../../store/trips';
 import './TripUpdateForm.css';
