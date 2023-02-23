@@ -8,6 +8,7 @@ const TripIndexItem = ({trip, awsUrl}) => {
     const history = useHistory();
 
     const goToTripShow = (e) => {
+        console.log("hello world")
         history.push(`/trips/${trip._id}`);
     }
 
