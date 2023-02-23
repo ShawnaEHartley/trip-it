@@ -1,8 +1,8 @@
 import React, { useState } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../../store/model';
+import { closeModal } from '../../store/modal'
 import { updateEvent } from '../../store/events';
-import './EventCreateForm.css';
+import '../EventsCreateForm/EventsCreateForm.css';
 
 
 const EventUpdateForm = (event) => {

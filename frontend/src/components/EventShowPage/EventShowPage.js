@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import * as eventActions from '../../store/events';
-// import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
-// import { closeModal } from '../../store/modal';
+import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
+import { closeModal } from '../../store/modal';
 
 const EventShowPage = () => {
 
@@ -45,8 +45,7 @@ const EventShowPage = () => {
   const modalComponent = () => {
     if (modalState.component === 'editEvent') {
         return (
-          <div></div>
-            // <EventUpdateForm event={event} />
+            <EventUpdateForm event={event} />
         )
     }
   };

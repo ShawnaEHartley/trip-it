@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
 import { createEvent } from '../../store/events';
-import './EventCreateForm.css';
+import './EventsCreateForm.css';
 
 
 const EventCreateForm = () => {
