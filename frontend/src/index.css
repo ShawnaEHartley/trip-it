@@ -69,3 +69,8 @@ button {
 	font-family: DuranMedium;
 	src: url(./assets/fonts/Duran-Medium/Duran-Medium.otf) format("opentype");
 }
+
+@font-face {
+	font-family: LaborUnion;
+	src: url(./assets/fonts/Labor_Union_Regular/LaborUnion-Regular.otf) format("opentype");
+}

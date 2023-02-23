@@ -39,7 +39,7 @@ const TripShowPage = () => {
         }
     };
 
-    if (!trip) {
+    if (!trip.title) {
         return (
             <div></div>
         )
@@ -70,42 +70,64 @@ const TripShowPage = () => {
     dispatch(deleteTrip(trip._id))
   }
 
+  let splitStartDate = trip.startDate.split('-'); 
+  let splitEndDate = trip.endDate.split('-');
+
+  const months = {'01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June',
+                  '07': 'July', '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December'};
+
+  splitStartDate[1] = months[splitStartDate[1]];
+  splitEndDate[1] = months[splitEndDate[1]];
+  splitEndDate[2] = splitEndDate[2].split('T');
+  splitEndDate[2] = splitEndDate[2][0];
+  
+  const monthStart = splitStartDate[1];
+  const monthEnd = splitEndDate[1];
+  const dayStart = splitStartDate[2];
+  const dayEnd = splitEndDate[2];
+  const yearStart = splitStartDate[0];
+  const yearEnd = splitEndDate[0];
+
   return (
-    <div className='trip-show-page-outter-wrapper'>
-        {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-        {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
-      <div className='trip-show-page-header-wrapper'>
-        <div className='trip-show-page-header'>
-          <div>{trip.title} </div>
-          <div>{trip.organizer.name}</div>
-          { user === trip.organizer ? {tripOrganizerButtons} : ""}
-          <button onClick={makeAnEvent}>Create an Event</button>
-        </div>
-      </div>
+    <>
+      <div id='zig-zag11' className='pattern' />
+      <div className='trip-show-page-container'>
+          {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          <div id='post-card-container'>
+            <button id='create-event-button' onClick={makeAnEvent}>Create an Event</button>
+            <div className='trip-show-page-header-wrapper'>
+              <div className='trip-show-page-header'>
+                <h2>{trip.title}</h2>
+                <p>({trip.description})</p>
+                {/* <div>{trip.organizer.name}</div> */}
+                { user === trip.organizer ? {tripOrganizerButtons} : ""}
+              </div>
+            </div>
+            <div id='top-body-border' />
+            <div id='post-card-body-container'>
+              <div id='post-card-left-container'>
 
-      <div className='trip-show-page-body-wrapper'>
-        <div className='trip-show-page-body'>
-          <div>{trip.startDate}</div>
-          <div>{trip.endDate}</div>
-          <div>{trip.description}</div>
-          <div>{ trip.location.streetAddress ? trip.location.streetAddress : "" }</div>
-          <div>{ trip.location.city ? trip.location.city : "" }</div>
-          <div>{ trip.location.state ? trip.location.state : "" }</div>
-          <div>{ trip.location.zipCode ? trip.location.zipCode : "" }</div>
-          <div>{ trip.location.coutry ? trip.location.country : "" }</div>
-          <div className="trip-show-page-body-members">
-            {trip.members.map((member) => {
-              return <div>{member.name}</div>
-            })}
+              </div>
+              <div id='post-card-center-border' />
+              <div id='post-card-right-container'>
+                {trip.members.map((member) => {
+                  return <div>{member.name}</div>
+                })}
+                <div>{trip.location.streetAddress ? trip.location.streetAddress : ""}</div>
+                <div>{trip.location.city ? trip.location.city : ""}</div>
+                <div>{trip.location.state ? trip.location.state : ""}</div>
+                <div>{trip.location.zipCode ? trip.location.zipCode : ""}</div>
+                <div>{trip.location.coutry ? trip.location.country : ""}</div>
+              </div>
+            </div>
+            <div className='trip-show-page-invite-member-wrapper'>
+              <button onClick={inviteMember}>Invite a member</button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className='trip-show-page-invite-member-wrapper'>
-        <button onClick={inviteMember}>Invite a member</button>
       </div>
-
-    </div>
+    </>
   )
 
 };
