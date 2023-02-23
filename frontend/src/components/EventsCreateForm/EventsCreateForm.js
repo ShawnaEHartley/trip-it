@@ -5,7 +5,7 @@ import { createEvent } from '../../store/events';
 import './EventsCreateForm.css';
 
 
-const EventCreateForm = () => {
+const EventCreateForm = ({tripId}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
@@ -37,7 +37,8 @@ const EventCreateForm = () => {
             },
             peopleGoing: [currentUser._id],
             cost: cost, 
-            splitCostStructure: splitCostStructure
+            splitCostStructure: splitCostStructure,
+            tripId: tripId
         }));
         dispatch(closeModal());
       };
