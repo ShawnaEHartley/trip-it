@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import * as eventActions from '../../store/events';
-import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
-import { closeModal } from '../../store/modal';
+// import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
+// import { closeModal } from '../../store/modal';
 
 const EventShowPage = () => {
 
@@ -12,7 +12,7 @@ const EventShowPage = () => {
   const { eventId } = useParams();
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
-  const eventOrganizer = event.peopleGoing[0];
+
   const modalState = useSelector((state) => {
     return state?.modal ? state.modal : null ;
   });
@@ -45,7 +45,8 @@ const EventShowPage = () => {
   const modalComponent = () => {
     if (modalState.component === 'editEvent') {
         return (
-            <EventUpdateForm event={event} />
+          <div></div>
+            // <EventUpdateForm event={event} />
         )
     }
   };
@@ -53,6 +54,8 @@ const EventShowPage = () => {
   if (!event.title) {
     return <div>loading...</div>
   }
+
+  const eventOrganizer = event.peopleGoing[0];
 
   return (
     <div className='event-show-page-wrapper'>
