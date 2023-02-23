@@ -49,7 +49,6 @@ const TripShowPage = ({trip}) => {
           <div>{trip.title} </div>
           <div>{trip.organizer.name}</div>
           { user === trip.organizer ? {tripOrganizerButtons} : ""}
-          <button></button>
           <button onClick={makeAnEvent}>Create an Event</button>
         </div>
       </div>
