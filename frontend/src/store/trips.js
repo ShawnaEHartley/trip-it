@@ -1,12 +1,10 @@
 import jwtFetch from "./jwt";
 
-
 const RECEIVE_TRIP = "trips/RECEIVE_TRIP"; 
 const RECEIVE_TRIPS = "trips/RECEIVE_TRIPS"; 
 const REMOVE_TRIP = "trips/REMOVE_TRIP";
 const RECEIVE_TRIP_ERRORS = "trips/RECEIVE_TRIP_ERRORS";
 const CLEAR_TRIP_ERRORS = "trips/CLEAR_TRIP_ERRORS";
-
 
 const receiveTrip = (trip) => ({
     type: RECEIVE_TRIP, 
@@ -62,6 +60,25 @@ export const fetchAllTrips = () => async dispatch => {
         }
     }
 };
+
+// this is not working, rerouting, leavig here for documentation
+// export const fetchUserTripsByEmail = (email) => async (dispatch) => {
+//     
+//     try {
+//         const res = await jwtFetch(`/api/trips/user/email`, {
+//             method: 'GET',
+//             body: JSON.stringify(email)
+//         });
+
+//         const trips = await res.json();
+//         dispatch(receiveTrips(trips));
+//     } catch (err) {
+//         const resBody = await err.json();
+//         if (resBody.statusCode === 400) {
+//             dispatch(receiveTripErrors(resBody.errors));
+//         }
+//     }
+// }
 
 export const fetchUserTrips = (userId) => async (dispatch) => {
     try {

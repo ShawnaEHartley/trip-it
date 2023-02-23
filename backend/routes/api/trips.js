@@ -18,6 +18,20 @@ router.get('/', async function (req, res, next) {
     }
 });
 
+// get all trips by user by email
+router.get('/user/email', async function (req, res, next) {
+    try {
+        const user = await User.findOne({ email: req.body });
+        const trips = await Trip.find({ $or: [{ organizer: user._id }, { members: user._id }] })
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name')
+            .sort({ startDate: 1 });
+        return res.json(trips);
+    } catch (err) {
+        next(err);
+    }
+});
+
 // get all trips by user
 router.get('/user/:userId', async function (req, res, next) {
     let user;

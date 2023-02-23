@@ -1,19 +1,14 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-
-import { useHistory } from 'react-router-dom';
-
 import TripIndexItem from './TripIndexItem';
-import * as tripActions from '../../store/trips';
+import { fetchUserTrips, getTrips } from '../../store/trips';
 
 import './TripIndex.css';
 
 
 const TripIndex = () => {
-
     const dispatch = useDispatch();
-    const history = useHistory();
-    const trips = useSelector(tripActions.getTrips)
+    const trips = useSelector(getTrips);
     const user = useSelector(state => state.session.user)
 
     let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
@@ -37,7 +32,7 @@ const TripIndex = () => {
 
 
     useEffect(() => {
-        dispatch(tripActions.fetchAllTrips())
+        dispatch(fetchUserTrips(user._id))
     }, [dispatch]);
 
     if (!trips[0]) {
@@ -45,6 +40,8 @@ const TripIndex = () => {
             <div></div>
         )
     }
+
+    console.log(trips)
     
     const EndTrip = () => {
         return (
