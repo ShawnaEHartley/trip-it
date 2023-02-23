@@ -58,9 +58,9 @@ const TripShowPage = () => {
 
   const tripOrganizerButtons = () => {
     return (
-      <div>
-        <button onClick={renderUpdateForm}>Update</button>
-        <button onClick={deleteThisTrip}>Delete</button>
+      <div id='form-button-container'>
+        <button onClick={renderUpdateForm} className='trip-show-button form-button patch-buttons'>Update trip</button>
+        <button onClick={deleteThisTrip} className='trip-show-button form-button patch-buttons'>Delete trip</button>
       </div>
     )
   };
@@ -78,8 +78,8 @@ const TripShowPage = () => {
 
   splitStartDate[1] = months[splitStartDate[1]];
   splitEndDate[1] = months[splitEndDate[1]];
-  splitEndDate[2] = splitEndDate[2].split('T');
-  splitEndDate[2] = splitEndDate[2][0];
+  splitStartDate[2] = splitStartDate[2].split('T')[0];
+  splitEndDate[2] = splitEndDate[2].split('T')[0];
   
   const monthStart = splitStartDate[1];
   const monthEnd = splitEndDate[1];
@@ -88,6 +88,7 @@ const TripShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+
   return (
     <>
       <div id='zig-zag11' className='pattern' />
@@ -95,37 +96,42 @@ const TripShowPage = () => {
           {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container'>
-            <button id='create-event-button' onClick={makeAnEvent}>Create an Event</button>
+            {user._id === trip.organizer._id ? tripOrganizerButtons() : null }
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
-                <p>({trip.description})</p>
-                {/* <div>{trip.organizer.name}</div> */}
-                { user === trip.organizer ? {tripOrganizerButtons} : ""}
+              <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
               </div>
             </div>
-            <div id='top-body-border' />
+            <div id='top-body-border'>
+              <span>Events</span>
+              <span>Details</span>
+            </div>
             <div id='post-card-body-container'>
-              <div id='post-card-left-container'>
+              <div className='post-card-space left-space'>
 
               </div>
               <div id='post-card-center-border' />
-              <div id='post-card-right-container'>
-                {trip.members.map((member) => {
-                  return <div>{member.name}</div>
-                })}
-                <div>{trip.location.streetAddress ? trip.location.streetAddress : ""}</div>
-                <div>{trip.location.city ? trip.location.city : ""}</div>
-                <div>{trip.location.state ? trip.location.state : ""}</div>
-                <div>{trip.location.zipCode ? trip.location.zipCode : ""}</div>
-                <div>{trip.location.coutry ? trip.location.country : ""}</div>
+              <div className='post-card-space'>
+                <div id='info-container'>
+                  <div>
+                    {trip.members.map((member) => {
+                      return `${member.name} `
+                    })} <br/>
+                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
+                    {trip.location.city ? trip.location.city : ""} <br/>
+                    {trip.location.state ? `, ${trip.location.state}` : ""} <br />
+                    {trip.location.coutry ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}  
+                  </div>
+                  <p>({trip.description})</p>
+                </div>
               </div>
             </div>
-            <div className='trip-show-page-invite-member-wrapper'>
-              <button onClick={inviteMember}>Invite a member</button>
+            <div id='post-card-bottom'>
+              <button className='trip-show-button' onClick={makeAnEvent}>Create event</button>
+              <button className='trip-show-button' onClick={inviteMember}>Invite a member</button>
             </div>
           </div>
-
       </div>
     </>
   )
