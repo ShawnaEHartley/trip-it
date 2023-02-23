@@ -39,7 +39,7 @@ const TripShowPage = () => {
         }
     };
 
-    if (!trip) {
+    if (!trip.title) {
         return (
             <div></div>
         )
@@ -71,41 +71,45 @@ const TripShowPage = () => {
   }
 
   return (
-    <div className='trip-show-page-outter-wrapper'>
-        {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-        {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
-      <div className='trip-show-page-header-wrapper'>
-        <div className='trip-show-page-header'>
-          <div>{trip.title} </div>
-          <div>{trip.organizer.name}</div>
-          { user === trip.organizer ? {tripOrganizerButtons} : ""}
-          <button onClick={makeAnEvent}>Create an Event</button>
-        </div>
-      </div>
+    <>
+      <div id='zig-zag11' className='pattern' />
+      <div className='trip-show-page-container'>
+          {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          <div id='post-card-container'>
+            <div className='trip-show-page-header-wrapper'>
+              <div className='trip-show-page-header'>
+                <div>{trip.title} </div>
+                {/* <div>{trip.organizer.name}</div> */}
+                { user === trip.organizer ? {tripOrganizerButtons} : ""}
+                <button onClick={makeAnEvent}>Create an Event</button>
+              </div>
+            </div>
 
-      <div className='trip-show-page-body-wrapper'>
-        <div className='trip-show-page-body'>
-          <div>{trip.startDate}</div>
-          <div>{trip.endDate}</div>
-          <div>{trip.description}</div>
-          <div>{ trip.location.streetAddress ? trip.location.streetAddress : "" }</div>
-          <div>{ trip.location.city ? trip.location.city : "" }</div>
-          <div>{ trip.location.state ? trip.location.state : "" }</div>
-          <div>{ trip.location.zipCode ? trip.location.zipCode : "" }</div>
-          <div>{ trip.location.coutry ? trip.location.country : "" }</div>
-          <div className="trip-show-page-body-members">
-            {trip.members.map((member) => {
-              return <div>{member.name}</div>
-            })}
+            <div className='trip-show-page-body-wrapper'>
+              <div className='trip-show-page-body'>
+                <div>{trip.startDate}</div>
+                <div>{trip.endDate}</div>
+                <div>{trip.description}</div>
+                <div>{ trip.location.streetAddress ? trip.location.streetAddress : "" }</div>
+                <div>{ trip.location.city ? trip.location.city : "" }</div>
+                <div>{ trip.location.state ? trip.location.state : "" }</div>
+                <div>{ trip.location.zipCode ? trip.location.zipCode : "" }</div>
+                <div>{ trip.location.coutry ? trip.location.country : "" }</div>
+                <div className="trip-show-page-body-members">
+                  {trip.members.map((member) => {
+                    return <div>{member.name}</div>
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className='trip-show-page-invite-member-wrapper'>
+              <button onClick={inviteMember}>Invite a member</button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className='trip-show-page-invite-member-wrapper'>
-        <button onClick={inviteMember}>Invite a member</button>
       </div>
-
-    </div>
+    </>
   )
 
 };

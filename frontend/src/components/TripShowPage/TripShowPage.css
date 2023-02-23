@@ -1,5 +1,34 @@
 /* div styling below */
 
-.TripShowPage-wrapper {
-    padding-top: 39px;
+#post-card-container {
+    width: 700px;
+    background-color: rgb(254, 249, 238);
+}
+
+.trip-show-page-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    
+}
+
+
+
+/* quack-it zig-zag */
+.pattern {
+    min-height: 100vh;
+    width: 100%;
+}
+
+#zig-zag11 {
+    position: absolute;
+    z-index: -1;
+    background:
+        linear-gradient(135deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+        linear-gradient(225deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+        linear-gradient(315deg, rgb(247, 246, 245) 25%, transparent 25%),
+        linear-gradient(45deg, rgb(247, 246, 245) 25%, transparent 25%);
+    background-size: 20px 20px;
+    background-color: #fff;
+
 }
