@@ -12,6 +12,7 @@ import TripCreateForm from './components/TripCreateForm/TripCreateForm';
 import TripUpdateForm from './components/TripUpdateForm/TripUpdateForm';
 import TripShowPage from './components/TripShowPage/TripShowPage';
 import EventIndex from './components/EventIndex/EventIndex';
+import EventCreateForm from './components/EventsCreateForm/EventsCreateForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
     <>
     <NavBar />
     <Switch>
+      <Route path='/createEvent'>
+        <EventCreateForm />
+      </Route>
       <Route path="/events">
         <EventIndex />
       </Route>
