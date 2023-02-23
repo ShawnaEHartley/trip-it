@@ -8,7 +8,7 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
-import { logout } from '../../store/session';
+import { logout, login } from '../../store/session';
 
 import './NavBar.css'; 
 
@@ -44,9 +44,20 @@ const NavBar = () => {
         <>
             <MenuItem onClick={showSignUp}>Sign up</MenuItem>
             <MenuItem onClick={showLogin}>Login</MenuItem>
+            {/* <MenuItem onClick={LoginDemoUser}>DemoUser</MenuItem> */}
         </>
         )
     };
+
+    // below not working???? 
+    const LoginDemoUser = (e) => {
+        e.preventDefault(); 
+        dispatch(closeModal())
+        dispatch(login({
+            email: 'demo@email.com',
+            password: 'password'
+        }))
+    }
 
     const loggedInNav = () => {
         return (
