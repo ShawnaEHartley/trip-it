@@ -59,7 +59,7 @@ export const getEvent = (state) => {
 
 export const fetchAllEvents = () => async (dispatch) => {
     try {
-        const res = await jwtFetch('/api/events/'); 
+        const res = await jwtFetch('/api/events/');
         const events = await res.json();
         dispatch(receiveEvents(events))
     } catch(err) {
@@ -188,7 +188,7 @@ const EventsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_EVENT: 
             return {...state, ...action.event }
-        case RECEIVE_EVENTS: 
+        case RECEIVE_EVENTS:
             return {...state, ...action.events }
         case REMOVE_EVENT: 
             delete(newState[action.eventId])
