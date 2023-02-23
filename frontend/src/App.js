@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'; 
 import { Switch } from 'react-router-dom';
 // import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
-import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import SplashPage from './components/SplashPage/SplashPage';
 import { Route } from 'react-router-dom';
 import LoginForm from './components/UserAuth/Login';
 import { getCurrentUser } from './store/session';
+import NavBar from './components/NavBar/NavBar';
 import TripCreateForm from './components/TripCreateForm/TripCreateForm';
+import TripUpdateForm from './components/TripUpdateForm/TripUpdateForm';
 import TripShowPage from './components/TripShowPage/TripShowPage';
 import EventIndex from './components/EventIndex/EventIndex';
 
@@ -35,8 +36,8 @@ function App() {
         <Route path="/trips/:tripId">
           <TripShowPage />
         </Route>
-        <Route path="/createTrip">
-          <TripCreateForm />
+        <Route path="/updateTrip/:tripId">
+          <TripUpdateForm />
         </Route>
         <Route path="/login">
           <LoginForm />
@@ -44,6 +45,8 @@ function App() {
         <Route path="/">
           <SplashPage />
         </Route>
+
+
     </Switch>
     {/* <Footer /> */}
     </>

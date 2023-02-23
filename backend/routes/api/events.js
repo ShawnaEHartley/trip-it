@@ -8,12 +8,15 @@ const Trip = mongoose.model('Trip');
 // get ALL events
 router.get('/', async function (req, res, next) {
     try {
-        const events = await Event.find()
-            .populate('peopleGoing');
+        const events = await Event.find();
+            // .populate('peopleGoing', '_id name');
         return res.json(events);
     }
     catch(err) {
-        return "There are no events dummy";
+        const error = new Error('No events found');
+        error.statusCode = 418;
+        error.errors = { message: 'No events found'};
+        return next(error);
     }
 });
 
@@ -21,7 +24,7 @@ router.get('/', async function (req, res, next) {
 router.get('/:eventId', async function (req, res, next) {
     try {
         const event = await Event.findById(req.params.eventId)
-            .populate('peopleGoing');
+            .populate('peopleGoing', '_id name');
         return res.json(event);
     }
     catch(err) {
@@ -46,7 +49,7 @@ router.get('/trips/:tripId', async function (req, res, next) {
     }
     try {
         const trips = await Event.find({ tripId: trip._id })
-            .populate('peopleGoing')
+            .populate('peopleGoing', '_id name')
             .sort({ startTime: 1 });
         return res.json(trips);
     }
@@ -99,7 +102,7 @@ router.patch('/addMember/:eventId', async function (req, res, next) {
     try {
         await Event.updateOne({ _id: ObjectId(req.params.eventId)},{ $push: { peopleGoing: req.body._id }})
         const event = await Event.findById(req.params.eventId)
-            .populate('peopleGoing');
+            .populate('peopleGoing', '_id name');
         return res.json(event);
     }
     catch(err) {
@@ -116,7 +119,7 @@ router.patch('/remove/:eventId/:userId', async function (req, res, next) {
         );
         
         const event = await Event.findById(req.params.eventId)
-            .populate('peopleGoing');
+            .populate('peopleGoing', '_id name');
         return res.json(event);
     }
     catch(err) {

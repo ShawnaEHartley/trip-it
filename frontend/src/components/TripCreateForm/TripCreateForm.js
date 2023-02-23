@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
 import { closeModal } from '../../store/modal';
 import { createTrip } from '../../store/trips';
+
 import './TripCreateForm.css';
 
 
@@ -22,9 +24,7 @@ const TripCreateForm = () => {
   const [zipCode, setZipCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const submitTrip = (e) => {
-    e.preventDefault();
-    // closeModal();
+  const submitTrip = () => {
     dispatch(createTrip({
       title: title,
       description: description,
@@ -40,7 +40,7 @@ const TripCreateForm = () => {
       organizer: sessionUser._id,
       members: [sessionUser._id]
     }))
-    history.push('')
+    closeModal();
   };
 
 
@@ -71,29 +71,29 @@ const TripCreateForm = () => {
         <div className='trip-create-location-input-wrapper'>
           <h2 className='trip-create-subtitle trip-location' > Trip location </h2>
           <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-street-address'> Street address </span>
-            <input className='trip-create-content-input trip-street-address' type="text" value={streetAddress} onChange={e => {setStreetAddress(e.target.value)}} placeholder='street address'/>
+            <span className='trip-create-content-loc-title trip-street-address'> Street address </span>
+            <input className='trip-create-content-loc-input trip-street-address' type="text" value={streetAddress} onChange={e => {setStreetAddress(e.target.value)}} placeholder='street address'/>
           </label>
           <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-city'> City </span>
-            <input className='trip-create-content-input trip-city' type="text" value={city} onChange={e => {setCity(e.target.value)}} placeholder='city'/>
+            <span className='trip-create-content-loc-title trip-city'> City </span>
+            <input className='trip-create-content-loc-input trip-city' type="text" value={city} onChange={e => {setCity(e.target.value)}} placeholder='city'/>
           </label>
           <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-state'> State </span>
-            <input className='trip-create-content-input trip-state' type="text" value={state} onChange={e => {setState(e.target.value)}} placeholder='state'/>
+            <span className='trip-create-content-loc-title trip-state'> State </span>
+            <input className='trip-create-content-loc-input trip-state' type="text" value={state} onChange={e => {setState(e.target.value)}} placeholder='state'/>
           </label>
           <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-zip-code'> Zip code </span>
-            <input className='trip-create-content-input trip-zip-code' type="text" value={zipCode} onChange={e => {setZipCode(e.target.value)}} placeholder='zip code'/>
+            <span className='trip-create-content-loc-title trip-zip-code'> Zip code </span>
+            <input className='trip-create-content-loc-input trip-zip-code' type="text" value={zipCode} onChange={e => {setZipCode(e.target.value)}} placeholder='zip code'/>
           </label>
           <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-country'> Country </span>
-            <input className='trip-create-content-input trip-country' type="text" value={country} onChange={e => {setCountry(e.target.value)}} placeholder='country'/>
+            <span className='trip-create-content-loc-title trip-country'> Country </span>
+            <input className='trip-create-content-loc-input trip-country' type="text" value={country} onChange={e => {setCountry(e.target.value)}} placeholder='country'/>
           </label>
         </div>
       </div>
       <div className='trip-create-submit-button-wrapper'>
-        <button>Submit</button>
+        <button className='trip-create-button'>submit.</button>
       </div>
     </form>
   )
