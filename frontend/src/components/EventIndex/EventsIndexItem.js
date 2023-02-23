@@ -55,12 +55,12 @@ const EventIndexItem = ({event}) => {
     let description = event.description;
     let split = false;
 
-    while (description.length > 30) {
+    while (description.length > 36) {
         let tempDesc = description.split(" ");
         description = tempDesc.slice(0, tempDesc.length - 1).join(" ") + '...';
     }
 
-    description.length  > 30 ? description = description.slice(0, 28) + '...' : description = description;
+    description.length  > 36 ? description = description.slice(0, 36) + '...' : description = description;
 
     const goToEventShowPage = (e) => {
         e.preventDefault()
