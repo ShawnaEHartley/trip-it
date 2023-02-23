@@ -58,9 +58,9 @@ const TripShowPage = () => {
 
   const tripOrganizerButtons = () => {
     return (
-      <div>
-        <button onClick={renderUpdateForm}>Update</button>
-        <button onClick={deleteThisTrip}>Delete</button>
+      <div id='form-button-container'>
+        <button onClick={renderUpdateForm} className='trip-show-button form-button patch-buttons'>Update trip</button>
+        <button onClick={deleteThisTrip} className='trip-show-button form-button patch-buttons'>Delete trip</button>
       </div>
     )
   };
@@ -95,22 +95,25 @@ const TripShowPage = () => {
           {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container'>
-            <button id='create-event-button' onClick={makeAnEvent}>Create an Event</button>
+            {user._id === trip.organizer._id ? tripOrganizerButtons() : null }
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
-                <p>({trip.description})</p>
+
                 {/* <div>{trip.organizer.name}</div> */}
-                { user === trip.organizer ? {tripOrganizerButtons} : ""}
               </div>
             </div>
-            <div id='top-body-border' />
+            <div id='top-body-border'>
+              <span>Events</span>
+              <span>Details</span>
+            </div>
             <div id='post-card-body-container'>
-              <div id='post-card-left-container'>
+              <div className='post-card-space'>
 
               </div>
               <div id='post-card-center-border' />
-              <div id='post-card-right-container'>
+              <div className='post-card-space'>
+                <p>({trip.description})</p>
                 {trip.members.map((member) => {
                   return <div>{member.name}</div>
                 })}
@@ -121,11 +124,11 @@ const TripShowPage = () => {
                 <div>{trip.location.coutry ? trip.location.country : ""}</div>
               </div>
             </div>
-            <div className='trip-show-page-invite-member-wrapper'>
-              <button onClick={inviteMember}>Invite a member</button>
+            <div id='post-card-bottom'>
+              <button className='trip-show-button' onClick={makeAnEvent}>Create event</button>
+              <button className='trip-show-button' onClick={inviteMember}>Invite a member</button>
             </div>
           </div>
-
       </div>
     </>
   )

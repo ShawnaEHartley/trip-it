@@ -1,15 +1,31 @@
 /* div styling below */
-#create-event-button {
-    position: absolute;
-    width: 120px;
-    height: 35px;
+.trip-show-button {
+    padding: 2px 5px;
+    margin-bottom: 4px;
     background-color: white;
     border: 1px solid rgb(20, 18, 14);
 
     text-align: start;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
-    margin-left: 570px;
+}
+
+#form-button-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width:50px;
+    height:50px;
+    padding-right: 650px;
+}
+
+
+#post-card-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    width: 600px;
+    height: 50px;
 }
 
 #post-card-center-border {
@@ -39,15 +55,9 @@
     border: 1px solid rgb(180, 157, 120);
 }
 
-#post-card-left-container {
+.post-card-space {
     width: 340px;
-    height: 300px;
-    padding: 4px;
-}
-
-#post-card-right-container {
-    width: 340px;
-    height: 300px;
+    height: 260px;
     padding: 4px;
 }
 
@@ -61,11 +71,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
 }
 
 .trip-show-page-header-wrapper {
     height: 40px;
     margin: 20px 0px;
+    z-index: 1;
 }
 
 .trip-show-page-header-wrapper > div > h2 {
@@ -79,10 +91,18 @@
 }
 
 #top-body-border {
+    display: flex;
+    justify-content: space-evenly;
     width: 560px;
     margin-bottom: 4px;
-    border-top: 1px solid rgb(20, 18, 14);
+    border-bottom: 1px solid rgb(20, 18, 14);
 }
+
+.patch-buttons {
+    width: 70px;
+    padding-right: 0px;
+}
+
 
 /* quack-it zig-zag */
 .pattern {
