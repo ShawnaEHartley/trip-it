@@ -78,13 +78,13 @@ const TripIndex = () => {
                             <div className='stamp-divider' />
                             <img className='stamp-image' src={awsUrls[1]} alt='stamp' />
                             <div className='stamp-divider' />
-                            <img className='stamp-image' src={awsUrls[0]} alt='stamp' />
-
-                        </div>
-                        <div className='stamp-container'>
+                            <img className='stamp-image' src={awsUrls[0]} alt='stamp' /> */}
 
                         </div>
                         {/* <div className='stamp-container'>
+
+                        </div>
+                        <div className='stamp-container'>
 
                         </div> */}
                     </div>
