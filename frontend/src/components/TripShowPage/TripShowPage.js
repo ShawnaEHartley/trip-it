@@ -39,7 +39,7 @@ const TripShowPage = () => {
         }
     };
 
-    if (!trip) {
+    if (!trip.title) {
         return (
             <div></div>
         )
