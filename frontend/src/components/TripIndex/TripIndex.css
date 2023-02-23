@@ -22,7 +22,7 @@
    display: flex;
    flex-direction: row;
    width: 97%;
-   height: 70px;
+   height: 108px;
    border: 1px solid black;
    border-bottom-color: transparent;
    padding: 2px 5px;
@@ -32,7 +32,29 @@
    height: 50px;
    width: 0px;
    border-left: 1px solid black;
-   margin: 9px 10px;
+   margin: 29px 8px;
+}
+
+.stamp-image {
+   object-fit: contain;
+   width: auto;
+   max-height: 108px;
+   cursor: pointer;
+}
+
+.trip-info {
+   display: none;
+}
+
+.stamp-image:hover + .trip-info {
+   display: block;
+   position: absolute;
+   margin-left: 2px;
+   border: 1px solid lightgrey;
+   background-color: rgb(247, 246, 245);
+
+   font-family: BlauthLight;
+   font-size: 14px;
 }
 
 #stamp-page-container {
@@ -41,9 +63,8 @@
    align-items: center;
    width: 722px;
    height: 80vh;
-   border: 4px solid black;
+   border: 3px solid black;
    background-color: white;
-   border-bottom: 0;
 }
 
 #stamp-page-header {

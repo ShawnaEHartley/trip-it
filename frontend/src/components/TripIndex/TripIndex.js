@@ -4,7 +4,6 @@ import TripIndexItem from './TripIndexItem';
 import { useEffect } from 'react';
 import * as tripActions from '../../store/trips';
 import './TripIndex.css';
-
 import './TripIndex.css'
 
 
@@ -30,8 +29,7 @@ const TripIndex = () => {
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_24.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_25.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_26.png',
-                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png'
-                ]
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png']
 
     // useEffect(() => {
     //     dispatch(tripActions.fetchUserTrips(user._id))
@@ -39,7 +37,8 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(tripActions.fetchAllTrips())
-    }, [dispatch, user._id])
+    }, [dispatch, user._id]);
+    
 
     if (!trips[0]) {
         return (
@@ -55,7 +54,7 @@ const TripIndex = () => {
                     <div id='stamp-page-container'>
                         <div id='stamp-page-header'>
                             <h2>Trip Collection</h2>
-                            <p>Shawna Hartley</p>
+                            <p>{user.name}</p>
                         </div>
                         <div className='stamp-container'>
                             <div className='stamp'>
@@ -66,22 +65,11 @@ const TripIndex = () => {
                                 </div>
                             </div>
                             <div className='stamp-divider' />
-                            <div className='stamp'>
-                                <div className='link-replacement'>
-                                    Trip name <br />
-                                    Date and time <br />
-                                    Friends
-                                </div>
-                            </div>
+                            <TripIndexItem trip={trips[0]} awsUrl={awsUrls[0]} />
                             <div className='stamp-divider' />
-                            <div className='stamp'>
-                                <div className='link-replacement'>
-                                    Trip name <br />
-                                    Date and time <br />
-                                    Friends
-                                </div>
-                            </div>
+                            <img className='stamp-image' src={awsUrls[1]} />
                             <div className='stamp-divider' />
+                            <img className='stamp-image' src={awsUrls[0]}/>
                         </div>
                         <div className='stamp-container'>
 
