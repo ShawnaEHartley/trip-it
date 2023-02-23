@@ -24,7 +24,6 @@ const TripUpdateForm = ({trip}) => {
   }, [dispatch])
 
   const submitUpdateTrip = (e) => {
-    
     const tripObject = {
       title: title,
       description: description,
@@ -39,79 +38,79 @@ const TripUpdateForm = ({trip}) => {
       },
       organizer: trip.organizer
     };
-    closeModal();
+    dispatch(closeModal());
     dispatch(updateTrip(tripObject, trip._id));
   };
 
 
     return (
-      <form className='trip-create-form-wrapper' id='' action='' onSubmit={submitUpdateTrip}>
-        <div className='trip-create-header-wrapper' id=''>
-          <h1 className='trip-create-header' id=''> Update trip </h1>
-          <h2 className='trip-create-subheader' id=''> {trip.title} </h2>
+      <form className='trip-update-form-wrapper' id='' action='' onSubmit={submitUpdateTrip}>
+        <div className='trip-update-header-wrapper' id=''>
+          <h1 className='trip-update-header' id=''> Update trip </h1>
+          <h2 className='trip-update-subheader' id=''> {trip.title} </h2>
         </div>
   
-        <div className='trip-create-content-wrapper'>
-          <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-title' > Trip title </span>
-            <input className='trip-create-content-input trip-title' type="text" value={title} onChange={e => {
+        <div className='trip-update-content-wrapper'>
+          <label className='trip-update-content-item'>
+            <span className='trip-update-content-title trip-title' >Title </span>
+            <input className='trip-update-content-input trip-title' type="text" value={title} onChange={e => {
               e.preventDefault();
               setTitle(e.target.value)}} />
           </label>
-          <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-description' > Trip description </span>
-            <input className='trip-create-content-input trip-description' type="text" value={description} onChange={e => {
+          <label className='trip-update-content-item'>
+            <span className='trip-update-content-title trip-description' > Description </span>
+            <textarea className='trip-update-content-input trip-description' type="text" value={description} onChange={e => {
               e.preventDefault();
               setDescription(e.target.value)}} />
           </label>
-          <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-start-date' > Trip start date </span>
-            <input className='trip-create-content-input trip-start-date' type="date" value={startDate} onChange={e => {
+          <label className='trip-update-content-item'>
+            <span className='trip-update-content-title trip-start-date' > Start date </span>
+            <input className='trip-update-content-input trip-start-date' type="date" value={startDate} onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)}} />
           </label>
-          <label className='trip-create-content-item'>
-            <span className='trip-create-content-title trip-end-date' > Trip end date </span>
-            <input className='trip-create-content-input trip-end-date' type="date" value={endDate} onChange={e => {
+          <label className='trip-update-content-item'>
+            <span className='trip-update-content-title trip-end-date' > End date </span>
+            <input className='trip-update-content-input trip-end-date' type="date" value={endDate} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
           </label>
-          <div className='trip-create-location-input-wrapper'>
-            <h2 className='trip-create-subtitle trip-location' > Trip location </h2>
-            <label className='trip-create-content-item'>
-              <span className='trip-create-content-title trip-street-address'> Street address </span>
-              <input className='trip-create-content-input trip-street-address' type="text" value={streetAddress} onChange={e => {
+          <div className='trip-update-location-input-wrapper'>
+            <h2 className='trip-update-subtitle trip-location' > Location </h2>
+            <label className='trip-update-content-item'>
+              <span className='trip-update-content-loc-title trip-street-address'> Street address </span>
+              <input className='trip-update-content-input trip-street-address' type="text" value={streetAddress} onChange={e => {
                 e.preventDefault();
                 setStreetAddress(e.target.value)}} />
             </label>
-            <label className='trip-create-content-item'>
-              <span className='trip-create-content-title trip-city'> City </span>
-              <input className='trip-create-content-input trip-city' type="text" value={city} onChange={e => {
+            <label className='trip-update-content-item'>
+              <span className='trip-update-content-loc-title trip-city'> City </span>
+              <input className='trip-update-content-input trip-city' type="text" value={city} onChange={e => {
                 e.preventDefault();
                 setCity(e.target.value)}} />
             </label>
-            <label className='trip-create-content-item'>
-              <span className='trip-create-content-title trip-state'> State </span>
-              <input className='trip-create-content-input trip-state' type="text" value={state} onChange={e => {
+            <label className='trip-update-content-item'>
+              <span className='trip-update-content-loc-title trip-state'> State </span>
+              <input className='trip-update-content-input trip-state' type="text" value={state} onChange={e => {
                 e.preventDefault();
                 setState(e.target.value)}} />
             </label>
-            <label className='trip-create-content-item'>
-              <span className='trip-create-content-title trip-zip-code'> Zip code </span>
-              <input className='trip-create-content-input trip-zip-code' type="text" value={zipCode} onChange={e => {
+            <label className='trip-update-content-item'>
+              <span className='trip-update-content-loc-title trip-zip-code'> Zip code </span>
+              <input className='trip-update-content-input trip-zip-code' type="text" value={zipCode} onChange={e => {
                 e.preventDefault();
                 setZipCode(e.target.value)}} />
             </label>
-            <label className='trip-create-content-item'>
-              <span className='trip-create-content-title trip-country'> Country </span>
-              <input className='trip-create-content-input trip-country' type="text" value={country} onChange={e => {
+            <label className='trip-update-content-item'>
+              <span className='trip-update-content-loc-title trip-country'> Country </span>
+              <input className='trip-update-content-input trip-country' type="text" value={country} onChange={e => {
                 e.preventDefault();
                 setCountry(e.target.value)}} />
             </label>
           </div>
         </div>
-        <div className='trip-create-submit-button-wrapper'>
-          <button>Submit</button>
+        <div className='trip-update-submit-button-wrapper'>
+          <button className='trip-update-button'>Update</button>
         </div>
       </form>
     )
