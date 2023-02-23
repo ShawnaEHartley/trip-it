@@ -41,9 +41,17 @@ export const getEvents = (state) => {
     }
 };
 
-export const getEvent = (state) => (eventId) => {
+// export const getEvent = (state) => (eventId) => {
+//     if (state.events) {
+//         return state.events[eventId]
+//     } else {
+//         return null
+//     }
+// };
+
+export const getEvent = (state) => {
     if (state.events) {
-        return state.events[eventId]
+        return state.events
     } else {
         return null
     }
@@ -121,7 +129,7 @@ export const updateEvent = (event, eventId) => async (dispatch) => {
 
 export const addUserToEvent = (eventId, user) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/events/${eventId}/add`, {
+        const res = await fetch(`/api/events/addMember${eventId}`, {
             method: "PATCH",
             body: JSON.stringify(user)
         })
@@ -138,7 +146,7 @@ export const addUserToEvent = (eventId, user) => async (dispatch) => {
 
 export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/events/${eventId}/remove/${userId}`, {
+        const res = await fetch(`/api/events/remove/${eventId}/${userId}`, {
             method: "PATCH"
         })
         const event = await res.json();

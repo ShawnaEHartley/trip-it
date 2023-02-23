@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { closeModal } from '../../store/modal';
 import { createTrip } from '../../store/trips';
 import './TripCreateForm.css';
@@ -9,6 +10,7 @@ const TripCreateForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -36,8 +38,9 @@ const TripCreateForm = () => {
         country: country
       },
       organizer: sessionUser._id,
-      members: [{id: sessionUser._id, name: sessionUser.name}]
+      members: [sessionUser._id]
     }))
+    history.push('')
   };
 
 
@@ -45,7 +48,7 @@ const TripCreateForm = () => {
     <form className='trip-create-form-wrapper' id='' action='' onSubmit={submitTrip}>
       <div className='trip-create-header-wrapper' id=''>
         <h1 className='trip-create-header' id=''> Create a new trip </h1>
-        <h2 clasName='trip-create-subheader' id=''> for you and your friends </h2>
+        <h2 className='trip-create-subheader' id=''> for you and your friends </h2>
       </div>
 
       <div className='trip-create-content-wrapper'>
