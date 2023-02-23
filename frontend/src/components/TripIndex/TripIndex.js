@@ -9,7 +9,7 @@ import './TripIndex.css';
 const TripIndex = () => {
     const dispatch = useDispatch();
     const trips = useSelector(getTrips);
-    const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user);
 
     let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
@@ -33,7 +33,7 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(fetchUserTrips(user._id))
-    }, [dispatch, user._id]);
+    }, [dispatch, user]);
 
     if (!trips[0]) {
         return (
@@ -43,16 +43,16 @@ const TripIndex = () => {
 
     console.log(trips)
     
-    const EndTrip = () => {
-        return (
-            <div id='stamp-image-container'>
-                <div className='stamp-image'>
-                    <img className='stamp-image' src={randUrls[trips.length - 1]} />
-                </div>
-                <div className='trip-info'>{trips.slice(trips.length - 1)[0].title}</div>
-            </div>
-        )
-    }
+    // const EndTrip = () => {
+    //     return (
+    //         <div id='stamp-image-container'>
+    //             <div className='stamp-image'>
+    //                 <img className='stamp-image' src={randUrls[trips.length - 1]} />
+    //             </div>
+    //             <div className='trip-info'>{trips.slice(trips.length - 1)[0].title}</div>
+    //         </div>
+    //     )
+    // }
 
     const randUrls = [];
     while (awsUrls.length) {
@@ -72,14 +72,13 @@ const TripIndex = () => {
                             <p>{user.name}</p>
                         </div>
                         <div className='stamp-container'>
-                            {trips.slice(0, trips.length - 1).map((trip, i) => 
+                            {trips.map((trip, i) => 
                                 <TripIndexItem 
                                     key={i} 
                                     trip={trip} 
                                     awsUrl={randUrls[i]} 
                                 />
                             )}
-                            <EndTrip />
                         </div>
                         <div className='stamp-container'>
                         </div>

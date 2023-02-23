@@ -7,11 +7,11 @@ import trips from './trips';
 import events from './events';
 
 const appReducer = combineReducers({
+    session,
     errors,
     modal, 
     trips,
-    events,
-    session
+    events
 });
 
 const rootReducer = (state, action) => {
