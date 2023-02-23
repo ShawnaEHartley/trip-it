@@ -10,11 +10,13 @@ import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
 import { logout, login } from '../../store/session';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
+import { useHistory } from 'react-router-dom';
 
 import './NavBar.css'; 
 
 
 const NavBar = () => {
+    const history = useHistory();
 
     const dispatch = useDispatch();
 
@@ -49,8 +51,8 @@ const NavBar = () => {
     const loggedOutNav = () => {
         return ( 
         <>
-            <MenuItem onClick={showSignUp}>Sign up</MenuItem>
             <MenuItem onClick={showLogin}>Login</MenuItem>
+            <MenuItem onClick={showSignUp}>Sign up</MenuItem>
             {/* <MenuItem onClick={LoginDemoUser}>DemoUser</MenuItem> */}
         </>
         )
@@ -70,14 +72,15 @@ const NavBar = () => {
         return (
         <>
             <MenuItem>About us</MenuItem>
-            <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
             <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
+            <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )
     };
 
     const logoutCurrentUser = (e) => {
         dispatch(logout())
+        history.push('/')
     };
 
     return (
