@@ -43,7 +43,7 @@ const TripShowPage = () => {
             )
         } else if (modalState.component === 'createEvent') {
             return (
-              <EventsCreateForm />
+              <EventsCreateForm tripId={tripId} />
             )
         }
     };
