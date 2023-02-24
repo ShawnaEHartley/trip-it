@@ -5,6 +5,7 @@ const RECEIVE_TRIPS = "trips/RECEIVE_TRIPS";
 const REMOVE_TRIP = "trips/REMOVE_TRIP";
 const RECEIVE_TRIP_ERRORS = "trips/RECEIVE_TRIP_ERRORS";
 const CLEAR_TRIP_ERRORS = "trips/CLEAR_TRIP_ERRORS";
+const CLEAR_TRIPS = "trips/CLEAR_TRIPS";
 
 const receiveTrip = (trip) => ({
     type: RECEIVE_TRIP, 
@@ -21,6 +22,11 @@ const removeTrip = (tripId) => ({
     tripId
 });
 
+const clearTrips = (emptyObject = {}) => ({
+    type: CLEAR_TRIPS,
+    emptyObject
+})
+
 const receiveTripErrors = (errors) => ({
     type: RECEIVE_TRIP_ERRORS,
     errors 
@@ -30,7 +36,6 @@ export const clearTripErrors = (errors) => ({
     type: CLEAR_TRIP_ERRORS,
     errors 
 });
-
 
 export const getTrips = (state) => {
     if (state.trips) {
@@ -48,18 +53,18 @@ export const getTrip = (state) => {
     }
 };
 
-export const fetchAllTrips = () => async dispatch => {
-    try {
-        const res = await jwtFetch('/api/trips/');
-        const trips = await res.json();
-        dispatch(receiveTrips(trips));
-    } catch(err) {
-        const resBody = await err.json(); 
-        if (resBody.statusCode === 400) {
-            dispatch(receiveTripErrors(resBody.errors))
-        }
-    }
-};
+// export const fetchAllTrips = () => async dispatch => {
+//     try {
+//         const res = await jwtFetch('/api/trips/');
+//         const trips = await res.json();
+//         dispatch(receiveTrips(trips));
+//     } catch(err) {
+//         const resBody = await err.json(); 
+//         if (resBody.statusCode === 400) {
+//             dispatch(receiveTripErrors(resBody.errors))
+//         }
+//     }
+// };
 
 // this is not working, rerouting, leavig here for documentation
 // export const fetchUserTripsByEmail = (email) => async (dispatch) => {
@@ -188,6 +193,15 @@ export const deleteTrip = (tripId) => async (dispatch) => {
     }
 };
 
+export const clearTripState = () => async (dispatch) => {
+    try {
+        const emptyObject = {};
+        dispatch(clearTrips(emptyObject));
+    } catch(err) {
+        console.log(':(');
+    }
+}
+
 
 const nullErrors = null; 
 
@@ -205,15 +219,17 @@ export const tripErrorsReducer = (state = {}, action) => {
 
 const TripsReducer = (state = {}, action) => {
     let newState = { ...state }
-
+    
     switch(action.type) {
         case RECEIVE_TRIP:
-            return {...state, ...action.trip }
-        case RECEIVE_TRIPS: 
-            return {...state, ...action.trips } 
+            return {...newState, ...action.trip }
+        case RECEIVE_TRIPS:
+            return { ...newState, ...action.trips };
         case REMOVE_TRIP:
             delete(newState[action.tripId])
-            return newState 
+            return newState;
+        case CLEAR_TRIPS:
+            return { ...newState, trips: action.emptyObject };
         default: 
             return newState; 
     }

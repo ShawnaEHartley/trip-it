@@ -35,7 +35,10 @@ const EventShowPage = () => {
   };
 
   const openUpdateForm = (e) => {
-    history.push(`/events/update/${event._id}`);
+    if (typeof window !== 'undefined') {
+      window.location.href = `/events/update/${event._id}`;
+    }
+    // history.push(`/events/update/${event._id}`);
   }
 
 
