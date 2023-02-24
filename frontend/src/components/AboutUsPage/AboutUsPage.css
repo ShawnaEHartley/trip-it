@@ -2,4 +2,69 @@
   height: 200px;
   width: 200px;
   object-fit: cover;
+  border-radius: 100%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 0.75rem rgb(109, 109, 109));
 }
+
+#about-us-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-content: space-evenly;
+  height: 600px;
+}
+
+
+#chad-div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.dev-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+#emmett-div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.GH-logo {
+  width: 70px;
+  height: 40px;
+}
+
+#lynsie-div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.personal-links {
+  text-decoration: none;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.pos-title {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#shawna-div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+
