@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TripIndexItem from './TripIndexItem';
 import { fetchUserTrips, getTrips } from '../../store/trips';
-
 import './TripIndex.css';
 
 
@@ -73,9 +72,9 @@ const TripIndex = () => {
                 <div id='page'>
                     <div id='stamp-page-container'>
                         <div id='stamp-page-header'>
-                            <h2>Trip Collection</h2>
-                            <p>{user.name}</p>
+                            <h2 id="stamp-page-title">{user.name}'s Trips</h2>
                         </div>
+                        <div id="trip-index-section-divider"></div>
                         <div className='stamp-container'>
                             {trips.map((trip, i) => 
                                 <TripIndexItem 

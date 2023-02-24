@@ -33,12 +33,12 @@ const TripIndexItem = ({trip, awsUrl}) => {
         <>
             <div className='stamp-image-container' onClick={goToTripShow}>
                 <div className='trip-info'>
-                    <p>{trip.title}</p>
+                    <p id="trip-info-title">{trip.title}</p>
                     <p>{date()}</p>
                     <p>Hosted by {trip.organizer.name}</p>
                 </div>
                 <div className='stamp-divider' />
-                <div className='stamp-image'>
+                <div className='stamp-image-wrapper'>
                     <img className='stamp-image' src={awsUrl} alt='stamp' />
                 </div>
             </div>
