@@ -105,9 +105,9 @@ router.patch('/:tripId', async function(req, res, next) {
 });
 
 // add trip member by email
-router.patch('/addUser/:tripId', async function (req, res, next) {
+router.patch('/addUser/:tripId/:userEmail', async function (req, res, next) {
     try {
-        const user = await User.findOne({ email: req.body });
+        const user = await User.findOne({ email: req.params.userEmail });
         await Trip.updateOne({ _id: req.params.tripId}, { $push: { members: user._id }});
         const trip = await Trip.findById(req.params.tripId)
             .populate('organizer', '_id name')

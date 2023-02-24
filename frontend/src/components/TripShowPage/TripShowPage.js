@@ -30,7 +30,7 @@ const TripShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchTrip(tripId))
-    }, []);
+    }, [dispatch]);
 
     const renderUpdateForm = e => {
         dispatch({ type: "modalOn", component: 'editTrip' })

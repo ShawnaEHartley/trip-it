@@ -9,16 +9,18 @@ const EventCreateForm = ({tripId}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
+    const today = new Date().toISOString();
+
     const [title, setTitle] = useState(""); 
     const [description, setDescription] = useState("")
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    const [startDate, setStartDate] = useState(today);
+    const [endDate, setEndDate] = useState(today);
     const [streetAddress, setStreetAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [zipCode, setZipCode] = useState("");
     const [country, setCountry] = useState("");
-    const [cost, setCost] = useState("");
+    const [cost, setCost] = useState(0);
     const [splitCostStructure, setSplitCostStructure] = useState(false);
 
 
@@ -39,7 +41,7 @@ const EventCreateForm = ({tripId}) => {
             cost: cost, 
             splitCostStructure: splitCostStructure,
             tripId: tripId
-        }));
+        }, tripId));
         dispatch(closeModal());
       };
 
