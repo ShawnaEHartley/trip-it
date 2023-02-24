@@ -8,8 +8,10 @@ const TripIndexItem = ({trip, awsUrl}) => {
     const history = useHistory();
 
     const goToTripShow = (e) => {
-        console.log("hello world")
-        history.push(`/trips/${trip._id}`);
+        if (typeof window !== 'undefined') {
+            window.location.href = `/trips/${trip._id}`;
+        }
+        // history.push(`/trips/${trip._id}`);
     }
 
     const date = () => {

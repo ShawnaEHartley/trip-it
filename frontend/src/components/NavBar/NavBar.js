@@ -80,7 +80,10 @@ const NavBar = () => {
 
     const logoutCurrentUser = (e) => {
         dispatch(logout())
-        history.push('/')
+        if (typeof window !== 'undefined') {
+            window.location.href = '/';
+        }
+        // history.push('/')
     };
 
     return (

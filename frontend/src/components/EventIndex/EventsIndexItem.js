@@ -29,7 +29,10 @@ const EventIndexItem = ({event}) => {
 
     const goToEventShowPage = (e) => {
         e.preventDefault()
-        history.push(`/events/${event._id}`)
+        if (typeof window !== 'undefined') {
+            window.location.href = `/events/${event._id}`;
+        }
+        // history.push(`/events/${event._id}`)
     }
 
     return (

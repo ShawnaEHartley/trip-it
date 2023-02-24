@@ -6,7 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
-import { deleteTrip, fetchTrip, fetchUserTrips, getTrip } from '../../store/trips'
+import { deleteTrip, fetchTrip, fetchUserTrips, getTrip, clearTripState } from '../../store/trips'
 import { closeModal } from '../../store/modal';
 
 import './TripShowPage.css'
@@ -26,7 +26,7 @@ const TripShowPage = () => {
 
     useEffect(() => {
         dispatch(fetchTrip(tripId))
-    }, [dispatch, tripId]);
+    }, []);
 
     const renderUpdateForm = e => {
         dispatch({ type: "modalOn", component: 'editTrip' })
@@ -74,9 +74,12 @@ const TripShowPage = () => {
     dispatch(deleteTrip(trip._id))
   }
 
-  const backToHomeButton = (e) => {
-    dispatch(fetchUserTrips(user._id))
-    history.push("/trips")
+  const backToHomeButton = async (e) => {
+    // dispatch(fetchUserTrips(user._id))
+    // await dispatch(clearTripState());
+    if (typeof window !== 'undefined') {
+      window.location.href = "/trips";
+    }
   }
 
   let splitStartDate = trip.startDate.split('-'); 
@@ -104,11 +107,9 @@ const TripShowPage = () => {
       <div className='trip-show-page-container'>
           {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          <button onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</button>
           <div id='post-card-container'>
             {user._id === trip.organizer._id ? tripOrganizerButtons() : null }
-            <div id="back-to-trips-index-button-div">
-              <button onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</button>
-            </div>
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
