@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
+
 import TripIndexItem from './TripIndexItem';
 import { fetchUserTrips, getTrips } from '../../store/trips';
 import './TripIndex.css';
@@ -9,6 +10,12 @@ const TripIndex = () => {
     const dispatch = useDispatch();
     const trips = useSelector(getTrips);
     const user = useSelector(state => state.session.user);
+
+    if (!user) {
+        if (typeof window !== 'undefined') {
+            window.location.href = "/";
+        }
+    }
 
     let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',

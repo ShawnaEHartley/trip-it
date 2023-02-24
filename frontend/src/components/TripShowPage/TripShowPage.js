@@ -75,9 +75,17 @@ const TripShowPage = () => {
   };
 
   const deleteThisTrip = (e) => {
-    e.preventDefault();
     dispatch(deleteTrip(trip._id))
+    if (typeof window !== 'undefined') {
+      window.location.href = "/trips";
   }
+  }
+
+  if (!user) {
+    if (typeof window !== 'undefined') {
+        window.location.href = "/";
+    }
+}
 
   const backToHomeButton = async (e) => {
     // dispatch(fetchUserTrips(user._id))
