@@ -15,11 +15,6 @@
    border: 1px solid rgb(247, 246, 245);
    background-color: white;
 }
-/* 
-.stamp {
-   margin: 2px 1px;
-   padding: 8px 8px;
-} */
 
 .stamp-container {
    display: flex;
@@ -29,8 +24,6 @@
    justify-content: center;
    justify-content: space-evenly;
    width: 97%;
-   border: 1px solid rgb(43, 43, 45);
-   border-bottom-color: transparent;
    padding: 15px 5px;
    overflow: auto;
 }
@@ -59,31 +52,53 @@
    background-color: rgb(254, 249, 238);
 }
 
+.stamp-image-container:hover {
+   cursor: pointer;
+   background-color: rgb(225, 220, 208);
+}
+
+#trip-index-section-divider {
+   width: 80%;
+   border-top: 1px solid rgb(120, 120, 120);
+}
+
 .tripIndexItem-wrapper {
    display: flex;
 }
 
 .trip-info {
-   margin-top: 10px;
-   margin-left: 10px;
-   width: 144px;
+   margin-top: 30px;
+   margin-left: 30px;
+   width: 163px;
    height: max-content;
-   border: 1px solid black;
    display: flex;
    flex-direction: column;
-   column-gap: 10px;
+   row-gap: 10px;
 }
 
-.stamp-image:hover + .trip-info {
-   display: block;
-   position: absolute;
-   margin-left: 2px;
-   padding: 2px;
-   border: 1px solid lightgrey;
-   background-color: rgb(247, 246, 245);
+#trip-info-title {
+   font-size: 18px;
+}
 
-   font-family: BlauthLight;
-   font-size: 12px;
+.trip-info > p {
+   font-size: 14px;
+}
+
+.stamp-image {
+   max-width: 100px;
+   max-height: 100px;
+}
+
+
+
+.stamp-image-wrapper {
+   margin-top: 10px;
+   margin-right: 10px;
+   width: 144px;
+   height: max-content;
+   display: flex;
+   justify-content: right;
+   row-gap: 10px;
 }
 
 #stamp-page-container {
@@ -107,8 +122,7 @@
 }
 
 #stamp-page-header > h2 {
-   font-size: 20px;
-   margin-bottom: 1px;
+   font-size: 24px;
 }
 
 #stamp-page-header>p {
