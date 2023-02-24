@@ -22,15 +22,15 @@ const EventIndex = () => {
         return (<div>...loading</div>)
     }
 
+    console.log(events);
     return (
-        <div id="event-index-wrapper">
+        <>
             {events.map((event) => {
                 return (
                     <EventIndexItem event={event} />
                 )
             })}
-        </div>
-
+        </>
     )
 };
 

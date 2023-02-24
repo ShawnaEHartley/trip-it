@@ -28,7 +28,14 @@ const TripIndex = () => {
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_24.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_25.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_26.png',
-                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png']
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_29.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_30.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_31.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_33.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_36.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_40.png',
+                    'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
 
 
     useEffect(() => {
