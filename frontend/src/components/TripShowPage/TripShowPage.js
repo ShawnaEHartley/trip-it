@@ -1,19 +1,15 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
 import { deleteTrip, fetchTrip, fetchUserTrips, getTrip, clearTripState } from '../../store/trips'
 import { closeModal } from '../../store/modal';
-
 import './TripShowPage.css'
 
 const TripShowPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const user = useSelector((state) => state.session.user);
     
     const { tripId } = useParams();

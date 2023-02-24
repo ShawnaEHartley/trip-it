@@ -87,7 +87,7 @@ router.post('/:tripId', async function (req, res, next) {
 // add people to event
 router.patch('/addMember/:eventId', async function (req, res, next) {
     try {
-        await Event.updateOne({ _id: ObjectId(req.params.eventId)},{ $push: { peopleGoing: req.body._id }})
+        await Event.updateOne({ _id: req.params.eventId}, { $push: { peopleGoing: req.body._id }})
         const event = await Event.findById(req.params.eventId)
             .populate('peopleGoing', '_id name');
         return res.json(event);

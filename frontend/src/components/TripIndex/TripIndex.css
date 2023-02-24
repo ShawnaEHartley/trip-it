@@ -23,22 +23,25 @@
 
 .stamp-container {
    display: flex;
-   justify-content: center;
    flex-direction: row;
+   row-gap: 10px;
+   flex-wrap: wrap;
    justify-content: center;
+   justify-content: space-evenly;
    width: 97%;
-   height: 108px;
    border: 1px solid rgb(43, 43, 45);
    border-bottom-color: transparent;
-   padding: 2px 5px;
-   overflow:auto
+   padding: 15px 5px;
+   overflow: auto;
 }
 
 .stamp-divider {
-   height: 50px;
+   height: calc(100% - 40px);
    width: 0px;
-   border-left: 1px solid rgb(43, 43, 45);
-   margin: 29px 8px;
+   border-left: 1px solid rgb(133, 133, 133);
+   margin-left: 5px;
+   margin-right: 5px;
+   align-self: center;
 }
 
 .stamp-image {
@@ -48,12 +51,27 @@
    cursor: pointer;
 }
 
+.stamp-image-container {
+   width: 323px;
+   height: 173px;
+   border: 1px solid black;
+   display: flex;
+   background-color: rgb(254, 249, 238);
+}
+
 .tripIndexItem-wrapper {
    display: flex;
 }
 
 .trip-info {
-   display: none;
+   margin-top: 10px;
+   margin-left: 10px;
+   width: 144px;
+   height: max-content;
+   border: 1px solid black;
+   display: flex;
+   flex-direction: column;
+   column-gap: 10px;
 }
 
 .stamp-image:hover + .trip-info {

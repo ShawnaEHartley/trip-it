@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import * as eventActions from '../../store/events';
 import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
 import { closeModal } from '../../store/modal';
-import { useHistory } from 'react-router-dom';
 
 const EventShowPage = () => {
 
@@ -13,7 +12,6 @@ const EventShowPage = () => {
   const { eventId } = useParams();
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
-  const history = useHistory();
 
   const modalState = useSelector((state) => {
     return state?.modal ? state.modal : null ;

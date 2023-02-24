@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import { closeModal } from '../../store/modal';
 import { createTrip } from '../../store/trips';
@@ -12,7 +11,6 @@ const TripCreateForm = () => {
 
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const today = new Date().toISOString();
 
