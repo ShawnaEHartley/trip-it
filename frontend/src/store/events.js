@@ -126,11 +126,10 @@ export const updateEvent = (eventObj, eventId) => async (dispatch) => {
 };
 
 
-export const addUserToEvent = (eventId, user) => async (dispatch) => {
+export const addUserToEvent = (eventId, userId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/events/addMember${eventId}`, {
-            method: "PATCH",
-            body: JSON.stringify(user)
+        const res = await fetch(`/api/events/addMember/${eventId}/${userId}`, {
+            method: "PATCH"
         })
         const event = await res.json(); 
         dispatch(receiveEvent(event))

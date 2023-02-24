@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
 
+import TripCreateForm from '../TripCreateForm/TripCreateForm';
 import TripIndexItem from './TripIndexItem';
+import { closeModal } from '../../store/modal';
 import { fetchUserTrips, getTrips } from '../../store/trips';
 import './TripIndex.css';
 
@@ -16,6 +18,22 @@ const TripIndex = () => {
             window.location.href = "/";
         }
     }
+
+    const modalState = useSelector((state) => {
+        return state.modal;
+    })
+    
+    const showCreateTripForm = () => {
+        dispatch({type: 'modalOn', component: 'showCreateTripForm'})
+    };
+
+    const modalComponent = () => {
+        if (modalState.component === 'showCreateTripForm') {
+            return <TripCreateForm />
+        }
+    };
+
+
 
     let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
@@ -46,7 +64,7 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(fetchUserTrips(user._id))
-    }, []);
+    }, [dispatch, user._id]);
 
     if (!trips[0]) {
         return (
@@ -74,12 +92,16 @@ const TripIndex = () => {
 
     return (
         <>
+            { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
+            { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
             <div id='zig-zag11' className='pattern' />
             <div id='main-page-container'>
                 <div id='page'>
                     <div id='stamp-page-container'>
                         <div id='stamp-page-header'>
-                            <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                        <button className='trip-index-create-button' onClick={showCreateTripForm}>Create Trip</button>
+                        <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                        <div className='div-placeholder'></div>
                         </div>
                         <div id="trip-index-section-divider"></div>
                         <div className='stamp-container'>

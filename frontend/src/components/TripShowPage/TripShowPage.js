@@ -29,8 +29,8 @@ const TripShowPage = () => {
     const [addMember, setaddMember] =useState("")
 
     useEffect(() => {
-        dispatch(fetchTrip(tripId))
-    }, [dispatch]);
+        dispatch(fetchTrip(tripId));
+    }, [dispatch, tripId]);
 
     const renderUpdateForm = e => {
         dispatch({ type: "modalOn", component: 'editTrip' })
@@ -205,7 +205,6 @@ const TripShowPage = () => {
                   }} />
                   <span onClick={inviteMember}>+</span>
                 </span>
-                  
                 </div>
               </div>
             </div>
