@@ -149,10 +149,12 @@ export const updateTrip = (tripObject, tripId) => async (dispatch) => {
 
 export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
     try {
+        debugger
         const res = await jwtFetch(`/api/trips/addUser/${tripId}`, {
             method: "PATCH",
             body: JSON.stringify(userEmail)
         }); 
+        debugger
         const trip = await res.json(); 
         dispatch(receiveTrip(trip)); 
     } catch(err) {

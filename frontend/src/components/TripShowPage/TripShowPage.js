@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+
+import { addUserToTrip, deleteTrip, fetchTrip, getTrip } from '../../store/trips'
+import { closeModal } from '../../store/modal';
+import EventIndex from '../EventIndex/EventIndex';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
 import TripUpdateForm from '../TripUpdateForm/TripUpdateForm';
 import InviteMemberForm from './InviteMemberForm';
-import { deleteTrip, fetchTrip, fetchUserTrips, getTrip, clearTripState } from '../../store/trips'
-import { closeModal } from '../../store/modal';
+
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+
 import './TripShowPage.css'
 
 const TripShowPage = () => {
@@ -19,6 +26,7 @@ const TripShowPage = () => {
     });
 
     const [renderUpdate, setRenderUpdate] = useState(false);
+    const [addMember, setaddMember] =useState("")
 
     useEffect(() => {
         dispatch(fetchTrip(tripId))
@@ -53,8 +61,9 @@ const TripShowPage = () => {
   const inviteMember = (e) => {
     e.preventDefault();
     //invite a member to this trip via their email via modal
-    <InviteMemberForm />
+    dispatch(addUserToTrip(tripId, addMember))
   };
+
 
   const tripOrganizerButtons = () => {
     return (
@@ -96,6 +105,35 @@ const TripShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+  let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_7.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_9.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_10.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_11.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_12.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_17.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_18.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_20.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_21.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_22.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_23.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_24.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_25.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_26.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_29.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_30.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_31.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_33.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_36.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_40.png',
+  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
+
+  let rand = Math.floor(Math.random() * awsUrls.length);
+
+
 
   return (
     <>
@@ -105,7 +143,20 @@ const TripShowPage = () => {
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <button onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</button>
           <div id='post-card-container'>
-            {user._id === trip.organizer._id ? tripOrganizerButtons() : null }
+          <div className='top-margin'>
+            <div className='navigation-buttons'>
+              <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
+                <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem>
+                <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem>
+                {/* <MenuItem onClick={inviteMember}>Invite a member</MenuItem> */}
+                <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
+              </Menu>
+            </div>
+            <div className='top-margin-right'>
+              <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>
+            </div>
+          </div>
+            {/* {user._id === trip.organizer._id ? tripOrganizerButtons() : null } */}
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
@@ -118,27 +169,37 @@ const TripShowPage = () => {
             </div>
             <div id='post-card-body-container'>
               <div className='post-card-space left-space'>
-
+                <EventIndex tripId={trip._id}/>
               </div>
               <div id='post-card-center-border' />
               <div className='post-card-space'>
-                <div id='info-container'>
-                  <div>
-                    {trip.members.map((member) => {
-                      return `${member.name} `
-                    })} <br/>
-                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
-                    {trip.location.city ? trip.location.city : ""} <br/>
-                    {trip.location.state ? `, ${trip.location.state}` : ""} <br />
-                    {trip.location.coutry ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}  
-                  </div>
-                  <p>({trip.description})</p>
+              <div className='post-card-members-wrapper'>
+                <div>To:</div>
+                <div>
+                {trip.members.map((member) => {
+                      return (<span>{member.name}</span>)})}
                 </div>
               </div>
-            </div>
-            <div id='post-card-bottom'>
-              <button className='trip-show-button' onClick={renderCreateEvent}>Create event</button>
-              <button className='trip-show-button' onClick={inviteMember}>Invite a member</button>
+                <div id='info-container'>
+                  <div>
+                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
+                    {trip.location.city ? trip.location.city : ""} <br/>
+                    {trip.location.state ? `, ${trip.location.state}` : ""}
+                    {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
+                  </div>
+                  <p className='trip-show-description'>Description: ({trip.description})</p>
+                </div>
+                <div>
+                <span className='add-a-member'>
+                  <input type="text" placeholder='invite a member' value={addMember} onChange={e => {
+                    e.preventDefault();
+                    setaddMember(e.target.value);
+                  }} />
+                  <span onClick={inviteMember}>+</span>
+                </span>
+                  
+                </div>
+              </div>
             </div>
           </div>
       </div>
