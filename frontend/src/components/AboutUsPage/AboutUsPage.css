@@ -2,4 +2,33 @@
   height: 200px;
   width: 200px;
   object-fit: cover;
+  border-radius: 100%;
+}
+
+#about-us-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+
+#chad-div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#emmett-div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#lynsie-div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#shawna-div {
+  display: flex;
+  flex-direction: column-reverse;
 }
