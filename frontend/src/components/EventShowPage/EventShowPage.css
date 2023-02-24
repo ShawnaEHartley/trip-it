@@ -1,0 +1,113 @@
+/* more zig zag background */
+.pattern {
+   min-height: 100vh;
+   width: 100%;
+}
+
+#zig-zag11 {
+   position: absolute;
+   z-index: -1;
+   background:
+      linear-gradient(135deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+      linear-gradient(225deg, rgb(247, 246, 245) 25%, transparent 25%) -10px 0,
+      linear-gradient(315deg, rgb(247, 246, 245) 25%, transparent 25%),
+      linear-gradient(45deg, rgb(247, 246, 245) 25%, transparent 25%);
+   background-size: 20px 20px;
+   background-color: #fff;
+
+}
+
+/* striped css from online */
+.striped-border {
+   display: inline-flex;
+   margin: 20px;
+   width: 20vw;
+   height: 20vw;
+   border: 20px solid maroon!important;
+   border-image: repeating-linear-gradient(45deg,
+         blue,
+         maroon 20px,
+         rgb(254, 249, 238) 20px,
+         rgb(254, 249, 238) 40px) 20 !important;
+}
+
+.descr-span {
+   display: inline-block;
+   width: 80px;
+}
+
+#descr-description {
+   margin-top: 20px;
+   font-size: 20px;
+}
+
+.event-header {
+   margin-bottom: 42px;
+}
+
+#event-show-container {
+   width: 780px;
+   height: 500px;
+
+   border-radius: 10px;
+   background-color: rgb(245, 235, 207);
+   border: 1px solid rgb(241, 214, 160);
+}
+
+.event-show-left {
+   display: flex;
+   flex-direction: column;
+   justify-content: left;
+   align-items: baseline;
+
+   width: 368px;
+   padding-top: 10px;
+   padding-left: 40px;
+
+   font-size: 22px;
+}
+
+.event-show-right {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.event-show-right > p {
+   font-size: 12px;
+}
+
+.event-show-page-wrapper {
+   display: flex;
+   justify-content: center;
+}
+
+#event-header-h2 { 
+   margin-bottom: 6px;
+}
+
+#event-post-card-center-border {
+   height: 268px;
+   border-right: 1px solid rgb(20, 18, 14);
+}
+
+#heart {
+   position: absolute;
+   margin-top: 4px;
+   margin-left: 620px;
+   width: 48px;
+   cursor: pointer;
+}
+
+#location-div {
+   margin-top: 40px;
+   display: flex;
+   flex-direction: column;
+   align-items: end;
+   width: 100%;
+   
+   line-height: 1.5;
+   text-decoration: underline;
+   padding-right: 20px;
+}
+
