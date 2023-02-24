@@ -79,13 +79,13 @@ const TripIndex = () => {
                         <div className='stamp-container'>
                             {trips.map((trip, i) => 
                                 <TripIndexItem 
-                                    key={i} 
+                                    key={trip._id} 
                                     trip={trip} 
                                     awsUrl={randUrls[i]} 
                                 />
                             )}
                         </div>
-                        <div className='stamp-container'>
+                        {/* <div className='stamp-container'>
                         </div>
                         <div className='stamp-container'>
                         </div>
@@ -94,9 +94,9 @@ const TripIndex = () => {
                         <div className='stamp-container'>
                         </div>
                         <div className='stamp-container'>
-                        </div>
-                        <div id='end-stamp-container' className='stamp-container'>
-                        </div>
+                        </div> */}
+                        {/* <div id='end-stamp-container' className='stamp-container'>
+                        </div> */}
                     </div>
                 </div>
             </div>

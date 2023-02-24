@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -18,7 +17,6 @@ import './TripShowPage.css'
 
 const TripShowPage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const user = useSelector((state) => state.session.user);
     
     const { tripId } = useParams();

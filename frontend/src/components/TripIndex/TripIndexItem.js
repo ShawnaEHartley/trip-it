@@ -1,17 +1,22 @@
-import React from 'react'; 
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import TripShowPage from '../TripShowPage/TripShowPage';
 import './TripIndex.css';
 
 
 const TripIndexItem = ({trip, awsUrl}) => {
-    const history = useHistory();
+
+    if (!trip.title) {
+        return <div></div>
+    }
 
     const goToTripShow = (e) => {
         if (typeof window !== 'undefined') {
             window.location.href = `/trips/${trip._id}`;
         }
-        // history.push(`/trips/${trip._id}`);
+    }
+
+    const eventHost = () => {
+        return trip.organizer.name;
     }
 
     const date = () => {
@@ -26,16 +31,17 @@ const TripIndexItem = ({trip, awsUrl}) => {
 
     return (
         <>
-            <div id='stamp-image-container' onClick={goToTripShow}>
-                <div className='stamp-image'>
-                    <img className='stamp-image' src={awsUrl} alt='stamp' />
-                </div>
+            <div className='stamp-image-container' onClick={goToTripShow}>
                 <div className='trip-info'>
                     <p>{trip.title}</p>
                     <p>{date()}</p>
+                    <p>Hosted by {trip.organizer.name}</p>
+                </div>
+                <div className='stamp-divider' />
+                <div className='stamp-image'>
+                    <img className='stamp-image' src={awsUrl} alt='stamp' />
                 </div>
             </div>
-            <div className='stamp-divider' />
         </>
     )
 
