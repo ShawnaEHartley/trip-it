@@ -37,6 +37,11 @@
   align-items: center;
 }
 
+.GH-logo {
+  width: 70px;
+  height: 40px;
+}
+
 #lynsie-div {
   display: flex;
   flex-direction: column-reverse;
