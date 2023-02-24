@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch, useSelector } from 'react-redux'; 
 import { Switch } from 'react-router-dom';
 // import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 import Footer from './components/Footer/Footer';
@@ -20,6 +20,7 @@ import TripIndex from './components/TripIndex/TripIndex';
 function App() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(getCurrentUser())
     .then(() => {

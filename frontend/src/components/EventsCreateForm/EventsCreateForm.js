@@ -43,6 +43,9 @@ const EventCreateForm = ({tripId}) => {
             tripId: tripId
         }, tripId));
         dispatch(closeModal());
+        if (typeof window !== 'undefined') {
+          window.location.href = `/trips/${tripId}`;
+      }
       };
 
     return (
