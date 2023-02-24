@@ -70,7 +70,7 @@ const NavBar = () => {
         return (
         <>
             <MenuItem>About us</MenuItem>
-            <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
+            {/* <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem> */}
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )
