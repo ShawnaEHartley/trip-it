@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
+import { NavLink } from 'react-router-dom';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
@@ -66,10 +67,11 @@ const NavBar = () => {
         }))
     }
 
+
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem>About us</MenuItem>
+            <MenuItem><NavLink to='/about' style={{textDecoration: 'none'}}>About us</NavLink></MenuItem>
             {/* <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem> */}
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
@@ -83,6 +85,7 @@ const NavBar = () => {
         }
         // history.push('/')
     };
+
 
     return (
         <div id='nav-bar-container'>
