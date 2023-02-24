@@ -1,7 +1,6 @@
 #event-index-item-container {
     width: 290px;
     margin-bottom: 1px;
-
     border-style: solid;
     border-width: 1px;
     border-radius: 2px;
@@ -12,6 +11,11 @@
     font-size: 13px;
 }
 
+#event-index-item-container {
+    background-color: rgb(254, 249, 238);
+    border: none;
+    margin: 6px 0px;
+}
 #event-index-item-container > div {
     display: flex;
     justify-content: space-between;

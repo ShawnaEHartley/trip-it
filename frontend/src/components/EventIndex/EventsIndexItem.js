@@ -1,13 +1,11 @@
 import React from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import EventShowPage from '../EventShowPage/EventShowPage';
 import { closeModal } from '../../store/modal';
 import './EventIndex.css';
 
 
 const EventIndexItem = ({event}) => {
-    const history = useHistory()
     const dispatch = useDispatch(); 
     const loggedIn = useSelector(state => !!state.session.user);
   
@@ -64,7 +62,10 @@ const EventIndexItem = ({event}) => {
 
     const goToEventShowPage = (e) => {
         e.preventDefault()
-        history.push(`/events/${event._id}`)
+        if (typeof window !== 'undefined') {
+            window.location.href = `/events/${event._id}`;
+        }
+        // history.push(`/events/${event._id}`)
     }
 
 

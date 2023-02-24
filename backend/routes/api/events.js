@@ -62,7 +62,7 @@ router.get('/trips/:tripId', async function (req, res, next) {
 // create an event
 router.post('/:tripId', async function (req, res, next) {
     try {
-        const newEvent = new Event({
+        const newEvent = await new Event({
             title: req.body.title,
             description: req.body.description,
             location: req.body.location,
@@ -71,11 +71,10 @@ router.post('/:tripId', async function (req, res, next) {
             cost: req.body.cost,
             splitCostStructure: req.body.splitCostStructure,
             peopleGoing: req.body.peopleGoing,
-            booked: req.body.booked,
             tripId: req.params.tripId
         })
 
-        let event = newEvent.save();
+        let event = await newEvent.save();
         return res.json(event);
     }
     catch(err) {
@@ -87,7 +86,7 @@ router.post('/:tripId', async function (req, res, next) {
 // add people to event
 router.patch('/addMember/:eventId', async function (req, res, next) {
     try {
-        await Event.updateOne({ _id: ObjectId(req.params.eventId)},{ $push: { peopleGoing: req.body._id }})
+        await Event.updateOne({ _id: req.params.eventId}, { $push: { peopleGoing: req.body._id }})
         const event = await Event.findById(req.params.eventId)
             .populate('peopleGoing', '_id name');
         return res.json(event);

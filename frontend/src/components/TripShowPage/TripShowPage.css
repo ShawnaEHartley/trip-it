@@ -4,10 +4,25 @@
     margin-bottom: 4px;
     background-color: white;
     border: 1px solid rgb(20, 18, 14);
-
     text-align: start;
     font-size: 12px;
     cursor: pointer;
+}
+
+.top-margin {
+    position: absolute;
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-buttons > button {
+    display: block;
+    border: 1px solid black;
+    background-color: white;
+    height: 30px;
+    font-size: 15px;
+    width: 84px;
 }
 
 #form-button-container {
@@ -29,7 +44,6 @@
 
 #info-container > div {
     display: flex;
-    justify-content: right;
     text-decoration: underline;
     line-height: 1.8;
 }
@@ -92,6 +106,10 @@
     padding-top: 20vh;
 }
 
+.trip-show-description {
+    margin-top: 20px;
+}
+
 .trip-show-page-header {
     display: flex;
     flex-direction: column;
@@ -120,6 +138,7 @@
     display: flex;
     justify-content: space-evenly;
     width: 560px;
+    margin-top: 20px;
     margin-bottom: 4px;
     border-bottom: 1px solid rgb(20, 18, 14);
 }
@@ -146,5 +165,28 @@
         linear-gradient(45deg, rgb(247, 246, 245) 25%, transparent 25%);
     background-size: 20px 20px;
     background-color: #fff;
+}
 
+.post-card-members-wrapper {
+    margin: 5px 0px 5px 40px;
+}
+
+.post-card-members-wrapper > div {
+    margin: 5px 0px ;
+}
+
+.post-card-members-wrapper > div > span {
+    margin: 0px 4px ;
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.add-a-member {
+    margin-left: 50px;
+    width: min-content;
+}
+
+.add-a-member > span {
+    margin-left: 5px;
+    cursor: pointer;
 }

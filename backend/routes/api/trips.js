@@ -96,8 +96,7 @@ router.patch('/:tripId', async function(req, res, next) {
         await Trip.updateOne({ _id: req.params.tripId }, {$set: updates});
         const trip = await Trip.findById(req.params.tripId)
             .populate('organizer', '_id name')
-            .populate('members', '_id email name'); // may not need to populate here, req.body likely already includes full member objects
-            // check the events patch method after finding this out.!!!!
+            .populate('members', '_id email name');
         return res.json(trip);
     }
     catch(err) {
@@ -105,7 +104,36 @@ router.patch('/:tripId', async function(req, res, next) {
     }
 });
 
-// build out adding trip member by email
+// add trip member by email
+router.patch('/addUser/:tripId/:userEmail', async function (req, res, next) {
+    try {
+        const user = await User.findOne({ email: req.params.userEmail });
+        await Trip.updateOne({ _id: req.params.tripId}, { $push: { members: user._id }});
+        const trip = await Trip.findById(req.params.tripId)
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name');
+        return res.json(trip);
+    } catch(err) {
+        next(err);
+    }
+});
+
+// remove member from trip
+router.patch('/remove/:tripId', async function (req, res, next) {
+    try {
+        await Trip.updateOne(
+            { _id: req.params.tripId },
+            { $pull: { members: req.body }}
+        );
+
+        const trip = await Trip.findById(req.params.tripId)
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name');
+        return res.json(trip);
+    } catch(err) {
+        next(err);
+    }
+});
 
 /* delete trip listing */
 

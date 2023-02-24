@@ -15,30 +15,26 @@
    border: 1px solid rgb(247, 246, 245);
    background-color: white;
 }
-/* 
-.stamp {
-   margin: 2px 1px;
-   padding: 8px 8px;
-} */
 
 .stamp-container {
    display: flex;
-   justify-content: center;
    flex-direction: row;
+   row-gap: 10px;
+   flex-wrap: wrap;
    justify-content: center;
+   justify-content: space-evenly;
    width: 97%;
-   height: 108px;
-   border: 1px solid rgb(43, 43, 45);
-   border-bottom-color: transparent;
-   padding: 2px 5px;
-   overflow:auto
+   padding: 15px 5px;
+   overflow: auto;
 }
 
 .stamp-divider {
-   height: 50px;
+   height: calc(100% - 40px);
    width: 0px;
-   border-left: 1px solid rgb(43, 43, 45);
-   margin: 29px 8px;
+   border-left: 1px solid rgb(133, 133, 133);
+   margin-left: 5px;
+   margin-right: 5px;
+   align-self: center;
 }
 
 .stamp-image {
@@ -48,24 +44,61 @@
    cursor: pointer;
 }
 
+.stamp-image-container {
+   width: 323px;
+   height: 173px;
+   border: 1px solid black;
+   display: flex;
+   background-color: rgb(254, 249, 238);
+}
+
+.stamp-image-container:hover {
+   cursor: pointer;
+   background-color: rgb(225, 220, 208);
+}
+
+#trip-index-section-divider {
+   width: 80%;
+   border-top: 1px solid rgb(120, 120, 120);
+}
+
 .tripIndexItem-wrapper {
    display: flex;
 }
 
 .trip-info {
-   display: none;
+   margin-top: 30px;
+   margin-left: 30px;
+   width: 163px;
+   height: max-content;
+   display: flex;
+   flex-direction: column;
+   row-gap: 10px;
 }
 
-.stamp-image:hover + .trip-info {
-   display: block;
-   position: absolute;
-   margin-left: 2px;
-   padding: 2px;
-   border: 1px solid lightgrey;
-   background-color: rgb(247, 246, 245);
+#trip-info-title {
+   font-size: 18px;
+}
 
-   font-family: BlauthLight;
-   font-size: 12px;
+.trip-info > p {
+   font-size: 14px;
+}
+
+.stamp-image {
+   max-width: 100px;
+   max-height: 100px;
+}
+
+
+
+.stamp-image-wrapper {
+   margin-top: 10px;
+   margin-right: 10px;
+   width: 144px;
+   height: max-content;
+   display: flex;
+   justify-content: right;
+   row-gap: 10px;
 }
 
 #stamp-page-container {
@@ -89,8 +122,7 @@
 }
 
 #stamp-page-header > h2 {
-   font-size: 20px;
-   margin-bottom: 1px;
+   font-size: 24px;
 }
 
 #stamp-page-header>p {

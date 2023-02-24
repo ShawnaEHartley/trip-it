@@ -5,11 +5,10 @@ import { useEffect } from 'react';
 import * as eventActions from '../../store/events';
 import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
 import { closeModal } from '../../store/modal';
-import { useHistory } from 'react-router-dom';
+
 import emptyHeart from '../../assets/images/icons8-favorite-96.png';
 import heart from '../../assets/images/icons8-love-96.png'
 
-import './EventShowPage.css';
 
 const EventShowPage = () => {
 
@@ -17,7 +16,6 @@ const EventShowPage = () => {
   const { eventId } = useParams();
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
-  const history = useHistory();
 
   const [liked, setLiked] = useState(false);
 
@@ -42,7 +40,10 @@ const EventShowPage = () => {
   };
 
   const openUpdateForm = (e) => {
-    history.push(`/events/update/${event._id}`);
+    if (typeof window !== 'undefined') {
+      window.location.href = `/events/update/${event._id}`;
+    }
+    // history.push(`/events/update/${event._id}`);
   }
 
 

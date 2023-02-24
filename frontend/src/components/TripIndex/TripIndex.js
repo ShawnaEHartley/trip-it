@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TripIndexItem from './TripIndexItem';
 import { fetchUserTrips, getTrips } from '../../store/trips';
-
 import './TripIndex.css';
 
 
@@ -40,15 +39,13 @@ const TripIndex = () => {
 
     useEffect(() => {
         dispatch(fetchUserTrips(user._id))
-    }, [dispatch, user._id]);
+    }, []);
 
     if (!trips[0]) {
         return (
             <div></div>
         )
     }
-
-    console.log(trips)
     
     // const EndTrip = () => {
     //     return (
@@ -75,19 +72,19 @@ const TripIndex = () => {
                 <div id='page'>
                     <div id='stamp-page-container'>
                         <div id='stamp-page-header'>
-                            <h2>Trip Collection</h2>
-                            <p>{user.name}</p>
+                            <h2 id="stamp-page-title">{user.name}'s Trips</h2>
                         </div>
+                        <div id="trip-index-section-divider"></div>
                         <div className='stamp-container'>
                             {trips.map((trip, i) => 
                                 <TripIndexItem 
-                                    key={i} 
+                                    key={trip._id} 
                                     trip={trip} 
                                     awsUrl={randUrls[i]} 
                                 />
                             )}
                         </div>
-                        <div className='stamp-container'>
+                        {/* <div className='stamp-container'>
                         </div>
                         <div className='stamp-container'>
                         </div>
@@ -96,9 +93,9 @@ const TripIndex = () => {
                         <div className='stamp-container'>
                         </div>
                         <div className='stamp-container'>
-                        </div>
-                        <div id='end-stamp-container' className='stamp-container'>
-                        </div>
+                        </div> */}
+                        {/* <div id='end-stamp-container' className='stamp-container'>
+                        </div> */}
                     </div>
                 </div>
             </div>
