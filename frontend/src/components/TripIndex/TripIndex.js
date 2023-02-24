@@ -47,8 +47,6 @@ const TripIndex = () => {
             <div></div>
         )
     }
-
-    console.log(trips)
     
     // const EndTrip = () => {
     //     return (
