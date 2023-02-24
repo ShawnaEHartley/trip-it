@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { closeModal } from '../../store/modal';
 import { deleteTrip, updateTrip } from '../../store/trips';
 import './TripUpdateForm.css';
 
 const TripUpdateForm = ({trip}) => {
 // only available if the signed in user is the organizer of the trip
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState(trip.title);
@@ -19,9 +18,6 @@ const TripUpdateForm = ({trip}) => {
   const [state, setState] = useState(trip.location.state);
   const [zipCode, setZipCode] = useState(trip.location.zipCode);
   const [country, setCountry] = useState(trip.location.country);
-
-  useEffect(() => {
-  }, [dispatch])
 
   const submitUpdateTrip = (e) => {
     const tripObject = {

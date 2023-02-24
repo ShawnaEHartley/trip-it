@@ -10,13 +10,11 @@ import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
 import { logout, login } from '../../store/session';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
-import { useHistory } from 'react-router-dom';
 
 import './NavBar.css'; 
 
 
 const NavBar = () => {
-    const history = useHistory();
 
     const dispatch = useDispatch();
 
