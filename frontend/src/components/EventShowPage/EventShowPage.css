@@ -57,7 +57,7 @@
 .event-show-left {
    display: flex;
    flex-direction: column;
-   justify-content: left;
+   justify-content: space-between;
    align-items: baseline;
 
    width: 368px;
@@ -109,5 +109,28 @@
    line-height: 1.5;
    text-decoration: underline;
    padding-right: 20px;
+}
+
+.event-show-buttons {
+   display: flex;
+   justify-content: left;
+   column-gap: 15px;
+}
+
+.event-show-buttons > button {
+   border: 1px solid black;
+   background-color: white;
+   height: 30px;
+   font-size: 15px;
+   width: 84px;
+}
+
+.event-show-page-button {
+   display: block;
+   border: 1px solid black;
+   background-color: white;
+   height: 30px;
+   font-size: 15px;
+   width: 150px;
 }
 
