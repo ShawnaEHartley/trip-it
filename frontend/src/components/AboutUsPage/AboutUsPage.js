@@ -50,7 +50,7 @@ const AboutUsPage = () => {
             </a>
             <h2 className="dev-name">Emmett Weschler</h2>
             <img className='about-us-page-image' src={emmettAndCat} alt='a cat'/>
-            <h3 className="pos-title">Backend Leader</h3>
+            <h3 className="pos-title">Backend Lead</h3>
             {/* <p>
                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas integer eget aliquet nibh praesent tristique magna sit. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Imperdiet massa tincidunt nunc pulvinar sapien et. Nascetur ridiculus mus mauris vitae ultricies. Faucibus in ornare quam viverra. Diam quam nulla porttitor massa id neque aliquam vestibulum morbi. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum. Interdum varius sit amet mattis vulputate. Elementum nibh tellus molestie nunc. Vitae proin sagittis nisl rhoncus mattis rhoncus urna. Nisl condimentum id venenatis a condimentum vitae. Cursus metus aliquam eleifend mi in. Ut sem nulla pharetra diam. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Egestas integer eget aliquet nibh praesent tristique magna sit. Libero id faucibus nisl tincidunt.
             </p> */}

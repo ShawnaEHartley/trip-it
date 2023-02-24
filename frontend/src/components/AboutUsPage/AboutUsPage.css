@@ -5,13 +5,14 @@
   border-radius: 100%;
   margin-top: 40px;
   margin-bottom: 30px;
-  filter: drop-shadow(0 0 0.75rem rgb(109, 109, 109));
+  filter: drop-shadow(0 0 0.75rem rgb(250, 13, 13));
 }
 
 #about-us-container {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  text-align: center;
   justify-content: space-evenly;
   height: 600px;
 }
