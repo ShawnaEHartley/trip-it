@@ -89,7 +89,7 @@
 .trip-show-page-container {
     display: flex;
     justify-content: center;
-    padding-top: 240px;
+    padding-top: 20vh;
 }
 
 .trip-show-page-header {
