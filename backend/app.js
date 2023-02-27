@@ -38,13 +38,31 @@ app.use(
             httpOnly: true
         }
     })
-);
-
-// Attach Express routers && using for onRender
-app.use('/api/events', eventsRouter);
-app.use('/api/trips', tripsRouter);
-app.use('/api/users', usersRouter); // update the path
-app.use('/api/csrf', csrfRouter);
+    );
+    
+    // Attach Express routers && using for onRender
+    app.use('/api/events', eventsRouter);
+    app.use('/api/trips', tripsRouter);
+    app.use('/api/users', usersRouter); // update the path
+    app.use('/api/csrf', csrfRouter);
+    
+    // for Render
+    if (isProduction) {
+        const path = require('path');
+        app.get('/', (req, res) => {
+            res.cookie('CSRF-TOKEN', req.csrfToken());
+            res.sendFile(
+                path.resolve(__dirname, '../frontend', 'build', 'index.html')
+            );
+        });
+        app.use(express.static(path.resolve("../frontend/build")));
+        app.get(/^(?!\/?api).*/, (req, res) => {
+            res.cookie('CSRF-TOKEN', req.csrfToken());
+            res.sendFile(
+                path.resolve(__dirname, '../frontend', 'build', 'index.html')
+            );
+        });
+    }
 
 // Express custom middleware for catching all unmatched requests and formatting
 // a 404 error to be sent as the response.
@@ -69,22 +87,5 @@ app.use((err, req, res, next) => {
     })
 });
 
-// for Render
-if (isProduction) {
-    const path = require('path');
-    app.get('/', (req, res) => {
-        res.cookie('CSRF-TOKEN', req.csrfToken());
-        res.sendFile(
-            path.resolve(__dirname, '../frontend', 'build', 'index.html')
-        );
-    });
-    app.use(express.static(path.resolve("../frontend/build")));
-    app.get(/^(?!\/?api).*/, (req, res) => {
-        res.cookie('CSRF-TOKEN', req.csrfToken());
-        res.sendFile(
-            path.resolve(__dirname, '../frontend', 'build', 'index.html')
-        );
-    });
-}
 
 module.exports = app;
