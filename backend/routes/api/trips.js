@@ -32,9 +32,42 @@ router.get('/user/email', async function (req, res, next) {
     }
 });
 
+// get current and upcoming trips by user
+router.get('/current/user/:userId', async function (req, res, next) {
+    const userId = req.params.userId;
+    try {
+        const trips = await Trip.find(
+            { $or: [{ organizer: userId }, { members: userId }] },
+            { endDate: { $gte: ISODate(req.body.date)}}
+            )
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name')
+            .sort({ startDate: 1 });
+        return res.json(trips);
+    } catch(err) {
+        return res.json([]);
+    }
+});
+
+// get previous trips by user
+router.get('/past/user/:userId', async function (req, res, next) {
+    const userId = req.params.userId;
+    try {
+        const trips = await Trip.find(
+            { $or: [{ organizer: userId }, { members: userId }] },
+            { endDate: { $lt: ISODate(req.body.date) } }
+        )
+            .populate('organizer', '_id name')
+            .populate('members', '_id email name')
+            .sort({ startDate: 1 });
+        return res.json(trips);
+    } catch (err) {
+        return res.json([]);
+    }
+});
+
 // get all trips by user
 router.get('/user/:userId', async function (req, res, next) {
-    let user;
     const userId = req.params.userId;
     try {
         const trips = await Trip.find({ $or: [{ organizer: userId }, { members: userId }] })

@@ -16,7 +16,7 @@ const TripCreateForm = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState();
+  const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(today);
   const [streetAddress, setStreetAddress] = useState("");
   const [city, setCity] = useState("");
@@ -68,7 +68,9 @@ const TripCreateForm = () => {
           <span className='trip-create-content-title trip-start-date' > Start date </span>
           <input className='trip-create-content-input trip-start-date' type="date" value={startDate} onChange={e => {
               e.preventDefault();
-              setStartDate(e.target.value)}} placeholder='start date'/>
+              setStartDate(e.target.value)
+              endDate < e.target.value ? setEndDate(e.target.value) : setEndDate(endDate) ;
+              }} placeholder='start date'/>
         </label>
         <label className='trip-create-content-item'>
           <span className='trip-create-content-title trip-end-date' > End date </span>
