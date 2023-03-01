@@ -23,7 +23,7 @@ const NavBar = () => {
 
     const modalState = useSelector((state) => {
         return state.modal;
-    })
+    });
 
     const showSignUp = () => {
         dispatch({type: 'modalOn', component: 'showSignUp'})
@@ -31,11 +31,11 @@ const NavBar = () => {
 
     const showLogin = () => {
         dispatch({type: 'modalOn', component: 'showLogin'})
-    }
+    };
 
     const showCreateTripForm = () => {
         dispatch({type: 'modalOn', component: 'showCreateTripForm'})
-    }
+    };
 
     const modalComponent = () => {
         if (modalState.component === 'showSignUp') {
@@ -114,6 +114,6 @@ const NavBar = () => {
 
     )
 
-}
+};
 
 export default NavBar;
