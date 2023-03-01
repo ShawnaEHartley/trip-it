@@ -76,7 +76,7 @@ const NavBar = () => {
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</MenuItem>
+            <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">My Trips</MenuItem>
             <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
             <MenuItem onClick={toAboutUsPageButton}>About Us</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
