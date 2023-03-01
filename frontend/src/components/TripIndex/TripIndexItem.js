@@ -19,6 +19,10 @@ const TripIndexItem = ({trip, awsUrl}) => {
         return trip.organizer.name;
     }
 
+    if (!eventHost) {
+        return <div></div>
+    }
+
     const date = () => {
         const newDate = new Date(trip.startDate)
         const month = newDate.getMonth() + 1;
