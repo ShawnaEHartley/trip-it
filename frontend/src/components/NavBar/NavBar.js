@@ -58,6 +58,8 @@ const NavBar = () => {
     };
 
     // below not working???? 
+    // As of 2/28/23, this is working -L.A.
+
     const LoginDemoUser = (e) => {
         e.preventDefault(); 
         dispatch(closeModal())
@@ -65,13 +67,21 @@ const NavBar = () => {
             email: 'demo@email.com',
             password: 'password'
         }))
-    }
+    };
 
+    const backToHomeButton = async (e) => {
+        // dispatch(fetchUserTrips(user._id))
+        // await dispatch(clearTripState());
+        if (typeof window !== 'undefined') {
+          window.location.href = "/trips";
+        }
+    };
 
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem><NavLink to='/about' style={{textDecoration: 'none'}}>About us</NavLink></MenuItem>
+            <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</MenuItem>
+            <MenuItem><NavLink to='/about' style={{textDecoration: 'none', color: 'black'}}>About us</NavLink></MenuItem>
             {/* <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem> */}
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
@@ -85,6 +95,7 @@ const NavBar = () => {
         }
         // history.push('/')
     };
+
 
 
     return (
