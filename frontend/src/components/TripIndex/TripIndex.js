@@ -100,6 +100,7 @@ const TripIndex = () => {
                             </div>
                             <div id="trip-index-section-divider"></div>
                             <div className='stamp-container'>
+                                <p>Create a trip to get started!</p>
                             </div>
                         </div>
                     </div>
@@ -149,5 +150,6 @@ const TripIndex = () => {
         )
     }
 };
+
 
 export default TripIndex;

@@ -35,7 +35,10 @@ const TripIndexItem = ({trip, awsUrl}) => {
                 <div className='trip-info'>
                     <p id="trip-info-title">{trip.title}</p>
                     <p>{date()}</p>
-                    <p>Hosted by {trip.organizer.name}</p>
+
+                    {/* Can't render if line below is included, */}
+
+                    {/* <p>Hosted by {trip.organizer.name}</p> */}
                 </div>
                 <div className='stamp-divider' />
                 <div className='stamp-image-wrapper'>

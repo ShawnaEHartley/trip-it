@@ -87,13 +87,6 @@ const TripShowPage = () => {
     }
 }
 
-  const backToHomeButton = async (e) => {
-    // dispatch(fetchUserTrips(user._id))
-    // await dispatch(clearTripState());
-    if (typeof window !== 'undefined') {
-      window.location.href = "/trips";
-    }
-  }
 
   let splitStartDate = trip.startDate.split('-'); 
   let splitEndDate = trip.endDate.split('-');
@@ -149,7 +142,6 @@ const TripShowPage = () => {
       <div className='trip-show-page-container'>
           {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
-          <button onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</button>
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
