@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
@@ -18,6 +18,8 @@ import './NavBar.css';
 const NavBar = () => {
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const loggedIn = useSelector(state => !!state.session.user);
 
@@ -52,21 +54,9 @@ const NavBar = () => {
         <>
             <MenuItem onClick={showLogin}>Login</MenuItem>
             <MenuItem onClick={showSignUp}>Sign up</MenuItem>
-            {/* <MenuItem onClick={LoginDemoUser}>DemoUser</MenuItem> */}
+            <MenuItem onClick={toAboutUsPageButton}>About Us</MenuItem>
         </>
         )
-    };
-
-    // below not working???? 
-    // As of 2/28/23, this is working -L.A.
-
-    const LoginDemoUser = (e) => {
-        e.preventDefault(); 
-        dispatch(closeModal())
-        dispatch(login({
-            email: 'demo@email.com',
-            password: 'password'
-        }))
     };
 
     const backToHomeButton = async (e) => {
@@ -77,12 +67,18 @@ const NavBar = () => {
         }
     };
 
+    const toAboutUsPageButton = async (e) => {
+        if (typeof window !== 'undefined') {
+            window.location.href = "/about";
+        }
+    }
+
     const loggedInNav = () => {
         return (
         <>
-            <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</MenuItem>
-            <MenuItem><NavLink to='/about' style={{textDecoration: 'none', color: 'black'}}>About us</NavLink></MenuItem>
-            {/* <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem> */}
+            <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">My Trips</MenuItem>
+            <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
+            <MenuItem onClick={toAboutUsPageButton}>About Us</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )
@@ -93,7 +89,6 @@ const NavBar = () => {
         if (typeof window !== 'undefined') {
             window.location.href = '/';
         }
-        // history.push('/')
     };
 
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../../store/modal';
+import { useHistory } from 'react-router-dom';
 import './UserAuth.css';
 
 import { login, clearSessionErrors } from '../../store/session';
@@ -11,6 +12,7 @@ function LoginForm () {
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+  const history = useHistory();
   
   
   useEffect(() => {
@@ -29,6 +31,7 @@ function LoginForm () {
     e.preventDefault();
     dispatch(closeModal());
     dispatch(login({ email, password })); 
+    history.push("/");
   }
 
   const LoginDemoUser = (e) => {
@@ -38,6 +41,7 @@ function LoginForm () {
       email: 'demo@email.com',
       password: 'password'
     }))
+    history.push("/");
   }
 
   return (
