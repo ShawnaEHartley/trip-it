@@ -22,6 +22,10 @@ const eventSchema = new Schema({
         type: Boolean,
         default: false
     },
+    organizer: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     peopleGoing: [{
             type: Schema.Types.ObjectId,
             ref: 'User'
