@@ -65,8 +65,6 @@ const TripIndex = () => {
     useEffect(() => {
         dispatch(fetchUserTrips(user._id))
     }, [dispatch, user._id]);
-
-
     
     // const EndTrip = () => {
     //     return (
@@ -89,68 +87,69 @@ const TripIndex = () => {
     if (!trips[0]) {
         return (
             <>
-            { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
-            { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
-            <div id='zig-zag11' className='pattern' />
-            <div id='main-page-container'>
-                <div id='page'>
-                    <div id='stamp-page-container'>
-                        <div id='stamp-page-header'>
-                            <button className='trip-index-create-button' onClick={showCreateTripForm}>Create Trip</button>
-                            <h2 id="stamp-page-title">{user.name}'s Trips</h2>
-                            <div className='div-placeholder'></div>
-                        </div>
-                        <div id="trip-index-section-divider"></div>
-                        <div className='stamp-container'>
-                            <p>Create a trip to get started!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </>
-        )
-    } 
-    
-    return (
-            <>
-                { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
-                { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
+                {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+                {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
                 <div id='zig-zag11' className='pattern' />
                 <div id='main-page-container'>
                     <div id='page'>
                         <div id='stamp-page-container'>
                             <div id='stamp-page-header'>
-                            <button className='trip-index-create-button' onClick={showCreateTripForm}>Create Trip</button>
-                            <h2 id="stamp-page-title">{user.name}'s Trips</h2>
-                            <div className='div-placeholder'></div>
+                                <button className='trip-index-create-button' onClick={showCreateTripForm}>Create Trip</button>
+                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                                <div className='div-placeholder'></div>
                             </div>
                             <div id="trip-index-section-divider"></div>
                             <div className='stamp-container'>
-                                {trips.map((trip, i) => 
-                                    <TripIndexItem 
-                                        key={trip._id} 
-                                        trip={trip} 
-                                        awsUrl={randUrls[i]} 
-                                    />
-                                )}
+                                <p>Create a trip to get started!</p>
                             </div>
-                            {/* <div className='stamp-container'>
-                            </div>
-                            <div className='stamp-container'>
-                            </div>
-                            <div className='stamp-container'>
-                            </div>
-                            <div className='stamp-container'>
-                            </div>
-                            <div className='stamp-container'>
-                            </div> */}
-                            {/* <div id='end-stamp-container' className='stamp-container'>
-                            </div> */}
                         </div>
                     </div>
                 </div>
             </>
         )
-    };
+    } else {
+        return (
+            <>
+                {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+                {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+                <div id='zig-zag11' className='pattern' />
+                <div id='main-page-container'>
+                    <div id='page'>
+                        <div id='stamp-page-container'>
+                            <div id='stamp-page-header'>
+                                <button className='trip-index-create-button' onClick={showCreateTripForm}>Create Trip</button>
+                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                                <div className='div-placeholder'></div>
+                            </div>
+                            <div id="trip-index-section-divider"></div>
+                            <div className='stamp-container'>
+                                {trips.map((trip, i) =>
+                                    <TripIndexItem
+                                        key={trip._id}
+                                        trip={trip}
+                                        awsUrl={randUrls[i]}
+                                    />
+                                )}
+                            </div>
+                            {/* <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div>
+                        <div className='stamp-container'>
+                        </div> */}
+                            {/* <div id='end-stamp-container' className='stamp-container'>
+                        </div> */}
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
+    }
+};
+
 
 export default TripIndex;

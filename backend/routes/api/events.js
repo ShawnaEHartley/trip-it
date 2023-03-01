@@ -24,6 +24,7 @@ router.get('/', async function (req, res, next) {
 router.get('/:eventId', async function (req, res, next) {
     try {
         const event = await Event.findById(req.params.eventId)
+            .populate('organizer', '_id name')
             .populate('peopleGoing', '_id name');
         return res.json(event);
     }
@@ -49,6 +50,7 @@ router.get('/trips/:tripId', async function (req, res, next) {
     }
     try {
         const trips = await Event.find({ tripId: trip._id })
+            .populate('organizer', '_id name')
             .populate('peopleGoing', '_id name')
             .sort({ startTime: 1 });
         return res.json(trips);
@@ -70,6 +72,7 @@ router.post('/:tripId', async function (req, res, next) {
             endDate: req.body.endDate,
             cost: req.body.cost,
             splitCostStructure: req.body.splitCostStructure,
+            organizer: req.body.organizer,
             peopleGoing: req.body.peopleGoing,
             tripId: req.params.tripId
         })
@@ -88,6 +91,7 @@ router.patch('/addMember/:eventId/:userId', async function (req, res, next) {
     try {
         await Event.updateOne({ _id: req.params.eventId}, { $push: { peopleGoing: req.params.userId }})
         const event = await Event.findById(req.params.eventId)
+            .populate('organizer', '_id name')
             .populate('peopleGoing', '_id name');
         return res.json(event);
     }
@@ -105,6 +109,7 @@ router.patch('/remove/:eventId/:userId', async function (req, res, next) {
         );
         
         const event = await Event.findById(req.params.eventId)
+            .populate('organizer', '_id name')
             .populate('peopleGoing', '_id name');
         return res.json(event);
     }
@@ -119,6 +124,7 @@ router.patch('/:eventId', async function (req, res, next) {
         const updates = req.body;
         await Event.updateOne({_id: req.params.eventId}, {$set: updates});
         const event = await Event.findById(req.params.eventId)
+            .populate('organizer', '_id name')
             .populate('peopleGoing', '_id name');
         return res.json(event);
     }

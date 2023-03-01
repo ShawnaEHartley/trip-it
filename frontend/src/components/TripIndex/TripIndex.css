@@ -24,6 +24,7 @@
    justify-content: center;
    justify-content: space-evenly;
    width: 97%;
+   min-height: 360px;
    padding: 15px 5px;
    overflow: auto;
 }
