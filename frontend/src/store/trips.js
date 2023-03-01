@@ -98,6 +98,42 @@ export const fetchUserTrips = (userId) => async (dispatch) => {
     }
 };
 
+export const fetchPastUserTrips = (userId) => async (dispatch) => {
+    try {
+        // perhaps you should make a current date here
+        const today = new Date().toISOString();
+        const res = await jwtFetch(`/api/trips/past/user/${userId}`, {
+            method: 'GET',
+            body: today
+        });
+        const trips = await res.json();
+        dispatch(receiveTrips(trips));
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            dispatch(receiveTripErrors(resBody.errors));
+        }
+    }
+};
+
+export const fetchUpcomingUserTrips = (userId) => async (dispatch) => {
+    try {
+        // perhaps you should make a current date here
+        const today = new Date().toISOString();
+        const res = await jwtFetch(`/api/trips/current/user/${userId}`, {
+            method: 'GET',
+            body: today
+        });
+        const trips = await res.json();
+        dispatch(receiveTrips(trips));
+    } catch (err) {
+        const resBody = await err.json();
+        if (resBody.statusCode === 400) {
+            dispatch(receiveTripErrors(resBody.errors));
+        }
+    }
+};
+
 export const fetchTrip = (tripId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/${tripId}`)
