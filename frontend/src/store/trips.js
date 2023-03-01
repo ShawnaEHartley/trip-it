@@ -265,7 +265,7 @@ const TripsReducer = (state = {}, action) => {
             delete(newState[action.tripId])
             return newState;
         case CLEAR_TRIPS:
-            return { ...newState, trips: action.emptyObject };
+            return { ...newState, trips: {} };
         default: 
             return newState; 
     }
