@@ -52,6 +52,8 @@ const NavBar = () => {
         <>
             <MenuItem onClick={showLogin}>Login</MenuItem>
             <MenuItem onClick={showSignUp}>Sign up</MenuItem>
+            <MenuItem><NavLink to='/about' style={{textDecoration: 'none', color: 'black'}}>About us</NavLink></MenuItem>
+
             {/* <MenuItem onClick={LoginDemoUser}>DemoUser</MenuItem> */}
         </>
         )
@@ -77,12 +79,18 @@ const NavBar = () => {
         }
     };
 
+    const toAboutUsPageButton = async (e) => {
+        if (typeof window !== 'undefined') {
+            window.location.href = "/about";
+        }
+    }
+
     const loggedInNav = () => {
         return (
         <>
             <MenuItem onClick={backToHomeButton} id="back-to-trips-index-button-div">Home</MenuItem>
-            <MenuItem><NavLink to='/about' style={{textDecoration: 'none', color: 'black'}}>About us</NavLink></MenuItem>
-            {/* <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem> */}
+            <MenuItem onClick={showCreateTripForm}>Create Trip</MenuItem>
+            <MenuItem onClick={toAboutUsPageButton}>About Us</MenuItem>
             <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem>
         </>
         )
