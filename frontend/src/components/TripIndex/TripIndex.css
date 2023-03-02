@@ -116,7 +116,7 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 100%;
+   width: 95%;
    height: 50px;
 }
 
@@ -150,11 +150,20 @@
 .trip-index-create-button {
    display: block;
    margin-left: 10px;
-   border: 1px solid black;
+   border: 1px solid rgb(241, 241, 241);
    background-color: white;
    height: 30px;
    font-size: 12px;
    width: 84px;
+}
+
+.trip-index-create-button:hover {
+   border: 1px solid black;
+}
+
+.trip-index-create-button:active {
+   background-color: #fff9ec;
+   box-shadow: 0 0 4px rgb(195, 195, 195);
 }
 
 .div-placeholder {

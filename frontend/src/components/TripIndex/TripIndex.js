@@ -94,9 +94,9 @@ const TripIndex = () => {
                     <div id='page'>
                         <div id='stamp-page-container'>
                             <div id='stamp-page-header'>
-                                <button className='trip-index-create-button' onClick={showCreateTripForm} title="Create Trip">+</button>
-                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
                                 <div className='div-placeholder'></div>
+                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                                <button className='trip-index-create-button' onClick={showCreateTripForm} title="Create Trip">+</button>
                             </div>
                             <div id="trip-index-section-divider"></div>
                             <div className='stamp-container'>
@@ -117,9 +117,9 @@ const TripIndex = () => {
                     <div id='page'>
                         <div id='stamp-page-container'>
                             <div id='stamp-page-header'>
-                                <button className='trip-index-create-button' onClick={showCreateTripForm}>+</button>
-                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
                                 <div className='div-placeholder'></div>
+                                <h2 id="stamp-page-title">{user.name}'s Trips</h2>
+                                <button className='trip-index-create-button' onClick={showCreateTripForm} title="Create Trip">+</button>
                             </div>
                             <div id="trip-index-section-divider"></div>
                             <div className='stamp-container'>
