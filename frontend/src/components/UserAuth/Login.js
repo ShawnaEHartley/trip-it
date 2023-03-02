@@ -10,7 +10,8 @@ import { login, clearSessionErrors } from '../../store/session';
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.errors.session);
+  const errors = useSelector(state => state.errors.sessionErrorsReducer);
+  // const [userErrors, setUserErrors] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
   
@@ -29,20 +30,20 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(closeModal());
     dispatch(login({ email, password })); 
     history.push("/");
   }
 
   const LoginDemoUser = (e) => {
     e.preventDefault(); 
-    dispatch(closeModal())
     dispatch(login({
       email: 'demo@email.com',
       password: 'password'
     }))
     history.push("/");
   }
+
+  console.log(errors)
 
   return (
     <form className="session-form" onSubmit={handleSubmit}>
