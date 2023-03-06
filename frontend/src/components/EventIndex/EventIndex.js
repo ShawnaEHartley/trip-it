@@ -10,27 +10,25 @@ import './EventIndex.css';
 const EventIndex = ({tripId}) => {
     const dispatch = useDispatch(); 
     const events = useSelector(getEvents);
-
     // const user = useSelector(state => state.session.user);
     
     useEffect(() => {
         dispatch(fetchTripEvents(tripId));
     }, [dispatch, tripId]);
 
-
-    if (!events) {
+    if (!events[0]?._id) {
         return (<div>...loading</div>)
+    } else {
+        return (
+            <>
+                {events.map((event) => {
+                    return (
+                        <EventIndexItem event={event} />
+                    )
+                })}
+            </>
+        )
     }
-    
-    return (
-        <>
-            {events.map((event) => {
-                return (
-                    <EventIndexItem event={event} />
-                )
-            })}
-        </>
-    )
 };
 
 export default EventIndex; 

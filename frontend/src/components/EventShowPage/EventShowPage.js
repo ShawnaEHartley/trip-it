@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import EventUpdateForm from '../EventsUpdateForm/EventsUpdateForm';
@@ -14,7 +14,7 @@ import './EventShowPage.css'
 
 
 const EventShowPage = () => {
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const { eventId } = useParams();
   const event = useSelector(eventActions.getEvent);
@@ -41,9 +41,6 @@ const EventShowPage = () => {
   // if (event.peopleGoing) {
   //   setLiked(event.peopleGoing.includes(user._id) ? true : false)
   // }
-
-
-  console.log(event)
 
   const deleteThisEvent = (e) => {
     e.preventDefault(); 
@@ -77,9 +74,10 @@ const EventShowPage = () => {
   const eventOrganizer = event.peopleGoing[0]._id;
 
   const backToTrip = () => {
-    if (typeof window !== 'undefined') {
-      window.location.href = `/trips/${event.tripId}`;
-  }
+    // if (typeof window !== 'undefined') {
+    //   window.location.href = `/trips/${event.tripId}`;
+    // }
+    history.push(`/trips/${event.tripId}`);
   }
 
 

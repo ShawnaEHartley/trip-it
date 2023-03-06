@@ -60,17 +60,17 @@ const NavBar = () => {
     };
 
     const backToHomeButton = async (e) => {
-        // dispatch(fetchUserTrips(user._id))
-        // await dispatch(clearTripState());
-        if (typeof window !== 'undefined') {
-          window.location.href = "/trips";
-        }
+        // if (typeof window !== 'undefined') {
+        //   window.location.href = "/trips";
+        // }
+        history.push(`/trips`);
     };
 
     const toAboutUsPageButton = async (e) => {
-        if (typeof window !== 'undefined') {
-            window.location.href = "/about";
-        }
+        // if (typeof window !== 'undefined') {
+        //     window.location.href = "/about";
+        // }
+        history.push(`/about`);
     }
 
     const loggedInNav = () => {
@@ -86,9 +86,11 @@ const NavBar = () => {
 
     const logoutCurrentUser = (e) => {
         dispatch(logout())
-        if (typeof window !== 'undefined') {
-            window.location.href = '/';
-        }
+        // if (typeof window !== 'undefined') {
+        //     window.location.href = '/';
+        // }
+        // probably worth using window.location here honestly.
+        history.push(`/`);
     };
 
 

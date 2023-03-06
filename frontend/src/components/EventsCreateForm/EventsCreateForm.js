@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; 
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
 import { createEvent } from '../../store/events';
@@ -7,6 +8,7 @@ import './EventsCreateForm.css';
 
 const EventCreateForm = ({tripId}) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
 
     const today = new Date().toISOString();
@@ -42,10 +44,14 @@ const EventCreateForm = ({tripId}) => {
             splitCostStructure: splitCostStructure,
             tripId: tripId
         }, tripId));
+
         dispatch(closeModal());
-        if (typeof window !== 'undefined') {
-          window.location.href = `/trips/${tripId}`;
-      }
+
+        // if (typeof window !== 'undefined') {
+        //   window.location.href = `/trips/${tripId}`;
+        // }
+
+        history.push(`/trips/${tripId}`);
       };
 
     return (
