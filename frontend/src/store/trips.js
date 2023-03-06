@@ -22,7 +22,7 @@ const removeTrip = (tripId) => ({
     tripId
 });
 
-const clearTrips = (emptyObject = {}) => ({
+export const clearTrips = (emptyObject = {}) => ({
     type: CLEAR_TRIPS,
     emptyObject
 })
@@ -88,7 +88,7 @@ export const getTrip = (state) => {
 export const fetchUserTrips = (userId) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/trips/user/${userId}`);
-        const trips = await res.json(); 
+        const trips = await res.json();
         dispatch(receiveTrips(trips));
     } catch (err) {
         const resBody = await err.json(); 
@@ -258,16 +258,16 @@ const TripsReducer = (state = {}, action) => {
     
     switch(action.type) {
         case RECEIVE_TRIP:
-            return {...newState, ...action.trip }
+            return action.trip;
         case RECEIVE_TRIPS:
-            return { ...newState, ...action.trips };
+            return action.trips;
         case REMOVE_TRIP:
-            delete(newState[action.tripId])
+            delete(newState[action.tripId]);
             return newState;
         case CLEAR_TRIPS:
-            return { ...newState, trips: {} };
+            return {};
         default: 
-            return newState; 
+            return newState;
     }
 };
 

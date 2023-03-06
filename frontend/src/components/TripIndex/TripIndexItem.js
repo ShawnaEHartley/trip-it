@@ -1,18 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import TripShowPage from '../TripShowPage/TripShowPage';
 import './TripIndex.css';
 
 
 const TripIndexItem = ({trip, awsUrl}) => {
+    const history = useHistory();
 
     if (!trip.title) {
         return <div></div>
     }
 
     const goToTripShow = (e) => {
-        if (typeof window !== 'undefined') {
-            window.location.href = `/trips/${trip._id}`;
-        }
+        // if (typeof window !== 'undefined') {
+        //     window.location.href = `/trips/${trip._id}`;
+        // }
+        history.push(`/trips/${trip._id}`);
     }
 
     const eventHost = () => {

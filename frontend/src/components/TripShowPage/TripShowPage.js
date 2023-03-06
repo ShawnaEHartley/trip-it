@@ -17,6 +17,7 @@ import './TripShowPage.css'
 
 const TripShowPage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector((state) => state.session.user);
     
     const { tripId } = useParams();
@@ -26,7 +27,7 @@ const TripShowPage = () => {
     });
 
     const [renderUpdate, setRenderUpdate] = useState(false);
-    const [addMember, setaddMember] =useState("")
+    const [addMember, setaddMember] = useState("");
 
     useEffect(() => {
         dispatch(fetchTrip(tripId));
@@ -76,15 +77,17 @@ const TripShowPage = () => {
 
   const deleteThisTrip = (e) => {
     dispatch(deleteTrip(trip._id))
-    if (typeof window !== 'undefined') {
-      window.location.href = "/trips";
-  }
+    // if (typeof window !== 'undefined') {
+    //   window.location.href = "/trips";
+    // }
+    history.push(`/trips`);
   }
 
   if (!user) {
-    if (typeof window !== 'undefined') {
-        window.location.href = "/";
-    }
+    // if (typeof window !== 'undefined') {
+    //     window.location.href = "/";
+    // }
+    history.push(`/`);
 }
 
 

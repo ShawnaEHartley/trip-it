@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
 import TripIndexItem from './TripIndexItem';
 import { closeModal } from '../../store/modal';
-import { fetchUserTrips, getTrips } from '../../store/trips';
+import { fetchUserTrips, getTrips, clearTrips } from '../../store/trips';
 import './TripIndex.css';
 
 
 const TripIndex = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const trips = useSelector(getTrips);
     const user = useSelector(state => state.session.user);
 
     if (!user) {
-        if (typeof window !== 'undefined') {
-            window.location.href = "/";
-        }
+        // if (typeof window !== 'undefined') {
+        //     window.location.href = "/";
+        // }
+        history.push(`/`);
     }
 
     const modalState = useSelector((state) => {
@@ -63,6 +65,7 @@ const TripIndex = () => {
 
 
     useEffect(() => {
+        dispatch(clearTrips());
         dispatch(fetchUserTrips(user._id))
     }, [dispatch, user._id]);
     
