@@ -72,7 +72,7 @@ export const sessionErrorsReducer = (state = nullErrors, action) => {
         case CLEAR_SESSION_ERRORS:
             return nullErrors;
         default: 
-            return state; 
+            return state;
     }
 };
 
