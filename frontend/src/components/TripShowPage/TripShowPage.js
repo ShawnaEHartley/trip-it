@@ -41,6 +41,10 @@ const TripShowPage = () => {
       dispatch({type:'modalOn', component: 'createEvent'})
     }
 
+    const inviteMember = e => {
+      dispatch({type: 'modalOn', component: 'inviteMember'})
+    }
+
     const modalComponent = () => {
         if (modalState.component === 'editTrip') {
             return (
@@ -50,6 +54,10 @@ const TripShowPage = () => {
             return (
               <EventsCreateForm tripId={tripId} />
             )
+        } else if (modalState.component === 'inviteMember') {
+          return (
+            <InviteMemberForm />
+          )
         }
     };
 
@@ -59,21 +67,12 @@ const TripShowPage = () => {
         )
     };
 
-  const inviteMember = (e) => {
-    e.preventDefault();
-    //invite a member to this trip via their email via modal
-    dispatch(addUserToTrip(tripId, addMember))
-  };
-
-
-  const tripOrganizerButtons = () => {
-    return (
-      <div id='form-button-container'>
-        <button onClick={renderUpdateForm} className='trip-show-button form-button patch-buttons'>Update trip</button>
-        <button onClick={deleteThisTrip} className='trip-show-button form-button patch-buttons'>Delete trip</button>
-      </div>
-    )
-  };
+    //to invite a member to the trip
+  // const inviteMember = (e) => {
+  //   e.preventDefault();
+  //   //invite a member to this trip via their email via modal
+  //   dispatch(addUserToTrip(tripId, addMember))
+  // };
 
   const deleteThisTrip = (e) => {
     dispatch(deleteTrip(trip._id))
@@ -148,12 +147,13 @@ const TripShowPage = () => {
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
-              <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
-                <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem>
-                <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem>
-                {/* <MenuItem onClick={inviteMember}>Invite a member</MenuItem> */}
-                <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
-              </Menu>
+            {/* { user === trip.organizer ? tripOrganizerButtons : memberButtons } */}
+            <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
+              { user === trip.oranizer ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
+              { user === trip.oranizer ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
+              { user === trip.oranizer ? <MenuItem onClick={inviteMember}>Invite a member</MenuItem> : ''}
+              <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
+            </Menu>
             </div>
             <div className='top-margin-right'>
               <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>
@@ -164,6 +164,7 @@ const TripShowPage = () => {
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
               <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
+              <p>Organized by {trip.organizer.name}</p>
               </div>
             </div>
             <div id='top-body-border'>
@@ -193,13 +194,13 @@ const TripShowPage = () => {
                   <p className='trip-show-description'>Description: ({trip.description})</p>
                 </div>
                 <div>
-                <span className='add-a-member'>
+                {/* <span className='add-a-member'>
                   <input type="text" placeholder='invite a member' value={addMember} onChange={e => {
                     e.preventDefault();
                     setaddMember(e.target.value);
                   }} />
                   <span onClick={inviteMember}>+</span>
-                </span>
+                </span> */}
                 </div>
               </div>
             </div>

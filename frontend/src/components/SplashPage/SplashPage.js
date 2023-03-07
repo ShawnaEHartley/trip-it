@@ -30,11 +30,16 @@ const SplashPage = () => {
                 <div id='left-splash'>
                     <div className='event-index'>
                         <h3>mauris pharetra</h3>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                        <div>New York, NY</div>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                        </div>
                     </div>
                     <div className='event-index'>
                         <h3>mauris pharetra</h3>
+                        <div>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Vitae congue mauris rhoncus aenean vel. Nulla porttitor massa id neque aliquam vestibulum morbi.
+                        </div>
                     </div>
                     <div className='event-index'>
                         <h3>mauris pharetra</h3>
