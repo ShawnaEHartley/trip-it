@@ -16,14 +16,16 @@ const EventIndex = ({tripId}) => {
         dispatch(fetchTripEvents(tripId));
     }, [dispatch, tripId]);
 
+    console.log(events);
+
     if (!events[0]?._id) {
         return (<div>...loading</div>)
     } else {
         return (
             <>
-                {events.map((event) => {
+                {events.map((event, i) => {
                     return (
-                        <EventIndexItem event={event} />
+                        <EventIndexItem event={event} key={event._id} />
                     )
                 })}
             </>

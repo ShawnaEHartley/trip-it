@@ -27,6 +27,8 @@ const EventCreateForm = ({tripId}) => {
 
 
     const submitEvent = (e) => {
+        e.preventDefault();
+
         dispatch(createEvent({
             title: title,
             description: description,
@@ -43,15 +45,7 @@ const EventCreateForm = ({tripId}) => {
             cost: cost, 
             splitCostStructure: splitCostStructure,
             tripId: tripId
-        }, tripId));
-
-        dispatch(closeModal());
-
-        // if (typeof window !== 'undefined') {
-        //   window.location.href = `/trips/${tripId}`;
-        // }
-
-        history.push(`/trips/${tripId}`);
+        }, tripId, history));
       };
 
     return (
@@ -75,13 +69,13 @@ const EventCreateForm = ({tripId}) => {
           </label>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-start-date' > Start date </span>
-            <input className='event-create-content-input event-start-date' type="date" value={startDate} onChange={e => {
+            <input className='event-create-content-input event-start-date' type="date" value={startDate} min={today.split('T')[0]} onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)}} />
           </label>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-end-date' > End date </span>
-            <input className='event-create-content-input event-end-date' type="date" value={endDate} onChange={e => {
+            <input className='event-create-content-input event-end-date' type="date" value={endDate} min={startDate.split('T')[0]} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
           </label>

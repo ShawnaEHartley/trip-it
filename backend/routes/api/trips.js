@@ -35,11 +35,12 @@ router.get('/user/email', async function (req, res, next) {
 // get current and upcoming trips by user
 router.get('/current/user/:userId', async function (req, res, next) {
     const userId = req.params.userId;
-    const today = new Date().toISOString();
+    const today = new Date();
+    today.setHours(0,0,0,0);
     try {
         const trips = await Trip.find(
             { $or: [{ organizer: userId }, { members: userId }],
-            endDate: { $gte: today }})
+            endDate: { $gte: today.toISOString() }})
             .populate('organizer', '_id name')
             .populate('members', '_id email name')
             .sort({ startDate: 1 });
@@ -101,8 +102,22 @@ router.get('/:tripId', async function (req, res, next) {
 
 // create a new trip
 router.post('/', async function (req, res, next) {
-    try {
-        const newTrip = new Trip({
+    if (req.body.title === '' || req.body.endDate < req.body.startDate) {
+        const err = new Error('Validation Error');
+        err.statusCode = 400;
+        const errors = {};
+
+        if (req.body.title === '') {
+            errors.title = 'A trip must have a title';
+        }
+        if (req.body.endDate < req.body.startDate) {
+            errors.date = 'End date must be later than start date'
+        }
+        
+        err.errors = errors;
+        return next(err);
+    } else {
+        const newTrip = await new Trip({
             title: req.body.title,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
@@ -112,11 +127,8 @@ router.post('/', async function (req, res, next) {
             members: req.body.members
         });
 
-        let trip = newTrip.save();
+        const trip = await newTrip.save();
         return res.json(trip);
-    }
-    catch(err) {
-        next(err);
     }
 });
 

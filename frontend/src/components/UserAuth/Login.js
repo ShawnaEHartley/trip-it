@@ -21,12 +21,6 @@ function LoginForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
-  
-
-  const update = (field) => {
-    const setState = field === 'email' ? setEmail : setPassword;
-    return e => setState(e.currentTarget.value);
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +37,6 @@ function LoginForm () {
     history.push("/");
   }
 
-  console.log(errors)
-
   return (
     <form className="session-form" onSubmit={handleSubmit}>
       <h2>Log In</h2>
@@ -52,7 +44,10 @@ function LoginForm () {
       <label>
         <input type="text"
           value={email}
-          onChange={update('email')}
+          onChange={e => {
+            e.preventDefault();
+            setEmail(e.target.value);
+          }}
           placeholder="Email"
         />
       </label>
@@ -60,7 +55,10 @@ function LoginForm () {
       <label>
         <input type="password"
           value={password}
-          onChange={update('password')}
+          onChange={e => {
+            e.preventDefault();
+            setPassword(e.target.value);
+          }}
           placeholder="Password"
         />
       </label>
