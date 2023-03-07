@@ -149,8 +149,8 @@ const TripShowPage = () => {
             <div className='navigation-buttons'>
             {/* { user === trip.organizer ? tripOrganizerButtons : memberButtons } */}
             <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
-              { user === trip.oranizer ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
-              { user === trip.oranizer ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
+              { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
+              { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
               <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
               <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
             </Menu>
