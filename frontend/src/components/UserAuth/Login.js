@@ -10,7 +10,8 @@ import { login, clearSessionErrors } from '../../store/session';
 function LoginForm () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.errors.session);
+  const errors = useSelector(state => state.errors.sessionErrorsReducer);
+  // const [userErrors, setUserErrors] = useState('');
   const dispatch = useDispatch();
   const history = useHistory();
   
@@ -20,23 +21,15 @@ function LoginForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
-  
-
-  const update = (field) => {
-    const setState = field === 'email' ? setEmail : setPassword;
-    return e => setState(e.currentTarget.value);
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(closeModal());
     dispatch(login({ email, password })); 
     history.push("/");
   }
 
   const LoginDemoUser = (e) => {
     e.preventDefault(); 
-    dispatch(closeModal())
     dispatch(login({
       email: 'demo@email.com',
       password: 'password'
@@ -51,7 +44,10 @@ function LoginForm () {
       <label>
         <input type="text"
           value={email}
-          onChange={update('email')}
+          onChange={e => {
+            e.preventDefault();
+            setEmail(e.target.value);
+          }}
           placeholder="Email"
         />
       </label>
@@ -59,7 +55,10 @@ function LoginForm () {
       <label>
         <input type="password"
           value={password}
-          onChange={update('password')}
+          onChange={e => {
+            e.preventDefault();
+            setPassword(e.target.value);
+          }}
           placeholder="Password"
         />
       </label>

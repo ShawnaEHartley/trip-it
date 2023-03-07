@@ -9,7 +9,7 @@ const [email, setEmail] = useState('');
 const [name, setName] = useState('');
 const [password, setPassword] = useState('');
 const [password2, setPassword2] = useState('');
-const errors = useSelector(state => state.errors.session);
+const errors = useSelector(state => state.errors.sessionErrorsReducer);
 const dispatch = useDispatch();
 
 useEffect(() => {
@@ -47,18 +47,17 @@ const handleSubmit = e => {
         name,
         password
     };
-    dispatch(closeModal())
     dispatch(signup(user)); 
 }
 
 const SignUpAsDemoUser = (e) => {
     e.preventDefault(); 
-    dispatch(closeModal())
     dispatch(login({
         email: 'demo@email.com', 
         password: 'password'
     }));
 };
+
 
 return (
 <form className="session-form" onSubmit={handleSubmit}>
@@ -83,13 +82,12 @@ return (
     <label>
         <input type="password"
             value={password}
-            onChange={update('password')}
+            onChange={
+                update('password')
+            }
             placeholder="Password"
         />
     </label>
-    <div className="errors">
-    {password !== password2 && 'Confirm Password field must match'}
-    </div>
     <label>
         <input type="password"
             value={password2}
@@ -97,6 +95,9 @@ return (
             placeholder="Confirm Password"
         />
     </label>
+    <div className="errors">
+    {password !== password2 && 'Confirm Password field must match'}
+    </div>
     <input
     type="submit"
     value="Sign Up"

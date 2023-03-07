@@ -1,4 +1,6 @@
 import jwtFetch from "./jwt";
+import { fetchTrip } from "./trips";
+import { closeModal } from "./modal";
 
 const RECEIVE_EVENT = "events/RECEIVE_EVENT"; 
 const RECEIVE_EVENTS = "events/RECEIVE_EVENTS"; 
@@ -95,12 +97,17 @@ export const fetchEvent = (eventId) => async (dispatch) => {
     }
 };
 
-export const createEvent = (eventObject, tripId) => async (dispatch) => {
+export const createEvent = (eventObject, tripId, history) => async (dispatch) => {
     try {
         const res = await jwtFetch(`/api/events/${tripId}`, {
             method: "POST", 
             body: JSON.stringify(eventObject)
         });
+        const event = await res.json();
+
+        dispatch(closeModal());
+        await dispatch(receiveEvent(event));
+        history.push(`/events/${event._id}`);
     } catch(err) {
         const resBody = await err.json(); 
         if (resBody.statusCode === 400) {

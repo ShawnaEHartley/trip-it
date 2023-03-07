@@ -1,4 +1,5 @@
 import jwtFetch from './jwt';
+import { closeModal } from './modal';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER"; 
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS"; 
@@ -45,6 +46,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
         });
         const { user, token } = await res.json();
         localStorage.setItem('jwtToken', token);
+        dispatch(closeModal());
         return dispatch(receiveCurrentUser(user));
     } catch(err) {
         const res = await err.json();
@@ -60,7 +62,7 @@ export const logout = () => dispatch => {
 };
 
 
-const nullErrors = null; 
+const nullErrors = {}; 
 
 export const sessionErrorsReducer = (state = nullErrors, action) => {
     switch(action.type) {
@@ -70,7 +72,7 @@ export const sessionErrorsReducer = (state = nullErrors, action) => {
         case CLEAR_SESSION_ERRORS:
             return nullErrors;
         default: 
-            return state; 
+            return state;
     }
 };
 

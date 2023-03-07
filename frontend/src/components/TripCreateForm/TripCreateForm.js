@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useHistory } from 'react-router-dom';
 import { closeModal } from '../../store/modal';
 import { createTrip } from '../../store/trips';
 
@@ -8,9 +8,10 @@ import './TripCreateForm.css';
 
 
 const TripCreateForm = () => {
-
+  const errors = useSelector(state => state.errors.tripErrorsReducer);
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const today = new Date().toISOString();
 
@@ -24,7 +25,9 @@ const TripCreateForm = () => {
   const [zipCode, setZipCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const submitTrip = () => {
+  const submitTrip = e => {
+    e.preventDefault();
+
     dispatch(createTrip({
       title: title,
       description: description,
@@ -39,8 +42,7 @@ const TripCreateForm = () => {
       },
       organizer: sessionUser._id,
       members: [sessionUser._id]
-    }))
-    closeModal();
+    }, history));
   };
 
 
@@ -50,8 +52,8 @@ const TripCreateForm = () => {
         <h1 className='trip-create-header' id=''> Create a new trip </h1>
         <h2 className='trip-create-subheader' id=''> for you and your friends </h2>
       </div>
-
       <div className='trip-create-content-wrapper'>
+        <div className="trip-create-errors">{errors?.title}</div>
         <label className='trip-create-content-item'>
           <span className='trip-create-content-title trip-title' > Title </span>
           <input className='trip-create-content-input trip-title' type="text" value={title} onChange={e => {
@@ -66,7 +68,7 @@ const TripCreateForm = () => {
         </label>
         <label className='trip-create-content-item'>
           <span className='trip-create-content-title trip-start-date' > Start date </span>
-          <input className='trip-create-content-input trip-start-date' type="date" value={startDate} onChange={e => {
+          <input className='trip-create-content-input trip-start-date' type="date" value={startDate} min={today.split('T')[0]} onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)
               endDate < e.target.value ? setEndDate(e.target.value) : setEndDate(endDate) ;
@@ -74,7 +76,7 @@ const TripCreateForm = () => {
         </label>
         <label className='trip-create-content-item'>
           <span className='trip-create-content-title trip-end-date' > End date </span>
-          <input className='trip-create-content-input trip-end-date' type="date" value={endDate} onChange={e => {
+          <input className='trip-create-content-input trip-end-date' type="date" value={endDate} min={startDate.split('T')[0]} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} placeholder='end date'/>
         </label>

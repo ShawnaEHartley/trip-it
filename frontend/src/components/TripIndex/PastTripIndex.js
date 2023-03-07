@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
 import TripIndexItem from './TripIndexItem';
 import { closeModal } from '../../store/modal';
-import { getTrips, clearTrips, fetchUpcomingUserTrips} from '../../store/trips';
+import { getTrips, fetchPastUserTrips} from '../../store/trips';
 import './TripIndex.css';
 
-const TripIndex = () => {
+const PastTripIndex = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const trips = useSelector(getTrips);
@@ -61,19 +61,8 @@ const TripIndex = () => {
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
 
     useEffect(() => {
-        dispatch(fetchUpcomingUserTrips(user._id))
+        dispatch(fetchPastUserTrips(user._id))
     }, [dispatch, user._id]);
-    
-    // const EndTrip = () => {
-    //     return (
-    //         <div id='stamp-image-container'>
-    //             <div className='stamp-image'>
-    //                 <img className='stamp-image' src={randUrls[trips.length - 1]} />
-    //             </div>
-    //             <div className='trip-info'>{trips.slice(trips.length - 1)[0].title}</div>
-    //         </div>
-    //     )
-    // }
 
     const randUrls = [];
     while (awsUrls.length) {
@@ -138,4 +127,4 @@ const TripIndex = () => {
 };
 
 
-export default TripIndex;
+export default PastTripIndex;

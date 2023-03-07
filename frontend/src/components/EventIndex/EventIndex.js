@@ -25,7 +25,7 @@ const EventIndex = ({tripId}) => {
             <>
                 {events.map((event) => {
                     return (
-                        <EventIndexItem event={event} />
+                        <EventIndexItem event={event} key={event._id} />
                     )
                 })}
             </>

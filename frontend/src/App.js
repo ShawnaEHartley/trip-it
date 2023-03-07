@@ -17,6 +17,7 @@ import EventCreateForm from './components/EventsCreateForm/EventsCreateForm';
 import EventUpdateForm from './components/EventsUpdateForm/EventsUpdateForm';
 import TripIndex from './components/TripIndex/TripIndex';
 import AboutUsPage from './components/AboutUsPage/AboutUsPage'
+import PastTripIndex from './components/TripIndex/PastTripIndex';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <Route path="/login">
           <LoginForm />
+        </Route>
+        <Route path="/pastTrips">
+          <PastTripIndex />
         </Route>
         <Route path="/">
           <SplashPage />
