@@ -4,9 +4,8 @@ import { useHistory } from 'react-router-dom';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
 import TripIndexItem from './TripIndexItem';
 import { closeModal } from '../../store/modal';
-import { fetchUserTrips, getTrips, clearTrips } from '../../store/trips';
+import { fetchUserTrips, getTrips, clearTrips, fetchUpcomingUserTrips, fetchPastUserTrips } from '../../store/trips';
 import './TripIndex.css';
-
 
 const TripIndex = () => {
     const dispatch = useDispatch();
@@ -35,8 +34,6 @@ const TripIndex = () => {
         }
     };
 
-
-
     let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
@@ -63,10 +60,8 @@ const TripIndex = () => {
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_40.png',
                     'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
 
-
     useEffect(() => {
-        dispatch(clearTrips());
-        dispatch(fetchUserTrips(user._id))
+        dispatch(fetchPastUserTrips(user._id))
     }, [dispatch, user._id]);
     
     // const EndTrip = () => {
@@ -134,18 +129,6 @@ const TripIndex = () => {
                                     />
                                 )}
                             </div>
-                            {/* <div className='stamp-container'>
-                        </div>
-                        <div className='stamp-container'>
-                        </div>
-                        <div className='stamp-container'>
-                        </div>
-                        <div className='stamp-container'>
-                        </div>
-                        <div className='stamp-container'>
-                        </div> */}
-                            {/* <div id='end-stamp-container' className='stamp-container'>
-                        </div> */}
                         </div>
                     </div>
                 </div>
