@@ -34,7 +34,10 @@ const eventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Trip',
         required: true
-    }
+    },
+    imageURL: String
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Event', eventSchema);

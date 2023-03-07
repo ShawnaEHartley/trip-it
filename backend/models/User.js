@@ -18,8 +18,9 @@ const userSchema = new Schema({
     trips: [{
         type: Schema.Types.ObjectId,
         ref: 'Trip'
-    }]
-}, {
+    }],
+    profileImageURL: String
+},  {
     timestamps: true
 });
 

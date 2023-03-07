@@ -24,7 +24,9 @@ const tripSchema = new Schema({
     members: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    mainImageURL: String,
+    stampImageURL: String
 }, {
     timestamps: true
 });

@@ -38,8 +38,8 @@ router.get('/user/:userId', async function (req, res, next) {
     const userId = req.params.userId;
     try {
         const trips = await Trip.find({ $or: [{ organizer: userId }, { members: userId }] })
-            .populate('organizer', '_id name')
-            .populate('members', '_id email name')
+            .populate('organizer', '_id name profileImageURL')
+            .populate('members', '_id email name profileImageURL')
             .sort({ startDate: 1 });
         return res.json(trips);
     }
