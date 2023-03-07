@@ -151,7 +151,7 @@ const TripShowPage = () => {
             <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
               { user === trip.oranizer ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
               { user === trip.oranizer ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
-              { user === trip.oranizer ? <MenuItem onClick={inviteMember}>Invite a member</MenuItem> : ''}
+              <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
               <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
             </Menu>
             </div>
