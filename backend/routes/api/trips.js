@@ -102,19 +102,11 @@ router.get('/:tripId', async function (req, res, next) {
 
 // create a new trip
 router.post('/', async function (req, res, next) {
-    if (req.body.title === '' || req.body.endDate < req.body.startDate) {
-        const err = new Error('Validation Error');
+    if (req.body.title === '') {
+        const err = new Error('No title');
         err.statusCode = 400;
-        const errors = {};
-
-        if (req.body.title === '') {
-            errors.title = 'A trip must have a title';
-        }
-        if (req.body.endDate < req.body.startDate) {
-            errors.date = 'End date must be later than start date'
-        }
-        
-        err.errors = errors;
+        err.errors = { 'title': 'A trip must have a title' };
+        console.log(err);
         return next(err);
     } else {
         const newTrip = await new Trip({
@@ -128,6 +120,7 @@ router.post('/', async function (req, res, next) {
         });
 
         const trip = await newTrip.save();
+
         return res.json(trip);
     }
 });
