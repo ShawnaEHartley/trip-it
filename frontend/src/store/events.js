@@ -166,10 +166,10 @@ export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
 
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-    await fetch(`/api/events/${eventId}`, {
-        method: "DELETE", 
+    await jwtFetch(`/api/events/${eventId}`, {
+        method: "DELETE"
     })
-    return dispatch(removeEvent(eventId))
+    dispatch(removeEvent(eventId))
 }; 
 
 

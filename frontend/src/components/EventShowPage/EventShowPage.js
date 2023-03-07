@@ -43,8 +43,8 @@ const EventShowPage = () => {
   // }
 
   const deleteThisEvent = (e) => {
-    dispatch(eventActions.deleteEvent(event._id))
-
+    dispatch(eventActions.deleteEvent(eventId))
+    backToTrip();
   };
 
   const renderUpdateForm = (e) => {
