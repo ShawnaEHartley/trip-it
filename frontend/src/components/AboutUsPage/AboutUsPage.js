@@ -16,13 +16,19 @@ const AboutUsPage = () => {
          <div id='shawna-div'>
             <div className="personal-links">
                <a href="https://www.linkedin.com/in/shawna-e-hartley/" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  <div className="grow">
+                     <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  </div>
                </a>
                <a href="https://github.com/ShawnaEHartley" target="_blank" rel="noopener noreferrer"> 
-                  <img src={GitHubLogo} alt="GitHub Logo" className="gh-logo"/> 
+                  <div className="grow">
+                     <img src={GitHubLogo} alt="GitHub Logo" className="gh-logo"/> 
+                  </div>
                </a>
                <a href="https://angel.co/u/shawna-hartley" target="_blank" rel="noopener noreferrer">
-                  <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  <div className="grow">
+                     <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  </div>
                </a>
             </div>
             <h2 className="dev-name">Shawna Hartley</h2>
@@ -36,13 +42,19 @@ const AboutUsPage = () => {
          <div id='chad-div'>
             <div className="personal-links">
                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  <div className="grow">
+                     <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  </div>
                </a>
                <a href="https://github.com/charles-tyra" target="_blank" rel="noopener noreferrer">
-                  <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  <div className="grow">
+                     <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  </div>
                </a>
                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  <div className="grow">
+                     <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  </div>
                </a>
             </div>
             <h2 className="dev-name">Charles 'Chad' Tyra</h2>
@@ -56,13 +68,19 @@ const AboutUsPage = () => {
          <div id='lynsie-div'>
             <div className="personal-links">
                <a href="https://www.linkedin.com/in/lynsie-aragon-87156a157/" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  <div className="grow">
+                     <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  </div>
                </a>
                <a href="https://github.com/Lynsiearagon" target="_blank" rel="noopener noreferrer">
-                  <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  <div className="grow">
+                     <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  </div>
                </a>
                <a href="https://angel.co/u/lynsie-aragon" target="_blank" rel="noopener noreferrer">
-                  <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  <div className="grow">
+                     <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  </div>
                </a>
             </div>
             <h2 className="dev-name">Lynsie Aragon</h2>
@@ -76,13 +94,19 @@ const AboutUsPage = () => {
          <div id='emmett-div'>
             <div className="personal-links">
                <a href="https://www.linkedin.com/in/emmett-wechsler-3477a9266/" target="_blank" rel="noopener noreferrer">
-                  <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  <div className="grow">
+                     <img src={linkedin} alt="LinkedIn Logo" className="linkedin-logo"/>
+                  </div>
                </a>
                <a href="https://github.com/EmmettWex" target="_blank" rel="noopener noreferrer">
-                  <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  <div className="grow">
+                     <img src={GitHubLogo} alt="GitHubLogo" className="gh-logo"/>
+                  </div>
                </a>
                <a href="https://angel.co/u/emmett-wechsler" target="_blank" rel="noopener noreferrer">
-                  <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  <div className="grow">
+                     <img src={angellist} alt="Angellist Logo" className="angellist-logo"/>
+                  </div>
                </a>
             </div>
             <h2 className="dev-name">Emmett Weschler</h2>
