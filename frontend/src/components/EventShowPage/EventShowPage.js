@@ -43,8 +43,8 @@ const EventShowPage = () => {
   // }
 
   const deleteThisEvent = (e) => {
-    e.preventDefault(); 
     dispatch(eventActions.deleteEvent(event._id))
+
   };
 
   const renderUpdateForm = (e) => {
@@ -52,15 +52,18 @@ const EventShowPage = () => {
   };
 
 
-  const eventOrganizerButtons = () => {
-    return (
-      <div>
+  let eventOrganizer = event.peopleGoing[0]._id;
+  let eventOrganizerButtons;
+  
+  if (user._id === eventOrganizer) {
+    eventOrganizerButtons = (
+      <div className='event-show-buttons'>
         <button onClick={renderUpdateForm}>Update</button>
-        {/* <button onClick={openUpdateForm}>Update</button> */}
         <button onClick={deleteThisEvent}>Delete</button>
       </div>
     )
-  }
+  };
+  
 
   const modalComponent = () => {
     if (modalState.component === 'editEvent') {
@@ -70,8 +73,6 @@ const EventShowPage = () => {
     }
   };
 
-
-  const eventOrganizer = event.peopleGoing[0]._id;
 
   const backToTrip = () => {
     // if (typeof window !== 'undefined') {
@@ -127,8 +128,7 @@ const EventShowPage = () => {
                 <p><span className='descr-span'>Cost: </span>${event.cost} {event.splitCostStructure ? 'per person' : 'total'}</p>
                 <p id='descr-description'>Description: {event.description}</p>
                 <div className='event-show-buttons'>
-                  <button onClick={renderUpdateForm}>Update</button>
-                  <button onClick={deleteThisEvent}>Delete</button>
+                  {eventOrganizerButtons}
                 </div>
                   <button className='event-show-page-button' onClick={backToTrip}>Back to trip</button>
               </div>
