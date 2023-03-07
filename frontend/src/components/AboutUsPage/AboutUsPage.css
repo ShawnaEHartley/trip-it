@@ -1,3 +1,11 @@
+#about-us-header {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 900;
+  padding-top: 5%;
+}
+
 .about-us-page-image {
   height: 200px;
   width: 200px;
@@ -5,7 +13,7 @@
   border-radius: 100%;
   margin-top: 40px;
   margin-bottom: 30px;
-  filter: drop-shadow(0 0 0.75rem rgb(250, 13, 13));
+  filter: drop-shadow(0 0 0.75rem rgb(114, 114, 114));
 }
 
 #about-us-container {
@@ -14,7 +22,12 @@
   align-items: center;
   text-align: center;
   justify-content: space-evenly;
-  height: 600px;
+  height: 500px;
+}
+
+.angellist-logo {
+  width: 20px;
+  height: 20px;
 }
 
 
@@ -27,8 +40,8 @@
 
 .dev-name {
   font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 7px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 #emmett-div {
@@ -38,9 +51,16 @@
   align-items: center;
 }
 
-.GH-logo {
-  width: 70px;
-  height: 40px;
+.gh-logo {
+  width: 40px;
+  height: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.linkedin-logo {
+  width: 20px;
+  height: 20px;
 }
 
 #lynsie-div {
@@ -50,10 +70,9 @@
   align-items: center;
 }
 
-.personal-links {
-  text-decoration: none;
-  margin-top: 3px;
-  margin-bottom: 3px;
+.personal-links{
+  width: 100%;
+  height: auto;
 }
 
 .pos-title {
