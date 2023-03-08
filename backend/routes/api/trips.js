@@ -144,15 +144,33 @@ router.patch('/:tripId', async function(req, res, next) {
 
 // add trip member by email
 router.patch('/addUser/:tripId/:userEmail', async function (req, res, next) {
-    try {
-        const user = await User.findOne({ email: req.params.userEmail });
-        await Trip.updateOne({ _id: req.params.tripId}, { $push: { members: user._id }});
-        const trip = await Trip.findById(req.params.tripId)
-            .populate('organizer', '_id name')
-            .populate('members', '_id email name');
-        return res.json(trip);
-    } catch(err) {
-        next(err);
+    const user = await User.findOne({ email: req.params.userEmail });
+    
+    const oldTrip = await Trip.findById(req.params.tripId)
+        .populate('members', '_id email name');
+
+    if (!user || oldTrip.members.some(member => member.email === req.params.userEmail)) {
+        const err = new Error('')
+        err.statusCode = 400 
+        const errors = {}
+        if (!user) {
+            errors.email = 'User does not exist. Try a different email.'
+        }
+        if (oldTrip.members.some(member => member.email === req.params.userEmail)) {
+            errors.members = 'Member already included in trip.'
+        }
+        err.errors = errors;
+        return next(err)
+    } else {
+        try {
+            await Trip.updateOne({ _id: req.params.tripId}, { $push: { members: user._id }});
+            const trip = await Trip.findById(req.params.tripId)
+                .populate('organizer', '_id name')
+                .populate('members', '_id email name');
+            return res.json(trip);
+        } catch(err) {
+            next(err);
+        }
     }
 });
 

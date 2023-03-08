@@ -2,39 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { addUserToTrip, fetchTrip, tripErrorsReducer } from '../../store/trips';
+import { addUserToTrip, fetchTrip, tripErrorsReducer, getTrip } from '../../store/trips';
 
 import './InviteMemberForm.css';
 
-const InviteMemberForm = ({trip}) => {
+const InviteMemberForm = () => {
   const dispatch = useDispatch();
   const { tripId } = useParams();
-  const attendees = trip.members
+  const trip = useSelector(getTrip)
   const errors = useSelector(state => state.errors.tripErrorsReducer);
+  const [inviteeEmail, setInviteeEmail] = useState("");
 
+  console.log(errors)
 
   useEffect(() => {
     dispatch(fetchTrip(tripId));
   }, [dispatch, tripId])
 
+  if (!trip.title) {
+    return <div></div>
+  }
+
   // search member by email
 
-  const [inviteeEmail, setInviteeEmail] = useState("");
 
   const inviteMember = (e) => {
     e.preventDefault();
     //invite a member to this trip via their email via modal
 
-    console.log(attendees)
-    console.log(inviteeEmail)
-    const includes = attendees.some(member => member.email === inviteeEmail);
-
-    if (includes) {
-      console.log('Email exists')
-    } else {
-      // dispatch(addUserToTrip(tripId, inviteeEmail))
-      console.log('Email does not exist')
-    }
+    dispatch(addUserToTrip(tripId, inviteeEmail))
   };
 
   return (

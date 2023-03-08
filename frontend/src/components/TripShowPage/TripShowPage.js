@@ -56,7 +56,7 @@ const TripShowPage = () => {
             )
         } else if (modalState.component === 'inviteMember') {
           return (
-            <InviteMemberForm trip={trip} />
+            <InviteMemberForm />
           )
         }
     };

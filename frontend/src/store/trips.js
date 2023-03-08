@@ -184,11 +184,15 @@ export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
         });
         
         const trip = await res.json(); 
+        dispatch(closeModal())
         dispatch(receiveTrip(trip)); 
     } catch(err) {
         const resBody = await err.json(); 
+        debugger
         if (resBody.statusCode === 400) {
             return dispatch(receiveTripErrors(resBody.errors))
+        } else if (resBody.statusCode === 404) {
+            return dispatch(receiveTripErrors({email: 'User does not exist. Try a different email.'}))
         }
     }
 };
