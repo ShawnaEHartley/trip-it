@@ -43,7 +43,8 @@ const EventShowPage = () => {
   // }
 
   const deleteThisEvent = (e) => {
-    dispatch(eventActions.deleteEvent(eventId))
+    e.preventDefault(); 
+    dispatch(eventActions.deleteEvent(event._id));
     backToTrip();
   };
 
