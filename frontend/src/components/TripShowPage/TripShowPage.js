@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { addUserToTrip, deleteTrip, fetchTrip, getTrip } from '../../store/trips'
+import { addUserToTrip, deleteTrip, fetchTrip, getTrip, clearTripErrors } from '../../store/trips'
 import { closeModal } from '../../store/modal';
 import EventIndex from '../EventIndex/EventIndex';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
@@ -34,6 +34,7 @@ const TripShowPage = () => {
     }, [dispatch, tripId]);
 
     const renderUpdateForm = e => {
+        dispatch(clearTripErrors())
         dispatch({ type: "modalOn", component: 'editTrip' })
     };
 
