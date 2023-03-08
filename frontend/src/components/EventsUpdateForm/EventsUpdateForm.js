@@ -5,12 +5,13 @@ import { closeModal } from '../../store/modal'
 import '../EventsCreateForm/EventsCreateForm.css';
 import * as eventActions from '../../store/events';
 
-
-
 const EventUpdateForm = () => {
     const dispatch = useDispatch(); 
     const event = useSelector(eventActions.getEvent);
-    const { eventId } = useParams(); 
+    const { eventId } = useParams();
+    const errors = useSelector(state => state.errors.eventErrorsReducer);
+
+    const today = new Date().toISOString();
 
     useEffect(() => {
       dispatch(eventActions.fetchEvent(eventId))
@@ -28,12 +29,17 @@ const EventUpdateForm = () => {
     const [cost, setCost] = useState(event.cost);
     const [splitCostStructure, setSplitCostStructure] = useState(event.splitCostStructure);
 
+    if (endDate < startDate) {
+      setEndDate(startDate);
+    }
 
     if (!event.title) {
-      return <div>loading...</div>
+      return <div></div>
     }
 
     const submitUpdateEvent = (e) => {
+      e.preventDefault();
+
       const eventObject = {
         title: title,
         description: description,
@@ -49,7 +55,7 @@ const EventUpdateForm = () => {
         cost: cost, 
         splitCostStructure: splitCostStructure
       }
-      dispatch(closeModal());
+      
       dispatch(eventActions.updateEvent(eventObject, event._id));
     };
 
@@ -61,6 +67,7 @@ const EventUpdateForm = () => {
         </div>
   
         <div className='event-create-content-wrapper'>
+          <div className="event-create-errors">{errors?.title}</div>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-title' > Event title </span>
             <input className='event-create-content-input event-title' type="text" value={title} onChange={e => {
@@ -75,13 +82,13 @@ const EventUpdateForm = () => {
           </label>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-start-date' > Event start date </span>
-            <input className='event-create-content-input event-start-date' type="date" value={startDate} onChange={e => {
+            <input className='event-create-content-input event-start-date' type="date" value={startDate} min={today < event.startDate ? today.split('T')[0] : event.startDate.split('T')[0] } onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)}} />
           </label>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-end-date' > Event end date </span>
-            <input className='event-create-content-input event-end-date' type="date" value={endDate} onChange={e => {
+            <input className='event-create-content-input event-end-date' type="date" value={endDate} min={startDate} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
           </label>

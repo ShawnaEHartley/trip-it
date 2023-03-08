@@ -45,6 +45,9 @@ const TripCreateForm = () => {
     }, history));
   };
 
+  if (endDate < startDate) {
+    setEndDate(startDate);
+  }
 
   return (
     <form className='trip-create-form-wrapper' id='' action='' onSubmit={submitTrip}>

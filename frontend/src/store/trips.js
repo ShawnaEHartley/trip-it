@@ -33,9 +33,8 @@ const receiveTripErrors = (errors) => ({
     errors 
 });
 
-export const clearTripErrors = (errors) => ({
-    type: CLEAR_TRIP_ERRORS,
-    errors 
+export const clearTripErrors = () => ({
+    type: CLEAR_TRIP_ERRORS
 });
 
 export const getTrips = (state) => {
@@ -159,14 +158,14 @@ export const createTrip = (data, history) => async (dispatch) => {
 };
 
 export const updateTrip = (tripObject, tripId) => async (dispatch) => {
-    
     try {
         const res = await jwtFetch(`/api/trips/${tripId}`, {
             method: "PATCH", 
             body: JSON.stringify(tripObject)
         });
         
-        const trip = await res.json(); 
+        const trip = await res.json();
+        dispatch(closeModal());
         dispatch(receiveTrip(trip));
     } catch(err) {
         const resBody = await err.json(); 
@@ -233,14 +232,12 @@ export const clearTripState = () => async (dispatch) => {
 }
 
 
-const nullErrors = null;
-
 export const tripErrorsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_TRIP_ERRORS:
             return action.errors;
         case CLEAR_TRIP_ERRORS:
-            return nullErrors;
+            return {};
         default:
             return state;
     }

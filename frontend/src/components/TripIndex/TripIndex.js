@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
 import TripIndexItem from './TripIndexItem';
 import { closeModal } from '../../store/modal';
-import { getTrips, clearTrips, fetchUpcomingUserTrips} from '../../store/trips';
+import { getTrips, clearTripErrors, fetchUpcomingUserTrips} from '../../store/trips';
 import './TripIndex.css';
 
 const TripIndex = () => {
@@ -25,6 +25,7 @@ const TripIndex = () => {
     })
     
     const showCreateTripForm = () => {
+        dispatch(clearTripErrors());
         dispatch({type: 'modalOn', component: 'showCreateTripForm'})
     };
 

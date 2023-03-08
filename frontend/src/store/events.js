@@ -29,9 +29,8 @@ const receiveEventErrors = (errors) => ({
     errors 
 });
 
-const clearEventErrors = (errors) => ({
-    type: CLEAR_EVENT_ERRORS, 
-    errors 
+export const clearEventErrors = () => ({
+    type: CLEAR_EVENT_ERRORS
 });
 
 export const getEvents = (state) => {
@@ -122,7 +121,8 @@ export const updateEvent = (eventObj, eventId) => async (dispatch) => {
             method: "PATCH", 
             body: JSON.stringify(eventObj)
         }); 
-        const event = await res.json(); 
+        const event = await res.json();
+        dispatch(closeModal());
         dispatch(receiveEvent(event));
     } catch(err) {
         const resBody = await err.json(); 
@@ -173,14 +173,12 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 };
 
 
-const nullErrors = null; 
-
 export const eventErrorsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_EVENT_ERRORS: 
-            return action.errors; 
-        case CLEAR_EVENT_ERRORS: 
-            return nullErrors; 
+            return action.errors;
+        case CLEAR_EVENT_ERRORS:
+            return {};
         default: 
             return state;
     }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux';
 import EventIndexItem from './EventsIndexItem';
-import { fetchTripEvents, getEvents } from '../../store/events';
+import { fetchTripEvents, getEvents, clearEventErrors } from '../../store/events';
 import * as eventActions from '../../store/events'; 
 import './EventIndex.css'; 
 
@@ -15,6 +15,7 @@ const EventIndex = ({tripId}) => {
     }, [dispatch, tripId]);
 
     const renderCreateEvent = e => {
+        dispatch(clearEventErrors());
         dispatch({type:'modalOn', component: 'createEvent'})
     }
 
