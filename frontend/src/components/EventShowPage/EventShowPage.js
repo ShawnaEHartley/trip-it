@@ -63,12 +63,6 @@ const EventShowPage = () => {
         <button onClick={deleteThisEvent}>Delete</button>
       </div>
     )
-  } else {
-    eventOrganizerButtons = (
-      <div className='event-show-buttons'>
-        <button onClick={renderUpdateForm}>Update</button>
-      </div>
-    )
   };
 
 
