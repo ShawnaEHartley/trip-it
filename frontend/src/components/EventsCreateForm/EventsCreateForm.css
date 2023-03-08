@@ -1,3 +1,7 @@
+.event-create-errors {
+    color: red;
+}
+
 .event-create-form-wrapper {
     background-color: white;
     border: 2px solid black;

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { closeModal } from '../../store/modal';
-import { deleteTrip, updateTrip } from '../../store/trips';
+import { deleteTrip, updateTrip, fetchTrip, getTrip } from '../../store/trips';
 import './TripUpdateForm.css';
 
-const TripUpdateForm = ({trip}) => {
+const TripUpdateForm = () => {
 // only available if the signed in user is the organizer of the trip
   const dispatch = useDispatch();
+  const { tripId } = useParams();
+  const errors = useSelector(state => state.errors.tripErrorsReducer);
+  const trip = useSelector(getTrip);
+  
+  const today = new Date().toISOString();
+
+  useEffect(() => {
+    dispatch(fetchTrip(tripId));
+  }, [dispatch]);
 
   const [title, setTitle] = useState(trip.title);
   const [description, setDescription] = useState(trip.description);
@@ -20,6 +29,8 @@ const TripUpdateForm = ({trip}) => {
   const [country, setCountry] = useState(trip.location.country);
 
   const submitUpdateTrip = (e) => {
+    e.preventDefault();
+
     const tripObject = {
       title: title,
       description: description,
@@ -34,10 +45,13 @@ const TripUpdateForm = ({trip}) => {
       },
       organizer: trip.organizer
     };
-    dispatch(closeModal());
+
     dispatch(updateTrip(tripObject, trip._id));
   };
 
+    if (!trip.title) {
+      return <div></div>
+    }
 
     return (
       <form className='trip-update-form-wrapper' id='' action='' onSubmit={submitUpdateTrip}>
@@ -47,6 +61,7 @@ const TripUpdateForm = ({trip}) => {
         </div>
   
         <div className='trip-update-content-wrapper'>
+          <div className="trip-create-errors">{errors?.title}</div>
           <label className='trip-update-content-item'>
             <span className='trip-update-content-title trip-title' >Title </span>
             <input className='trip-update-content-input trip-title' type="text" value={title} onChange={e => {
@@ -61,13 +76,13 @@ const TripUpdateForm = ({trip}) => {
           </label>
           <label className='trip-update-content-item'>
             <span className='trip-update-content-title trip-start-date' > Start date </span>
-            <input className='trip-update-content-input trip-start-date' type="date" value={startDate} onChange={e => {
+            <input className='trip-update-content-input trip-start-date' type="date" value={startDate} min={today < trip.startDate ? today.split('T')[0] : trip.startDate.split('T')[0]} onChange={e => {
               e.preventDefault();
               setStartDate(e.target.value)}} />
           </label>
           <label className='trip-update-content-item'>
             <span className='trip-update-content-title trip-end-date' > End date </span>
-            <input className='trip-update-content-input trip-end-date' type="date" value={endDate} onChange={e => {
+            <input className='trip-update-content-input trip-end-date' type="date" value={endDate} min={startDate} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
           </label>
@@ -109,9 +124,7 @@ const TripUpdateForm = ({trip}) => {
           <button className='trip-update-button'>Update</button>
         </div>
       </form>
-    )
-
-
+    );
 };
 
 export default TripUpdateForm;

@@ -39,31 +39,36 @@ router.get('/:eventId', async function (req, res, next) {
 // get events by trip
 
 router.get('/trips/:tripId', async function (req, res, next) {
-    let trip;
-    try {
-        trip = await Trip.findById(req.params.tripId);
-    } catch(err) {
+    const trip = Trip.findById(req.params.tripId);
+    
+    if (!trip) {
         const error = new Error('Trip not found');
         error.statusCode = 404;
-        error.errors = { message: 'No user found'};
+        error.errors = { message: 'No trip found' };
         return next(error);
-    }
-    try {
-        const trips = await Event.find({ tripId: trip._id })
-            .populate('organizer', '_id name')
-            .populate('peopleGoing', '_id name')
-            .sort({ startTime: 1 });
-        return res.json(trips);
-    }
-    catch(err) {
-        return res.json([]);
+    } else {
+        try {
+            const trips = await Event.find({ tripId: req.params.tripId })
+                .populate('organizer', '_id name')
+                .populate('peopleGoing', '_id name')
+                .sort({ startTime: 1 });
+            return res.json(trips);
+        }
+        catch (err) {
+            return res.json([]);
+        }
     }
 });
 
 /* POST requests below */
 // create an event
 router.post('/:tripId', async function (req, res, next) {
-    try {
+    if (req.body.title === '') {
+        const err = new Error('No title');
+        err.statusCode = 400;
+        err.errors = { 'title': 'An event must have a title' };
+        return next(err);
+    } else {
         const newEvent = await new Event({
             title: req.body.title,
             description: req.body.description,
@@ -75,14 +80,11 @@ router.post('/:tripId', async function (req, res, next) {
             organizer: req.body.organizer,
             peopleGoing: req.body.peopleGoing,
             tripId: req.params.tripId
-        })
+        });
 
         let event = await newEvent.save();
         return res.json(event);
-    }
-    catch(err) {
-        next(err);
-    }
+    };
 });
 
 /* PATCH requests below */
@@ -109,8 +111,8 @@ router.patch('/remove/:eventId/:userId', async function (req, res, next) {
         );
         
         const event = await Event.findById(req.params.eventId)
-            .populate('organizer', '_id name')
-            .populate('peopleGoing', '_id name');
+            .populate('organizer', '_id name email')
+            .populate('peopleGoing', '_id name email');
         return res.json(event);
     }
     catch(err) {
@@ -120,16 +122,23 @@ router.patch('/remove/:eventId/:userId', async function (req, res, next) {
 
 // update an event
 router.patch('/:eventId', async function (req, res, next) {
-    try {
-        const updates = req.body;
-        await Event.updateOne({_id: req.params.eventId}, {$set: updates});
-        const event = await Event.findById(req.params.eventId)
-            .populate('organizer', '_id name')
-            .populate('peopleGoing', '_id name');
-        return res.json(event);
-    }
-    catch(err) {
-        next(err);
+    if (req.body.title === '') {
+        const err = new Error('No title');
+        err.statusCode = 400;
+        err.errors = { 'title': 'An event must have a title' };
+        return next(err);
+    } else {
+        try {
+            const updates = req.body;
+            await Event.updateOne({ _id: req.params.eventId }, { $set: updates });
+            const event = await Event.findById(req.params.eventId)
+                .populate('organizer', '_id name email')
+                .populate('peopleGoing', '_id name email');
+            return res.json(event);
+        }
+        catch (err) {
+            next(err);
+        }
     }
 });
 

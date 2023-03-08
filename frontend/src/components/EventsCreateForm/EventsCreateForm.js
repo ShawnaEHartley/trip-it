@@ -10,6 +10,7 @@ const EventCreateForm = ({tripId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
+    const errors = useSelector(state => state.errors.eventErrorsReducer);
 
     const today = new Date().toISOString();
 
@@ -25,6 +26,9 @@ const EventCreateForm = ({tripId}) => {
     const [cost, setCost] = useState(0);
     const [splitCostStructure, setSplitCostStructure] = useState(false);
 
+    if (endDate < startDate) {
+      setEndDate(startDate);
+    }
 
     const submitEvent = (e) => {
         e.preventDefault();
@@ -55,6 +59,7 @@ const EventCreateForm = ({tripId}) => {
         </div>
   
         <div className='event-create-content-wrapper'>
+          <div className="event-create-errors">{errors?.title}</div>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-title' > Title </span>
             <input className='event-create-content-input event-title' type="text" value={title} onChange={e => {

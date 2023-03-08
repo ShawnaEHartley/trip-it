@@ -106,7 +106,6 @@ router.post('/', async function (req, res, next) {
         const err = new Error('No title');
         err.statusCode = 400;
         err.errors = { 'title': 'A trip must have a title' };
-        console.log(err);
         return next(err);
     } else {
         const newTrip = await new Trip({
@@ -120,7 +119,6 @@ router.post('/', async function (req, res, next) {
         });
 
         const trip = await newTrip.save();
-
         return res.json(trip);
     }
 });
@@ -129,16 +127,23 @@ router.post('/', async function (req, res, next) {
 // update a trip
 
 router.patch('/:tripId', async function(req, res, next) {
-    try {
-        const updates = req.body;
-        await Trip.updateOne({ _id: req.params.tripId }, {$set: updates});
-        const trip = await Trip.findById(req.params.tripId)
-            .populate('organizer', '_id name')
-            .populate('members', '_id email name');
-        return res.json(trip);
-    }
-    catch(err) {
-        next(err);
+    if (req.body.title === '') {
+        const err = new Error('No Title');
+        err.statusCode = 400;
+        err.errors = { 'title': 'A trip must have a title' };
+        return next(err);
+    } else {
+        try {
+            const updates = req.body;
+            await Trip.updateOne({ _id: req.params.tripId }, { $set: updates });
+            const trip = await Trip.findById(req.params.tripId)
+                .populate('organizer', '_id name')
+                .populate('members', '_id email name');
+            return res.json(trip);
+        }
+        catch (err) {
+            next(err);
+        }
     }
 });
 
