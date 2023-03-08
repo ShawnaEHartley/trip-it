@@ -138,96 +138,96 @@ const SplashPage = () => {
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Amanda's flight details</h3>
+                        <div>Dublin, IR</div>
                         <div>
-                            description
+                            if anyone wants to jump on the same flight, leaving JFK at 7:40 pm on American, arriving in Dublin (direct flight) at 6 am. I will rent a car and drive into the city to the Holiday Inn near the spire. 
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>rent jetskis</h3>
+                        <div>Emerald Isle, NC</div>
                         <div>
-                            description
+                            watersports rental on the sound side of the island about a mile east of our house. Rentals are 3 hours long. 
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Seven Lions at The Brooklyn Mirage</h3>
+                        <div>New York, NY</div>
                         <div>
-                            description
+                            VIP tickets to Seven Lions. Will head to the Mirage around 10 pm after dinner. Get ready for a late night.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Sunrise horsebackriding</h3>
+                        <div>Paros, GR</div>
                         <div>
-                            description
+                            Meet driver at hotel at 4:30, 20 minute ride to stables to be on the beach by 5:30. Make sure to wear closed toe shoes and long pants (preferably jeans). After we will grab breakfast in town and walk back to the hotel for a nap. 
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Tandom Paragliding</h3>
+                        <div>Northern Switzerland</div>
                         <div>
-                            description
+                            Little city between Munich and Zurich, there is a tandom paragliding place that we can stop for 3/4 hours and paraglide the hillside. Will split the cars via people who want to do this event.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Central Park Volleyball</h3>
+                        <div>New York, NY</div>
                         <div>
-                            description
+                            Meet at 11 am to play a few games of volleyball. Depending on how many people want to play we can break and get lunch at Paris Baguette on the UES between games or after. Looking forward to seeing you all there. It's been too long.
                         </div>
                     </div>
                 </div>
                 <div id='right-splash'>
                 <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Game of Thrones walking tour</h3>
+                        <div>Dubrvnik, CR</div>
                         <div>
-                            description
+                            Meet group at 11 am, walking tour around the walled city takes 3 hours, then a quick lunch break and then extended tour goes out to the gardens (Highgarden) - about a 30 minute bus ride (local city bus)
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Ferry to Rotenest Island</h3>
+                        <div>Perth, AUS</div>
                         <div>
-                            description
+                            Meet at Ferry terminal at Elizabeth Quay for 10:15 ferry to Rotenest. Lunch at the beachside cafe on the island. Then hike up to the lighthouse, quick swim in the moon shaped beach, then back to Perth for a shower and dinner.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Horseback through the Garden of the Gods</h3>
+                        <div>Denver, CO</div>
                         <div>
-                            description
+                            Meet at stables at 9 am, setoff by 9:30 for a 3 hour walk through the garden of the gods on horseback. Wear closed toe shoes and jeans and a face mask or bandana for the dust. No experience necessary.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Beach day at Blue Ciele Resort</h3>
+                        <div>Cartagena, Colombia</div>
                         <div>
-                            description
+                            Van will depart from central park outside walled city at 9:30 AM to drive to boat. Boat will take us to the resort with 2 complimetary drinks and al a carte cafe offerings. Will stay through dinner at the resort restaurant. After dinner we will take the boat to the bioluminescence bay on our way back to Cartagena. Bring a towel and water.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Dinner at Luna Rosa</h3>
+                        <div>New York, NY</div>
                         <div>
-                            description
+                            Lets celebrate Robert's birthday with a wonderful italian dinner. The wine will flow and the pasta will be abundant. Make sure to get your like in 4 days in advance to be counted on the reservation.
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Day in Santa Monica</h3>
+                        <div>Los Angeles, CA</div>
                         <div>
-                            description
+                            Uber out to Elephante for brunch and then walk the beach and shop and just enjoy CA weather and culture! 
                         </div>
                     </div>
                     <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
+                        <h3>Dinner at Carmen</h3>
+                        <div>Cartagena, Colombia</div>
                         <div>
-                            description
+                            One of the best dining experiences! Highly suggest the tasting menu! Reservation will be confirmed 4 days before.
                         </div>
                     </div>
                 </div>
