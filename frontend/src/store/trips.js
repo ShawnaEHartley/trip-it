@@ -188,7 +188,7 @@ export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
         dispatch(receiveTrip(trip)); 
     } catch(err) {
         const resBody = await err.json(); 
-        debugger
+        
         if (resBody.statusCode === 400) {
             return dispatch(receiveTripErrors(resBody.errors))
         } else if (resBody.statusCode === 404) {
