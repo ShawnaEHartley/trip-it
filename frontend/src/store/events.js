@@ -135,7 +135,7 @@ export const updateEvent = (eventObj, eventId) => async (dispatch) => {
 
 export const addUserToEvent = (eventId, userId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/events/addMember/${eventId}/${userId}`, {
+        const res = await jwtFetch(`/api/events/addMember/${eventId}/${userId}`, {
             method: "PATCH"
         })
         const event = await res.json(); 
@@ -151,7 +151,7 @@ export const addUserToEvent = (eventId, userId) => async (dispatch) => {
 
 export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/events/remove/${eventId}/${userId}`, {
+        const res = await jwtFetch(`/api/events/remove/${eventId}/${userId}`, {
             method: "PATCH"
         })
         const event = await res.json();
@@ -166,11 +166,11 @@ export const removeUserFromEvent = (eventId, userId) => async (dispatch) => {
 
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-    await fetch(`/api/events/${eventId}`, {
-        method: "DELETE", 
+    await jwtFetch(`/api/events/${eventId}`, {
+        method: "DELETE"
     })
     return dispatch(removeEvent(eventId))
-}; 
+};
 
 
 const nullErrors = null; 
@@ -195,9 +195,9 @@ const EventsReducer = (state = {}, action) => {
             return action.event;
         case RECEIVE_EVENTS:
             return action.events;
-        case REMOVE_EVENT: 
-            delete(newState[action.eventId])
-            return newState
+        case REMOVE_EVENT:
+            // delete(newState[action.eventId]);
+            return {};
         default: 
             return newState;
     }

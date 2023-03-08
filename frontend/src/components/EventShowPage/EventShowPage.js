@@ -44,7 +44,8 @@ const EventShowPage = () => {
 
   const deleteThisEvent = (e) => {
     e.preventDefault(); 
-    dispatch(eventActions.deleteEvent(event._id))
+    dispatch(eventActions.deleteEvent(event._id));
+    history.push(`/trips/${event.tripId}`);
   };
 
   const renderUpdateForm = (e) => {
