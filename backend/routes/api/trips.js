@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Trip = mongoose.model('Trip');
 const User = mongoose.model('User');
+const Event = mongoose.model('Event')
 
 /* GET trips */
 // get ALL trips
@@ -187,6 +188,11 @@ router.patch('/remove/:tripId', async function (req, res, next) {
             { $pull: { members: req.body }}
         );
 
+        await Event.updateMany(
+            { tripId: req.params.tripId},
+            { $pull: { peopleGoing: req.body }}
+        );
+
         const trip = await Trip.findById(req.params.tripId)
             .populate('organizer', '_id name')
             .populate('members', '_id email name');
@@ -201,6 +207,7 @@ router.patch('/remove/:tripId', async function (req, res, next) {
 router.delete('/:tripId', async function (req, res, next) {
         try {
             await Trip.deleteOne({ _id: req.params.tripId });
+            await Event.deleteMany({ tripId: req.params.tripId });
         } catch(err) {
             next(err);
         }
