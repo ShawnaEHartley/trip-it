@@ -1,21 +1,27 @@
 .event-index {
-   padding: 10px;
+   padding: 16px;
    line-height: 1.6;
    font-size: 14px;
    font-family: DuranMedium;
-   color: rgb(43, 43, 45);
+   color: rgb(37, 32, 27);
 }
 
 .event-index > h3 {
    font-size: 18px;
    padding-bottom: 5px;
-   line-height: 1.4;
-   font-family: BlauthLight;
-   color: rgb(43, 43, 45);
+   line-height: 1;
 }
 
+
+.event-index > div:last-child {
+   font-size: 14px;
+   letter-spacing: 2px;
+   line-height: 1.8;
+   font-family: Eskool;
+}
+
+
 #splash-page-container {
-   padding: 8px;
    height: 100vh;
 
    display: flex;
@@ -49,4 +55,8 @@
    justify-content: center;
    align-items: center;
    height: 100%;
+
+   font-family: ShoCard;
+   font-size: 52px;
+   color: ;
 }

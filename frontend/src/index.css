@@ -104,3 +104,8 @@ button {
 	font-family: FarOut;
 	src: url(./assets/fonts/far-out.ttf);
 }
+
+@font-face {
+	font-family: Eskool;
+	src: url(./assets/fonts/eskool/Eskool-Regular.ttf);
+}
