@@ -35,7 +35,7 @@ const EventShowPage = () => {
   const [liked, setLiked] = useState(false);
 
   if (!event.title) {
-    return <div>loading...</div>
+    return <div></div>
   }
 
   // if (event.peopleGoing) {
@@ -119,11 +119,12 @@ const EventShowPage = () => {
           {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container' className='striped-border'>
-            {liked ? <img id='heart' src={heart} alt='going' onClick={(e) => {
-              setLiked(false);
-              dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} /> : <img id='heart' src={emptyHeart} alt='notGoing' onClick={(e) => {
-                setLiked(true);
-                dispatch(eventActions.addUserToEvent(eventId, user._id))}} />}
+            {event.peopleGoing.some(person => person._id === user._id) ?
+              <img id='heart' src={heart} alt='going' onClick={(e) => {
+                dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} /> :
+              <img id='heart' src={emptyHeart} alt='notGoing' onClick={(e) => {
+                dispatch(eventActions.addUserToEvent(eventId, user._id))}} />
+            }
             <div className='trip-show-page-header-wrapper event-header'>
               <div className='trip-show-page-header'>
                 <h2 id='event-header-h2'>{event.title}</h2>
