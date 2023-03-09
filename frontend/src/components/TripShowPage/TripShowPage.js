@@ -180,7 +180,7 @@ const TripShowPage = () => {
                 <div>To:</div>
                 <div>
                 {trip.members.map((member) => {
-                      return (<span key={member.name}>{member.name}</span>)})}
+                      return (<span key={member._id}>{member.name}</span>)})}
                 </div>
               </div>
                 <div id='info-container'>
