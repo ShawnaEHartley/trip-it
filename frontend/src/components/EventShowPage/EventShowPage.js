@@ -20,7 +20,8 @@ const EventShowPage = () => {
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
 
-  
+  console.log(event.startDate)
+  console.log(event.startTime)
   
   const modalState = useSelector((state) => {
     return state?.modal ? state.modal : null ;
@@ -33,6 +34,8 @@ const EventShowPage = () => {
   }, [dispatch, eventId])
   
   const [liked, setLiked] = useState(false);
+
+  console.log(event.startDate);
 
   if (!event.title) {
     return <div></div>
