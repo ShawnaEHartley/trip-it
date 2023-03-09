@@ -74,3 +74,33 @@ button {
 	font-family: LaborUnion;
 	src: url(./assets/fonts/Labor_Union_Regular/LaborUnion-Regular.otf) format("opentype");
 }
+
+@font-face {
+	font-family: MoonRegular;
+	src: url(./assets/fonts/MOON/Moon2.0-Regular.otf) format("opentype");
+}
+
+@font-face {
+	font-family: MoonLight;
+	src: url(./assets/fonts/MOON/Moon2.0-Light.otf) format("opentype");
+}
+
+@font-face {
+	font-family: MoonBold;
+	src: url(./assets/fonts/MOON/Moon2.0-Bold.otf) format("opentype");
+}
+
+@font-face {
+	font-family: ShoCard;
+	src: url(./assets/fonts/sho-card-caps/Sho-CardCapsNF.otf) format("opentype");
+}
+
+@font-face {
+	font-family: AquaFont;
+	src: url(./assets/fonts/aqua.ttf);
+}
+
+@font-face {
+	font-family: FarOut;
+	src: url(./assets/fonts/far-out.ttf);
+}
