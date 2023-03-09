@@ -10,12 +10,16 @@
    font-size: 18px;
    padding-bottom: 5px;
    line-height: 1;
+   font-family: Eskool;
 }
 
+.event-index > div:nth-child(2) {
+   margin-bottom: 9px;
+}
 
 .event-index > div:last-child {
    font-size: 14px;
-   letter-spacing: 2px;
+   letter-spacing: 3px;
    line-height: 1.8;
    font-family: Eskool;
 }
