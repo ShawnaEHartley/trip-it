@@ -109,3 +109,53 @@ button {
 	font-family: Eskool;
 	src: url(./assets/fonts/eskool/Eskool-Regular.ttf);
 }
+
+@font-face {
+	font-family: FulldayReg;
+	src: url(./assets/fonts/Fullday/FulldayDemoRegular.ttf);
+}
+
+@font-face {
+	font-family: FulldayBold;
+	src: url(./assets/fonts/Fullday/FulldayDemoBold.ttf);
+}
+
+@font-face {
+	font-family: Gelica;
+	src: url(./assets/fonts/gelica/Fontspring-DEMO-gelica-regular.otf) format("opentype");
+}
+
+@font-face {
+	font-family: KastelVoire;
+	src: url(./assets/fonts/kastel-voire/KASTEL\ VOIRE\ TTF.ttf);
+}
+
+@font-face {
+	font-family: Kitschy;
+	src: url(./assets/fonts/kitschy/Kitschy-Retro-DEMO-BF63d0ebd855409.ttf);
+}
+
+@font-face {
+	font-family: NutsAndChips;
+	src: url(./assets/fonts/nuts-and-chips/Font/Nuts\ And\ Chips\ Regular.ttf);
+}
+
+@font-face {
+	font-family: RetroVolt;
+	src: url(./assets/fonts/retro-volt/retrovoltdemoversionregular-ywd0m.otf) format("opentype");
+}
+
+@font-face {
+	font-family: SaintRegusReg;
+	src: url(./assets/fonts/saintregus/Sonar\ Hubermann\ -\ SaintRegus-SemiBold.otf) format("opentype");
+}
+
+@font-face {
+	font-family: SaintRegusComp;
+	src: url(./assets/fonts/saintregus/Sonar\ Hubermann\ -\ SaintRegus-SemiBoldCondensed.otf) format("opentype");
+}
+
+@font-face {
+	font-family: VallueAngelo;
+	src: url(./assets/fonts/Vallue-Angelo/VallueAngeloDemoRegular.ttf);
+}
