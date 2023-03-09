@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "dotenv nodemon ./bin/www --inspect",
-    "seed": "dotenv node ./seeders/seeds.js"
+    "seed": "dotenv node ./seeders/seeds.js",
+    "images": "dotenv node ./seeders/images.js"
   },
   "dependencies": {
     "aws-sdk": "^2.1329.0",

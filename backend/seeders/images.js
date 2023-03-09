@@ -73,7 +73,7 @@ mongoose
 // Initialize image fields in db
 const initializeImages = async () => {
   console.log("Initializing profile avatars...");
-  await User.updateMany({}, { profileImageUrl: DEFAULT_PROFILE_IMAGE_URL });
+  await User.updateMany({}, {$set: { profileImageUrl: 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png' }});
     
   console.log("Initializing Trip main image...");
   await Trip.updateMany({}, { mainImageUrl: DEFAULT_TRIP_MAIN_IMAGE });
