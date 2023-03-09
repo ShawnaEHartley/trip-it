@@ -13,7 +13,6 @@ const InviteMemberForm = () => {
   const errors = useSelector(state => state.errors.tripErrorsReducer);
   const [inviteeEmail, setInviteeEmail] = useState("");
 
-  console.log(errors)
 
   useEffect(() => {
     dispatch(fetchTrip(tripId));
@@ -40,7 +39,7 @@ const InviteMemberForm = () => {
       <div>Enter the email</div>
       <input type="text" value= {inviteeEmail} onChange={e => {
         e.preventDefault();
-        setInviteeEmail(e.target.value)
+        setInviteeEmail(e.target.value);
       }} />
       <button onClick={inviteMember}>Invite</button>
     </form>

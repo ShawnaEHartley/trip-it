@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Redirect } from 'react-router-dom';
 
-import { addUserToTrip, deleteTrip, fetchTrip, getTrip, clearTripErrors } from '../../store/trips'
+import { addUserToTrip, deleteTrip, fetchTrip, getTrip, clearTripErrors, removeUserFromTrip } from '../../store/trips'
 import { closeModal } from '../../store/modal';
 import EventIndex from '../EventIndex/EventIndex';
 import EventsCreateForm from '../EventsCreateForm/EventsCreateForm'
@@ -14,6 +14,7 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import './TripShowPage.css'
+
 
 const TripShowPage = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const TripShowPage = () => {
     });
 
     const [renderUpdate, setRenderUpdate] = useState(false);
-    const [addMember, setaddMember] = useState("");
+    const [addMember, setAddMember] = useState("");
 
     useEffect(() => {
         dispatch(fetchTrip(tripId));
@@ -45,6 +46,15 @@ const TripShowPage = () => {
     const inviteMember = e => {
       dispatch({type: 'modalOn', component: 'inviteMember'})
     }
+
+
+    const removeMemberFromTrip = (e) => {
+      if (trip.members.some((member) => member._id === user._id)) {
+        dispatch(removeUserFromTrip(tripId, user._id));
+        history.push('/');
+      }
+    }
+
 
     const modalComponent = () => {
         if (modalState.component === 'editTrip') {
@@ -68,25 +78,12 @@ const TripShowPage = () => {
         )
     };
 
-    //to invite a member to the trip
-  // const inviteMember = (e) => {
-  //   e.preventDefault();
-  //   //invite a member to this trip via their email via modal
-  //   dispatch(addUserToTrip(tripId, addMember))
-  // };
-
   const deleteThisTrip = (e) => {
     dispatch(deleteTrip(trip._id))
-    // if (typeof window !== 'undefined') {
-    //   window.location.href = "/trips";
-    // }
     history.push(`/trips`);
   }
 
   if (!user) {
-    // if (typeof window !== 'undefined') {
-    //     window.location.href = "/";
-    // }
     history.push(`/`);
 }
 
@@ -154,6 +151,7 @@ const TripShowPage = () => {
               { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
               <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
               <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
+              <MenuItem onClick={removeMemberFromTrip}>Remove me from trip</MenuItem>
             </Menu>
             </div>
             <div className='top-margin-right'>
@@ -182,7 +180,7 @@ const TripShowPage = () => {
                 <div>To:</div>
                 <div>
                 {trip.members.map((member) => {
-                      return (<span>{member.name}</span>)})}
+                      return (<span key={member.name}>{member.name}</span>)})}
                 </div>
               </div>
                 <div id='info-container'>
