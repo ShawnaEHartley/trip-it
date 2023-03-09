@@ -4,6 +4,10 @@ const User = require('../models/User');
 const Trip = require('../models/Trip');
 const Event = require('../models/Event');
 
+// const User = mongoose.model('User');
+// const Trip = mongoose.model('Trip');
+// const Event = mongoose.model('Event');
+
 let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_2.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
@@ -74,6 +78,10 @@ mongoose
 const initializeImages = async () => {
   console.log("Initializing profile avatars...");
   await User.updateMany({}, {$set: { profileImageUrl: 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png' }});
+
+  
+const testEvent = await Event.updateOne({ _id: '64062501c8c2a9c5eb5d464c'}, { $set: { imageUrl: DEFAULT_EVENT_IMAGE}});
+console.log(testEvent);
     
   console.log("Initializing Trip main image...");
   await Trip.updateMany({}, { mainImageUrl: DEFAULT_TRIP_MAIN_IMAGE });
@@ -82,7 +90,7 @@ const initializeImages = async () => {
   await Trip.updateMany({}, { stampImageUrl: ROTATING_TRIP_STAMP_IMAGE });
 
   console.log("Initializing Event image...");
-  await Event.updateMany({}, { imageUrl: DEFAULT_EVENT_IMAGE });
+  // await Event.updateMany({}, { imageUrl: DEFAULT_EVENT_IMAGE });
 
   console.log("Done!");
   mongoose.disconnect();
