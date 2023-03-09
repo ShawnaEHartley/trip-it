@@ -97,7 +97,7 @@ const SplashPage = () => {
                         <h3>Day Trip - Catamaran</h3>
                         <div>Oia, GR</div>
                         <div>
-                            max 16 people, captain Max, one skipper. will leave ferry terminal around 10 am, lunch is included, and will be fish and fruit that the captain caught the day before. bring extra water, wine will also be provided
+                            Max 16 people, captain Max, one skipper. will leave ferry terminal around 10 am, lunch is included, and will be fish and fruit that the captain caught the day before. bring extra water, wine will also be provided
                         </div>
                     </div>
                     <div className='event-index'>
