@@ -38,7 +38,8 @@ const eventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Trip',
         required: true
-    }
+    },
+    imageUrl: String
 });
 
 module.exports = mongoose.model('Event', eventSchema);
