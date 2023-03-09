@@ -20,8 +20,6 @@ const EventShowPage = () => {
   const event = useSelector(eventActions.getEvent);
   const user = useSelector((state) => state.session.user);
 
-  
-  
   const modalState = useSelector((state) => {
     return state?.modal ? state.modal : null ;
   });

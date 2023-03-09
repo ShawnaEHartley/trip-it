@@ -20,7 +20,9 @@ const EventUpdateForm = () => {
     const [title, setTitle] = useState(event.title); 
     const [description, setDescription] = useState(event.description)
     const [startDate, setStartDate] = useState(event.startDate.split('T')[0]);
+    const [startTime, setStartTime] = useState(event.startDate.split('T')[1].slice(0,5))
     const [endDate, setEndDate] = useState(event.endDate.split('T')[0]);
+    const [endTime, setEndTime] = useState(event.endDate.split('T')[1].slice(0,5));
     const [streetAddress, setStreetAddress] = useState(event.location.streetAddress);
     const [city, setCity] = useState(event.location.city);
     const [state, setState] = useState(event.location.state);
@@ -28,6 +30,13 @@ const EventUpdateForm = () => {
     const [country, setCountry] = useState(event.location.country);
     const [cost, setCost] = useState(event.cost);
     const [splitCostStructure, setSplitCostStructure] = useState(event.splitCostStructure);
+
+    const convertTime = (dateObj) => {
+      const offset = new Date().getTimezoneOffset();
+      const date = new Date(dateObj);
+      date.setMinutes(date.getMinutes() - offset);
+      return date.toISOString();
+    }
 
     if (endDate < startDate) {
       setEndDate(startDate);
@@ -43,8 +52,8 @@ const EventUpdateForm = () => {
       const eventObject = {
         title: title,
         description: description,
-        startDate: startDate,
-        endDate: endDate,
+        startDate: convertTime(startDate + 'T' + startTime),
+        endDate: convertTime(endDate + 'T' + endTime),
         location: {
           streetAddress: streetAddress,
           city: city,
@@ -87,10 +96,24 @@ const EventUpdateForm = () => {
               setStartDate(e.target.value)}} />
           </label>
           <label className='event-create-content-item'>
+            <span className='event-create-content-title event-start-date' > Start Time </span>
+            <input className='event-create-content-input event-start-date' type="time" value={startTime} onChange={e => {
+              e.preventDefault();
+              setStartTime(e.target.value)
+            }} />
+          </label>
+          <label className='event-create-content-item'>
             <span className='event-create-content-title event-end-date' > Event end date </span>
             <input className='event-create-content-input event-end-date' type="date" value={endDate} min={startDate} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
+          </label>
+          <label className='event-create-content-item'>
+            <span className='event-create-content-title event-start-date' > End Time </span>
+            <input className='event-create-content-input event-start-date' type="time" value={endTime} onChange={e => {
+              e.preventDefault();
+              setEndTime(e.target.value)
+            }} />
           </label>
           <div className='event-create-location-input-wrapper'>
             <h2 className='event-create-subtitle event-location' > Event location </h2>

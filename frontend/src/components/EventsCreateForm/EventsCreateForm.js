@@ -17,7 +17,9 @@ const EventCreateForm = ({tripId}) => {
     const [title, setTitle] = useState(""); 
     const [description, setDescription] = useState("")
     const [startDate, setStartDate] = useState(today);
+    const [startTime, setStartTime] = useState("00:00");
     const [endDate, setEndDate] = useState(today);
+    const [endTime, setEndTime] = useState("00:00");
     const [streetAddress, setStreetAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -26,6 +28,13 @@ const EventCreateForm = ({tripId}) => {
     const [cost, setCost] = useState(0);
     const [splitCostStructure, setSplitCostStructure] = useState(false);
 
+    const convertTime = (dateObj) => {
+      const offset = new Date().getTimezoneOffset();
+      const date = new Date(dateObj);
+      date.setMinutes(date.getMinutes() - offset);
+      return date.toISOString();
+    }
+    
     if (endDate < startDate) {
       setEndDate(startDate);
     }
@@ -36,8 +45,8 @@ const EventCreateForm = ({tripId}) => {
         dispatch(createEvent({
             title: title,
             description: description,
-            startDate: startDate,
-            endDate: endDate,
+            startDate: convertTime(startDate + 'T' + startTime),
+            endDate: convertTime(endDate + 'T' + endTime),
             location: {
                 city: city,
                 state: state,
@@ -57,7 +66,6 @@ const EventCreateForm = ({tripId}) => {
         <div className='event-create-header-wrapper' id=''>
           <h1 className='event-create-header' id=''> Create event </h1>
         </div>
-  
         <div className='event-create-content-wrapper'>
           <div className="event-create-errors">{errors?.title}</div>
           <label className='event-create-content-item'>
@@ -79,10 +87,24 @@ const EventCreateForm = ({tripId}) => {
               setStartDate(e.target.value)}} />
           </label>
           <label className='event-create-content-item'>
+            <span className='event-create-content-title event-start-date' > Start Time </span>
+            <input className='event-create-content-input event-start-date' type="time" value={startTime} onChange={e => {
+              e.preventDefault();
+              setStartTime(e.target.value)
+            }} />
+          </label>
+          <label className='event-create-content-item'>
             <span className='event-create-content-title event-end-date' > End date </span>
             <input className='event-create-content-input event-end-date' type="date" value={endDate} min={startDate.split('T')[0]} onChange={e => {
               e.preventDefault();
               setEndDate(e.target.value)}} />
+          </label>
+          <label className='event-create-content-item'>
+            <span className='event-create-content-title event-start-date' > End Time </span>
+            <input className='event-create-content-input event-start-date' type="time" value={endTime} onChange={e => {
+              e.preventDefault();
+              setEndTime(e.target.value)
+            }} />
           </label>
           <div className='event-create-location-input-wrapper'>
             <h2 className='event-create-subtitle event-location' > Location </h2>
