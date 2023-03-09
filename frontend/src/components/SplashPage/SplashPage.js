@@ -79,7 +79,7 @@ const SplashPage = () => {
                     </div>
                 </div>
                 <div id='center-left-splash'>
-                <div className='event-index'>
+                    <div className='event-index'>
                         <h3>Half Day out to Bainbridge</h3>
                         <div>Seattle, WA</div>
                         <div>
@@ -121,20 +121,14 @@ const SplashPage = () => {
                             Have had this reservation option for a year! Lets take advantage of it! Dinner for the first 4 to like this event. 
                         </div>
                     </div>
+
+                </div>
+                <div id='center-right-splash'>
                     <div className='event-index'>
                         <h3>Debbie's Birthday Party</h3>
                         <div>New Canaan, CT</div>
                         <div>
                             Please arrive by noon, party starts at 2 and will have heavy snacks and cake. Will have non-alcoholic drinks, but if you want anything else, BYOB. Warren will be grilling for dinner so bring something to grill if you want to stay. Sides will be plenty and estimated 3 days before (based on likes). Excited to see you all to celebrate.
-                        </div>
-                    </div>
-                </div>
-                <div id='center-right-splash'>
-                <div className='event-index'>
-                        <h3>example</h3>
-                        <div>city, state</div>
-                        <div>
-                            description
                         </div>
                     </div>
                     <div className='event-index'>
@@ -181,7 +175,7 @@ const SplashPage = () => {
                     </div>
                 </div>
                 <div id='right-splash'>
-                <div className='event-index'>
+                    <div className='event-index'>
                         <h3>Game of Thrones walking tour</h3>
                         <div>Dubrvnik, CR</div>
                         <div>
