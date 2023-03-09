@@ -181,11 +181,11 @@ router.patch('/addUser/:tripId/:userEmail', async function (req, res, next) {
 });
 
 // remove member from trip
-router.patch('/remove/:tripId', async function (req, res, next) {
+router.patch('/remove/:tripId/:memberId', async function (req, res, next) {
     try {
         await Trip.updateOne(
             { _id: req.params.tripId },
-            { $pull: { members: req.body }}
+            { $pull: { members: req.params.memberId }}
         );
 
         await Event.updateMany(

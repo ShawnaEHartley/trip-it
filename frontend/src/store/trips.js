@@ -199,12 +199,11 @@ export const addUserToTrip = (tripId, userEmail) => async (dispatch) => {
 
 export const removeUserFromTrip = (tripId, memberId) => async (dispatch) => {
     try {
-        const res = await jwtFetch(`/api/trips/remove/${tripId}`, {
-            method: "PATCH",
-            body: JSON.stringify(memberId)
+        const res = await jwtFetch(`/api/trips/remove/${tripId}/${memberId}`, {
+            method: "PATCH"
         })
         const trip = await res.json();
-        dispatch(receiveTrip(trip));
+        // dispatch(receiveTrip(trip));
     } catch(err) {
         const resBody = await err.json();
         if (resBody.statusCode === 400) {
