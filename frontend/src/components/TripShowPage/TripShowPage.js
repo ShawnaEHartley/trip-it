@@ -44,7 +44,7 @@ const TripShowPage = () => {
     }
 
     const inviteMember = e => {
-      dispatch(clearTripErrors())
+      dispatch(clearTripErrors());
       dispatch({type: 'modalOn', component: 'inviteMember'})
     }
 
