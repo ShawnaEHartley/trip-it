@@ -39,6 +39,7 @@ function LoginForm () {
 
   return (
     <form className="session-form" onSubmit={handleSubmit}>
+      <button id='switch-auth-button'>Sign Up</button>
       <h2>Log In</h2>
       <div className="errors">{errors?.email}</div>
       <label>
