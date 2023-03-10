@@ -34,6 +34,20 @@
 }
 
 
+/* emulating movement */
+#left-splash {
+   margin-top: -100px;
+}
+#center-left-splash {
+   margin-top: -8px;
+}
+#center-right-splash {
+   margin-top: -40px;
+}
+#right-splash {
+   margin-top: 0;
+}
+
 #splash-page-container {
    height: 100vh;
 
