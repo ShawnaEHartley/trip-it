@@ -17,6 +17,11 @@ useEffect(() => {
         dispatch(clearSessionErrors());
     };}, [dispatch]);
 
+const showLogin = () => {
+    dispatch(closeModal());
+    dispatch({ type: 'modalOn', component: 'showLogin' });
+};
+
 const update = field => {
     let setState;
 
@@ -60,55 +65,58 @@ const SignUpAsDemoUser = (e) => {
 
 
 return (
-<form className="session-form" onSubmit={handleSubmit}>
-    <h2 id='signup-h2'>Sign Up Form</h2>
-    <div className="errors">{errors?.email}</div>
-    <label>
-        <input type="text"
-            value={email}
-            onChange={update('email')}
-            placeholder="Email"
-        />
-    </label>
-    <div className="errors">{errors?.name}</div>
-    <label>
-        <input type="text"
-            value={name}
-            onChange={update('name')}
-            placeholder="Name"
-        />
-    </label>
-    <div className="errors">{errors?.password}</div>
-    <label>
-        <input type="password"
-            value={password}
-            onChange={
-                update('password')
-            }
-            placeholder="Password"
-        />
-    </label>
-    <label>
-        <input type="password"
-            value={password2}
-            onChange={update('password2')}
-            placeholder="Confirm Password"
-        />
-    </label>
-    <div className="errors">
-    {password !== password2 && 'Confirm Password field must match'}
-    </div>
-    <input
-    type="submit"
-    value="Sign Up"
-    disabled={!email || !name || !password || password !== password2}
-    />
-    <input 
-    type="submit" 
-    value="Demo User Sign Up"
-    onClick={SignUpAsDemoUser}
-    />
-</form>
+    <>
+        <button id='switch-auth-button' onClick={showLogin}>Login</button>
+        <form className="session-form" onSubmit={handleSubmit}>
+            <h2 id='signup-h2'>Sign Up Form</h2>
+            <div className="errors">{errors?.email}</div>
+            <label>
+                <input type="text"
+                    value={email}
+                    onChange={update('email')}
+                    placeholder="Email"
+                />
+            </label>
+            <div className="errors">{errors?.name}</div>
+            <label>
+                <input type="text"
+                    value={name}
+                    onChange={update('name')}
+                    placeholder="Name"
+                />
+            </label>
+            <div className="errors">{errors?.password}</div>
+            <label>
+                <input type="password"
+                    value={password}
+                    onChange={
+                        update('password')
+                    }
+                    placeholder="Password"
+                />
+            </label>
+            <label>
+                <input type="password"
+                    value={password2}
+                    onChange={update('password2')}
+                    placeholder="Confirm Password"
+                />
+            </label>
+            <div className="errors">
+            {password !== password2 && 'Confirm Password field must match'}
+            </div>
+            <input
+            type="submit"
+            value="Sign Up"
+            disabled={!email || !name || !password || password !== password2}
+            />
+            <input 
+            type="submit" 
+            value="Demo User Sign Up"
+            onClick={SignUpAsDemoUser}
+            />
+        </form>
+    </>
 );
 }
 

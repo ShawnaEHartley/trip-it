@@ -22,6 +22,11 @@ function LoginForm () {
     };
   }, [dispatch]);
 
+  const showSignUp = () => {
+    dispatch(closeModal());
+    dispatch({ type: 'modalOn', component: 'showSignUp' })
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password })); 
@@ -38,41 +43,44 @@ function LoginForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <input type="text"
-          value={email}
-          onChange={e => {
-            e.preventDefault();
-            setEmail(e.target.value);
-          }}
-          placeholder="Email"
+    <>
+      <button id='switch-auth-button' onClick={showSignUp}>Sign Up</button>
+      <form className="session-form" onSubmit={handleSubmit}>
+        <h2>Log In</h2>
+        <div className="errors">{errors?.email}</div>
+        <label>
+          <input type="text"
+            value={email}
+            onChange={e => {
+              e.preventDefault();
+              setEmail(e.target.value);
+            }}
+            placeholder="Email"
+          />
+        </label>
+        <div className="errors">{errors?.password}</div>
+        <label>
+          <input type="password"
+            value={password}
+            onChange={e => {
+              e.preventDefault();
+              setPassword(e.target.value);
+            }}
+            placeholder="Password"
+          />
+        </label>
+        <input
+          type="submit"
+          value="Log In"
+          disabled={!email || !password}
         />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <input type="password"
-          value={password}
-          onChange={e => {
-            e.preventDefault();
-            setPassword(e.target.value);
-          }}
-          placeholder="Password"
-        />
-      </label>
-      <input
+        <input 
         type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-      <input 
-      type="submit"
-      value="Demo User Login" 
-      onClick={LoginDemoUser}
-      />
-    </form>
+        value="Demo User Login" 
+        onClick={LoginDemoUser}
+        />
+      </form>
+    </>
   );
 }
 

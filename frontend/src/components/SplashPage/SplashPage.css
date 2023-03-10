@@ -1,27 +1,61 @@
 .event-index {
-   padding: 10px;
+   margin: 10px 5px;
+   padding: 12px 10px;
    line-height: 1.6;
    font-size: 14px;
    font-family: DuranMedium;
-   color: rgb(43, 43, 45);
+   color: rgb(37, 32, 27);
+
+   border-radius: 5px;
+   border: 1px solid rgb(37, 32, 27);
+   box-shadow: 0px 0px 2px rgb(202, 193, 184);
 }
 
 .event-index > h3 {
    font-size: 18px;
    padding-bottom: 5px;
-   line-height: 1.4;
-   font-family: BlauthLight;
-   color: rgb(43, 43, 45);
+   line-height: 0.7;
+
+   font-family: MoonBold;
+}
+
+.event-index > div:nth-child(2) {
+   margin-bottom: 8px;
+   margin-left: 7px;
+   
+   font-size: 13px;
+   font-family: Eskool;
+}
+
+.event-index > div:last-child {
+   font-size: 13px;
+   letter-spacing: 3px;
+   line-height: 1.8;
+}
+
+
+/* emulating movement */
+#left-splash {
+   margin-top: -100px;
+}
+#center-left-splash {
+   margin-top: -8px;
+}
+#center-right-splash {
+   margin-top: -40px;
+}
+#right-splash {
+   margin-top: 0;
 }
 
 #splash-page-container {
-   padding: 8px;
    height: 100vh;
 
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
    overflow: hidden;
+   margin: 0px 5px;
 }
 
 #splash-page-container > div {
@@ -40,6 +74,10 @@
    min-height: 244px;
 
    background-color: white;
+   border: 2px solid black;
+   
+   box-shadow: -3px -8px 2px black;
+
    font-size: 40px;
    cursor: pointer;
 }
@@ -49,4 +87,10 @@
    justify-content: center;
    align-items: center;
    height: 100%;
+   
+
+   font-family: ShoCard;
+   font-size: 52px;
+   padding-top: 6px;
+   padding-left: 10px;
 }
