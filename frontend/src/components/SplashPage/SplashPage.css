@@ -14,11 +14,12 @@
    font-size: 18px;
    padding-bottom: 5px;
    line-height: 0.7;
+
    font-family: MoonBold;
 }
 
 .event-index > div:nth-child(2) {
-   margin-bottom: 9px;
+   margin-bottom: 8px;
    margin-left: 7px;
    
    font-size: 13px;
@@ -60,7 +61,7 @@
    background-color: white;
    border: 2px solid black;
    
-   box-shadow: -3px -9px 2px black;
+   box-shadow: -3px -8px 2px black;
 
    font-size: 40px;
    cursor: pointer;

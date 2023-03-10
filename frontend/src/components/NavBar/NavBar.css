@@ -30,31 +30,36 @@
   justify-content: right;
   position: absolute;
 
+
   width: 100%;
 }
 
 #nav-bar {
-  padding-top: 9px;
+  padding-top: 5px;
   padding-right: 32px;
 }
 
 #nav-bar > button {
   display: block;
-  border: 1px solid black;
-  background-color: white;
   height: 30px;
-  font-size: 15px;
   width: 84px;
+
+  box-shadow: 0px 0px 2px rgb(211, 206, 201);
+  border: 2px solid black;
+  background-color: white;
+
+  font-size: 15px;
 }
 
 #nav-bar > div > ul {
   box-shadow: none;
   border-radius: 0px;
-  border: 1px solid black;
+  border: 2px solid black;
 
   border-top: white;
   min-width: 84px;
-  padding: 4px 0px;
+  padding: 0px 0px;
+  z-index: 1;
 }
 
 #nav-bar > div > ul > li {
