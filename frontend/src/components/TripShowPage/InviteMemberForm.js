@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { addUserToTrip, fetchTrip, tripErrorsReducer, getTrip } from '../../store/trips';
+import { addUserToTrip, fetchTrip, tripErrorsReducer, getTrip, clearTripErrors } from '../../store/trips';
 
 import './InviteMemberForm.css';
 
