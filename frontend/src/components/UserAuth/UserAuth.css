@@ -56,8 +56,9 @@ form > .errors {
 
 #switch-auth-button {
   display: block;
-  position: relative;
-  margin-left: 245px;
+  position: absolute;
+  margin-left: 388px;
+  margin-bottom: 245px;
   width: fit-content;
   padding: 3px 6px;
 
