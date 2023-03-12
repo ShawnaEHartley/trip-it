@@ -143,8 +143,10 @@ const TripShowPage = () => {
     <>
       <div id='zig-zag11' className='pattern' />
       <div className='trip-show-page-container'>
-          {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-          {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>

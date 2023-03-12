@@ -111,11 +111,15 @@ const EventShowPage = () => {
     <>
       <div id='zig-zag11' className='pattern'/>
       <div className='event-show-page-wrapper'>
-        { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
-        { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
+        {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+        {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
         <div className='trip-show-page-container'>
-          {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-          {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          {modalState.on && modalState.component !== 'showCreateTripForm'
+            ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          {modalState.on && modalState.component !== 'showCreateTripForm'
+            ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container' className='striped-border'>
             {liked ? <img id='heart' src={heart} alt='going' onClick={(e) => {
               setLiked(false);
