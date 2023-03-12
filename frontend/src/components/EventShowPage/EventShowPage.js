@@ -114,12 +114,8 @@ const EventShowPage = () => {
         {modalState.on && modalState.component !== 'showCreateTripForm'
           ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
         <div className='trip-show-page-container'>
-          {modalState.on && modalState.component !== 'showCreateTripForm'
-            ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-          {modalState.on && modalState.component !== 'showCreateTripForm'
-            ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container' className='striped-border'>
             {liked ? <img id='heart' src={heart} alt='going' onClick={(e) => {
               setLiked(false);

@@ -146,7 +146,7 @@ const TripShowPage = () => {
           {modalState.on && modalState.component !== 'showCreateTripForm'
           ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
           {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
