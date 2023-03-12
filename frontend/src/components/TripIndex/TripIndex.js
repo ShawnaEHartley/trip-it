@@ -86,8 +86,6 @@ const TripIndex = () => {
     if (!trips[0]) {
         return (
             <>
-                {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-                {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
                 <div id='zig-zag11' className='pattern' />
                 <div id='main-page-container'>
                     <div id='page'>
@@ -109,8 +107,8 @@ const TripIndex = () => {
     } else {
         return (
             <>
-                {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-                {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
+                {modalState.on && modalState.component === 'showCreateTripForm' ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+                {modalState.on && modalState.component === 'showCreateTripForm' ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
                 <div id='zig-zag11' className='pattern' />
                 <div id='main-page-container'>
                     <div id='page'>

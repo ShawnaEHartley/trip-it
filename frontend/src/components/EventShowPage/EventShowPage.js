@@ -52,11 +52,14 @@ const EventShowPage = () => {
     dispatch({ type: "modalOn", component: 'editEvent' })
   };
 
-
-  let eventOrganizer = event.peopleGoing[0]._id;
+  let eventOrganizer;
   let eventOrganizerButtons;
   
-  if (user._id === eventOrganizer) {
+  if(event.peopleGoing.length !== 0) {
+    eventOrganizer = event.peopleGoing[0]._id;
+  }
+  
+  if (event.peopleGoing.length === 0 || user._id === eventOrganizer) {
     eventOrganizerButtons = (
       <div className='event-show-buttons'>
         <button onClick={renderUpdateForm}>Update</button>
@@ -83,6 +86,7 @@ const EventShowPage = () => {
   }
 
 
+  // Date information to be shown on Event Show page
   let splitStartDate = event.startDate.split('-');
   let splitEndDate = event.endDate.split('-');
 
