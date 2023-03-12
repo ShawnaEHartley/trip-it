@@ -34,7 +34,7 @@ const InviteMemberForm = () => {
   };
 
   return (
-    <form action="">
+    <form id='invite-trip-member-form' action="">
       <div className="errors">{errors?.email}</div>
       <div className="errors">{errors?.members}</div>
       <div>Enter the email</div>

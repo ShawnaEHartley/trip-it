@@ -91,6 +91,8 @@ const TripShowPage = () => {
 }
 
 
+
+  //Trip Show Page date visualization
   let splitStartDate = trip.startDate.split('-'); 
   let splitEndDate = trip.endDate.split('-');
 
@@ -108,6 +110,7 @@ const TripShowPage = () => {
   const dayEnd = splitEndDate[2];
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
+
 
   let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
   'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
