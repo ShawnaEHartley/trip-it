@@ -6,6 +6,23 @@ form > .errors {
   align-items: center;
 }
 
+#session-form-container {
+  position: fixed;
+  background-color: white;
+  border: 2px solid black;
+  left: 35vw;
+  right: auto;
+  top: 30%;
+  width: 480px;
+  height: 30%;
+  min-height: 244px;
+  z-index: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .session-form {
   display: flex;
   flex-direction: column;
