@@ -45,7 +45,6 @@ const InviteMemberForm = () => {
       <button onClick={inviteMember}>Invite</button>
     </form>
   )
-
 };
 
 export default InviteMemberForm;
