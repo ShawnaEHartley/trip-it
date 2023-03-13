@@ -59,7 +59,7 @@ const TripCreateForm = () => {
         <div className="trip-create-errors">{errors?.title}</div>
         <label className='trip-create-content-item'>
           <span className='trip-create-content-title trip-title' > Title </span>
-          <input className='trip-create-content-input trip-title' type="text" value={title} onChange={e => {
+          <input className='trip-create-content-input trip-title' type="text" maxLength={25} value={title} onChange={e => {
               e.preventDefault();
               setTitle(e.target.value)}} placeholder='title'/>
         </label>

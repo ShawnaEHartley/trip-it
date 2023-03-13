@@ -64,7 +64,7 @@ const TripUpdateForm = () => {
           <div className="trip-create-errors">{errors?.title}</div>
           <label className='trip-update-content-item'>
             <span className='trip-update-content-title trip-title' >Title </span>
-            <input className='trip-update-content-input trip-title' type="text" value={title} onChange={e => {
+            <input className='trip-update-content-input trip-title' type="text" maxLength={25} value={title} onChange={e => {
               e.preventDefault();
               setTitle(e.target.value)}} />
           </label>
