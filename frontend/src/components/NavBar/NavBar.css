@@ -9,8 +9,6 @@
 }
 
 .modal-wrapper {
-  background-color: white;
-  border: 2px solid black;
   position: fixed;
   left: 35vw;
   right:auto;

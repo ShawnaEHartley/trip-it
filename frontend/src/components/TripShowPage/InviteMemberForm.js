@@ -33,10 +33,10 @@ const InviteMemberForm = () => {
   };
 
   return (
-    <form action="">
+    <form id='invite-trip-member-form' action="">
       <div className="errors">{errors?.email}</div>
       <div className="errors">{errors?.members}</div>
-      <div>Enter the email</div>
+      <div>Enter their email</div>
       <input type="text" value= {inviteeEmail} onChange={e => {
         e.preventDefault();
         setInviteeEmail(e.target.value);
@@ -44,7 +44,6 @@ const InviteMemberForm = () => {
       <button onClick={inviteMember}>Invite</button>
     </form>
   )
-
 };
 
 export default InviteMemberForm;

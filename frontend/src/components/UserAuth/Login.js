@@ -44,6 +44,7 @@ function LoginForm () {
 
   return (
     <>
+    <div id='session-form-container'>
       <button id='switch-auth-button' onClick={showSignUp}>Sign Up</button>
       <form className="session-form" onSubmit={handleSubmit}>
         <h2>Log In</h2>
@@ -80,6 +81,7 @@ function LoginForm () {
         onClick={LoginDemoUser}
         />
       </form>
+    </div>
     </>
   );
 }

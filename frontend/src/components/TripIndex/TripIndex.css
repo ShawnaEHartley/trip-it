@@ -5,12 +5,12 @@
 #main-page-container {
    display: flex;
    justify-content: center;
-   padding-top: 50px;
 }
 
 #page {
    padding: 24px;
-   padding-top: 40px;
+   margin-top: 15vh;
+
    border-radius: 5px;
    border: 1px solid rgb(247, 246, 245);
    background-color: white;

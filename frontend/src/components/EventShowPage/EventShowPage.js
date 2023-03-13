@@ -50,11 +50,14 @@ const EventShowPage = () => {
     dispatch({ type: "modalOn", component: 'editEvent' })
   };
 
-
-  let eventOrganizer = event.peopleGoing[0]._id;
+  let eventOrganizer;
   let eventOrganizerButtons;
   
-  if (user._id === eventOrganizer) {
+  if(event.peopleGoing.length !== 0) {
+    eventOrganizer = event.peopleGoing[0]._id;
+  }
+  
+  if (event.peopleGoing.length === 0 || user._id === eventOrganizer) {
     eventOrganizerButtons = (
       <div className='event-show-buttons'>
         <button onClick={renderUpdateForm}>Update</button>
@@ -81,6 +84,7 @@ const EventShowPage = () => {
   }
 
 
+  // Date information to be shown on Event Show page
   let splitStartDate = event.startDate.split('-');
   let splitEndDate = event.endDate.split('-');
 
@@ -105,11 +109,11 @@ const EventShowPage = () => {
     <>
       <div id='zig-zag11' className='pattern'/>
       <div className='event-show-page-wrapper'>
-        { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
-        { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
+        {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+        {modalState.on && modalState.component !== 'showCreateTripForm'
+          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
         <div className='trip-show-page-container'>
-          {modalState.on ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
-          {modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : ""}
           <div id='post-card-container' className='striped-border'>
             {event.peopleGoing.some(person => person._id === user._id) ?
               <img id='heart' src={heart} alt='going' onClick={(e) => {

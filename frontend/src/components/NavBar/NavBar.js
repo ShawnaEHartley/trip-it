@@ -9,23 +9,20 @@ import '@szhsin/react-menu/dist/transitions/slide.css';
 
 import Signup from '../UserAuth/Signup';
 import Login from '../UserAuth/Login';
-import { logout, login } from '../../store/session';
+import { logout } from '../../store/session';
 import TripCreateForm from '../TripCreateForm/TripCreateForm';
 
 import './NavBar.css'; 
 
 
 const NavBar = () => {
-
     const dispatch = useDispatch();
-
     const history = useHistory();
-
     const loggedIn = useSelector(state => !!state.session.user);
-
     const modalState = useSelector((state) => {
         return state.modal;
     });
+
 
     const showSignUp = () => {
         dispatch({type: 'modalOn', component: 'showSignUp'})
@@ -39,6 +36,7 @@ const NavBar = () => {
         dispatch({type: 'modalOn', component: 'showCreateTripForm'})
     };
 
+
     const modalComponent = () => {
         if (modalState.component === 'showSignUp') {
             return <Signup />
@@ -49,6 +47,21 @@ const NavBar = () => {
         }
     };
 
+    
+    const backToHomeButton = async () => {
+        history.push(`/trips`);
+    };
+    
+    const toAboutUsPageButton = async () => {
+        history.push(`/about`);
+    };
+
+    const logoutCurrentUser = () => {
+        dispatch(logout())
+        history.push(`/`);
+    };
+
+
     const loggedOutNav = () => {
         return ( 
         <>
@@ -58,20 +71,6 @@ const NavBar = () => {
         </>
         )
     };
-
-    const backToHomeButton = async (e) => {
-        // if (typeof window !== 'undefined') {
-        //   window.location.href = "/trips";
-        // }
-        history.push(`/trips`);
-    };
-
-    const toAboutUsPageButton = async (e) => {
-        // if (typeof window !== 'undefined') {
-        //     window.location.href = "/about";
-        // }
-        history.push(`/about`);
-    }
 
     const loggedInNav = () => {
         return (
@@ -84,27 +83,15 @@ const NavBar = () => {
         )
     };
 
-    const logoutCurrentUser = (e) => {
-        dispatch(logout())
-        // if (typeof window !== 'undefined') {
-        //     window.location.href = '/';
-        // }
-        // probably worth using window.location here honestly.
-        history.push(`/`);
-    };
-
 
 
     return (
         <div id='nav-bar-container'>
             { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
-            { modalState.on ? <div className='modal-wrapper'> {modalComponent()}</div> : "" }
+            { modalState.on ? <div className='modal-wrapper'>{modalComponent()}</div> : "" }
             <nav id='nav-bar'>
                 <Menu menuButton={<MenuButton>Compose.</MenuButton>} transition>  
                     { loggedIn ? loggedInNav() : loggedOutNav() }
-                    {/* <MenuItem onClick={showSignUp}>Sign up</MenuItem>
-                    <MenuItem onClick={showLogin}>Login</MenuItem>
-                    <MenuItem onClick={logoutCurrentUser}>Logout</MenuItem> */}
                 </Menu>
             </nav>
         </div>
