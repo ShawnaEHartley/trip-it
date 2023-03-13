@@ -79,7 +79,7 @@ const EventUpdateForm = () => {
           <div className="event-create-errors">{errors?.title}</div>
           <label className='event-create-content-item'>
             <span className='event-create-content-title event-title' > Event title </span>
-            <input className='event-create-content-input event-title' type="text" value={title} onChange={e => {
+            <input className='event-create-content-input event-title' type="text" maxLength={25} value={title} onChange={e => {
               e.preventDefault();
               setTitle(e.target.value)}} />
           </label>
