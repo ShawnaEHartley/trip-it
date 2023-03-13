@@ -190,7 +190,7 @@ router.patch('/remove/:tripId/:memberId', async function (req, res, next) {
 
         await Event.updateMany(
             { tripId: req.params.tripId},
-            { $pull: { peopleGoing: req.body }}
+            { $pull: { peopleGoing: req.params.memberId }}
         );
 
         const trip = await Trip.findById(req.params.tripId)
