@@ -12,6 +12,10 @@
     font-size: 13px;
 }
 
+button.event-index-item-container {
+    border: 1px solid black;
+}
+
 .event-index-item-container > div {
     display: flex;
     justify-content: space-between;

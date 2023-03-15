@@ -20,7 +20,7 @@ const EventIndex = ({tripId}) => {
     }
 
     if (!events[0]?._id) {
-        return (<button onClick={renderCreateEvent}>Create your first event</button>)
+        return (<button className='event-index-item-container' onClick={renderCreateEvent}>Click here to create your first event!</button>)
     } else {
         return (
             <>

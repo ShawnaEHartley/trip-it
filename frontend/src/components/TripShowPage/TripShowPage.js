@@ -152,6 +152,7 @@ const TripShowPage = () => {
             ? <div className='modal-wrapper'>{modalComponent()}</div> 
             : ""
           }
+        <button id='back-button' onClick={() => history.push(`/trips`)}>&larr;</button>
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
