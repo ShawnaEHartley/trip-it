@@ -126,14 +126,25 @@
 }
 
 .post-card-members-wrapper {
-    margin: 5px 0px 5px 40px;
+    margin: 5px 0px 5px 20px;
 }
 
-.post-card-members-wrapper>div {
-    margin: 5px 0px;
+.post-card-members-wrapper > div {
+    width: 280px;
+    margin-left: 10px;
+}
+
+.post-card-members-wrapper>div:first-child {
+    border-bottom: 1px solid rgb(52, 39, 16);
+
+    width: 155px;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+    margin-left: 4px;
 }
 
 .post-card-members-wrapper>div>span {
+    display: inline-block;
     margin: 0px 4px;
     font-family: cursive;
     font-size: 18px;
@@ -181,6 +192,8 @@
     margin-bottom: auto;
 }
 
+
+/* Make ',' and 'and' hidden according to last and second to last pieces in div */
 #trip-member-list-container > span > :first-child {
     display: none;
 }
@@ -196,6 +209,7 @@
 #trip-member-list-container > span:last-child > span:last-child {
     display: none;
 }
+
 
 .trip-show-button {
     padding: 2px 5px;
