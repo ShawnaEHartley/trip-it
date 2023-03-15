@@ -150,11 +150,11 @@ const TripShowPage = () => {
       <div className='trip-show-page-container'>
           {modalState.on && modalState.component !== 'showCreateTripForm'
             ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> 
-            : ""
+            : null
           }
           {modalState.on && modalState.component !== 'showCreateTripForm'
             ? <div className='modal-wrapper'>{modalComponent()}</div> 
-            : ""
+            : null
           }
         <button id='back-button' onClick={() => history.push(`/trips`)}>&larr;</button>
           <div id='post-card-container'>
@@ -191,9 +191,9 @@ const TripShowPage = () => {
               <div className='post-card-space'>
                 <div className='post-card-members-wrapper'>
                   <div>To:</div>
-                  <div>
+                  <div id='trip-member-list-container'>
                   {trip.members.map((member) => {
-                        return (<span key={member._id}>{member.name}</span>)})}
+                        return (<span key={member._id}>{member.name}<span>,</span></span>)})}
                   </div>
                 </div>
                 <div id='info-container'>

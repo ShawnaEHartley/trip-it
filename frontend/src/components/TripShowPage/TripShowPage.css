@@ -181,6 +181,10 @@
     margin-bottom: auto;
 }
 
+#trip-member-list-container > span:last-child > span:last-child {
+    display: none;
+}
+
 .trip-show-button {
     padding: 2px 5px;
     margin-bottom: 4px;
