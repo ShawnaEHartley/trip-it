@@ -25,7 +25,7 @@ button.event-index-item-container {
 .event-index-item-container > div:first-child > :first-child {
     font-style: italic;
     display: inline-block;
-    width: 260px;
+    max-width: 240px;
 }
 
 .event-index-item-container > div:last-child > :last-child {
