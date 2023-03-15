@@ -145,20 +145,24 @@ const TripShowPage = () => {
       <div id='zig-zag11' className='pattern' />
       <div className='trip-show-page-container'>
           {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+            ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> 
+            : ""
+          }
           {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
+            ? <div className='modal-wrapper'>{modalComponent()}</div> 
+            : ""
+          }
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
             {/* { user === trip.organizer ? tripOrganizerButtons : memberButtons } */}
-            <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
-              { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
-              { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
-              <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
-              <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
-              <MenuItem onClick={removeMemberFromTrip}>Remove me from trip</MenuItem>
-            </Menu>
+              <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
+                { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
+                { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
+                <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
+                <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
+                <MenuItem onClick={removeMemberFromTrip}>Remove me from trip</MenuItem>
+              </Menu>
             </div>
             <div className='top-margin-right'>
               <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>

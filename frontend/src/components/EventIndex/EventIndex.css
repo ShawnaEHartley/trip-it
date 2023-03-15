@@ -1,6 +1,7 @@
-#event-index-item-container {
-    width: 290px;
+.event-index-item-container {
+    width: 320px;
     margin-bottom: 1px;
+    padding: 4px;
     border-style: solid;
     border-width: 1px;
     border-radius: 2px;
@@ -11,25 +12,19 @@
     font-size: 13px;
 }
 
-#event-index-item-container {
-    background-color: rgb(254, 249, 238);
-    border: none;
-    margin: 6px 0px;
-}
-#event-index-item-container > div {
+.event-index-item-container > div {
     display: flex;
     justify-content: space-between;
-}
-
-#event-index-item-container > div:first-child {
     margin-bottom: 4px;
 }
 
-#event-index-wrapper {
-    padding-top: 39px;
+.event-index-item-container > div:first-child > :first-child {
+    font-style: italic;
+    display: inline-block;
+    width: 260px;
 }
 
-#push-right {
+.push-right {
     width: 200px;
     height: 0px;
     font-size: 11px;
