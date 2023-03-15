@@ -221,7 +221,7 @@ const TripShowPage = () => {
               </div>
             </div>
             <div id='trip-footer'>
-              <p className='trip-show-description'>Description: {trip.description}</p>
+              <div>Description: {trip.description}</div>
             </div>
           </div>
       </div>
