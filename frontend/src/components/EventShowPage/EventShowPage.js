@@ -110,9 +110,13 @@ const EventShowPage = () => {
       <div id='zig-zag11' className='pattern'/>
       <div className='event-show-page-wrapper'>
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> 
+          : null
+        }
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
+          ? <div className='modal-wrapper'>{modalComponent()}</div> 
+          : null
+        }
         <div className='trip-show-page-container'>
           <div id='post-card-container' className='striped-border'>
             {event.peopleGoing.some(person => person._id === user._id) ?
