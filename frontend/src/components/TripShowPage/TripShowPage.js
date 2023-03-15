@@ -199,11 +199,17 @@ const TripShowPage = () => {
                 </div>
                 <div id='info-container'>
                   <div>
-                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
-                    {trip.location.city ? trip.location.city : ""}
-                    {trip.location.city && trip.location.state ? ', ' : null}
-                    {trip.location.state ? `${trip.location.state}` : ""} <br/>
-                    {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
+                    <div>
+                      {trip.location.streetAddress ? trip.location.streetAddress : ""}
+                    </div>
+                    <div>
+                      {trip.location.city ? trip.location.city : ""}
+                      {trip.location.city && trip.location.state ? ', ' : null}
+                      {trip.location.state ? `${trip.location.state}` : ""}
+                    </div>
+                    <div>
+                      {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
+                    </div>
                   </div>
                 </div>
               </div>
