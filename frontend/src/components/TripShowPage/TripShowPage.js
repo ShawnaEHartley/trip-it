@@ -109,6 +109,13 @@ const TripShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+  // Trip date format
+  let tripDates;
+  if (yearEnd === yearStart) {
+    if (dayStart == dayEnd) tripDates = `${monthStart} ${dayStart} ${yearStart}`;
+    else tripDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
+  } else tripDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
 
   let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
   'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
@@ -173,7 +180,7 @@ const TripShowPage = () => {
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
-              <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
+              <p>{tripDates}</p>
               <p>Organized by {trip.organizer.name}</p>
               </div>
             </div>

@@ -10,11 +10,18 @@
 
 #back-button {
     position: absolute;
+    top: 14.5vh;
+    left: 28vw;
 
     font-size: 20px;
-    padding: 8px 12px;
+    padding: 8px 14px;
     padding-top: 6px;
     height: 40px;
+
+    box-shadow: 0px 0px 2px rgb(211, 206, 201);
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: white;
 }
 
 #form-button-container {
