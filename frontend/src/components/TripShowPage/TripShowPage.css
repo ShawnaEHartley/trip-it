@@ -181,6 +181,18 @@
     margin-bottom: auto;
 }
 
+#trip-member-list-container > span > :first-child {
+    display: none;
+}
+
+#trip-member-list-container > span:last-child > span:first-child {
+    display: inline;
+}
+
+#trip-member-list-container > span:nth-last-child(2) > span:last-child {
+    display: none;
+}
+
 #trip-member-list-container > span:last-child > span:last-child {
     display: none;
 }

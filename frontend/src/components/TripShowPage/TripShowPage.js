@@ -192,8 +192,9 @@ const TripShowPage = () => {
                 <div className='post-card-members-wrapper'>
                   <div>To:</div>
                   <div id='trip-member-list-container'>
-                  {trip.members.map((member) => {
-                        return (<span key={member._id}>{member.name}<span>,</span></span>)})}
+                    {trip.members.map((member) => {
+                          return (<span key={member._id}><span>and </span>{member.name}<span>,</span></span>)})
+                    }
                   </div>
                 </div>
                 <div id='info-container'>
