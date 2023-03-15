@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: row;
     width: 700px;
-    height: 500px;
+    height: 220px;
 }
 
 #post-card-container {
@@ -159,6 +159,15 @@
     justify-content: space-between;
 }
 
+#trip-footer {
+    margin-top: 6px;
+
+    max-height: 50px;
+    width: 680px;
+    overflow: auto;
+    text-align: center;
+}
+
 .trip-show-button {
     padding: 2px 5px;
     margin-bottom: 4px;
@@ -175,7 +184,9 @@
 }
 
 .trip-show-description {
-    margin-top: 20px;
+
+    color: rgb(52, 39, 16);
+    font-size: 12px;
 }
 
 .trip-show-page-header {

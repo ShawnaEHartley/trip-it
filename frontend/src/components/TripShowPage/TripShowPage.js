@@ -208,7 +208,6 @@ const TripShowPage = () => {
                     {trip.location.state ? `, ${trip.location.state}` : ""}
                     {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
                   </div>
-                  <p className='trip-show-description'>Description: ({trip.description})</p>
                 </div>
                 <div>
                 {/* <span className='add-a-member'>
@@ -220,6 +219,9 @@ const TripShowPage = () => {
                 </span> */}
                 </div>
               </div>
+            </div>
+            <div id='trip-footer'>
+              <p className='trip-show-description'>Description: {trip.description}</p>
             </div>
           </div>
       </div>
