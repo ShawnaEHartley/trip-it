@@ -1,6 +1,7 @@
-#event-index-item-container {
-    width: 290px;
+.event-index-item-container {
+    width: 320px;
     margin-bottom: 1px;
+    padding: 4px;
     border-style: solid;
     border-width: 1px;
     border-radius: 2px;
@@ -11,26 +12,29 @@
     font-size: 13px;
 }
 
-#event-index-item-container {
-    background-color: rgb(254, 249, 238);
-    border: none;
-    margin: 6px 0px;
-}
-#event-index-item-container > div {
-    display: flex;
-    justify-content: space-between;
+button.event-index-item-container {
+    border: 1px solid black;
 }
 
-#event-index-item-container > div:first-child {
+.event-index-item-container > div {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 4px;
 }
 
-#event-index-wrapper {
-    padding-top: 39px;
+.event-index-item-container > div:first-child > :first-child {
+    font-style: italic;
+    display: inline-block;
+    max-width: 240px;
 }
 
-#push-right {
-    width: 200px;
+.event-index-item-container > div:last-child > :last-child {
+    font-size: 11px;
+}
+
+.push-right {
+    width: 190px;
     height: 0px;
     font-size: 11px;
+    margin-left: 10px;
 }

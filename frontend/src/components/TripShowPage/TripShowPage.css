@@ -1,28 +1,29 @@
-/* div styling below */
-.trip-show-button {
-    padding: 2px 5px;
-    margin-bottom: 4px;
-    background-color: white;
-    border: 1px solid rgb(20, 18, 14);
-    text-align: start;
-    font-size: 12px;
+.add-a-member {
+    margin-left: 50px;
+    width: min-content;
+}
+
+.add-a-member>span {
+    margin-left: 5px;
     cursor: pointer;
 }
 
-.top-margin {
+#back-button {
     position: absolute;
-    width: 700px;
-    display: flex;
-    justify-content: space-between;
-}
+    top: 14.5vh;
+    left: 28vw;
 
-.navigation-buttons > button {
-    display: block;
-    border: 1px solid black;
+    font-size: 20px;
+    color: rgb(52, 39, 16);
+
+    padding: 6px 16px;
+    padding-top: 4px;
+    height: 40px;
+
+    box-shadow: 0px 0px 2px rgb(211, 206, 201);
+    border: 1px solid rgb(52, 39, 16);
+    border-radius: 4px;
     background-color: white;
-    height: 30px;
-    font-size: 15px;
-    width: 84px;
 }
 
 #form-button-container {
@@ -38,18 +39,19 @@
     width: auto;
     height: auto;
 
-    padding: 10px 48px;
-    padding-right: 59px;
+    padding: 10px 68px;
+    padding-right: 39px;
+
+    margin-top: 20px;
 }
 
-#info-container > div {
+#info-container > div > div {
     display: flex;
-    text-decoration: underline;
-    line-height: 1.8;
-}
+    border-bottom: 1px solid rgb(52, 39, 16);
 
-#info-container > p {
-    font-size: 12px;
+    justify-content: end;
+    padding-bottom: 2px;
+    margin-bottom: 10px;
 }
 
 .left-space {
@@ -57,6 +59,35 @@
     display: flex;
     flex-direction: column;
     align-items:end
+}
+
+.navigation-buttons > button {
+    display: block;
+    border: 1px solid black;
+    background-color: white;
+    height: 30px;
+    font-size: 15px;
+    width: 84px;
+}
+
+.navigation-buttons>div>ul {
+    box-shadow: none;
+    border-radius: 0px;
+    border: 1px solid black;
+
+    min-width: 84px;
+    padding: 0px 0px;
+    z-index: 1;
+}
+
+.navigation-buttons>div>ul>li {
+    width: auto;
+    padding: 8px 5px;
+}
+
+.patch-buttons {
+    width: 70px;
+    padding-right: 0px;
 }
 
 #post-card-bottom {
@@ -78,7 +109,7 @@
     display: flex;
     flex-direction: row;
     width: 700px;
-    height: 500px;
+    height: 220px;
 }
 
 #post-card-container {
@@ -86,7 +117,7 @@
     flex-direction: column;
     align-items: center;
     width: 700px;
-    height: 400px;
+    min-height: 400px;
     padding: 10px;
     margin-top: 20vh;
 
@@ -95,19 +126,105 @@
     border: 1px solid rgb(180, 157, 120);
 }
 
+.post-card-members-wrapper {
+    margin: 5px 0px 5px 20px;
+}
+
+.post-card-members-wrapper > div {
+    width: 280px;
+    margin-left: 10px;
+}
+
+.post-card-members-wrapper>div:first-child {
+    border-bottom: 1px solid rgb(52, 39, 16);
+
+    width: 155px;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}
+
+.post-card-members-wrapper>div>span {
+    display: inline-block;
+    margin: 0px 4px;
+    font-family: cursive;
+    font-size: 18px;
+}
+
 .post-card-space {
     width: 340px;
     height: 260px;
     padding: 4px;
 }
 
+#top-body-border {
+    display: flex;
+    justify-content: space-evenly;
+    width: 560px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgb(20, 18, 14);
+}
+
+.top-margin {
+    position: absolute;
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#trip-footer {
+    display: flex;
+    margin-top: 6px;
+    height: 50px;
+    width: 680px;
+    overflow: auto;
+
+    justify-content: center;
+    align-items: end;
+
+    color: rgb(52, 39, 16);
+    font-size: 12px;
+}
+
+#trip-footer > div {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/* Make ',' and 'and' hidden according to last and second to last pieces in div */
+#trip-member-list-container > span > :first-child {
+    display: none;
+}
+
+#trip-member-list-container > span:last-child > span:first-child {
+    display: inline;
+}
+
+#trip-member-list-container > span:nth-last-child(2) > span:last-child {
+    display: none;
+}
+
+#trip-member-list-container > span:last-child > span:last-child {
+    display: none;
+}
+
+
+.trip-show-button {
+    padding: 2px 5px;
+    margin-bottom: 4px;
+    background-color: white;
+    border: 1px solid rgb(20, 18, 14);
+    text-align: start;
+    font-size: 12px;
+    cursor: pointer;
+}
+
 .trip-show-page-container {
     display: flex;
     justify-content: center;
-}
-
-.trip-show-description {
-    margin-top: 20px;
 }
 
 .trip-show-page-header {
@@ -134,27 +251,12 @@
     width: auto;
 }
 
-#top-body-border {
-    display: flex;
-    justify-content: space-evenly;
-    width: 560px;
-    margin-top: 20px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid rgb(20, 18, 14);
-}
-
-.patch-buttons {
-    width: 70px;
-    padding-right: 0px;
-}
-
 
 /* quack-it zig-zag */
 .pattern {
     min-height: 100vh;
     width: 100%;
 }
-
 #zig-zag11 {
     position: absolute;
     z-index: -1;
@@ -165,28 +267,4 @@
         linear-gradient(45deg, rgb(247, 246, 245) 25%, transparent 25%);
     background-size: 20px 20px;
     background-color: #fff;
-}
-
-.post-card-members-wrapper {
-    margin: 5px 0px 5px 40px;
-}
-
-.post-card-members-wrapper > div {
-    margin: 5px 0px ;
-}
-
-.post-card-members-wrapper > div > span {
-    margin: 0px 4px ;
-    font-family: cursive;
-    font-size: 18px;
-}
-
-.add-a-member {
-    margin-left: 50px;
-    width: min-content;
-}
-
-.add-a-member > span {
-    margin-left: 5px;
-    cursor: pointer;
 }

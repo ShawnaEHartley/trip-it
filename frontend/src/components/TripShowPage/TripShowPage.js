@@ -27,9 +27,6 @@ const TripShowPage = () => {
         return state?.modal ? state.modal : null ;
     });
 
-    const [renderUpdate, setRenderUpdate] = useState(false);
-    const [addMember, setAddMember] = useState("");
-
     useEffect(() => {
         dispatch(fetchTrip(tripId));
     }, [dispatch, tripId]);
@@ -109,6 +106,13 @@ const TripShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+  // Trip date format
+  let tripDates;
+  if (yearEnd === yearStart) {
+    if (dayStart == dayEnd) tripDates = `${monthStart} ${dayStart} ${yearStart}`;
+    else tripDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
+  } else tripDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
 
   let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
   'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
@@ -145,30 +149,33 @@ const TripShowPage = () => {
       <div id='zig-zag11' className='pattern' />
       <div className='trip-show-page-container'>
           {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+            ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> 
+            : null
+          }
           {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
+            ? <div className='modal-wrapper'>{modalComponent()}</div> 
+            : null
+          }
+        <button id='back-button' onClick={() => history.push(`/trips`)}>&larr;</button>
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
-            {/* { user === trip.organizer ? tripOrganizerButtons : memberButtons } */}
-            <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
-              { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
-              { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
-              <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
-              <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
-              <MenuItem onClick={removeMemberFromTrip}>Remove me from trip</MenuItem>
-            </Menu>
+              <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
+                { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
+                { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
+                <MenuItem onClick={inviteMember}>Invite a member</MenuItem>
+                <MenuItem onClick={renderCreateEvent}>Create event</MenuItem>
+                <MenuItem onClick={removeMemberFromTrip}>Remove me from trip</MenuItem>
+              </Menu>
             </div>
             <div className='top-margin-right'>
               <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>
             </div>
           </div>
-            {/* {user._id === trip.organizer._id ? tripOrganizerButtons() : null } */}
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
-              <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
+              <p>{tripDates}</p>
               <p>Organized by {trip.organizer.name}</p>
               </div>
             </div>
@@ -182,32 +189,33 @@ const TripShowPage = () => {
               </div>
               <div id='post-card-center-border' />
               <div className='post-card-space'>
-              <div className='post-card-members-wrapper'>
-                <div>To:</div>
-                <div>
-                {trip.members.map((member) => {
-                      return (<span key={member._id}>{member.name}</span>)})}
+                <div className='post-card-members-wrapper'>
+                  <div>To:</div>
+                  <div id='trip-member-list-container'>
+                    {trip.members.map((member) => {
+                          return (<span key={member._id}><span>and </span>{member.name}<span>,</span></span>)})
+                    }
+                  </div>
                 </div>
-              </div>
                 <div id='info-container'>
                   <div>
-                    {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
-                    {trip.location.city ? trip.location.city : ""} <br/>
-                    {trip.location.state ? `, ${trip.location.state}` : ""}
-                    {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
+                    <div>
+                      {trip.location.streetAddress ? trip.location.streetAddress : ""}
+                    </div>
+                    <div>
+                      {trip.location.city ? trip.location.city : ""}
+                      {trip.location.city && trip.location.state ? ', ' : null}
+                      {trip.location.state ? `${trip.location.state}` : ""}
+                    </div>
+                    <div>
+                      {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
+                    </div>
                   </div>
-                  <p className='trip-show-description'>Description: ({trip.description})</p>
-                </div>
-                <div>
-                {/* <span className='add-a-member'>
-                  <input type="text" placeholder='invite a member' value={addMember} onChange={e => {
-                    e.preventDefault();
-                    setaddMember(e.target.value);
-                  }} />
-                  <span onClick={inviteMember}>+</span>
-                </span> */}
                 </div>
               </div>
+            </div>
+            <div id='trip-footer'>
+              <div>Description: {trip.description}</div>
             </div>
           </div>
       </div>

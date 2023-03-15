@@ -35,10 +35,15 @@ const InviteMemberForm = () => {
       <div className="errors">{errors?.email}</div>
       <div className="errors">{errors?.members}</div>
       <div>Enter their email</div>
-      <input type="text" value= {inviteeEmail} onChange={e => {
-        e.preventDefault();
-        setInviteeEmail(e.target.value);
-      }} />
+      <input 
+        type="text" 
+        value= {inviteeEmail} 
+        placeholder='placeholder@email.com'
+        onChange={e => {
+          e.preventDefault();
+          setInviteeEmail(e.target.value);
+          }} 
+      />
       <button onClick={inviteMember}>Invite</button>
     </form>
   )

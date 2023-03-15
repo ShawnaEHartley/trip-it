@@ -10,22 +10,9 @@ const EventIndexItem = ({event}) => {
     const dispatch = useDispatch(); 
     const history = useHistory();
     const loggedIn = useSelector(state => !!state.session.user);
-  
 
-    // const modalState = useSelector((state) => {
-    //     return state.modal;
-    // })
 
-    // const showEventShowPage = () => {
-    //     dispatch({type: 'modalOn', component: 'showEventShowPage'})
-    // };
-
-    // const modalComponent = () => {
-    //     if (modalState.component === 'showEventShowPage') {
-    //         return <EventShowPage />
-    //     }
-    // };
-
+    // Date formatting to iterate through
     let splitStartDate = event.startDate.split('-');
     let splitEndDate = event.endDate.split('-');
 
@@ -46,11 +33,16 @@ const EventIndexItem = ({event}) => {
     const yearStart = splitStartDate[0];
     const yearEnd = splitEndDate[0];
 
-    let dates = ``
-
-    yearEnd === yearStart
-            ? dates = `${monthStart} ${dayStart} to ${monthEnd} ${dayEnd}`
-            : dates = `${monthStart} ${dayStart} to ${monthEnd} ${dayEnd} ${yearEnd}`;
+    // Event date format
+    let dates;
+    if (yearEnd === yearStart) {
+        if (monthStart === monthEnd) {
+            if (dayStart == dayEnd) dates = `${monthStart} ${dayStart}`;
+            else dates = `${monthStart} ${dayStart} - ${dayEnd}`;
+        } else dates = `${monthStart} ${dayStart} - ${monthEnd} ${dayEnd}`;
+    } else {
+        dates = `${monthStart} ${dayStart} ${yearStart} - ${monthEnd} ${dayEnd} ${yearEnd}`;
+    }
 
     let description = event.description;
     let split = false;
@@ -73,9 +65,11 @@ const EventIndexItem = ({event}) => {
 
     return (
         
-        <div id="event-index-item-container" onClick={goToEventShowPage}>
-            <div><p>'{event.title}'</p> <span>{dates}</span></div>
-            <div><div></div><p id='push-right'>{description}</p><span>{event.peopleGoing.length} interested</span></div>
+        <div className="event-index-item-container" onClick={goToEventShowPage}>
+            <div><p>{event.title}</p> <span>{dates}</span></div>
+            <div>
+                <p className='push-right'>{description}</p><span>{event.peopleGoing.length} interested</span>
+            </div>
         </div>
     )
 
