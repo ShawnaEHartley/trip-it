@@ -55,7 +55,7 @@
 }
 
 .left-space {
-    overflow: auto;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-items:end
@@ -153,7 +153,7 @@
 
 .post-card-space {
     width: 340px;
-    height: 260px;
+    height: 220px;
     padding: 4px;
 }
 
