@@ -27,9 +27,6 @@ const TripShowPage = () => {
         return state?.modal ? state.modal : null ;
     });
 
-    const [renderUpdate, setRenderUpdate] = useState(false);
-    const [addMember, setAddMember] = useState("");
-
     useEffect(() => {
         dispatch(fetchTrip(tripId));
     }, [dispatch, tripId]);
@@ -163,7 +160,6 @@ const TripShowPage = () => {
           <div id='post-card-container'>
           <div className='top-margin'>
             <div className='navigation-buttons'>
-            {/* { user === trip.organizer ? tripOrganizerButtons : memberButtons } */}
               <Menu menuButton={<MenuButton>Actions.</MenuButton>} transition>
                 { user.name === trip.organizer.name ? <MenuItem onClick={renderUpdateForm}>Update trip</MenuItem> : ''}
                 { user.name === trip.organizer.name ? <MenuItem onClick={deleteThisTrip}>Delete trip</MenuItem> : ''}
@@ -176,7 +172,6 @@ const TripShowPage = () => {
               <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>
             </div>
           </div>
-            {/* {user._id === trip.organizer._id ? tripOrganizerButtons() : null } */}
             <div className='trip-show-page-header-wrapper'>
               <div className='trip-show-page-header'>
                 <h2>{trip.title}</h2>
@@ -194,13 +189,13 @@ const TripShowPage = () => {
               </div>
               <div id='post-card-center-border' />
               <div className='post-card-space'>
-              <div className='post-card-members-wrapper'>
-                <div>To:</div>
-                <div>
-                {trip.members.map((member) => {
-                      return (<span key={member._id}>{member.name}</span>)})}
+                <div className='post-card-members-wrapper'>
+                  <div>To:</div>
+                  <div>
+                  {trip.members.map((member) => {
+                        return (<span key={member._id}>{member.name}</span>)})}
+                  </div>
                 </div>
-              </div>
                 <div id='info-container'>
                   <div>
                     {trip.location.streetAddress ? trip.location.streetAddress : ""} <br/>
@@ -208,15 +203,6 @@ const TripShowPage = () => {
                     {trip.location.state ? `, ${trip.location.state}` : ""}
                     {trip.location.country ? trip.location.country : ""} { trip.location.zipCode ? trip.location.zipCode : ""}
                   </div>
-                </div>
-                <div>
-                {/* <span className='add-a-member'>
-                  <input type="text" placeholder='invite a member' value={addMember} onChange={e => {
-                    e.preventDefault();
-                    setaddMember(e.target.value);
-                  }} />
-                  <span onClick={inviteMember}>+</span>
-                </span> */}
                 </div>
               </div>
             </div>

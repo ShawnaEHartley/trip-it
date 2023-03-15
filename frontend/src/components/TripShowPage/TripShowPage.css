@@ -176,6 +176,7 @@
 }
 
 #trip-footer > div {
+    text-align: center;
     margin-top: auto;
     margin-bottom: auto;
 }
