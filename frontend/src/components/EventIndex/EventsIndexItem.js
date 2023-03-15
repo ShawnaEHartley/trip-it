@@ -33,15 +33,15 @@ const EventIndexItem = ({event}) => {
     const yearStart = splitStartDate[0];
     const yearEnd = splitEndDate[0];
 
-    // 
-    let dates = ``
+    // Event date format
+    let dates;
     if (yearEnd === yearStart) {
         if (monthStart === monthEnd) {
             if (dayStart == dayEnd) dates = `${monthStart} ${dayStart}`;
             else dates = `${monthStart} ${dayStart} - ${dayEnd}`;
         } else dates = `${monthStart} ${dayStart} - ${monthEnd} ${dayEnd}`;
     } else {
-        dates = `${monthStart} ${dayStart} - ${monthEnd} ${dayEnd} ${yearEnd}`;
+        dates = `${monthStart} ${dayStart} ${yearStart} - ${monthEnd} ${dayEnd} ${yearEnd}`;
     }
 
     let description = event.description;

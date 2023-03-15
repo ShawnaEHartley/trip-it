@@ -190,3 +190,22 @@
     margin-left: 5px;
     cursor: pointer;
 }
+
+.navigation-buttons > div {
+    top: -2px;
+}
+
+.navigation-buttons>div>ul {
+    box-shadow: none;
+    border-radius: 0px;
+    border: 1px solid black;
+
+    min-width: 84px;
+    padding: 0px 0px;
+    z-index: 1;
+}
+
+.navigation-buttons>div>ul>li {
+    width: auto;
+    padding: 8px 5px;
+}
