@@ -176,7 +176,7 @@
 }
 
 .text-container {
-   display: inline-block;
+   position: absolute;
    border-right: 2px solid black;
    border-bottom: 2px solid black;
    height: 18px;
@@ -187,15 +187,16 @@
    font-family: DuranMedium;
    letter-spacing: 2px;
    font-size: 16px;
+   text-indent: 0;
 }
+
 
 #title-container {
    display: flex;
    flex-wrap: wrap;
 
    margin-right: 0px;
-   min-width: 250px;
-   max-width: 320px;
+   width: 250px;
 
    height: 80px;
    border-right: 4px solid black;
@@ -204,4 +205,5 @@
    font-family: Kitschy;
    font-size: 24px;
    letter-spacing: 1px;
+   text-indent: 50px;
 }

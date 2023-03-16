@@ -132,7 +132,8 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  <span className='text-container'>Title</span> {event.title}
+                  <span className='text-container'>Title</span>
+                  {event.title}
                 </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
