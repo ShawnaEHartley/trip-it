@@ -103,7 +103,6 @@ const EventShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
-
   return (
     <>
       <div id='zig-zag11' className='pattern'/>
@@ -134,12 +133,16 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  <span className='text-container'>Title</span>
+                  <span className='text-container'>Title:</span>
                   {event.title}
                 </div>
+                <div id='time-header'>
+                  <span className='text-container'>Date & Time:</span>
+                  {event.startDate}
+                </div>
                 <div id='cost-header'>
-                  <span className='text-container'>Cost: {event.splitCostStructure ? 'per person' : 'total'}</span>
-
+                  <span className='text-container'>Cost: {event.splitCostStructure ? 'Per Person' : 'Total'}</span>
+                  <div>${event.cost}</div>
                 </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
@@ -157,7 +160,18 @@ const EventShowPage = () => {
                 </div>
               </div>
               <div id='event-information'>
-
+                <div id='left-info'>
+                  <div id='description-container'> 
+                    <span className='text-container'>Description:</span> {event.description}
+                  </div>
+                  <div id='location-container'>
+                    <span className='text-container'>Location:</span>
+                    sdf
+                  </div>
+                </div>
+                  <div id='event-image-container'>
+                    Placeholder Image
+                  </div>
               </div>
             </div>
           </div>

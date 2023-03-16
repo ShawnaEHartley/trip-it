@@ -22,22 +22,17 @@ const TripIndexItem = ({trip, awsUrl}) => {
         return trip.organizer.name;
     }
 
-    const date = () => {
-        const newDate = new Date(trip.startDate)
-        const month = newDate.getMonth() + 1;
-        const year = newDate.getFullYear();
-        const day = newDate.getDate();
-        return (
-            `${month}-${day}-${year}`
-        )
-    }
+    let splitStartDate = trip.startDate.split('-');
+    splitStartDate[2] = splitStartDate[2].split('T')[0];
+
+    const date = `${splitStartDate[1]}-${splitStartDate[2]}-${splitStartDate[0]}`
 
     return (
         <>
             <div className='stamp-image-container' onClick={goToTripShow}>
                 <div className='trip-info'>
                     <p id="trip-info-title">{trip.title}</p>
-                    <p>{date()}</p>
+                    <p>{date}</p>
 
                     {/* Can't render if line below is included, */}
 
