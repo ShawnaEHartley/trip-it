@@ -244,15 +244,26 @@
    margin-left: 800px;
 }
 
-/* .pointer-left {
+.pointer-left {
    z-index: -1;
+   transform: scaleX(-1);
    margin-right: 960px;
-   margin-top: 67.5vh!important;
+   margin-top: 455px!important;
 
 
    height: 100px !important;
    width: 100px !important;
-} */
+}
+
+.pointer-right {
+   z-index: -1;
+   margin-left: 960px;
+   margin-top: 455px!important;
+
+
+   height: 100px !important;
+   width: 100px !important;
+}
 
 .pawlm {
    position: absolute;
