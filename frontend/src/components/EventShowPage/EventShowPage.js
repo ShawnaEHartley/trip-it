@@ -126,12 +126,13 @@ const EventShowPage = () => {
         <div className='paws pointer-right'/>
         <div className='pawlm paw-right' />
         <div className='pawlm paw-left' />
+        <button id='back-button' onClick={backToTrip}>&larr;</button>
         <div id='event-show-page-container'>
           <div id='blank-page'>
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  asdfaksdfjkaksjdfkjlasklf asdfasdfa
+                  {event.title}
                 </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
@@ -156,18 +157,10 @@ const EventShowPage = () => {
         </div>
       </div>
       <div className='event-show-page-wrapper'>
-
         <div className='trip-show-page-container'>
           <div id='post-card-container' className='striped-border'>
-            {event.peopleGoing.some(person => person._id === user._id) 
-            ? <img id='heart' src={heart} alt='going' onClick={() => {
-                dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} />
-            : <img id='heart' src={emptyHeart} alt='notGoing' onClick={() => {
-                dispatch(eventActions.addUserToEvent(eventId, user._id))}} />
-            }
             <div className='trip-show-page-header-wrapper event-header'>
               <div className='trip-show-page-header'>
-                <h2 id='event-header-h2'>{event.title}</h2>
               </div>
             </div>
             <div id='post-card-body-container'>
