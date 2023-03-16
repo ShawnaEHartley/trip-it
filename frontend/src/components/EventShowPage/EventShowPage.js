@@ -110,25 +110,61 @@ const EventShowPage = () => {
       <div id='zig-zag11' className='pattern'/>
       <div className='event-show-page-wrapper'>
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> 
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div>
           : null
         }
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'>{modalComponent()}</div> 
+          ? <div className='modal-wrapper'>{modalComponent()}</div>
           : null
         }
+        <div className='paws paw-right'>
+          <div className='claw-right'/>
+        </div>
+        <div className='paws paw-left'>
+          <div className='claw-left' />
+        </div>
+        <div className='paws pointer-left'/>
+        <div className='paws pointer-right'/>
+        <div className='pawlm paw-right' />
+        <div className='pawlm paw-left' />
+        <div id='event-show-page-container'>
+          <div id='blank-page'>
+            <div id='event-show-border'>
+              <div id='event-header'>
+                <div id='title-container'>
+                  {event.title}
+                </div>
+                <div id='heart-container'>
+                  {event.peopleGoing.some(person => person._id === user._id)
+                    ? <img id='heart' src={heart} alt='going' onClick={() => {
+                      dispatch(eventActions.removeUserFromEvent(eventId, user._id))
+                    }} />
+                    : <img id='heart' src={emptyHeart} alt='notGoing' onClick={() => {
+                      dispatch(eventActions.addUserToEvent(eventId, user._id))
+                    }} />
+                  }
+                </div>
+              </div>
+              <div id='event-information'>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='event-show-page-wrapper'>
+
         <div className='trip-show-page-container'>
           <div id='post-card-container' className='striped-border'>
-            {event.peopleGoing.some(person => person._id === user._id) ?
-              <img id='heart' src={heart} alt='going' onClick={(e) => {
-                dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} /> :
-              <img id='heart' src={emptyHeart} alt='notGoing' onClick={(e) => {
+            {event.peopleGoing.some(person => person._id === user._id) 
+            ? <img id='heart' src={heart} alt='going' onClick={() => {
+                dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} />
+            : <img id='heart' src={emptyHeart} alt='notGoing' onClick={() => {
                 dispatch(eventActions.addUserToEvent(eventId, user._id))}} />
             }
             <div className='trip-show-page-header-wrapper event-header'>
               <div className='trip-show-page-header'>
                 <h2 id='event-header-h2'>{event.title}</h2>
-                <h4>{event.booked ? 'ALREADY BOOKED' : 'Not yet booked!'}</h4>
               </div>
             </div>
             <div id='post-card-body-container'>
