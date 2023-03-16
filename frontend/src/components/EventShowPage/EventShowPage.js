@@ -137,6 +137,10 @@ const EventShowPage = () => {
                   <span className='text-container'>Title</span>
                   {event.title}
                 </div>
+                <div id='cost-header'>
+                  <span className='text-container'>Cost: {event.splitCostStructure ? 'per person' : 'total'}</span>
+
+                </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
                     ? <img id='heart' src={heart} alt='going' onClick={() => {
@@ -150,9 +154,6 @@ const EventShowPage = () => {
                     ? null
                     : <div>interested?</div>
                   }
-                </div>
-                <div id='info-header'>
-
                 </div>
               </div>
               <div id='event-information'>
