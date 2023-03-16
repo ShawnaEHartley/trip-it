@@ -103,6 +103,12 @@ const EventShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+  let eventDates;
+  if (yearEnd === yearStart) {
+    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
+    else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
+  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
   return (
     <>
       <div id='zig-zag11' className='pattern'/>
@@ -133,15 +139,15 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  <span className='text-container'>Title:</span>
+                  <span className='text-container'>Title</span>
                   {event.title}
                 </div>
                 <div id='time-header'>
-                  <span className='text-container'>Date & Time:</span>
+                  <span className='text-container'>Date & Time</span>
                   {event.startDate}
                 </div>
                 <div id='cost-header'>
-                  <span className='text-container'>Cost: {event.splitCostStructure ? 'Per Person' : 'Total'}</span>
+                  <span className='text-container'>{event.splitCostStructure ? 'Cost Per Person' : 'Total Cost'}</span>
                   <div>${event.cost}</div>
                 </div>
                 <div id='heart-container'>
@@ -161,19 +167,24 @@ const EventShowPage = () => {
               </div>
               <div id='event-information'>
                 <div id='description-container'> 
-                  <span className='text-container'>Description:</span> {event.description}
+                  <span className='text-container'>Description</span> 
+                  {event.peopleGoing && event.peopleGoing[0] ? `Event Organizer: ${event.peopleGoing[0].name}`: null} <br/>
+                  {event.description}
                 </div>
                 <div id='location-container'>
-                  <span className='text-container'>Location:</span>
+                  <span className='text-container'>Location</span>
                   <div>
                     {event.location.name ? <p>{event.location.name}</p> : null}
                     {event.location.city ? <p>{event.location.city}</p> : null}
-                    {event.location.country ? <p>{event.location.country}</p> : ""} 
-                    {event.location.zipCode ? <p>{event.location.zipCode}</p> : ""}
+                    {event.location.country ? <p>{event.location.country}</p> : null} 
+                    {event.location.zipCode ? <p>{event.location.zipCode}</p> : null}
                   </div>
                 </div>
                 <div id='event-image-container'>
                   Placeholder Image
+                </div>
+                <div id='buttons-container'>
+                  
                 </div>
               </div>
             </div>

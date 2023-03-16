@@ -156,14 +156,15 @@
    float:left;
 
    width: 200px;
-   height: 140px;
+   height: 170px;
 
    border-right: 4px solid black;
    border-bottom: 4px solid black;
 }
 
 #location-container > div {
-   padding: 20px;
+   padding: 25px;
+   padding-top: 28px;
 }
 
 #location-container > div > p {
