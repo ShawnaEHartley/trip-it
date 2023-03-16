@@ -132,7 +132,7 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  {event.title}
+                  <span className='text-container'>Title</span> {event.title}
                 </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
@@ -148,6 +148,9 @@ const EventShowPage = () => {
                     : <div>interested?</div>
                   }
                 </div>
+                <div id='info-header'>
+
+                </div>
               </div>
               <div id='event-information'>
 
@@ -156,7 +159,7 @@ const EventShowPage = () => {
           </div>
         </div>
       </div>
-      <div className='event-show-page-wrapper'>
+      {/* <div className='event-show-page-wrapper'>
         <div className='trip-show-page-container'>
           <div id='post-card-container' className='striped-border'>
             <div className='trip-show-page-header-wrapper event-header'>
@@ -184,7 +187,7 @@ const EventShowPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 };
