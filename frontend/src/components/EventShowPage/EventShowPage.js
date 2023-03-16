@@ -187,7 +187,9 @@ const EventShowPage = () => {
                   {eventOrganizerButtons ? eventOrganizerButtons : null}
                 </div>
                 <div id='event-image-container'>
-                  Placeholder Image
+                  <div id='event-image'>
+                    Placeholder Image
+                  </div>
                 </div>
               </div>
             </div>
