@@ -10,8 +10,8 @@
 
 #back-button {
     position: absolute;
-    top: 14.5vh;
-    left: 28vw;
+    top: 12.5vh;
+    left: 27vw;
 
     font-size: 20px;
     color: rgb(52, 39, 16);
@@ -52,10 +52,11 @@
     justify-content: end;
     padding-bottom: 2px;
     margin-bottom: 10px;
+    height: 18px;
 }
 
 .left-space {
-    overflow: auto;
+    overflow: scroll;
     display: flex;
     flex-direction: column;
     align-items:end
@@ -153,7 +154,7 @@
 
 .post-card-space {
     width: 340px;
-    height: 260px;
+    height: 220px;
     padding: 4px;
 }
 

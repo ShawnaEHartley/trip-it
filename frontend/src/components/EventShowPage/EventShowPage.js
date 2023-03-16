@@ -29,8 +29,6 @@ const EventShowPage = () => {
   useEffect(() => {
     dispatch(eventActions.fetchEvent(eventId))
   }, [dispatch, eventId])
-  
-  const [liked, setLiked] = useState(false);
 
   if (!event.title) {
     return <div></div>
@@ -105,26 +103,112 @@ const EventShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+  let eventDates;
+  if (yearEnd === yearStart) {
+    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
+    else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
+  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
   return (
     <>
       <div id='zig-zag11' className='pattern'/>
       <div className='event-show-page-wrapper'>
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div> : ""}
+          ? <div className='modal-background' onClick={() => { dispatch(closeModal()) }}></div>
+          : null
+        }
         {modalState.on && modalState.component !== 'showCreateTripForm'
-          ? <div className='modal-wrapper'>{modalComponent()}</div> : ""}
+          ? <div className='modal-wrapper'>{modalComponent()}</div>
+          : null
+        }
+        <div className='paws paw-right'>
+          <div className='claw-right'/>
+        </div>
+        <div className='paws paw-left'>
+          <div className='claw-left' />
+        </div>
+        <div className='paws middle-left'>
+          <div className='claw-middle' />
+        </div>
+        <div className='paws middle-right'>
+          <div className='claw-middle' />  
+        </div>
+        <div className='paws pointer-left'>
+          <div className='claw-pointer' />
+        </div>
+        <div className='paws pointer-right'>
+          <div className='claw-pointer' />
+        </div>
+        <div className='pawlm paw-right' />
+        <div className='pawlm paw-left' />
+        <button id='back-button' onClick={backToTrip}>&larr;</button>
+        <div id='event-show-page-container'>
+          <div id='blank-page'>
+            <div id='event-show-border'>
+              <div id='event-header'>
+                <div id='title-container'>
+                  <span className='text-container'>Title</span>
+                  {event.title}
+                </div>
+                <div id='time-header'>
+                  <span className='text-container'>Date & Time</span>
+                  <div id='time-container'>
+                    {eventDates}
+                  </div>
+                </div>
+                <div id='cost-header'>
+                  <span className='text-container'>{event.splitCostStructure ? 'Cost Per Person' : 'Total Cost'}</span>
+                  <div>${event.cost}</div>
+                </div>
+                <div id='heart-container'>
+                  {event.peopleGoing.some(person => person._id === user._id)
+                    ? <img id='heart' src={heart} alt='going' onClick={() => {
+                      dispatch(eventActions.removeUserFromEvent(eventId, user._id))
+                    }} />
+                    : <img id='heart' src={emptyHeart} alt='notGoing' onClick={() => {
+                      dispatch(eventActions.addUserToEvent(eventId, user._id))
+                    }} />
+                  }
+                  {event.peopleGoing.some(person => person._id === user._id) 
+                    ? null
+                    : <div>interested?</div>
+                  }
+                </div>
+              </div>
+              <div id='event-information'>
+                <div id='description-container'> 
+                  <span className='text-container'>Description</span> 
+                  {event.peopleGoing && event.peopleGoing[0] ? `Event Organizer: ${event.peopleGoing[0].name}`: null} <br/>
+                  {event.description}
+                </div>
+                <div id='location-container'>
+                  <span className='text-container'>Location</span>
+                  <div>
+                    {event.location.name ? <p>{event.location.name}</p> : null}
+                    {event.location.city ? <p>{event.location.city}</p> : null}
+                    {event.location.country ? <p>{event.location.country}</p> : null} 
+                    {event.location.zipCode ? <p>{event.location.zipCode}</p> : null}
+                  </div>
+                </div>
+                <div id='buttons-container'>
+                  {eventOrganizerButtons ? <div>Update Event!</div> : null}
+                  {eventOrganizerButtons ? eventOrganizerButtons : null}
+                </div>
+                <div id='event-image-container'>
+                  <div id='event-image'>
+                    Placeholder Image
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className='event-show-page-wrapper'>
         <div className='trip-show-page-container'>
           <div id='post-card-container' className='striped-border'>
-            {event.peopleGoing.some(person => person._id === user._id) ?
-              <img id='heart' src={heart} alt='going' onClick={(e) => {
-                dispatch(eventActions.removeUserFromEvent(eventId, user._id))}} /> :
-              <img id='heart' src={emptyHeart} alt='notGoing' onClick={(e) => {
-                dispatch(eventActions.addUserToEvent(eventId, user._id))}} />
-            }
             <div className='trip-show-page-header-wrapper event-header'>
               <div className='trip-show-page-header'>
-                <h2 id='event-header-h2'>{event.title}</h2>
-                <h4>{event.booked ? 'ALREADY BOOKED' : 'Not yet booked!'}</h4>
               </div>
             </div>
             <div id='post-card-body-container'>
@@ -148,7 +232,7 @@ const EventShowPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 };
