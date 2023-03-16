@@ -129,8 +129,12 @@ const EventShowPage = () => {
         </div>
         <div className='paws middle-left'/>
         <div className='paws middle-right'/>
-        <div className='paws pointer-left'/>
-        <div className='paws pointer-right'/>
+        <div className='paws pointer-left'>
+          <div className='claw-pointer' />
+        </div>
+        <div className='paws pointer-right'>
+          <div className='claw-pointer' />
+        </div>
         <div className='pawlm paw-right' />
         <div className='pawlm paw-left' />
         <button id='back-button' onClick={backToTrip}>&larr;</button>
