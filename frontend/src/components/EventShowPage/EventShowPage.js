@@ -144,7 +144,9 @@ const EventShowPage = () => {
                 </div>
                 <div id='time-header'>
                   <span className='text-container'>Date & Time</span>
-                  {event.startDate}
+                  <div id='time-container'>
+                    {eventDates}
+                  </div>
                 </div>
                 <div id='cost-header'>
                   <span className='text-container'>{event.splitCostStructure ? 'Cost Per Person' : 'Total Cost'}</span>
@@ -180,11 +182,12 @@ const EventShowPage = () => {
                     {event.location.zipCode ? <p>{event.location.zipCode}</p> : null}
                   </div>
                 </div>
+                <div id='buttons-container'>
+                  {eventOrganizerButtons ? <div>Update Event!</div> : null}
+                  {eventOrganizerButtons ? eventOrganizerButtons : null}
+                </div>
                 <div id='event-image-container'>
                   Placeholder Image
-                </div>
-                <div id='buttons-container'>
-                  
                 </div>
               </div>
             </div>
