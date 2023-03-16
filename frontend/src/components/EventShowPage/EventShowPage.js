@@ -160,18 +160,21 @@ const EventShowPage = () => {
                 </div>
               </div>
               <div id='event-information'>
-                <div id='left-info'>
-                  <div id='description-container'> 
-                    <span className='text-container'>Description:</span> {event.description}
-                  </div>
-                  <div id='location-container'>
-                    <span className='text-container'>Location:</span>
-                    sdf
+                <div id='description-container'> 
+                  <span className='text-container'>Description:</span> {event.description}
+                </div>
+                <div id='location-container'>
+                  <span className='text-container'>Location:</span>
+                  <div>
+                    {event.location.name ? <p>{event.location.name}</p> : null}
+                    {event.location.city ? <p>{event.location.city}</p> : null}
+                    {event.location.country ? <p>{event.location.country}</p> : ""} 
+                    {event.location.zipCode ? <p>{event.location.zipCode}</p> : ""}
                   </div>
                 </div>
-                  <div id='event-image-container'>
-                    Placeholder Image
-                  </div>
+                <div id='event-image-container'>
+                  Placeholder Image
+                </div>
               </div>
             </div>
           </div>
