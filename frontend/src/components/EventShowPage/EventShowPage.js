@@ -29,8 +29,6 @@ const EventShowPage = () => {
   useEffect(() => {
     dispatch(eventActions.fetchEvent(eventId))
   }, [dispatch, eventId])
-  
-  const [liked, setLiked] = useState(false);
 
   if (!event.title) {
     return <div></div>
@@ -105,6 +103,7 @@ const EventShowPage = () => {
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
 
+
   return (
     <>
       <div id='zig-zag11' className='pattern'/>
@@ -132,7 +131,7 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  {event.title}
+                  asdfaksdfjkaksjdfkjlasklf asdfasdfa
                 </div>
                 <div id='heart-container'>
                   {event.peopleGoing.some(person => person._id === user._id)
@@ -142,6 +141,10 @@ const EventShowPage = () => {
                     : <img id='heart' src={emptyHeart} alt='notGoing' onClick={() => {
                       dispatch(eventActions.addUserToEvent(eventId, user._id))
                     }} />
+                  }
+                  {event.peopleGoing.some(person => person._id === user._id) 
+                    ? null
+                    : <div>interested?</div>
                   }
                 </div>
               </div>

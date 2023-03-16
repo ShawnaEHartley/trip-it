@@ -17,8 +17,6 @@
 
 }
 
-/* striped css from online */
-
 #blank-page {
    display: flex;
    justify-content: center;
@@ -57,6 +55,16 @@
    border-bottom: 20px solid transparent;
 }
 
+#event-header {
+   display: flex;
+   flex-direction: row;
+   height: 78px;
+   width: 100%;
+
+   border: 2px solid black;
+   border-bottom: 6px solid black;
+}
+
 .event-show-page-wrapper {
    display: flex;
    justify-content: center;
@@ -86,11 +94,23 @@
 }
 
 #heart {
-   position: absolute;
-   margin-top: 4px;
-   margin-left: 620px;
    width: 48px;
    cursor: pointer;
+}
+
+#heart-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+   padding: 6px;
+   width: 200px;
+   height: 66px;
+
+   font-family: Gelica;
+   font-size: 10px;
+   font-style: italic;
 }
 
 .paw-left {
@@ -153,4 +173,24 @@
       radial-gradient(100% 100% at 100% 0, var(--c1) 4%, var(--_g), rgb(49, 29, 23) 96%, #0000),
       radial-gradient(100% 100% at 0 100%, #0000, rgb(49, 29, 23) 4%, var(--_g), var(--c1) 96%) var(--c1);
    background-size: var(--s) var(--s);
+}
+
+#title-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+
+   padding: 4px 8px;
+   margin-right: 0px;
+   min-width: 250px;
+   max-width: 320px;
+
+   height: 70px;
+   border-right: 4px solid black;
+   margin-bottom: 2px;
+
+   font-family: Kitschy;
+   font-size: 24px;
+   letter-spacing: 1px;
 }
