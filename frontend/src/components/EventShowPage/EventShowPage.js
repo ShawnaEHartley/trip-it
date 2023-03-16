@@ -127,8 +127,12 @@ const EventShowPage = () => {
         <div className='paws paw-left'>
           <div className='claw-left' />
         </div>
-        <div className='paws middle-left'/>
-        <div className='paws middle-right'/>
+        <div className='paws middle-left'>
+          <div className='claw-middle' />
+        </div>
+        <div className='paws middle-right'>
+          <div className='claw-middle' />  
+        </div>
         <div className='paws pointer-left'>
           <div className='claw-pointer' />
         </div>

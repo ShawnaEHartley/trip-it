@@ -37,16 +37,16 @@
    float: left;
 }
 
-.claw-right {
+.claw-middle{
    width: 0;
    height: 0;
    position: absolute;
    z-index: 2;
 
-   margin-left: 15px;
-   border-left: 20px black solid;
-   border-top: 20px solid transparent;
-   border-bottom: 20px solid transparent;
+   margin-left: 44px;
+   border-left: 7px transparent solid;
+   border-bottom: 10px black solid;
+   border-right: 7px solid transparent;
 }
 
 .claw-pointer {
@@ -61,14 +61,26 @@
    border-right: 7px solid transparent;
 }
 
+.claw-right {
+   width: 0;
+   height: 0;
+   position: absolute;
+   z-index: 2;
+
+   margin-left: 17px;
+   border-left: 15px black solid;
+   border-top: 20px solid transparent;
+   border-bottom: 20px solid transparent;
+}
+
 .claw-left {
    width: 0;
    height: 0;
    position: absolute;
    z-index: 2;
 
-   margin-left: 15px;
-   border-left: 20px black solid;
+   margin-left: 17px;
+   border-left: 15px black solid;
    border-top: 20px solid transparent;
    border-bottom: 20px solid transparent;
 }
