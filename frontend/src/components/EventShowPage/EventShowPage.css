@@ -129,7 +129,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 1px solid black;
+   /* border: 1px solid black; */
    border-radius: 4px;
 
    height: 40px;
@@ -145,6 +145,11 @@
    float: right;
    height: 170px;
    width: 423px;
+}
+
+#event-image >img {
+   max-height: 160px;
+   max-width: 418px;
 }
 
 #event-show-border {

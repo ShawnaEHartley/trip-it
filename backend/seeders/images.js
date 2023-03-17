@@ -59,9 +59,8 @@ let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png',
 let rand = Math.floor(Math.random() * awsUrls.length);
 
 const DEFAULT_PROFILE_IMAGE_URL = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/blank-profile-picture-ga0a514922_1280.png'; 
-const DEFAULT_TRIP_MAIN_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg';
-const ROTATING_TRIP_STAMP_IMAGE = awsUrls[rand];
-const DEFAULT_EVENT_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourism.jpeg';
+const DEFAULT_TRIP_MAIN_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourism.jpeg';
+const DEFAULT_EVENT_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg';
 
 
 // Connect to database
@@ -69,9 +68,9 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to MongoDB successfully');
-    // initializeEventImages();
+    initializeEventImages();
     // initializeTripImages();
-    initializeUserProfilePics();
+    // initializeUserProfilePics();
 
     // call update functions here
 
@@ -100,7 +99,7 @@ const initializeTripImages = async () => {
   for (let i = 0; i < trips.length; i++) {
     const trip = trips[i];
     const res = await trip.updateOne(
-      { $set: { tripImageUrl: DEFAULT_TRIP_MAIN_IMAGE, stampImageUrl: ROTATING_TRIP_STAMP_IMAGE } }
+      { $set: { tripImageUrl: DEFAULT_TRIP_MAIN_IMAGE, stampImageUrl: awsUrls[i] } }
     );
   };
   mongoose.disconnect();

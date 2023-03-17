@@ -196,7 +196,7 @@ const EventShowPage = () => {
                 </div>
                 <div id='event-image-container'>
                   <div id='event-image'>
-                    Placeholder Image
+                    <img src={event.imageUrl} alt="event" />
                   </div>
                 </div>
               </div>

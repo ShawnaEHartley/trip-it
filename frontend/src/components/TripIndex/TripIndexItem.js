@@ -40,7 +40,7 @@ const TripIndexItem = ({trip, awsUrl}) => {
                 </div>
                 <div className='stamp-divider' />
                 <div className='stamp-image-wrapper'>
-                    <img className='stamp-image' src={awsUrl} alt='stamp' />
+                    <img className='stamp-image' src={trip.stampImageUrl} alt='stamp' />
                 </div>
             </div>
         </>
