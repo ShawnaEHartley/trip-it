@@ -169,7 +169,7 @@ const TripShowPage = () => {
               </Menu>
             </div>
             <div className='top-margin-right'>
-              <img className='stamp-image' src={awsUrls[rand]} alt='stamp'></img>
+              <img className='stamp-image' src={trip.stampImageUrl} alt='stamp'></img>
             </div>
           </div>
             <div className='trip-show-page-header-wrapper'>
