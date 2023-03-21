@@ -15,7 +15,7 @@ form > .errors {
   top: 30%;
   width: 480px;
   height: 30%;
-  min-height: 244px;
+  min-height: 290px;
   z-index: 3;
 
   display: flex;
