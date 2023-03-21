@@ -274,7 +274,7 @@
    transform: scaleX(-1);
 }
 
-.paw-left:hover {
+.paws.paw-left:hover {
    margin-right: 866px;
 }
 
@@ -282,7 +282,7 @@
    margin-left: 800px;
 }
 
-.paw-right:hover {
+.paws.paw-right:hover {
    margin-left: 866px;
 }
 

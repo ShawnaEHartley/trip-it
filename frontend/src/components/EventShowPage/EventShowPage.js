@@ -111,6 +111,16 @@ const EventShowPage = () => {
   (Math.floor(timeStart.split(':')[0] / 12) === 1 ? timeStart = timeStart + ' PM' : timeStart = timeStart + ' AM');
   (Math.floor(timeEnd.split(':')[0] / 12) === 1 ? timeEnd = timeEnd + ' PM' : timeEnd = timeEnd + ' AM');
 
+  //Correct AM and PM timing
+  timeStart = timeStart.split(':');
+  (parseInt(timeStart[0]) > 12 ? timeStart[0] = toString(parseInt(timeStart[0] - 12)) : timeStart[0] = timeStart[0]);
+  timeStart = timeStart.join(':');
+  timeEnd = timeEnd.split(':');
+  (parseInt(timeEnd[0]) > 12 ? timeEnd[0] = parseInt(timeEnd[0] - 12).toString() : timeEnd[0] = timeEnd[0]);
+  timeEnd = timeEnd.join(':');
+  
+
+  //Date and Time Formatting
   let eventDates;
   if (yearEnd === yearStart) {
     if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
@@ -119,7 +129,7 @@ const EventShowPage = () => {
 
   let eventTimes;
   if (timeStart === timeEnd) {
-
+    eventTimes = timeStart;
   }
 
   return (
