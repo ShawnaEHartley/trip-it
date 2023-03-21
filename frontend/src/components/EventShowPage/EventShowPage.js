@@ -93,15 +93,23 @@ const EventShowPage = () => {
 
   splitStartDate[1] = months[splitStartDate[1]];
   splitEndDate[1] = months[splitEndDate[1]];
-  splitStartDate[2] = splitStartDate[2].split('T')[0];
-  splitEndDate[2] = splitEndDate[2].split('T')[0];
+  let startSplit = splitStartDate[2].split('T');
+  let endSplit = splitEndDate[2].split('T');
+  splitStartDate[2] = startSplit[0];
+  splitEndDate[2] = endSplit[0];
 
   const monthStart = splitStartDate[1];
   const monthEnd = splitEndDate[1];
-  const dayStart = splitStartDate[2];
-  const dayEnd = splitEndDate[2];
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
+  const dayStart = startSplit[0];
+  const dayEnd = endSplit[0];
+
+  //Get's rid of milliseconds
+  const timeStart = startSplit[1].slice(0, 8);
+  const timeEnd = endSplit[1].slice(0, 8);
+
+  console.log(timeEnd)
 
   let eventDates;
   if (yearEnd === yearStart) {
@@ -170,9 +178,12 @@ const EventShowPage = () => {
                     }} />
                   }
                   {event.peopleGoing.some(person => person._id === user._id) 
-                    ? null
-                    : <div>interested?</div>
+                    ? <div id='people-going-hover'>who is going?</div>
+                    : <div id='people-going-hover'>interested?</div>
                   }
+                  <div id='people-going-hide'>
+                    {}
+                  </div>
                 </div>
               </div>
               <div id='event-information'>

@@ -286,10 +286,18 @@
    margin-left: 866px;
 }
 
+#people-going-hide {
+   display: none;
+}
+
+#people-going-hover:hover + #people-going-hide {
+
+}
+
 .pointer-left {
    z-index: -1;
    transform: scaleX(-1);
-   margin-right: 960px;
+   margin-right: 958px;
    margin-top: 468px!important;
 
 
@@ -299,7 +307,7 @@
 
 .pointer-right {
    z-index: -1;
-   margin-left: 960px;
+   margin-left: 958px;
    margin-top: 468px!important;
 
 
