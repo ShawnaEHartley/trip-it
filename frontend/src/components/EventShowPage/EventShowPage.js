@@ -204,35 +204,6 @@ const EventShowPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className='event-show-page-wrapper'>
-        <div className='trip-show-page-container'>
-          <div id='post-card-container' className='striped-border'>
-            <div className='trip-show-page-header-wrapper event-header'>
-              <div className='trip-show-page-header'>
-              </div>
-            </div>
-            <div id='post-card-body-container'>
-              <div className='post-card-space left-space event-show-left'>
-                <p><span className='descr-span'>Cost: </span>${event.cost} {event.splitCostStructure ? 'per person' : 'total'}</p>
-                <p id='descr-description'>Description: {event.description}</p>
-                <div className='event-show-buttons'>
-                  {eventOrganizerButtons}
-                </div>
-                  <button className='event-show-page-button' onClick={backToTrip}>Back to trip</button>
-              </div>
-              <div id='event-post-card-center-border' />
-              <div className='post-card-space event-show-right'>
-                <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
-                  <div id='location-div'>
-                    <p>{event.location.name ? event.location.name : ""}</p>
-                    <p>{event.location.city ? event.location.city : ""}</p>
-                    <p>{event.location.country ? event.location.country : ""} {event.location.zipCode ? event.location.zipCode : ""}</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   )
 };
