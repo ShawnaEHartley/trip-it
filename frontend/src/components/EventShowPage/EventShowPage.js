@@ -105,17 +105,22 @@ const EventShowPage = () => {
   const dayStart = startSplit[0];
   const dayEnd = endSplit[0];
 
-  //Get's rid of milliseconds
-  const timeStart = startSplit[1].slice(0, 8);
-  const timeEnd = endSplit[1].slice(0, 8);
-
-  console.log(timeEnd)
+  //No need for milliseconds
+  let timeStart = startSplit[1].slice(0, 5);
+  let timeEnd = endSplit[1].slice(0, 5);
+  (Math.floor(timeStart.split(':')[0] / 12) === 1 ? timeStart = timeStart + ' PM' : timeStart = timeStart + ' AM');
+  (Math.floor(timeEnd.split(':')[0] / 12) === 1 ? timeEnd = timeEnd + ' PM' : timeEnd = timeEnd + ' AM');
 
   let eventDates;
   if (yearEnd === yearStart) {
     if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
     else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
   } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
+  let eventTimes;
+  if (timeStart === timeEnd) {
+
+  }
 
   return (
     <>
