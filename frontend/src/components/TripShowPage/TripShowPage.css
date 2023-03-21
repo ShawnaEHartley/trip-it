@@ -238,13 +238,15 @@
 .trip-show-page-header-wrapper {
     height: 40px;
     margin: 20px 0px;
-    z-index: 1;
+    z-index: 0;
 }
 
 .trip-show-page-header-wrapper > div > h2 {
     height: min-content;
     font-size: 32px;
     font-family: LaborUnion;
+    max-width: 450px;
+    text-align: center;
 }
 
 .trip-show-page-header-wrapper > div > p {
