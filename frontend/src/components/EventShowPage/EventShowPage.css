@@ -370,7 +370,8 @@
 #time-container {
    display: flex;
    justify-content: center;
-   margin-top: 32px;
+   text-indent: 0;
+   margin-top: 36px;
 }
 
 #time-header {

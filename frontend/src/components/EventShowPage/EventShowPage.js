@@ -108,8 +108,8 @@ const EventShowPage = () => {
   //No need for milliseconds
   let timeStart = startSplit[1].slice(0, 5);
   let timeEnd = endSplit[1].slice(0, 5);
-  (Math.floor(timeStart.split(':')[0] / 12) === 1 ? timeStart = timeStart + ' PM' : timeStart = timeStart + ' AM');
-  (Math.floor(timeEnd.split(':')[0] / 12) === 1 ? timeEnd = timeEnd + ' PM' : timeEnd = timeEnd + ' AM');
+  (Math.floor(timeStart.split(':')[0] / 12) === 1 ? timeStart = timeStart + 'PM' : timeStart = timeStart + 'AM');
+  (Math.floor(timeEnd.split(':')[0] / 12) === 1 ? timeEnd = timeEnd + 'PM' : timeEnd = timeEnd + 'AM');
 
   //Correct AM and PM timing
   timeStart = timeStart.split(':');
@@ -118,19 +118,21 @@ const EventShowPage = () => {
   timeEnd = timeEnd.split(':');
   (parseInt(timeEnd[0]) > 12 ? timeEnd[0] = parseInt(timeEnd[0] - 12).toString() : timeEnd[0] = timeEnd[0]);
   timeEnd = timeEnd.join(':');
-  
+
 
   //Date and Time Formatting
   let eventDates;
   if (yearEnd === yearStart) {
-    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
+    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart}, ${yearStart}`;
     else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
   } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
 
   let eventTimes;
   if (timeStart === timeEnd) {
-    eventTimes = timeStart;
-  }
+    if (timeStart === '12:00AM' && dayStart === dayEnd) eventTimes = 'All Day';
+    else if (timeStart === '12:00AM') eventTimes = null;
+    else eventTimes = timeStart;
+  } else eventTimes = `${timeStart} - ${timeEnd}`;
 
   return (
     <>
@@ -174,9 +176,10 @@ const EventShowPage = () => {
                   {event.title}
                 </div>
                 <div id='time-header'>
-                  <span className='text-container'>Date & Time</span>
+                  <span className='text-container'>Date: {eventDates}</span>
+                  
                   <div id='time-container'>
-                    {eventDates}
+                    {eventTimes}
                   </div>
                 </div>
                 <div id='cost-header'>
