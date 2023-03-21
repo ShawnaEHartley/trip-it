@@ -208,6 +208,10 @@
     display: none;
 }
 
+#trip-member-list-container > span:first-child > span:first-child {
+    display: none;
+}
+
 #trip-member-list-container > span:last-child > span:last-child {
     display: none;
 }
