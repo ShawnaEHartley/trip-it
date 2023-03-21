@@ -2,11 +2,7 @@
     width: 320px;
     margin-bottom: 1px;
     padding: 4px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 2px;
-    border-color: rgb(247, 244, 217);
-    background-color: rgb(253, 253, 251);
+    background-color: rgb(254, 249, 238);
 
     cursor:pointer;
     font-size: 13px;

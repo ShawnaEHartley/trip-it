@@ -113,37 +113,6 @@ const TripShowPage = () => {
     else tripDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
   } else tripDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
 
-
-  let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_7.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_9.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_10.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_11.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_12.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_17.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_18.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_20.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_21.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_22.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_23.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_24.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_25.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_26.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_27.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_29.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_30.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_31.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_33.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_36.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_40.png',
-  'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
-
-  let rand = Math.floor(Math.random() * awsUrls.length);
-
-
-
   return (
     <>
       <div id='zig-zag11' className='pattern' />

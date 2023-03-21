@@ -28,6 +28,8 @@ const EventCreateForm = ({tripId}) => {
     const [cost, setCost] = useState(0);
     const [splitCostStructure, setSplitCostStructure] = useState(false);
 
+    const DEFAULT_EVENT_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg';
+
     const convertTime = (dateObj) => {
       const offset = new Date().getTimezoneOffset();
       const date = new Date(dateObj);
@@ -57,7 +59,8 @@ const EventCreateForm = ({tripId}) => {
             peopleGoing: [currentUser._id],
             cost: cost, 
             splitCostStructure: splitCostStructure,
-            tripId: tripId
+            tripId: tripId,
+            imageUrl: DEFAULT_EVENT_IMAGE
         }, tripId, history));
       };
 
