@@ -12,7 +12,7 @@ const eventSchema = new Schema({
         country: String,
         state: String,
         city: String,
-        streetAdress: String,
+        streetAddress: String,
         zipCode: String
     },
     startDate: Date,
