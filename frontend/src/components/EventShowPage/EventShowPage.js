@@ -50,9 +50,20 @@ const EventShowPage = () => {
 
   let eventOrganizer;
   let eventOrganizerButtons;
+  let eventGoingDiv;
   
   if(event.peopleGoing.length !== 0) {
     eventOrganizer = event.peopleGoing[0]._id;
+
+    eventGoingDiv = (
+      <div id='people-going-container'>
+        {event.peopleGoing.map((person, i) => 
+          <div key={i} className='people-going-div'>
+            {person.name}
+          </div>
+        )}
+      </div>
+    )
   }
   
   if (event.peopleGoing.length === 0 || user._id === eventOrganizer) {
@@ -201,7 +212,7 @@ const EventShowPage = () => {
                     : <div id='people-going-hover'>interested?</div>
                   }
                   <div id='people-going-hide'>
-                    {}
+                    {eventGoingDiv}
                   </div>
                 </div>
               </div>
