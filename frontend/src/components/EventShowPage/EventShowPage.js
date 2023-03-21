@@ -179,7 +179,7 @@ const EventShowPage = () => {
                 <div id='description-container'> 
                   <span className='text-container'>Description</span> 
                   {event.peopleGoing && event.peopleGoing[0] ? `Event Organizer: ${event.peopleGoing[0].name}`: null} <br/>
-                  {event.description}
+                  <div id='description'>{event.description}</div>
                 </div>
                 <div id='location-container'>
                   <span className='text-container'>Location</span>
