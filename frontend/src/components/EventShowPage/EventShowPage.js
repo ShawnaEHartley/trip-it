@@ -172,12 +172,12 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  <span className='text-container'>Title</span>
-                  {event.title}
+                  <div id='title'>
+                    {event.title}
+                  </div>
                 </div>
                 <div id='time-header'>
                   <span className='text-container'>Date: {eventDates}</span>
-                  
                   <div id='time-container'>
                     {eventTimes}
                   </div>
