@@ -114,9 +114,11 @@ const EventShowPage = () => {
   //Correct AM and PM timing
   timeStart = timeStart.split(':');
   (parseInt(timeStart[0]) > 12 ? timeStart[0] = toString(parseInt(timeStart[0] - 12)) : timeStart[0] = timeStart[0]);
+  (timeStart[0] === '00' ? timeStart[0] = '12' : timeStart[0] = timeStart[0]);
   timeStart = timeStart.join(':');
   timeEnd = timeEnd.split(':');
   (parseInt(timeEnd[0]) > 12 ? timeEnd[0] = parseInt(timeEnd[0] - 12).toString() : timeEnd[0] = timeEnd[0]);
+  (timeEnd[0] === '00' ? timeEnd[0] = '12' : timeEnd[0] = timeEnd[0]);
   timeEnd = timeEnd.join(':');
 
 
@@ -124,13 +126,12 @@ const EventShowPage = () => {
   let eventDates;
   if (yearEnd === yearStart) {
     if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart}, ${yearStart}`;
-    else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
-  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+    else eventDates = `${monthStart} ${dayStart} - ${monthEnd} ${dayEnd}, ${yearStart}`;
+  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} - ${monthEnd} ${dayEnd}, ${yearEnd}`;
 
   let eventTimes;
   if (timeStart === timeEnd) {
-    if (timeStart === '12:00AM' && dayStart === dayEnd) eventTimes = 'All Day';
-    else if (timeStart === '12:00AM') eventTimes = null;
+    if (timeStart === '12:00AM') eventTimes = 'All Day';
     else eventTimes = timeStart;
   } else eventTimes = `${timeStart} - ${timeEnd}`;
 
