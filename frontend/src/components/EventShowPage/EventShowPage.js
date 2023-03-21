@@ -177,7 +177,7 @@ const EventShowPage = () => {
                   </div>
                 </div>
                 <div id='time-header'>
-                  <span className='text-container'>Date: {eventDates}</span>
+                  <span className='text-container'>{eventDates}</span>
                   <div id='time-container'>
                     {eventTimes}
                   </div>
@@ -206,8 +206,8 @@ const EventShowPage = () => {
               </div>
               <div id='event-information'>
                 <div id='description-container'> 
-                  <span className='text-container'>Description</span> 
-                  {event.peopleGoing && event.peopleGoing[0] ? `Event Organizer: ${event.peopleGoing[0].name}`: null} <br/>
+                  {event.peopleGoing && event.peopleGoing[0] ? <span className='text-container'>Event Organizer: {event.peopleGoing[0].name}</span> : null}
+                   <br/>
                   <div id='description'>{event.description}</div>
                 </div>
                 <div id='location-container'>
