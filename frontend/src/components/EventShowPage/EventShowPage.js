@@ -50,9 +50,20 @@ const EventShowPage = () => {
 
   let eventOrganizer;
   let eventOrganizerButtons;
+  let eventGoingDiv;
   
   if(event.peopleGoing.length !== 0) {
     eventOrganizer = event.peopleGoing[0]._id;
+
+    eventGoingDiv = (
+      <div id='people-going-container'>
+        {event.peopleGoing.map((person, i) => 
+          <div key={i} className='people-going-div'>
+            {person.name}
+          </div>
+        )}
+      </div>
+    )
   }
   
   if (event.peopleGoing.length === 0 || user._id === eventOrganizer) {
@@ -93,21 +104,47 @@ const EventShowPage = () => {
 
   splitStartDate[1] = months[splitStartDate[1]];
   splitEndDate[1] = months[splitEndDate[1]];
-  splitStartDate[2] = splitStartDate[2].split('T')[0];
-  splitEndDate[2] = splitEndDate[2].split('T')[0];
+  let startSplit = splitStartDate[2].split('T');
+  let endSplit = splitEndDate[2].split('T');
+  splitStartDate[2] = startSplit[0];
+  splitEndDate[2] = endSplit[0];
 
   const monthStart = splitStartDate[1];
   const monthEnd = splitEndDate[1];
-  const dayStart = splitStartDate[2];
-  const dayEnd = splitEndDate[2];
   const yearStart = splitStartDate[0];
   const yearEnd = splitEndDate[0];
+  const dayStart = startSplit[0];
+  const dayEnd = endSplit[0];
 
+  //No need for milliseconds
+  let timeStart = startSplit[1].slice(0, 5);
+  let timeEnd = endSplit[1].slice(0, 5);
+  (Math.floor(timeStart.split(':')[0] / 12) === 1 ? timeStart = timeStart + 'PM' : timeStart = timeStart + 'AM');
+  (Math.floor(timeEnd.split(':')[0] / 12) === 1 ? timeEnd = timeEnd + 'PM' : timeEnd = timeEnd + 'AM');
+
+  //Correct AM and PM timing
+  timeStart = timeStart.split(':');
+  (parseInt(timeStart[0]) > 12 ? timeStart[0] = toString(parseInt(timeStart[0] - 12)) : timeStart[0] = timeStart[0]);
+  (timeStart[0] === '00' ? timeStart[0] = '12' : timeStart[0] = timeStart[0]);
+  timeStart = timeStart.join(':');
+  timeEnd = timeEnd.split(':');
+  (parseInt(timeEnd[0]) > 12 ? timeEnd[0] = parseInt(timeEnd[0] - 12).toString() : timeEnd[0] = timeEnd[0]);
+  (timeEnd[0] === '00' ? timeEnd[0] = '12' : timeEnd[0] = timeEnd[0]);
+  timeEnd = timeEnd.join(':');
+
+
+  //Date and Time Formatting
   let eventDates;
   if (yearEnd === yearStart) {
-    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart} ${yearStart}`;
-    else eventDates = `${monthStart} ${dayStart} til ${monthEnd} ${dayEnd} ${yearStart}`;
-  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} til ${monthEnd} ${dayEnd}, ${yearEnd}`;
+    if (dayStart == dayEnd) eventDates = `${monthStart} ${dayStart}, ${yearStart}`;
+    else eventDates = `${monthStart} ${dayStart} - ${monthEnd} ${dayEnd}, ${yearStart}`;
+  } else eventDates = `${monthStart} ${dayStart}, ${yearStart} - ${monthEnd} ${dayEnd}, ${yearEnd}`;
+
+  let eventTimes;
+  if (timeStart === timeEnd) {
+    if (timeStart === '12:00AM') eventTimes = 'All Day';
+    else eventTimes = timeStart;
+  } else eventTimes = `${timeStart} - ${timeEnd}`;
 
   return (
     <>
@@ -147,13 +184,14 @@ const EventShowPage = () => {
             <div id='event-show-border'>
               <div id='event-header'>
                 <div id='title-container'>
-                  <span className='text-container'>Title</span>
-                  {event.title}
+                  <div id='title'>
+                    {event.title}
+                  </div>
                 </div>
                 <div id='time-header'>
-                  <span className='text-container'>Date & Time</span>
+                  <span className='text-container'>{eventDates}</span>
                   <div id='time-container'>
-                    {eventDates}
+                    {eventTimes}
                   </div>
                 </div>
                 <div id='cost-header'>
@@ -170,16 +208,19 @@ const EventShowPage = () => {
                     }} />
                   }
                   {event.peopleGoing.some(person => person._id === user._id) 
-                    ? null
-                    : <div>interested?</div>
+                    ? <div id='people-going-hover'>who is going?</div>
+                    : <div id='people-going-hover'>interested?</div>
                   }
+                  <div id='people-going-hide'>
+                    {eventGoingDiv}
+                  </div>
                 </div>
               </div>
               <div id='event-information'>
                 <div id='description-container'> 
-                  <span className='text-container'>Description</span> 
-                  {event.peopleGoing && event.peopleGoing[0] ? `Event Organizer: ${event.peopleGoing[0].name}`: null} <br/>
-                  {event.description}
+                  {event.peopleGoing && event.peopleGoing[0] ? <span className='text-container'>Event Organizer: {event.peopleGoing[0].name}</span> : null}
+                   <br/>
+                  <div id='description'>{event.description}</div>
                 </div>
                 <div id='location-container'>
                   <span className='text-container'>Location</span>
@@ -204,35 +245,6 @@ const EventShowPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className='event-show-page-wrapper'>
-        <div className='trip-show-page-container'>
-          <div id='post-card-container' className='striped-border'>
-            <div className='trip-show-page-header-wrapper event-header'>
-              <div className='trip-show-page-header'>
-              </div>
-            </div>
-            <div id='post-card-body-container'>
-              <div className='post-card-space left-space event-show-left'>
-                <p><span className='descr-span'>Cost: </span>${event.cost} {event.splitCostStructure ? 'per person' : 'total'}</p>
-                <p id='descr-description'>Description: {event.description}</p>
-                <div className='event-show-buttons'>
-                  {eventOrganizerButtons}
-                </div>
-                  <button className='event-show-page-button' onClick={backToTrip}>Back to trip</button>
-              </div>
-              <div id='event-post-card-center-border' />
-              <div className='post-card-space event-show-right'>
-                <p>{monthStart} {dayStart}, {yearStart} til {monthEnd} {dayEnd}, {yearEnd}</p>
-                  <div id='location-div'>
-                    <p>{event.location.name ? event.location.name : ""}</p>
-                    <p>{event.location.city ? event.location.city : ""}</p>
-                    <p>{event.location.country ? event.location.country : ""} {event.location.zipCode ? event.location.zipCode : ""}</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   )
 };

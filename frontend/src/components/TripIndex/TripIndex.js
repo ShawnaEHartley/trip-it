@@ -96,7 +96,7 @@ const TripIndex = () => {
                     <div id='page'>
                         <div id='stamp-page-container'>
                             <div id='stamp-page-header'>
-                                <div className='div-placeholder'></div>
+                                <button className='trip-index-create-button' onClick={() => setCurrentTrips(!currentTrips)}>{currentTrips ? 'See Past Trips' : 'Upcoming Trips'}</button>
                                 <h2 id="stamp-page-title">{user.name}'s Trips</h2>
                                 <button className='trip-index-create-button' onClick={showCreateTripForm} title="Create Trip">+</button>
                             </div>
