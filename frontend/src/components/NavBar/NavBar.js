@@ -90,6 +90,7 @@ const NavBar = () => {
             { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
             { modalState.on ? <div className='modal-wrapper'>{modalComponent()}</div> : "" }
             <nav id='nav-bar'>
+                <div id='nav-logo'onClick={() => history.push(`/`)}>Trip It</div>
                 <Menu menuButton={<MenuButton>Compose.</MenuButton>} transition>  
                     { loggedIn ? loggedInNav() : loggedOutNav() }
                 </Menu>
