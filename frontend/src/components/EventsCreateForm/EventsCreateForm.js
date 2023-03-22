@@ -28,6 +28,25 @@ const EventCreateForm = ({tripId}) => {
     const [cost, setCost] = useState(0);
     const [splitCostStructure, setSplitCostStructure] = useState(false);
 
+    let eventImages = [
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/beach.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image2.jpeg',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image3.jpeg',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event2.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event3.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event4.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event5.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event6.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event7.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourists.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/vietnam.webp',
+      'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/wineanddine.webp'
+    ];
+    
+    let rand = Math.floor(Math.random() * eventImages.length);
+
     const convertTime = (dateObj) => {
       const offset = new Date().getTimezoneOffset();
       const date = new Date(dateObj);
@@ -58,7 +77,7 @@ const EventCreateForm = ({tripId}) => {
             cost: cost, 
             splitCostStructure: splitCostStructure,
             tripId: tripId,
-            imageUrl: 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg'
+            imageUrl: eventImages[rand]
         }, tripId, history));
       };
 
