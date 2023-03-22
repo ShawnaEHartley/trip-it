@@ -10,9 +10,15 @@ const Event = require('../models/Event');
 // const Trip = mongoose.model('Trip');
 // const Event = mongoose.model('Event');
 
-let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png',
+let awsStampUrls = [
+'https://tripit-seeds.s3.amazonaws.com/stamps/euro_stamp.jpeg', 
+'https://tripit-seeds.s3.amazonaws.com/stamps/colombia_stamp.jpeg', 
+'https://tripit-seeds.s3.amazonaws.com/stamps/mexico_stamp.jpeg', 
+'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_2.png',
+'https://tripit-seeds.s3.amazonaws.com/stamps/london_stamp.jpeg', 
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_3.png',
+'https://tripit-seeds.s3.amazonaws.com/stamps/colombia_stamp2_jpeg',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_4.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_5.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_6.png',
@@ -54,13 +60,33 @@ let awsUrls = ['https://tripit-seeds.s3.amazonaws.com/stamps/stamp_1.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_42.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_43.png',
 'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_44.png',
-'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png']
+'https://tripit-seeds.s3.amazonaws.com/stamps/stamp_45.png'];
 
-let rand = Math.floor(Math.random() * awsUrls.length);
+
+
+let eventImages = [
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/beach.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image2.jpeg',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image3.jpeg',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event2.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event3.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event4.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event5.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event6.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event7.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourists.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/vietnam.webp',
+  'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/wineanddine.webp'
+];
+
+let rand = Math.floor(Math.random() * eventImages.length);
+
 
 const DEFAULT_PROFILE_IMAGE_URL = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/blank-profile-picture-ga0a514922_1280.png'; 
 const DEFAULT_TRIP_MAIN_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourism.jpeg';
-const DEFAULT_EVENT_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg';
+// const DEFAULT_EVENT_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg';
 
 
 // Connect to database
@@ -86,11 +112,12 @@ const initializeEventImages = async () => {
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
     const res = await event.updateOne(
-      { $set: { imageUrl: DEFAULT_EVENT_IMAGE } }
+      { $set: { imageUrl: eventImages[rand] } }
     );
   };
+  console.log('Event Images updated')
   mongoose.disconnect();
-  console.log('Event Images updated and disconnected from MongoDB')
+  console.log('Disconnected from MongoDB')
 };
 
 // Update Trip Images to all the same default image
@@ -99,11 +126,12 @@ const initializeTripImages = async () => {
   for (let i = 0; i < trips.length; i++) {
     const trip = trips[i];
     const res = await trip.updateOne(
-      { $set: { tripImageUrl: DEFAULT_TRIP_MAIN_IMAGE, stampImageUrl: awsUrls[i] } }
+      { $set: { tripImageUrl: DEFAULT_TRIP_MAIN_IMAGE, stampImageUrl: awsStampUrls[i] } }
     );
   };
+  console.log("Trip Images and Stamps updated");
   mongoose.disconnect();
-  console.log("Trip Images and Stamps updated and disconnected from MongoDB");
+  console.log("Disconnected from MongoDB");
 };
 
 // Update Users to default User Profile Pic
@@ -115,8 +143,9 @@ const initializeUserProfilePics = async () => {
       { $set: { profileImageUrl: DEFAULT_PROFILE_IMAGE_URL } }
     );
   };
+  console.log('User Profile Images updated');
   mongoose.disconnect();
-  console.log('User Profile Images updated and disconnected from MongoDB');
+  console.log('Disconnected from MongoDB');
 }
 
 // call this function 
