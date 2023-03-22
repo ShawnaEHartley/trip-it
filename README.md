@@ -12,9 +12,9 @@ A one-stop-shop web application to track and prioritize trips and events within 
 
 Creating a trip is easy, from the UI 
 
+```
   const submitTrip = e => {
     e.preventDefault();
-
     dispatch(createTrip({
       title: title,
       description: description,
@@ -33,9 +33,11 @@ Creating a trip is easy, from the UI
       tripImageUrl: 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/tourism.jpeg'
     }, history));
   };
+```
 
 to the backend creation:
 
+```
   // create a new trip
   router.post('/', async function (req, res, next) {
     if (req.body.title === '') {
@@ -58,10 +60,11 @@ to the backend creation:
         return res.json(trip);
     }
   });
-  
+```  
   
   And members of a trip can like or unlike events within that trip.
   
+  ```
    <div id='heart-container'>
     {event.peopleGoing.some(person => person._id === user._id)
       ? <img id='heart' src={heart} alt='going' onClick={() => {
@@ -94,9 +97,13 @@ to the backend creation:
         }
     }
   };
+  ```
+  
   
 With all modals stored in the React store.
 
+
+```
   export const closeModal = () => {
   return {type: "modalOff"}
   };
@@ -113,10 +120,10 @@ With all modals stored in the React store.
   };
 
   export default ModalReducer;
+ ``` 
   
   
-  
-Gives the users and developers flexibility to manage their trips the way they see fit.
+Giving the users and developers flexibility to manage their trips the way they see fit.
  
 
 
