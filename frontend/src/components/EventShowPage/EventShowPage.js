@@ -124,7 +124,7 @@ const EventShowPage = () => {
 
   //Correct AM and PM timing
   timeStart = timeStart.split(':');
-  (parseInt(timeStart[0]) > 12 ? timeStart[0] = toString(parseInt(timeStart[0] - 12)) : timeStart[0] = timeStart[0]);
+  (parseInt(timeStart[0]) > 12 ? timeStart[0] = parseInt(timeStart[0] - 12).toString() : timeStart[0] = timeStart[0]);
   (timeStart[0] === '00' ? timeStart[0] = '12' : timeStart[0] = timeStart[0]);
   timeStart = timeStart.join(':');
   timeEnd = timeEnd.split(':');
