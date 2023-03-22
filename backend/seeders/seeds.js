@@ -227,7 +227,7 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB successfully');
     // insertSeeds();
-    insertTripSeeds();
+    // insertTripSeeds();
     // insertEventSeeds();
     console.log('Finished')
   })
