@@ -57,7 +57,8 @@ const EventCreateForm = ({tripId}) => {
             peopleGoing: [currentUser._id],
             cost: cost, 
             splitCostStructure: splitCostStructure,
-            tripId: tripId
+            tripId: tripId,
+            imageUrl: 'https://sh-aws-tripit-mern.s3.amazonaws.com/tripit-public/event_image.jpeg'
         }, tripId, history));
       };
 
