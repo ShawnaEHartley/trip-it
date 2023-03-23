@@ -116,7 +116,9 @@ router.post('/', async function (req, res, next) {
             description: req.body.description,
             location: req.body.location,
             organizer: req.body.organizer,
-            members: req.body.members
+            members: req.body.members,
+            tripImageUrl: req.body.tripImageUrl,
+            stampImageUrl: req.body.stampImageUrl
         });
 
         const trip = await newTrip.save();
