@@ -15,10 +15,10 @@ const EventCreateForm = ({tripId}) => {
     const today = new Date().toISOString();
 
     const [title, setTitle] = useState(""); 
-    const [description, setDescription] = useState("")
-    const [startDate, setStartDate] = useState(today);
+    const [description, setDescription] = useState("");
+    const [startDate, setStartDate] = useState(today.split('T')[0]);
     const [startTime, setStartTime] = useState("00:00");
-    const [endDate, setEndDate] = useState(today);
+    const [endDate, setEndDate] = useState(today.split('T')[0]);
     const [endTime, setEndTime] = useState("00:00");
     const [streetAddress, setStreetAddress] = useState("");
     const [city, setCity] = useState("");
@@ -60,7 +60,6 @@ const EventCreateForm = ({tripId}) => {
 
     const submitEvent = (e) => {
         e.preventDefault();
-
         dispatch(createEvent({
             title: title,
             description: description,

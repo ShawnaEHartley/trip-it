@@ -79,7 +79,8 @@ router.post('/:tripId', async function (req, res, next) {
             splitCostStructure: req.body.splitCostStructure,
             organizer: req.body.organizer,
             peopleGoing: req.body.peopleGoing,
-            tripId: req.params.tripId
+            tripId: req.params.tripId,
+            imageUrl: req.body.imageUrl
         });
 
         let event = await newEvent.save();
