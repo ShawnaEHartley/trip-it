@@ -12,6 +12,8 @@ A one-stop-shop web application to track and prioritize trips and events within 
 
 ![Trip It splash page](./CONTRIBUTING.md/tripItSplashPage.png)
 
+![Demo User trip show page](./CONTRIBUTING.md/tripShowPage.png)
+
 Creating a trip is easy, from the UI 
 
 ```
@@ -36,6 +38,9 @@ Creating a trip is easy, from the UI
     }, history));
   };
 ```
+
+![Create a trip form](./CONTRIBUTING.md/createNewTripForm.png)
+
 
 to the backend creation:
 
@@ -100,6 +105,8 @@ to the backend creation:
     }
   };
   ```
+
+![Heart activated on event show page](./CONTRIBUTING.md/eventShowPage.png)
   
   
 With all modals stored in the React store.
