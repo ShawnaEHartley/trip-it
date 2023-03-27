@@ -10,6 +10,8 @@ Enter TripIt.
 
 A one-stop-shop web application to track and prioritize trips and events within trips. With this app, you can create a trip with a group of people and each member can suggest an event, like events, and book events while on that trip. 
 
+![Trip it splash page](./CONTRIBUTING.md/tripItSplashPage.png)
+
 Creating a trip is easy, from the UI 
 
 ```
