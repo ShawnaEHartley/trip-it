@@ -98,7 +98,6 @@ export const fetchEvent = (eventId) => async (dispatch) => {
 
 export const createEvent = (eventObject, tripId, history) => async (dispatch) => {
     try {
-        console.log('inside reducer')
         const res = await jwtFetch(`/api/events/${tripId}`, {
             method: "POST", 
             body: JSON.stringify(eventObject)

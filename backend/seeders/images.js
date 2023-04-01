@@ -90,21 +90,21 @@ const DEFAULT_TRIP_MAIN_IMAGE = 'https://sh-aws-tripit-mern.s3.amazonaws.com/tri
 
 
 // Connect to database
-mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => {
-    console.log('Connected to MongoDB successfully');
+// mongoose
+//   .connect(db, { useNewUrlParser: true })
+//   .then(() => {
+//     console.log('Connected to MongoDB successfully');
     // initializeEventImages();
     // initializeTripImages();
     // initializeUserProfilePics();
 
     // call update functions here
 
-  })
-  .catch(err => {
-    console.error(err.stack);
-    process.exit(1);
-  });
+  // })
+  // .catch(err => {
+  //   console.error(err.stack);
+  //   process.exit(1);
+  // });
 
 // Update Event Images to all the same default image
 const initializeEventImages = async () => {

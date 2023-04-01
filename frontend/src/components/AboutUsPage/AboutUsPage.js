@@ -9,6 +9,7 @@ import angellist from '../../assets/images/angellist.png';
 import './AboutUsPage.css'
 
 const AboutUsPage = () => {
+
    return (
       <>
       <h1 id="about-us-header">Meet the Developers</h1>

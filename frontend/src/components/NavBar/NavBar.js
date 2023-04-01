@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../store/modal';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
@@ -65,6 +65,7 @@ const NavBar = () => {
     const loggedOutNav = () => {
         return ( 
         <>
+            <MenuItem onClick={()=> history.push('/')}>Home</MenuItem>
             <MenuItem onClick={showLogin}>Login</MenuItem>
             <MenuItem onClick={showSignUp}>Sign up</MenuItem>
             <MenuItem onClick={toAboutUsPageButton}>About Us</MenuItem>
@@ -90,7 +91,7 @@ const NavBar = () => {
             { modalState.on ? <div className='modal-background' onClick={()=> {dispatch(closeModal())}}></div> : "" }
             { modalState.on ? <div className='modal-wrapper'>{modalComponent()}</div> : "" }
             <nav id='nav-bar'>
-                <div id='nav-logo'onClick={() => history.push(`/`)}>Trip It</div>
+            {loggedIn ? <div id='nav-logo'onClick={() => history.push(`/`)}>Trip It</div> : <div></div>}
                 <Menu menuButton={<MenuButton>Compose.</MenuButton>} transition>  
                     { loggedIn ? loggedInNav() : loggedOutNav() }
                 </Menu>
